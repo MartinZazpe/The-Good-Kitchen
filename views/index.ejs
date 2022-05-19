@@ -1,3 +1,5 @@
+<!--I want to show ingredients in detail, not at begining -->
+
 <!DOCTYPE html>
 <html>
 
@@ -12,9 +14,8 @@
     <div class="body-information">
       <section class="introduction">
         <h3>Upload your recipe and share it with the world!</h3>
-        <p>We love sharing what we know and are thrilled that you are here.
-          Tell us all about yourself through your recipes sharing details and images
-          to inspire others around the world
+        <p class="welcome-text">Tell us all about your self through your recipes
+        <p class="cake">&#127856</p>
         </p>
       </section>
       <section class="recipe-examples">
@@ -22,24 +23,15 @@
         <p>Check out the most recent uploads</p>
 
         <% recipes.forEach(function(recipe) {%>
-          <div class="recentUploads">
+          <div class="recentUpload">
             <h4>
               <%=recipe.title %>
             </h4>
+            <img class="recipe-image" src="/images/<%= recipe.image %>">
             <p>
               <%=recipe.description %>
             </p>
-            <div>
-              <img class="recipe-image" src="/images/<%= recipe.image %>">
-            </div>
-            <ul>
-              <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
-                <li>
-                  <%= recipe.Ingredients[i] %>
-                </li>
-                <% } %>
-            </ul>
-
+            <a class="detail-link" href="#">Check out the full recipe...</a>
           </div>
           <% }) %>
 

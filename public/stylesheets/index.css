@@ -4,11 +4,39 @@
     padding-bottom: 40px;
 }
 
-.recentUploads {
-    padding: 30px 0;
+.recentUpload {
+    padding: 20px 0px 40px 0px;
+    margin: 5px;
+    border: 1px dotted rgb(192, 144, 144);
+
+}
+
+.recentUploads h4,
+p,
+h3 {
+    text-align: center;
 }
 
 .recipe-image {
     width: 100%;
-    border-top: red 20px solid;
+}
+
+
+.ingredients-list {
+    list-style-type: circle;
+    padding: 5px 0;
+    color: red;
+}
+
+
+.cake,
+h4 {
+    text-align: center;
+}
+
+.detail-link {
+    padding: 40px;
+    white-space: nowrap;
+    color: grey;
+    text-align: center
 }
