@@ -16,7 +16,7 @@
             "1 cup chopped pecans"
         ],
         "description": "A delicious carrot cake to eat with friends and family",
-        "image": ""
+        "image": "carrot-cake.jpeg"
     },
     {
         "id": 2,
@@ -31,6 +31,60 @@
             "2 tablespoons vegetable oil"
         ],
         "description": "Easy pancakes for an easy breakfast!",
-        "image": ""
+        "image": "fluffypancakes.jpeg"
+    },
+    {
+        "id": 3,
+        "title": "Quiche lorraine",
+        "Ingredients": [
+            "125g ham, chopped",
+            "1 small onion, finely chopped",
+            "1 1/2 cups (180g) grated Devondale Tasty Cheese Block (500g)",
+            "1/3 cup (50g) self-raising flour",
+            "Salt & freshly ground pepper, to season",
+            "4 eggs",
+            "1 1/2 cups (375ml) milk"
+        ],
+        "description": "The almighty quiche lorraine",
+        "image": "QuicheLorraine.jpeg"
+    },
+    {
+        "id": 4,
+        "title": "Chicken and vegetables stir-fry",
+        "Ingredients": [
+            "2 tbsp peanut oil",
+            "3 Lilydale Free Range Chicken Breast, trimmed, cut across the grain into thin strips",
+            "1 brown onion, cut into thin wedges",
+            "1 red capsicum, deseeded, cut into thin strips",
+            "250g button mushrooms or mushroom caps, sliced",
+            "1 bunch broccolini, cut into 4cm lengths",
+            "2cm piece fresh ginger, peeled, finely grated or chopped",
+            "2 garlic cloves, finely chopped",
+            "2 fresh birdseye chillies, deseeded if desired, thinly sliced",
+            "2 tbsp salt-reduced soy sauce",
+            "1 1/2 tbsp oyster sauce",
+            "1 tbsp water",
+            "100g bean sprouts, to serve",
+            "Coriander leaves, to serve",
+            "Cooked white rice or noodles, to serve"
+        ],
+        "description": "The almighty quiche lorraine",
+        "image": "chickenAndVeggies.jpeg"
+    },
+    {
+        "id": 5,
+        "title": "Chocolate fudge cake",
+        "Ingredients": [
+            "2 150ml sunflower oil, plus extra for the tin",
+            "175g self-raising flour",
+            "2 tbsp cocoa powder",
+            "1 tsp bicarbonate of soda",
+            "150g caster sugar",
+            "2 tbsp golden syrup",
+            "2 large eggs, lightly beaten",
+            "150ml semi-skimmed milk"
+        ],
+        "description": "What´s better than a choco cake?",
+        "image": "chococake.jpeg"
     }
 ]

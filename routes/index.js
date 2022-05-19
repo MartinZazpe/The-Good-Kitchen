@@ -4,6 +4,6 @@ var indexController = require('../controller/indexController.js')
 
 
 /* GET home page. */
-router.get('/', indexController.index)
+router.get('/', indexController.indexAndRecents)
 
 module.exports = router

@@ -20,9 +20,29 @@
       <section class="recipe-examples">
         <h3>Our users have told us their story</h3>
         <p>Check out the most recent uploads</p>
-        <div>
 
-        </div>
+        <% recipes.forEach(function(recipe) {%>
+          <div class="recentUploads">
+            <h4>
+              <%=recipe.title %>
+            </h4>
+            <p>
+              <%=recipe.description %>
+            </p>
+            <div>
+              <img class="recipe-image" src="/images/<%= recipe.image %>">
+            </div>
+            <ul>
+              <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
+                <li>
+                  <%= recipe.Ingredients[i] %>
+                </li>
+                <% } %>
+            </ul>
+
+          </div>
+          <% }) %>
+
       </section>
     </div>
     <%- include("partials/footer.ejs") %>

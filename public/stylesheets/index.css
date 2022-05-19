@@ -3,3 +3,12 @@
     padding: 20px;
     padding-bottom: 40px;
 }
+
+.recentUploads {
+    padding: 30px 0;
+}
+
+.recipe-image {
+    width: 100%;
+    border-top: red 20px solid;
+}
