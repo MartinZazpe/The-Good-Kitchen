@@ -1,0 +1,36 @@
+[
+    {
+        "id": 1,
+        "title": "Carrot Cake",
+        "Ingredients": [
+            "4 eggs",
+            "1 ¼ cups vegetable oil",
+            "2 cups white sugar",
+            "2 teaspoons vanilla extract",
+            "2 cups all-purpose flour",
+            "2 teaspoons baking soda",
+            "2 teaspoons baking powder",
+            "½ teaspoon salt",
+            "2 teaspoons ground cinnamon",
+            "3 cups grated carrots",
+            "1 cup chopped pecans"
+        ],
+        "description": "A delicious carrot cake to eat with friends and family",
+        "image": ""
+    },
+    {
+        "id": 2,
+        "title": "Fluffy pancakes",
+        "Ingredients": [
+            "1 cup chopped pecans",
+            "2 tablespoons white sugar",
+            "2 teaspoons baking powder",
+            "1 teaspoon salt",
+            "1 egg, beaten",
+            "1 cup milk",
+            "2 tablespoons vegetable oil"
+        ],
+        "description": "Easy pancakes for an easy breakfast!",
+        "image": ""
+    }
+]

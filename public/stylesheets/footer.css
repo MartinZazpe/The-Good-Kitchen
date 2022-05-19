@@ -1,0 +1,32 @@
+.menu li {
+    font-size: 16px;
+    padding: 15px 5px;
+    white-space: nowrap;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(166, 159, 159);
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.company-trademark {
+    justify-content: center;
+    padding: 15px;
+}
+
+.menu-footer {
+    display: flex;
+    flex-direction: row;
+}
+
+.menu-footer li {
+    font-size: 16px;
+    padding: 15px 5px;
+    white-space: nowrap;
+}
