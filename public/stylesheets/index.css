@@ -6,7 +6,7 @@
 
 .recentUpload {
     padding: 20px 0px 40px 0px;
-    margin: 5px;
+    margin: 15px 0px 15px 0px;
     border: 1px dotted rgb(192, 144, 144);
 
 }
@@ -32,6 +32,10 @@ h3 {
 .cake,
 h4 {
     text-align: center;
+}
+
+h4 {
+    padding-bottom: 10px;
 }
 
 .detail-link {
