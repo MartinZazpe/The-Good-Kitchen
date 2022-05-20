@@ -1,0 +1,17 @@
+.form-container {
+    display: flex;
+    flex-flow: column wrap;
+    padding-top: 100px;
+}
+
+.form-container h3,
+input,
+label {
+    padding: 10px;
+}
+
+.form-container form {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}

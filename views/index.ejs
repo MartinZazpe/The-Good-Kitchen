@@ -22,19 +22,22 @@
       <section class="recipe-examples">
         <h3>Our users have told us their story</h3>
         <p>Check out the most recent uploads</p>
-
-        <% recipes.forEach(function(recipe) {%>
-          <div class="recentUpload">
-            <h4>
-              <%=recipe.title %>
-            </h4>
-            <img class="recipe-image" src="/images/<%= recipe.image %>">
-            <p>
-              <%=recipe.description %>
-            </p>
-            <a class="detail-link" href="#">Check out the full recipe...</a>
-          </div>
-          <% }) %>
+        <div class="container">
+          <% recipes.forEach(function(recipe) {%>
+            <div class="productContainer">
+              <h4>
+                <%=recipe.title %>
+              </h4>
+              <img class="recipe-image" src="/images/<%= recipe.image %>">
+              <div class="description-hyperlink">
+                <p>
+                  <%=recipe.description %>
+                </p>
+                <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+              </div>
+            </div>
+            <% }) %>
+        </div>
 
       </section>
     </div>

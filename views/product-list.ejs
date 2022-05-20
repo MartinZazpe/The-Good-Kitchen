@@ -11,7 +11,30 @@
 <%- include("partials/header.ejs") %>
 
     <body>
-        <p>Hello</p>
+        <div class="body-information">
+            <section class="introduction">
+                <h3>All our recipes</h3>
+            </section>
+            <section class="recipe-examples">
+                <div class="container">
+                    <% recipes.forEach(function(recipe) {%>
+                        <div class="productContainer">
+                            <h4>
+                                <%=recipe.title %>
+                            </h4>
+                            <img class="recipe-image" src="/images/<%= recipe.image %>">
+                            <div class="description-hyperlink">
+                                <p>
+                                    <%=recipe.description %>
+                                </p>
+                                <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+
+            </section>
+        </div>
         <%- include("partials/footer.ejs") %>
     </body>
 

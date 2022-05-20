@@ -1,0 +1,46 @@
+.OneProductContainer {
+    border: none;
+}
+
+h2 {
+    text-align: center;
+    padding: 15px;
+}
+
+.OneRecipeImage {
+    width: 100%;
+    max-height: calc()
+}
+
+.introduction {
+    text-decoration: underline;
+}
+
+.description-hyperlink p {
+    font-style: italic;
+}
+
+.ingredients {
+    padding-bottom: 40px;
+}
+
+.ingredients ul,
+p {
+    padding: 10px;
+}
+
+.ingredients ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.ingredients ul li {
+    padding: 3px;
+    text-align: start;
+    align-self: start;
+    list-style-type: circle;
+    list-style-position: inside;
+    padding: 5px 0;
+    color: rgb(103, 103, 225);
+}

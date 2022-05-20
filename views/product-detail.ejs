@@ -1,15 +1,46 @@
-<ul class="ingredients-list">
-    <p>Ingredients:</p>
-    <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
-        <li>
-            <%= recipe.Ingredients[i] %>
-        </li>
-        <% } %>
-</ul>
+<!DOCTYPE html>
+<html>
 
+<head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/product-detail.css' />
+    <title>Home</title>
+</head>
 
-/* ul li {
-list-style-type: circle;
-padding: 5px 0;
-color: blue;
-} */
+<body>
+    <%- include("partials/header.ejs") %>
+        <div class="body-information">
+            <section class="introduction">
+                <h2>
+                    <%=recipe.title %>
+                </h2>
+            </section>
+            <section class="recipe-examples">
+                <div class="container">
+                    <div class="OneProductContainer">
+                        <img class="OneRecipeImage" src="/images/<%= recipe.image %>">
+                        <div class="description-hyperlink">
+                            <p>
+                                <%=recipe.description %>
+                            </p>
+                        </div>
+                        <div class="ingredients">
+                            <ul class="ingredients-list">
+                                <p class="ingredients-title">Ingredients:</p>
+                                <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
+                                    <li>
+                                        <%= recipe.Ingredients[i] %>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+        <%- include("partials/footer.ejs") %>
+</body>
+
+</html>
