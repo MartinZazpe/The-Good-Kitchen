@@ -1,17 +1,37 @@
 .form-container {
     display: flex;
     flex-flow: column wrap;
-    padding-top: 100px;
 }
 
-.form-container h3,
-input,
-label {
-    padding: 10px;
+
+/* small devices tablets */
+@media (min-width:600px) {
+    .form-container {
+        padding-left: 10%;
+        padding-right: 10%
+    }
 }
 
-.form-container form {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
+/* medium devices landscape tables */
+@media (min-width:768px) {
+    .form-container {
+        padding-left: 10%;
+        padding-right: 10%
+    }
+}
+
+/* large devices laptops, desktops */
+@media (min-width:992px) {
+    .form-container {
+        padding-left: 15%;
+        padding-right: 15%
+    }
+}
+
+/* extra large devices - large laptops, desktops  */
+@media(min-width: 1200px) {
+    .form-container {
+        padding-left: 25%;
+        padding-right: 25%;
+    }
 }

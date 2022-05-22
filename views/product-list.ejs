@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/product-list.css" />
     <title>Document</title>
 </head>
 <%- include("partials/header.ejs") %>
@@ -22,12 +23,22 @@
                             <h4>
                                 <%=recipe.title %>
                             </h4>
-                            <img class="recipe-image" src="/images/<%= recipe.image %>">
+                            <a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="/images/<%= recipe.image %>"></a>
+
                             <div class="description-hyperlink">
                                 <p>
                                     <%=recipe.description %>
                                 </p>
                                 <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+                                <div class="buttons">
+                                    <div>
+                                        <a href="/recipes/edit/<%=recipe.id%>"><button type="submit">Edit</button></a>
+                                    </div>
+                                    <div>
+                                        <a href="#"></a>
+                                        <button type="submit">Delete</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <% }) %>

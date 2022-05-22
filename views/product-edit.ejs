@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/product-creation.css' />
+    <link rel='stylesheet' href='/stylesheets/product-edit.css' />
     <title>Upload a recipe</title>
 </head>
 
@@ -14,18 +14,19 @@
     <%- include("partials/header.ejs") %>
         <div class="body-information">
             <section class="main-section">
+
                 <div class="form-container">
-                    <h3>Upload your original recipe!</h3>
-                    <form action="/recipes/store" enctype="multipart/form-data" method="POST">
+                    <h3>Edit your recipe</h3>
+                    <form action="/recipes/store/<%= recipe.id %>?_method=PUT" enctype="multipart/form-data" method="POST">
                         <label for="title">Title:</label>
-                        <input name="title" type="text" id="title">
+                        <input name="title" type="text" value="<%= recipe.title %>" id="title">
                         <label for="description">Describe your dish:</label>
-                        <input name="description" type="text" id="description">
+                        <input name="description" type="text" value="<%= recipe.description %>" id="description">
                         <label for="Ingredients">Ingredients:</label>
                         <em class="IngredientsInstructions">please enter every ingredient separated by a comma.</em>
-                        <input name="Ingredients" type="text" id="Ingredients">
+                        <input name="Ingredients" type="text" value="<%= recipe.Ingredients %>" id="Ingredients">
                         <div class="imageInputContainer">
-                            <label id="image-label" for="image">Choose an image</label>
+                            <label id="image-label" for="image">Edit an image</label>
                             <input name="image" type="file" id="image">
                         </div>
                         <button type="submit">Upload</button>

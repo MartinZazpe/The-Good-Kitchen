@@ -28,7 +28,7 @@
               <h4>
                 <%=recipe.title %>
               </h4>
-              <img class="recipe-image" src="/images/<%= recipe.image %>">
+              <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="/images/<%= recipe.image %>"></a>
               <div class="description-hyperlink">
                 <p>
                   <%=recipe.description %>

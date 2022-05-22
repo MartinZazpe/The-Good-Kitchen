@@ -1,0 +1,11 @@
+.buttons {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: space-evenly;
+}
+
+.buttons button {
+    padding: 3px;
+    margin: 0px 4px;
+}

@@ -9,7 +9,7 @@ body {
 }
 
 .body-information {
-  padding: 35px;
+  padding: 35px 20px;
 }
 
 .introduction {
@@ -43,12 +43,12 @@ h3 {
 
 .recipe-image {
   width: 100%;
-  max-height: 200px;
+  height: 200px;
 }
 
 .productContainer {
-  width: 250px;
-  padding: 20px 0px 40px 0px;
+  width: 300px;
+  padding: 20px 0px 30px 0px;
   margin: 15px 0px 15px 0px;
   border: 1px dotted rgb(192, 144, 144);
 }
@@ -71,4 +71,55 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.form-container form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+.form-container h3,
+input,
+label {
+  padding: 10px;
+}
+
+.imageInputContainer {
+  display: Flex;
+  justify-content: center;
+}
+
+#image {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+
+#image-label {
+  text-align: center;
+  display: block;
+  position: relative;
+  margin: 30px;
+  width: 120px;
+  height: 33px;
+  border-radius: 25px;
+  background: linear-gradient(40deg, #ff906e, #bebddd);
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .2s ease-out;
+}
+
+.IngredientsInstructions {
+  color: #ff906e;
+}
+
+.main-section {
+  padding-top: 70px;
 }
