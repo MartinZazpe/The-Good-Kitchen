@@ -59,12 +59,14 @@ module.exports = {
         writeJSON()
         res.redirect('/')
     },
-    delete: (req, res) => {
-        let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        if (recipeFound.image.file) {
-            fs.unlinkSync(path.join(dirname__, '../public/images' + recipeFound.image))
-        }
-        data.splice(recipeFound)
+    destroy: async (req, res) => {
+        let recipeFound = data.findIndex(recipe => recipe.id == req.params.id)
+        let imageFound = data.find(recipe => recipe.id == req.params.id)
+
+        //this code deletes image, however it also deletes the default image, leave like this for now.
+        // fs.unlinkSync(path.join(__dirname, "../public/images/" + imageFound.image))
+
+        data.splice(recipeFound, 1)
         writeJSON()
         res.redirect('/recipes/list')
     }

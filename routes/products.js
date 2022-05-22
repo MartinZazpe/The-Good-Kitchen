@@ -18,7 +18,7 @@ router.get('/edit/:id', productController.edit)
 router.put('/store/:id', configMulter.single("image"), productController.update)
 
 /*  delete a product   */
-router.delete('/delete/:id', productController.delete)
+router.delete('/delete/:id', productController.destroy)
 
 
 module.exports = router

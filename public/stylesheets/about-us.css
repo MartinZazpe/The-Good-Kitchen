@@ -1,0 +1,23 @@
+.about-us {
+    margin: 50px;
+    padding: 10px;
+}
+
+.about-us p {
+    padding: 10px;
+}
+
+.about-us h1 {
+    color: black !important
+}
+
+.cook-world {
+    width: 350px;
+
+}
+
+.body-information {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

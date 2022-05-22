@@ -1,0 +1,18 @@
+.main-section {
+    padding: 50px;
+}
+
+.body-information h1 {
+    color: black;
+}
+
+.contact-links {
+    display: flex;
+    flex-flow: column wrap;
+    text-align: center;
+}
+
+
+.contact-links ul li {
+    padding: 20px;
+}

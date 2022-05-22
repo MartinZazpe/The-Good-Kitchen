@@ -1,3 +1,29 @@
-We love sharing our recipes with the world and are thrilled that you are here.
-Tell us all about yourself through your recipes sharing details and images
-to inspire others around the world
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/about-us.css' />
+    <title>about-us</title>
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+        <div class="body-information">
+            <div class="about-us">
+                <h1>Thank you for visiting us</h1>
+                <p>We love sharing our recipes with the world and are thrilled that you are here.
+                    Tell us all about yourself through your recipes sharing details and images
+                    to inspire others around the world</p>
+                <%- include("partials/footer.ejs") %>
+            </div>
+            <div>
+                <img class="cook-world" src="../../images/chefcook.jpeg">
+            </div>
+        </div>
+</body>
+
+</html>

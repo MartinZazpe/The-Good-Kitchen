@@ -35,8 +35,10 @@
                                         <a href="/recipes/edit/<%=recipe.id%>"><button type="submit">Edit</button></a>
                                     </div>
                                     <div>
-                                        <a href="#"></a>
-                                        <button type="submit">Delete</button>
+                                        <form action="/recipes/delete/<%=recipe.id%>?_method=DELETE" method="POST">
+                                            <button type="submit">
+                                                Delete
+                                            </button>
                                     </div>
                                 </div>
                             </div>

@@ -10,13 +10,13 @@ module.exports = {
         res.render("index", {
             recipes: recentUploads
         })
+    },
+    aboutUs: (req, res) => {
+        res.render('about-us')
+    },
+    help: (req, res) => {
+        res.render('help')
     }
-
-    // indexAndRecents: (req, res) => {
-    //     let [result] = productList.slice(-1)
-    //     console.log(result)
-    //     res.render('index', { result })
-    // }
 }
 
 
