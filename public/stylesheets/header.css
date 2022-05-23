@@ -4,20 +4,44 @@
     white-space: nowrap;
 }
 
+.navbar h1 {
+    width: auto;
+}
+
 h1 {
     color: white;
     font-style: italic;
     text-align: center;
 }
 
-.navbar {
+#navbar {
+    background-color: rgb(210, 164, 164, 0.85);
     width: 100%;
-    height: auto;
-    background-color: rgb(217, 147, 147);
 }
 
-.navbarFixed {
-    position: fixed;
+.flexboxInitial {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.order1 {
+    order: -1;
+}
+
+.order2 {
+    order: 2;
+}
+
+.noDisplay {
+    display: none;
+}
+
+
+.flexboxExpanded {
+    display: flex;
+    flex-flow: wrap column;
 }
 
 
@@ -38,6 +62,15 @@ body i {
     display: none;
 }
 
+.navbarFixed {
+    position: fixed;
+}
+
+.navBarScreen {
+    height: 1000px;
+}
+
+
 .navbar-container {
     display: flex;
     justify-content: center;
@@ -53,12 +86,6 @@ body i {
     height: 33px;
 }
 
-/* .navbar {
-    margin-bottom: 5px;
-    color: blue !important
+.login-register {
+    margin: 5px
 }
-
-.navbarBody {
-    padding-bottom: 10px;
-    margin-bottom: 5px;
-} */
