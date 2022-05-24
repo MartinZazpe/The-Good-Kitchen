@@ -15,7 +15,7 @@ h1 {
 }
 
 #navbar {
-    background-color: rgb(210, 164, 164, 0.85);
+    background-color: rgba(26, 9, 9, 0.85);
     width: 100%;
 }
 
@@ -81,11 +81,24 @@ body i {
     justify-content: center;
 }
 
+#logo h1 {
+    position: relative;
+}
+
 .cookie-logo {
+    position: absolute;
     width: 33px;
     height: 33px;
 }
 
+
 .login-register {
     margin: 5px
+}
+
+.hambMenu i,
+.login-register i,
+.xMenu i,
+#logo h1 {
+    color: rgb(199, 176, 176);
 }

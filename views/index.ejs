@@ -15,31 +15,32 @@
     <div class="body-information">
       <section class="introduction">
         <h3>Upload your recipe and share it with the world!</h3>
-        <p class="welcome-text">Tell us all about your self through your recipes
+
         <p class="cake">&#127856</p>
         </p>
       </section>
-      <section class="recipe-examples">
+      <section class="recipe-recents">
         <h3>Our users have told us their story</h3>
         <p>Check out the most recent uploads</p>
-        <div class="container">
-          <% recipes.forEach(function(recipe) {%>
-            <div class="productContainer">
-              <h4>
-                <%=recipe.title %>
-              </h4>
-              <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="/images/<%= recipe.image %>"></a>
-              <div class="description-hyperlink">
-                <p>
-                  <%=recipe.description %>
-                </p>
-                <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
-              </div>
-            </div>
-            <% }) %>
-        </div>
-
       </section>
+      <div class="container">
+        <% for(let recipe of recipes) {%>
+          <div class="productContainer">
+            <h4>
+              <%=recipe.title %>
+            </h4>
+            <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="/images/<%= recipe.image %>"></a>
+            <div class="description-hyperlink">
+              <p>
+                <%=recipe.description %>
+              </p>
+              <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+            </div>
+          </div>
+          <% } %>
+      </div>
+
+
     </div>
     <%- include("partials/footer.ejs") %>
 </body>

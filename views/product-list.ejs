@@ -18,7 +18,7 @@
             </section>
             <section class="recipe-examples">
                 <div class="container">
-                    <% recipes.forEach(function(recipe) {%>
+                    <% for (let recipe of recipes) {%>
                         <div class="productContainer">
                             <h4>
                                 <%=recipe.title %>
@@ -39,11 +39,12 @@
                                             <button type="submit">
                                                 Delete
                                             </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <% }) %>
+                        <% } %>
                 </div>
 
             </section>

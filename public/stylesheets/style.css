@@ -9,7 +9,7 @@ body {
 }
 
 .body-information {
-  padding: 35px 20px;
+  /* padding: 35px 20px; */
   margin-bottom: 30px;
 }
 
@@ -43,15 +43,25 @@ h3 {
 }
 
 .recipe-image {
-  width: 100%;
+  width: 300px;
   height: 200px;
+  /* align-self: center; */
+  align-items: center;
+}
+
+.container .productContainer {
+  padding: 30px;
+  margin: 8px 0px;
 }
 
 .productContainer {
-  width: 300px;
-  padding: 20px 0px 30px 0px;
-  margin: 15px 0px 15px 0px;
-  border: 1px dotted rgb(192, 144, 144);
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* background-color: rgb(252, 248, 248); */
+  background-color: rgb(250, 245, 245);
 }
 
 .detail-link {
@@ -64,14 +74,15 @@ h3 {
 
 .description-hyperlink {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: wrap column;
   justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
 }
 
 .form-container form {
@@ -114,7 +125,6 @@ label {
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  transition: transform .2s ease-out;
 }
 
 .IngredientsInstructions {
@@ -123,4 +133,43 @@ label {
 
 .main-section {
   padding-top: 70px;
+}
+
+
+
+/* small devices tablets */
+@media (min-width:550px) {
+  .productContainer {
+    width: 600px;
+    padding-bottom: 50px !important;
+  }
+
+  .container {
+    justify-content: space-evenly;
+  }
+}
+
+/* medium devices landscape tables */
+@media (min-width:768px) {
+  .productContainer {
+    width: 400px;
+    margin: 5px !important;
+    padding-bottom: 50px !important;
+  }
+}
+
+/* large devices laptops, desktops */
+@media (min-width:992px) {
+  .form-container {
+    padding-left: 15%;
+    padding-right: 15%
+  }
+}
+
+/* extra large devices - large laptops, desktops  */
+@media(min-width: 1200px) {
+  .form-container {
+    padding-left: 25%;
+    padding-right: 25%;
+  }
 }

@@ -11,11 +11,11 @@ router.get('/detail/:id', productController.detail)
 
 /*  create a product   */
 router.get('/create', productController.create)
-router.post('/store', configMulter.single("image"), productController.store)
+router.post('/create', configMulter.single("image"), productController.store)
 
 /*  edit a product   */
 router.get('/edit/:id', productController.edit)
-router.put('/store/:id', configMulter.single("image"), productController.update)
+router.put('/edit/:id', configMulter.single("image"), productController.update)
 
 /*  delete a product   */
 router.delete('/delete/:id', productController.destroy)

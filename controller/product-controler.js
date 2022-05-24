@@ -37,10 +37,9 @@ module.exports = {
             Ingredients: req.body.Ingredients.split(','),
             image: req.file ? req.file.filename : "no-image-default.png"
         }
-        console.log(newProduct)
         data.push(newProduct)
         writeJSON()
-        res.redirect('/')
+        res.redirect("/recipes/list")
     },
     edit: (req, res) => {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
@@ -57,7 +56,7 @@ module.exports = {
 
         /* overwrite JSON */
         writeJSON()
-        res.redirect('/')
+        res.redirect("/recipes/list")
     },
     destroy: async (req, res) => {
         let recipeFound = data.findIndex(recipe => recipe.id == req.params.id)
@@ -65,7 +64,6 @@ module.exports = {
 
         //this code deletes image, however it also deletes the default image, leave like this for now.
         // fs.unlinkSync(path.join(__dirname, "../public/images/" + imageFound.image))
-
         data.splice(recipeFound, 1)
         writeJSON()
         res.redirect('/recipes/list')

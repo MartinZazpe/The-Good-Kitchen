@@ -14,5 +14,9 @@
 
 
 .contact-links ul li {
-    padding: 20px;
+    padding: 40px;
+}
+
+ul li i {
+    color: blue;
 }
