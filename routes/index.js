@@ -6,6 +6,7 @@ var indexController = require('../controller/indexController.js')
 /* GET home page. */
 router.get('/', indexController.indexAndRecents)
 
+
 /* GET about us */
 router.get('/about-us', indexController.aboutUs)
 

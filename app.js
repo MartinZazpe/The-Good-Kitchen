@@ -4,9 +4,12 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 const methodOverride = require('method-override')
+const session = require('express-session')
+const bcryptjs = require('bcryptjs')
 
 var indexRouter = require('./routes/index')
 var productsRouter = require('./routes/products')
+var userRouter = require('./routes/users')
 
 var app = express()
 
@@ -20,9 +23,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride("_method"))
+app.use(session({ secret: "Anti hijack system" }))
+// app.use(bcryptjs())
 
 app.use('/', indexRouter)
 app.use('/recipes', productsRouter)
+app.use('/user', userRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

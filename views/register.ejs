@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/register.css' />
+    <script src="https://kit.fontawesome.com/ae0153af6c.js" crossorigin="anonymous"></script>
+    <title>Help</title>
+</head>
+
+<body>
+    <%- include('partials/header.ejs') %>
+        <section class="main-section">
+            <div class="body-information">
+                <h1 class="title">Create a user</h1>
+                <div class="errors-container">
+                    <% if (locals.errors) { %>
+                        <% errors.forEach(error=>{ %>
+                            <p class="error-msg">
+                                <%=error.msg %>
+                            </p>
+                            <% }) %>
+                                <% } %>
+                </div>
+
+                <div class="form-container">
+                    <form action="/user/register" method="POST">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" value="<%= locals.old && old.name ? old.name : '' %>">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" value="<%= locals.old && old.name ? old.name : '' %>">
+                        <label for="password">Password</label>
+                        <input type="password" name="password">
+                        <button type="submit">Register</button>
+                    </form>
+                </div>
+
+            </div>
+
+
+        </section>
+
+        <%- include('partials/footer.ejs') %>
+</body>
+
+</html>

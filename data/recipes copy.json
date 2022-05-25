@@ -20,7 +20,8 @@
             "Cooked white rice or noodles, to serve"
         ],
         "description": "Delicious and nutricious",
-        "image": "chickenAndVeggies.jpeg"
+        "image": "chickenAndVeggies.jpeg",
+        "belongsTo": "system"
     },
     {
         "id": 2,
@@ -36,7 +37,8 @@
             "150ml semi-skimmed milk"
         ],
         "description": "What´s better than a choco cake?",
-        "image": "chococake.jpeg"
+        "image": "chococake.jpeg",
+        "belongsTo": "system"
     },
     {
         "id": 3,
@@ -54,7 +56,8 @@
             "1 pie crust, (1 frozen crust, or 1/2 recipe for double pie crust)"
         ],
         "description": "A delicious quiche",
-        "image": "QuicheLorraine.jpeg"
+        "image": "QuicheLorraine.jpeg",
+        "belongsTo": "system"
     },
     {
         "id": 4,
@@ -69,7 +72,8 @@
             "2 tablespoons vegetable oil"
         ],
         "description": "Easy to make, delicious to eat",
-        "image": "fluffypancakes.jpeg"
+        "image": "fluffypancakes.jpeg",
+        "belongsTo": "system"
     },
     {
         "id": 5,
@@ -86,6 +90,7 @@
             "3 cups loosely packed peeled and grated carrots"
         ],
         "description": "mmmm a dream!",
-        "image": "carrot-cake.jpeg"
+        "image": "carrot-cake.jpeg",
+        "belongsTo": "system"
     }
 ]

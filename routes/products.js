@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-var productController = require('../controller/product-controler.js')
+var productController = require('../controller/product-controller.js')
 const configMulter = require("../middlewares/productImage")
 
 /* show product list */

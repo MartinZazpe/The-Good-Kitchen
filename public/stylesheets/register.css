@@ -1,0 +1,28 @@
+.errors-container {
+    display: flex;
+    flex-flow: wrap column;
+    align-items: center;
+}
+
+.title {
+    color: black !important;
+}
+
+.error-msg {
+    color: red;
+    padding: 20px;
+}
+
+.body-information {
+    background-color: rgba(100, 200, 100, 0.3);
+}
+
+.form-container button {
+    padding: 10px;
+    margin: 15px 0px;
+}
+
+.form-container input {
+    margin: 5px 0px;
+    border: rgb(185, 173, 173) 1px solid;
+}
