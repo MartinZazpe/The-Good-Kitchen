@@ -40,17 +40,18 @@ module.exports = {
             let newUSer = {
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password//esto debo hashearlo
+                password: req.body.password,//esto debo hashearlo
+                file: req.file.filename
             }
             users.push(newUSer)
             writeUsersDb()
-            res.redirect("/recipes/list") // esto deberia cambiar, deberia reenviarlo a su perfil
+            res.redirect("/recipes/list") //cuando lo reenvie, deberia el usuario estar ya logeado.
         } else {
-            res.render('register', {
-                errors: errors.array(),
-                old: req.body
-            })
             console.log(errors)
+            res.render('register', {
+                errors: errors.mapped(),
+                oldData: req.body
+            })
         }
     }
 }

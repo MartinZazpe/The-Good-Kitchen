@@ -19,5 +19,11 @@
         "email": "mike123@gmail.com",
         "password": "test123",
         "image": ""
+    },
+    {
+        "name": "martin",
+        "email": "martinzazpe1@gmail.com",
+        "password": "12345678",
+        "file": "1653682191704_img.png"
     }
 ]

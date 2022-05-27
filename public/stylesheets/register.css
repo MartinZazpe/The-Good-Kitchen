@@ -1,16 +1,10 @@
-.errors-container {
-    display: flex;
-    flex-flow: wrap column;
-    align-items: center;
+.error-msg {
+    color: red;
+    padding: 10px;
 }
 
 .title {
     color: black !important;
-}
-
-.error-msg {
-    color: red;
-    padding: 20px;
 }
 
 .body-information {
