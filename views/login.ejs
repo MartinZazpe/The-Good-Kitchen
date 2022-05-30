@@ -17,24 +17,26 @@
             <div class="body-information">
                 <h1>Log in</h1>
             </div>
-            <% if (typeof errors !='undefined' ) { %>
-                <p style="color:red">ERROR</p>
-                <ul>
-                    <% for(let i=0; i<errors.length, i++){ <li>
-                        <%=errors[i].msg%>
-                            </li>
-
+            <div class="errors-container">
+                <% if (locals.errors) { %>
+                    <% errors.forEach(error=> { %>
+                        <p class="error-msg">
+                            <%=error.msg %>
+                        </p>
+                        <% }) %>
                             <% } %>
-                </ul>
-                <% } %>
-                    <div>
-                        <form action="/user/login" method="POST"></form>
-                        <label for="">Email</label>
-                        <input type="email" name="email">
-                        <label for="">Password</label>
-                        <input type="password" name="password">
-                        <input type="submit" value="Login">
-                    </div>
+            </div>
+
+            <p> error message would go here </p>
+            <div>
+                <form action="/user/login" method="POST">
+                    <label for="">Email</label>
+                    <input type="email" name="email">
+                    <label for="">Password</label>
+                    <input type="password" name="password">
+                    <input type="submit" value="Login">
+                </form>
+            </div>
         </section>
 
         <%- include("partials/footer.ejs") %>
