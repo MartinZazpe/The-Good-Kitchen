@@ -33,14 +33,14 @@
                                 <%=errors.name.msg%>
                             </div>
                             <% } %>
-                                <input type="text" name="name" class="<%= locals.errors && errors.name ? 'form-control is-invalid ' : 'form-control is-valid' %>" value="<%=locals.oldData && oldData.name ? oldData.name : '' %>">
+                                <input type="text" name="name" class="form-control <%= locals.errors && errors.name ? ' is-invalid ' : '' %>" value="<%=locals.oldData && oldData.name ? oldData.name : '' %>">
                                 <label for="email">Email</label>
                                 <% if (locals.errors && errors.email) { %>
                                     <div class="error-msg">
                                         <%=errors.email.msg%>
                                     </div>
                                     <% } %>
-                                        <input type="email" name="email" class="<%= locals.errors && errors.email ? 'form-control is-invalid ' : 'form-control is-valid' %>" id="validationCustom01" value="<%= locals.oldData && oldData.email ? oldData.email : "" %>">
+                                        <input type="email" name="email" class="form-control <%= locals.errors && errors.email ? 'is-invalid ' : '' %>" id="validationCustom01" value="<%= locals.oldData && oldData.email ? oldData.email : "" %>">
 
                                         <label for="password">Password</label>
                                         <% if (locals.errors && errors.password) { %>
@@ -48,10 +48,10 @@
                                                 <%=errors.password.msg%>
                                             </div>
                                             <% } %>
-                                                <input type="password" name="password">
+                                                <input type="password" name="password" class="form-control <%= locals.errors && errors.password ? 'is-invalid ' : '' %>">
                                                 <label for=" image">Image (optional)</label>
                                                 <input type="file" name="image">
-                                                <button type="submit">Register</button>
+                                                <button type=" submit">Register</button>
                     </form>
                 </div>
 

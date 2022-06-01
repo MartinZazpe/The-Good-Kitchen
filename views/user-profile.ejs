@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/user-profile.css' />
+    <script src="/javascripts/user-profile.js"></script>
+    <script src="https://kit.fontawesome.com/ae0153af6c.js" crossorigin="anonymous"></script>
+    <title>Help</title>
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+        <section class="main-section">
+            <div class="body-information">
+                <div class="user-details">
+                    <%if(locals.user) { %>
+                        <h3>Welcome <%= user.name %>
+                        </h3>
+                        <div class="image-text-container">
+                            <img class="user-image" src="../../images/userImages/<%=user.image%>" alt="default-user-image">
+                            <div class="text-container">
+                                <h4>Change image</h4>
+                            </div>
+                        </div>
+                        <p>
+                            <%= user.email %>
+                        </p>
+                        <% } %>
+                            <p>Check out or modify my <a href="#">uploaded recipes</a></p>
+                </div>
+            </div>
+        </section>
+
+        <%- include("partials/footer.ejs") %>
+</body>
+
+</html>

@@ -1,30 +1,9 @@
 [
     {
         "id": 1,
-        "name": "Jon",
-        "email": "JonSnow@hotmail.com",
-        "password": "$2a$10$Z5GIpPZHfD6/Tidh1AUtv./0m7C86nKR8gm/sapQLR.oONLA0kXgG",
-        "file": "1653934874774_img.jpeg"
-    },
-    {
-        "id": 2,
-        "name": "Mike",
-        "email": "Mike@gmail.com",
-        "password": "$2a$10$7K1rR92fvUZ8GnGyx1gOm.tuKZoO/.T9A6v/OD5wM29mN8KTdlU1q",
-        "file": "1653934939451_img.jpeg"
-    },
-    {
-        "id": 3,
-        "name": "Jeremy",
-        "email": "Jeremy91@outlook.com",
-        "password": "$2a$10$.g0bkLZWuB3CjoulDGVexeMLpeqVBK6VAcK/PA7vNCyQiB3f6MtSq",
-        "file": "1653934965290_img.jpeg"
-    },
-    {
-        "id": 4,
-        "name": "martin",
-        "email": "test@gmail.com",
-        "password": "$2a$10$fyJwXDIC1ENNZY1XIHoKX.wSRfzIgIrqp8nt6KCevnM/HqAxMXXJy",
-        "file": "1653944906141_img.jpeg"
+        "name": "user",
+        "email": "test3@test.com",
+        "password": "$2a$10$48/I7asz5s1haUsMTwPSH.fsMTobS.uUC2X2dqshAkT3gSedtW3A6",
+        "image": "user-default.png"
     }
 ]

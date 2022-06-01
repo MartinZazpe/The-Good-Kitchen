@@ -23,7 +23,11 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride("_method"))
-app.use(session({ secret: "Anti hijack system" }))
+app.use(session({
+  secret: "Security password =)",
+  resave: false,
+  saveUninitialized: false,
+}))
 // app.use(bcryptjs())
 
 app.use('/', indexRouter)

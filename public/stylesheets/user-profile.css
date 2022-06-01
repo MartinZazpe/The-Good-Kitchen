@@ -1,0 +1,36 @@
+.user-details {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.user-details>* {
+    padding: 15px;
+}
+
+.user-details a {
+    color: blue;
+}
+
+.user-image {
+    width: 300px;
+    border-radius: 30px;
+}
+
+.user-image:hover {
+    filter: brightness(90%)
+}
+
+.image-text-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative
+}
+
+.text-container {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    color: rgb(100, 24, 24);
+}

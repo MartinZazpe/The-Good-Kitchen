@@ -17,26 +17,23 @@
             <div class="body-information">
                 <h1>Log in</h1>
             </div>
-            <div class="errors-container">
-                <% if (locals.errors) { %>
-                    <% errors.forEach(error=> { %>
-                        <p class="error-msg">
-                            <%=error.msg %>
-                        </p>
-                        <% }) %>
-                            <% } %>
-            </div>
+            <% if (locals.errors && errors.email) { %>
+                <div class="text-danger">
+                    <%=errors.email.msg %>
+                </div>
+                <% } %>
 
-            <p> error message would go here </p>
-            <div>
-                <form action="/user/login" method="POST">
-                    <label for="">Email</label>
-                    <input type="email" name="email">
-                    <label for="">Password</label>
-                    <input type="password" name="password">
-                    <input type="submit" value="Login">
-                </form>
-            </div>
+                    <div>
+                        <form action="/user/login" method="POST">
+                            <label for="">Email</label>
+                            <input type="email" name="email">
+                            <div class="errors-container">
+                            </div>
+                            <label for="">Password</label>
+                            <input type="password" name="password">
+                            <input type="submit" value="Login">
+                        </form>
+                    </div>
         </section>
 
         <%- include("partials/footer.ejs") %>

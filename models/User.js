@@ -1,13 +1,13 @@
-// buscar al usuario que se quiere logear por su email
+
 // editar la información de un usuario
 // eliminar a un usuario de la DB
 
 //asi como tengo findByField que devuelve el primero que corresponda, podria tener uno que devuelva todos los usuarios (o productos) que coincidan
 
-// proceso login completo minuto 24
 
 const fs = require('fs')
 var path = require('path')
+let bcrypt = require('bcryptjs')
 
 
 const User = {
@@ -41,11 +41,23 @@ const User = {
     },
     create: function (userData) {
         let allUsers = this.findAll()
-        allUsers.push(userData)
+        let newUser = {
+            id: this.generateId(),
+            ...userData
+        }
+        allUsers.push(newUser)
         fs.writeFileSync(this.fileName, JSON.stringify(allUsers, null, 4))
+        return newUser
+    },
+    delete: function (id) {
+        let allUsers = this.findAll()
+        let finalUsers = allUsers.filter(oneUser => oneUser.id !== id)
+        fs.writeFileSync(this.fileName, JSON.stringify(finalUsers, null, 4))
         return true
     }
 }
 
+module.exports = User
 
-console.log(User.generateId())
+
+

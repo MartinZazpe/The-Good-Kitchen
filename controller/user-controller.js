@@ -1,7 +1,12 @@
+//image uploads even when form fails and user is not created, should check if same happens for product
+
 const { validationResult } = require('express-validator')
 var fs = require('fs')
 var path = require('path')
-let bcrypt = require('bcryptjs')
+let bcryptjs = require('bcryptjs')
+let userModels = require('../models/User.js')
+const session = require('express-session')
+
 
 
 let dataJsonUser = fs.readFileSync(path.join(__dirname, '../data/users.json'))
@@ -13,62 +18,77 @@ function writeUsersDb() {
 }
 
 
-
 module.exports = {
     create: (req, res) => {
         return res.render('register')
     },
     store: (req, res) => {
         let errors = validationResult(req)
+        let userInDB = userModels.findByField('email', req.body.email)
+        if (userInDB) {
+            return res.render('register', {
+                errors: {
+                    email: {
+                        msg: 'This email is already registered'
+                    }
+                },
+                oldData: req.body,
+                // oldFile: req.file.filename
+            })
+        } //PROBLEMA, me guarda las imagenes aunque no se cree el usuario porque no detecta que hay errores?
+        //minuto 49 --
         if (errors.isEmpty()) {
             let newUSer = {
-                id: users.length + 1,
                 name: req.body.name,
                 email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 10), //esto debo hashearlo
-                file: req.file.filename
+                password: bcryptjs.hashSync(req.body.password, 10),
+                image: req.file ? req.file.filename : 'user-default.png'
             }
-            users.push(newUSer)
-            writeUsersDb()
-            res.redirect("/recipes/list") //cuando lo reenvie, deberia el usuario estar ya logeado.
-        } else {
-            console.log(errors)
-            return res.render('register', {
-                errors: errors.mapped(),
-                oldData: req.body
-            })
+            userModels.create(newUSer)
+            res.redirect("/user/login") //cuando lo reenvie, deberia el usuario estar ya logeado.
         }
+        return res.render('register', {
+            errors: errors.mapped(),
+            oldData: req.body,
+            // oldFile: req.file.filename
+        })
     },
     login: (req, res) => {
         return res.render('login')
     },
     processLogin: (req, res) => {
-        // let errors = validationResult(req)
 
-        if (errors.isEmpty()) {
-            for (let i = 0;i < users.length;i++) {
-                if (users[i].email === req.body.email) {
-                    if (bcrypt.compareSync(req.body.password, users[i].password)) {
-                        userToLogin = users[i]
-                        break
-                    }
+        let userToLogin = userModels.findByField('email', req.body.email)
+        if (userToLogin) {
+            let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
+            if (passwordOk) {
+                delete userToLogin.password // << deletes the user´s password from session
+                req.session.userLogged = userToLogin
+                return res.redirect('/user/profile')
+            }
+        }
+        return res.render('login', {
+            errors: {
+                email: {
+                    msg: 'Invalid credentials'
                 }
             }
-            if (userToLogin === undefined) {
-                return res.render('login', { errors: [{ msg: 'Invalid credentials' }] })
-            }
-            req.session.usuarioLogueado = userToLogin
-            res.render('register')
-        } else {
-            return res.render('login', { errors: errors.mapped() })
-        }
-
+        })
     },
     checkLogin: (req, res) => {
-        if (req.session.usuarioLogueado == undefined) {
+        if (req.session.userLogged == undefined) {
             res.send("No estas logueado")
         } else {
-            res.send("El usuario logueado es " + req.session.usuarioLogueado.email)
+            res.send("El usuario logueado es " + req.session.userLogged.email)
         }
+    },
+    userProfile: (req, res) => {
+        console.log('Estás en profile')
+        console.log(req.session)
+        res.render('user-profile', {
+            user: req.session.userLogged
+        })
     }
 }
+
+//video minuto 1:07
