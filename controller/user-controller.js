@@ -88,7 +88,12 @@ module.exports = {
         res.render('user-profile', {
             user: req.session.userLogged
         })
+    },
+    logout: (req, res) => {
+        req.session.destroy()
+        console.log(req.session)
+        return res.redirect('/')
     }
 }
 
-//video minuto 1:07
+//video minuto 1:22

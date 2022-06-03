@@ -1,47 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
 .menu li {
-    font-size: 16px;
-    padding: 15px 5px;
+    /* font-size: 16px; */
+    /* padding: 15px 5px; */
     white-space: nowrap;
 }
 
-.navbar h1 {
+/* .navbar h1 {
     width: auto;
-}
+} */
 
-h1 {
-    color: white;
-    font-style: italic;
-    text-align: center;
-}
-
-#navbar {
-    background-color: rgba(26, 9, 9, 0.85);
+.navigation-list-dropdown {
     width: 100%;
 }
 
-.flexboxInitial {
+.navigation-list-dropdown {
+    width: 100%;
+}
+
+.navigation-list-dropdown ul {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
 }
 
-.order1 {
-    order: -1;
+.navigation-list-dropdown li {
+    list-style: none;
 }
 
-.order2 {
-    order: 2;
+
+.navigation-list-dropdown li a {
+    padding: 1rem;
+    text-decoration: none;
+    display: block;
 }
+
+.navigation-list-dropdown li:hover {
+    background-color: #555;
+}
+
+
+#navbar {
+    background-color: rgba(26, 9, 9, 0.85);
+    /* z-index: 1; */
+}
+
+
+/* .navbarFixed {
+    position: fixed;
+} */
 
 .noDisplay {
     display: none;
 }
 
-
-.flexboxExpanded {
-    display: flex;
-    flex-flow: wrap column;
+.noVisible {
+    visibility: hidden;
 }
 
 
@@ -50,30 +65,27 @@ body i {
 }
 
 
-.menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-}
-
-.listDisplay {
-    display: none;
-}
-
-.navbarFixed {
-    position: fixed;
-}
-
 .navBarScreen {
     height: 1000px;
 }
 
 
-.navbar-container {
+.toggle-button {
+    position: absolute;
+    top: .50rem;
+    right: 1rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20px;
+    width: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .navbar h1 {
@@ -83,22 +95,81 @@ body i {
 
 #logo h1 {
     position: relative;
+    font-size: 1rem;
+    margin: .5rem;
 }
 
 .cookie-logo {
     position: absolute;
-    width: 33px;
-    height: 33px;
+    width: 20px;
+    height: 20px;
 }
 
 
-.login-register {
-    margin: 5px
-}
-
-.hambMenu i,
-.login-register i,
-.xMenu i,
+#navbar .hambMenu,
+.login-register-container i,
 #logo h1 {
     color: rgb(199, 176, 176);
+}
+
+
+/* .user-icon {
+    transition: all 0.5s;
+    max-height: 0;
+}
+
+.user-icon:active {
+    transition: all 0.5s;
+    max-height: 200px;
+} */
+
+/* .user-dropdown {
+    float: left;
+    overflow: hidden;
+} */
+
+.navbar-flexbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+
+
+/* lo que debo sacar luego  pensanndo mobile first*/
+
+@media (min-width:768px) {
+    .toggle-button {
+        display: none;
+    }
+
+    .navbar-flexbox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navigation-list-dropdown {
+        display: initial
+    }
+
+    .navigation-list-dropdown ul {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .navigation-list-dropdown ul {
+        border-top: 2px solid rgb(206, 109, 109);
+    }
+
+    .user-links {
+        display: flex !important;
+        /* border-top: 0.1px solid rgb(206, 109, 109); */
+        border-left: 0.1px solid rgb(206, 109, 109);
+    }
+
+    .user-links li {
+        padding: 0px 20px;
+    }
 }
