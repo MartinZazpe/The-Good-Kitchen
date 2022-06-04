@@ -4,19 +4,28 @@
 }
 
 .title {
-    color: black !important;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
-.body-information {
-    background-color: rgba(100, 200, 100, 0.3);
+.main-section {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
 }
 
-.form-container button {
-    padding: 10px;
-    margin: 15px 0px;
+.form-container {
+    background-color: antiquewhite;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    text-align: center;
+    padding: 30px 50px !important;
+    border-radius: 5px;
 }
 
-.form-container input {
-    margin: 5px 0px;
-    border: rgb(185, 173, 173) 1px solid;
+.login-form {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
 }

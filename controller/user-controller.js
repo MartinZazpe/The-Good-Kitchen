@@ -20,6 +20,7 @@ function writeUsersDb() {
 
 module.exports = {
     create: (req, res) => {
+        res.cookie('testing', 'Hola mundo', { maxAge: 1000 * 30 })
         return res.render('register')
     },
     store: (req, res) => {
@@ -54,6 +55,7 @@ module.exports = {
         })
     },
     login: (req, res) => {
+
         return res.render('login')
     },
     processLogin: (req, res) => {
@@ -64,6 +66,9 @@ module.exports = {
             if (passwordOk) {
                 delete userToLogin.password // << deletes the user´s password from session
                 req.session.userLogged = userToLogin
+                if (req.body.rememberUser) {
+                    res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
+                }
                 return res.redirect('/user/profile')
             }
         }
@@ -83,14 +88,13 @@ module.exports = {
         }
     },
     userProfile: (req, res) => {
-        console.log('Estás en profile')
-        console.log(req.session)
         res.render('user-profile', {
             user: req.session.userLogged
         })
     },
     logout: (req, res) => {
         req.session.destroy()
+        res.clearCookie('userEmail')
         console.log(req.session)
         return res.redirect('/')
     }

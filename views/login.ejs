@@ -15,7 +15,7 @@
     <%- include("partials/header.ejs") %>
         <section class="main-section">
             <div class="body-information">
-                <h1>Log in</h1>
+                <h1 class="title">Log in</h1>
             </div>
             <% if (locals.errors && errors.email) { %>
                 <div class="text-danger">
@@ -23,14 +23,17 @@
                 </div>
                 <% } %>
 
-                    <div>
-                        <form action="/user/login" method="POST">
+                    <div class="form-container">
+                        <form class="login-form" action="/user/login" method="POST">
                             <label for="">Email</label>
                             <input type="email" name="email">
                             <div class="errors-container">
                             </div>
                             <label for="">Password</label>
                             <input type="password" name="password">
+                            <label for="">
+                                <input type="checkbox" name="rememberUser"> Recordar mi usuario
+                            </label>
                             <input type="submit" value="Login">
                         </form>
                     </div>

@@ -1,7 +1,9 @@
 var express = require('express')
 var router = express.Router()
+const { body } = require('express-validator')
 var productController = require('../controller/product-controller.js')
 const configMulter = require("../middlewares/productImage")
+const authMiddleware = require("../middlewares/authMiddleware.js")
 
 /* show product list */
 router.get('/list', productController.productList)
@@ -10,7 +12,7 @@ router.get('/list', productController.productList)
 router.get('/detail/:id', productController.detail)
 
 /*  create a product   */
-router.get('/create', productController.create)
+router.get('/create', authMiddleware, productController.create)
 router.post('/create', configMulter.single("image"), productController.store)
 
 /*  edit a product   */

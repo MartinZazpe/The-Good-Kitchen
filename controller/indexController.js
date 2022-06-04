@@ -6,7 +6,7 @@ let productList = JSON.parse(dataJson)
 
 module.exports = {
     indexAndRecents: (req, res) => {
-        let recentUploads = productList.slice(-3)
+        let recentUploads = productList.slice(-4)
         res.render("index", {
             recipes: recentUploads
         })

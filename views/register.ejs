@@ -22,15 +22,13 @@
                 <h1 class="title">Create a user</h1>
 
 
-
-
-
                 <div class="form-container">
-                    <form action="/user/register" enctype="multipart/form-data" method="POST">
+                    <form class="login-form" action="/user/register" enctype="multipart/form-data" method="POST">
                         <label for="name">Name</label>
                         <% if (locals.errors && errors.name) { %>
                             <div class="error-msg">
                                 <%=errors.name.msg%>
+                                    <%=errors.errorLogin%>
                             </div>
                             <% } %>
                                 <input type="text" name="name" class="form-control <%= locals.errors && errors.name ? ' is-invalid ' : '' %>" value="<%=locals.oldData && oldData.name ? oldData.name : '' %>">

@@ -1,5 +1,5 @@
 //for FRONT-END, user logged cannot go to register or login but he shouldnt see the option either.
-
+// Solamente faltaria poder editar y borrar un usuario
 
 var express = require('express')
 var router = express.Router()

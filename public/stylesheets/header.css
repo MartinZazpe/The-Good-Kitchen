@@ -43,6 +43,8 @@
 
 #navbar {
     background-color: rgba(26, 9, 9, 0.85);
+    /* position: fixed;
+    width: 100%; */
     /* z-index: 1; */
 }
 
@@ -112,26 +114,70 @@ body i {
     color: rgb(199, 176, 176);
 }
 
-
-/* .user-icon {
-    transition: all 0.5s;
-    max-height: 0;
-}
-
-.user-icon:active {
-    transition: all 0.5s;
-    max-height: 200px;
-} */
-
-/* .user-dropdown {
+.dropdown {
     float: left;
     overflow: hidden;
-} */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+}
+
+.dropdown-btn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    /* Important for vertical align on mobile phones */
+    margin: 0;
+    /* Important for vertical align on mobile phones */
+}
+
+.dropdown-btn {
+    color: white !important;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-btn>* {
+    padding: 0px 5px;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.user-image-miniature {
+    width: 50px;
+    border-radius: 30px;
+}
+
 
 .navbar-flexbox {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    height: auto;
 }
 
 
@@ -139,7 +185,7 @@ body i {
 
 /* lo que debo sacar luego  pensanndo mobile first*/
 
-@media (min-width:768px) {
+@media (min-width:480px) {
     .toggle-button {
         display: none;
     }
@@ -163,7 +209,8 @@ body i {
         border-top: 2px solid rgb(206, 109, 109);
     }
 
-    .user-links {
+    .user-links,
+    .userLogged-links {
         display: flex !important;
         /* border-top: 0.1px solid rgb(206, 109, 109); */
         border-left: 0.1px solid rgb(206, 109, 109);

@@ -83,6 +83,7 @@ h3 {
 .container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .form-container form {
@@ -136,14 +137,8 @@ label {
 }
 
 
-
 /* small devices tablets */
-@media (min-width:550px) {
-  .productContainer {
-    width: 600px;
-    padding-bottom: 50px !important;
-  }
-
+@media (min-width:480px) {
   .container {
     justify-content: space-evenly;
   }
@@ -152,8 +147,8 @@ label {
 /* medium devices landscape tables */
 @media (min-width:768px) {
   .productContainer {
-    width: 400px;
-    margin: 5px !important;
+    width: 350px;
+    /* margin: 5px !important; */
     padding-bottom: 50px !important;
   }
 }
