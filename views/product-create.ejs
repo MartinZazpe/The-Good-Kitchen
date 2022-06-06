@@ -12,27 +12,29 @@
 
 <body>
     <%- include("partials/header.ejs") %>
-        <div class="body-information">
-            <section class="main-section">
-                <div class="form-container">
-                    <h3>Upload your original recipe!</h3>
-                    <form action="/recipes/create" enctype="multipart/form-data" method="POST">
-                        <label for="title">Title:</label>
-                        <input name="title" type="text" id="title">
-                        <label for="description">Describe your dish:</label>
-                        <input name="description" type="text" id="description">
-                        <label for="Ingredients">Ingredients:</label>
-                        <em class="IngredientsInstructions">please enter every ingredient separated by a comma.</em>
-                        <input name="Ingredients" type="text" id="Ingredients">
-                        <div class="imageInputContainer">
-                            <label id="image-label" for="image">Choose an image</label>
-                            <input name="image" type="file" id="image">
-                        </div>
-                        <button type="submit">Upload</button>
-                    </form>
-                </div>
-            </section>
-        </div>
+        <main>
+            <div class="body-information">
+                <section class="main-section">
+                    <div class="form-container">
+                        <h3>Upload your original recipe!</h3>
+                        <form action="/recipes/create" enctype="multipart/form-data" method="POST">
+                            <label for="title">Title:</label>
+                            <input name="title" type="text" id="title">
+                            <label for="description">Describe your dish:</label>
+                            <input name="description" type="text" id="description">
+                            <label for="Ingredients">Ingredients:</label>
+                            <em class="IngredientsInstructions">please enter every ingredient separated by a comma.</em>
+                            <input name="Ingredients" type="text" id="Ingredients">
+                            <div class="imageInputContainer">
+                                <label id="image-label" for="image">Choose an image</label>
+                                <input name="image" type="file" id="image">
+                            </div>
+                            <button type="submit">Upload</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </main>
         <%- include("partials/footer.ejs") %>
 </body>
 

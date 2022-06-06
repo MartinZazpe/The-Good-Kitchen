@@ -17,47 +17,48 @@
 
 <body>
     <%- include('partials/header.ejs') %>
-        <section class="main-section">
-            <div class="body-information">
-                <h1 class="title">Create a user</h1>
+        <main>
+            <section class="main-section">
+                <div class="body-information">
+                    <h1 class="title">Create a user</h1>
 
 
-                <div class="form-container">
-                    <form class="login-form" action="/user/register" enctype="multipart/form-data" method="POST">
-                        <label for="name">Name</label>
-                        <% if (locals.errors && errors.name) { %>
-                            <div class="error-msg">
-                                <%=errors.name.msg%>
-                                    <%=errors.errorLogin%>
-                            </div>
-                            <% } %>
-                                <input type="text" name="name" class="form-control <%= locals.errors && errors.name ? ' is-invalid ' : '' %>" value="<%=locals.oldData && oldData.name ? oldData.name : '' %>">
-                                <label for="email">Email</label>
-                                <% if (locals.errors && errors.email) { %>
-                                    <div class="error-msg">
-                                        <%=errors.email.msg%>
-                                    </div>
-                                    <% } %>
-                                        <input type="email" name="email" class="form-control <%= locals.errors && errors.email ? 'is-invalid ' : '' %>" id="validationCustom01" value="<%= locals.oldData && oldData.email ? oldData.email : "" %>">
+                    <div class="form-container">
+                        <form class="login-form" action="/user/register" enctype="multipart/form-data" method="POST">
+                            <label for="name">Name</label>
+                            <% if (locals.errors && errors.name) { %>
+                                <div class="error-msg">
+                                    <%=errors.name.msg%>
+                                        <%=errors.errorLogin%>
+                                </div>
+                                <% } %>
+                                    <input type="text" name="name" class="form-control <%= locals.errors && errors.name ? ' is-invalid ' : '' %>" value="<%=locals.oldData && oldData.name ? oldData.name : '' %>">
+                                    <label for="email">Email</label>
+                                    <% if (locals.errors && errors.email) { %>
+                                        <div class="error-msg">
+                                            <%=errors.email.msg%>
+                                        </div>
+                                        <% } %>
+                                            <input type="email" name="email" class="form-control <%= locals.errors && errors.email ? 'is-invalid ' : '' %>" id="validationCustom01" value="<%= locals.oldData && oldData.email ? oldData.email : "" %>">
 
-                                        <label for="password">Password</label>
-                                        <% if (locals.errors && errors.password) { %>
-                                            <div class="error-msg">
-                                                <%=errors.password.msg%>
-                                            </div>
-                                            <% } %>
-                                                <input type="password" name="password" class="form-control <%= locals.errors && errors.password ? 'is-invalid ' : '' %>">
-                                                <label for=" image">Image (optional)</label>
-                                                <input type="file" name="image">
-                                                <button type=" submit">Register</button>
-                    </form>
+                                            <label for="password">Password</label>
+                                            <% if (locals.errors && errors.password) { %>
+                                                <div class="error-msg">
+                                                    <%=errors.password.msg%>
+                                                </div>
+                                                <% } %>
+                                                    <input type="password" name="password" class="form-control <%= locals.errors && errors.password ? 'is-invalid ' : '' %>">
+                                                    <label for=" image">Image (optional)</label>
+                                                    <input type="file" name="image">
+                                                    <button type=" submit">Register</button>
+                        </form>
+                    </div>
+
                 </div>
 
-            </div>
 
-
-        </section>
-
+            </section>
+        </main>
         <%- include('partials/footer.ejs') %>
 </body>
 

@@ -1,12 +1,22 @@
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
+
+body {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+
+main {
+  flex-grow: 1
+}
+
 
 .body-information {
   /* padding: 35px 20px; */

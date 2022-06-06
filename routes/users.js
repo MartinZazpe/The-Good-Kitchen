@@ -19,14 +19,21 @@ router.post('/register', configMulter.single('image'), userRegister, userControl
 //login and navigate as a user
 router.get('/login', guestMiddleware, userController.login)
 router.post('/login', userController.processLogin)
-router.get('/profile', authMiddleware, userController.userProfile)
 router.get('/check', userController.checkLogin) //just to check if user is logged in, delete after
-router.get('/logout', userController.logout)
+
 
 //user detail - profile
+router.get('/profile', authMiddleware, userController.userProfile)
+router.put('/profile', configMulter.single('image'), userController.editProfile)
+router.get('/profile/myRecipes', userController.userProducts)
 
+//logout and delete
+router.get('/logout', userController.logout)
 
 //list of all users or at least the amount of users we have, or something cool.
 
 
 module.exports = router
+
+
+//right now debbugging detail edit...

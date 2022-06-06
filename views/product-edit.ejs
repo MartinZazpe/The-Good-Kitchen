@@ -12,28 +12,29 @@
 
 <body>
     <%- include("partials/header.ejs") %>
-        <div class="body-information">
-            <section class="main-section">
-
-                <div class="form-container">
-                    <h3>Edit your recipe</h3>
-                    <form action="/recipes/edit/<%= recipe.id %>?_method=PUT" enctype="multipart/form-data" method="POST">
-                        <label for="title">Title:</label>
-                        <input name="title" type="text" value="<%= recipe.title %>" id="title">
-                        <label for="description">Describe your dish:</label>
-                        <input name="description" type="text" value="<%= recipe.description %>" id="description">
-                        <label for="Ingredients">Ingredients:</label>
-                        <em class="IngredientsInstructions">please enter every ingredient separated by a comma.</em>
-                        <input name="Ingredients" type="text" value="<%= recipe.Ingredients %>" id="Ingredients">
-                        <div class="imageInputContainer">
-                            <label id="image-label" for="image">Edit an image</label>
-                            <input name="image" type="file" id="image">
-                        </div>
-                        <button type="submit">Edit</button>
-                    </form>
-                </div>
-            </section>
-        </div>
+        <main>
+            <div class="body-information">
+                <section class="main-section">
+                    <div class="form-container">
+                        <h3>Edit your recipe</h3>
+                        <form action="/recipes/edit/<%= recipe.id %>?_method=PUT" enctype="multipart/form-data" method="POST">
+                            <label for="title">Title:</label>
+                            <input name="title" type="text" value="<%= recipe.title %>" id="title">
+                            <label for="description">Describe your dish:</label>
+                            <input name="description" type="text" value="<%= recipe.description %>" id="description">
+                            <label for="Ingredients">Ingredients:</label>
+                            <em class="IngredientsInstructions">please enter every ingredient separated by a comma.</em>
+                            <input name="Ingredients" type="text" value="<%= recipe.Ingredients %>" id="Ingredients">
+                            <div class="imageInputContainer">
+                                <label id="image-label" for="image">Edit an image</label>
+                                <input name="image" type="file" id="image">
+                            </div>
+                            <button type="submit">Edit</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </main>
         <%- include("partials/footer.ejs") %>
 </body>
 

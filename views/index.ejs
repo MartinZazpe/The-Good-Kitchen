@@ -12,36 +12,38 @@
 
 <body>
   <%- include("partials/header.ejs") %>
-    <div class="body-information">
-      <section class="introduction">
-        <h3>Upload your recipe and share it with the world!</h3>
+    <main>
+      <div class="body-information">
+        <section class="introduction">
+          <h3>Upload your recipe and share it with the world!</h3>
 
-        <p class="cake">&#127856</p>
-        </p>
-      </section>
-      <section class="recipe-recents">
-        <h3>Our users have told us their story</h3>
-        <p>Check out the most recent uploads</p>
-      </section>
-      <div class="container">
-        <% for(let recipe of recipes) {%>
-          <div class="productContainer">
-            <h4>
-              <%=recipe.title %>
-            </h4>
-            <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="/images/<%= recipe.image %>"></a>
-            <div class="description-hyperlink">
-              <p>
-                <%=recipe.description %>
-              </p>
-              <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+          <p class="cake">&#127856</p>
+          </p>
+        </section>
+        <section class="recipe-recents">
+          <h3>Our users have told us their story</h3>
+          <p>Check out the most recent uploads</p>
+        </section>
+        <div class="container">
+          <% for(let recipe of recipes) {%>
+            <div class="productContainer">
+              <h4>
+                <%=recipe.title %>
+              </h4>
+              <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="/images/<%= recipe.image %>"></a>
+              <div class="description-hyperlink">
+                <p>
+                  <%=recipe.description %>
+                </p>
+                <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+              </div>
             </div>
-          </div>
-          <% } %>
+            <% } %>
+        </div>
+
+
       </div>
-
-
-    </div>
+    </main>
     <%- include("partials/footer.ejs") %>
 </body>
 

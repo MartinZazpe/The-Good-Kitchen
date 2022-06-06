@@ -54,7 +54,7 @@ const User = {
         let finalUsers = allUsers.filter(oneUser => oneUser.id !== id)
         fs.writeFileSync(this.fileName, JSON.stringify(finalUsers, null, 4))
         return true
-    }
+    },
 }
 
 module.exports = User

@@ -10,48 +10,48 @@
 
 <body>
     <%- include("partials/header.ejs") %>
-        <div class="body-information">
-            <section class="introduction">
-                <h2>
-                    <%=recipe.title %>
-                </h2>
-            </section>
-            <section class="recipe-examples">
-                <div class="container">
-                    <div class="OneProductContainer">
-                        <img class="OneRecipeImage" src="/images/<%= recipe.image %>">
-                        <div class="description-hyperlink">
-                            <p>
-                                <%=recipe.description %>
-                            </p>
-                        </div>
-                        <div class="ingredients">
-                            <ul class="ingredients-list">
-                                <p class="ingredients-title">Ingredients:</p>
-                                <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
-                                    <li>
-                                        <%= recipe.Ingredients[i] %>
-                                    </li>
-                                    <% } %>
-                            </ul>
-                        </div>
-                        <div class="buttons">
-                            <div>
-                                <a href="/recipes/edit/<%=recipe.id%>"><button type="submit">Edit</button></a>
+        <main>
+            <div class="body-information">
+                <section class="introduction">
+                    <h2>
+                        <%=recipe.title %>
+                    </h2>
+                </section>
+                <section class="recipe-examples">
+                    <div class="container">
+                        <div class="OneProductContainer">
+                            <img class="OneRecipeImage" src="/images/<%= recipe.image %>">
+                            <div class="description-hyperlink">
+                                <p>
+                                    <%=recipe.description %>
+                                </p>
                             </div>
-                            <div>
-                                <form action="/recipes/delete/<%=recipe.id%>?_method=DELETE" method="POST">
-                                    <button type="submit">
-                                        Delete
-                                    </button>
+                            <div class="ingredients">
+                                <ul class="ingredients-list">
+                                    <p class="ingredients-title">Ingredients:</p>
+                                    <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
+                                        <li>
+                                            <%= recipe.Ingredients[i] %>
+                                        </li>
+                                        <% } %>
+                                </ul>
+                            </div>
+                            <div class="buttons">
+                                <div>
+                                    <a href="/recipes/edit/<%=recipe.id%>"><button type="submit">Edit</button></a>
+                                </div>
+                                <div>
+                                    <form action="/recipes/delete/<%=recipe.id%>?_method=DELETE" method="POST">
+                                        <button type="submit">
+                                            Delete
+                                        </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-            </section>
-        </div>
+                </section>
+            </div>
+        </main>
         <%- include("partials/footer.ejs") %>
 </body>
 

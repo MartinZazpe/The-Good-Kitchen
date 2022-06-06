@@ -1,4 +1,6 @@
 //image uploads even when form fails and user is not created, should check if same happens for product
+//When updating an image, it gets deleted
+
 
 const { validationResult } = require('express-validator')
 var fs = require('fs')
@@ -7,8 +9,11 @@ let bcryptjs = require('bcryptjs')
 let userModels = require('../models/User.js')
 const session = require('express-session')
 
+//to obtain all recipes 
+let dataJson = fs.readFileSync(path.join(__dirname, '../data/recipes.json'))
+let data = JSON.parse(dataJson)
 
-
+//to obtain all users
 let dataJsonUser = fs.readFileSync(path.join(__dirname, '../data/users.json'))
 let users = JSON.parse(dataJsonUser)
 
@@ -34,10 +39,8 @@ module.exports = {
                     }
                 },
                 oldData: req.body,
-                // oldFile: req.file.filename
             })
-        } //PROBLEMA, me guarda las imagenes aunque no se cree el usuario porque no detecta que hay errores?
-        //minuto 49 --
+        }
         if (errors.isEmpty()) {
             let newUSer = {
                 name: req.body.name,
@@ -46,12 +49,11 @@ module.exports = {
                 image: req.file ? req.file.filename : 'user-default.png'
             }
             userModels.create(newUSer)
-            res.redirect("/user/login") //cuando lo reenvie, deberia el usuario estar ya logeado.
+            res.redirect("/user/login")
         }
         return res.render('register', {
             errors: errors.mapped(),
             oldData: req.body,
-            // oldFile: req.file.filename
         })
     },
     login: (req, res) => {
@@ -95,9 +97,45 @@ module.exports = {
     logout: (req, res) => {
         req.session.destroy()
         res.clearCookie('userEmail')
-        console.log(req.session)
+        // console.log(req.session)
         return res.redirect('/')
+    },
+    editProfile: (req, res) => {
+        let userNewInfo = users.find(user => user.id == req.session.userLogged.id)
+        userNewInfo.name = req.body.name ? req.body.name : userNewInfo.name
+        userNewInfo.email = req.body.email ? req.body.email : userNewInfo.email
+        userNewInfo.image = req.file ? req.body.fieldname : userNewInfo.image
+        // console.log(req.body)
+        // console.log(req.file)
+        // console.log(req.filename)
+        // console.log(userNewInfo)
+        writeUsersDb()
+        res.render('user-profile', {
+            user: req.session.userLogged
+        })
+
+    },
+    userProducts: (req, res) => {
+        let userRecipes = data.filter(data => data.owner === req.session.userLogged.email)
+        console.log(userRecipes)
+        if (userRecipes.length !== 0) {
+            res.render('user-recipes', { recipes: userRecipes })
+        } else {
+            res.render('user-profile', {
+                errors: {
+                    noRecipes: {
+                        msg: "You have no recipes uploaded"
+                    }
+                },
+                user: req.session.userLogged
+            })
+        }
+
+
+
+        // res.render('user-recipes', { recipes: userRecipes })
     }
 }
 
-//video minuto 1:22
+//should also pass middleware so userProducts not accesible unless logged in
+

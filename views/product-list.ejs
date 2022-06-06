@@ -9,47 +9,50 @@
     <link rel="stylesheet" href="/stylesheets/product-list.css" />
     <title>Document</title>
 </head>
-<%- include("partials/header.ejs") %>
 
-    <body>
-        <div class="body-information">
-            <section class="introduction">
-                <h3>All our recipes</h3>
-            </section>
-            <section class="recipe-examples">
-                <div class="container">
-                    <% for (let recipe of recipes) {%>
-                        <div class="productContainer">
-                            <h4>
-                                <%=recipe.title %>
-                            </h4>
-                            <a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="/images/<%= recipe.image %>"></a>
 
-                            <div class="description-hyperlink">
-                                <p>
-                                    <%=recipe.description %>
-                                </p>
-                                <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
-                                <div class="buttons">
-                                    <div>
-                                        <a href="/recipes/edit/<%=recipe.id%>"><button type="submit">Edit</button></a>
-                                    </div>
-                                    <div>
-                                        <form action="/recipes/delete/<%=recipe.id%>?_method=DELETE" method="POST">
-                                            <button type="submit">
-                                                Delete
-                                            </button>
-                                        </form>
+
+
+<body>
+    <%- include("partials/header.ejs") %>
+        <main>
+            <div class="body-information">
+                <section class="introduction">
+                    <h3>All our recipes</h3>
+                </section>
+                <section class="recipe-examples">
+                    <div class="container">
+                        <% for (let recipe of recipes) {%>
+                            <div class="productContainer">
+                                <h4>
+                                    <%=recipe.title %>
+                                </h4>
+                                <a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="/images/<%= recipe.image %>"></a>
+                                <div class="description-hyperlink">
+                                    <p>
+                                        <%=recipe.description %>
+                                    </p>
+                                    <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+                                    <div class="buttons">
+                                        <div>
+                                            <a href="/recipes/edit/<%=recipe.id%>"><button type="submit">Edit</button></a>
+                                        </div>
+                                        <div>
+                                            <form action="/recipes/delete/<%=recipe.id%>?_method=DELETE" method="POST">
+                                                <button type="submit">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <% } %>
-                </div>
-
-            </section>
-        </div>
+                            <% } %>
+                    </div>
+                </section>
+            </div>
+        </main>
         <%- include("partials/footer.ejs") %>
-    </body>
+</body>
 
 </html>

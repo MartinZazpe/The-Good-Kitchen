@@ -14,31 +14,63 @@
 
 <body>
     <%- include("partials/header.ejs") %>
-        <section class="main-section">
-            <div class="body-information">
-                <div class="user-details">
-                    <%if(locals.user) { %>
-                        <h3>Welcome <%= user.name %>
-                        </h3>
-                        <div class="image-text-container">
-                            <img class="user-image" src="../../images/userImages/<%=user.image%>" alt="default-user-image">
-                            <div class="text-container">
-                                <h4>Change image</h4>
-                            </div>
-                        </div>
-                        <p class="user-email">
-                            <%= user.email %>
-                        </p>
-                        <% } %>
-                            <p>Check out or modify my <a href="#">uploaded recipes</a></p>
-                            <p>Edit my <a href="#">profile information</a></p>
-                            <p><a class="logout" href="/user/logout">Logout</a></p>
-                            <!-- <p><a class=" account-delete" href="#">Delete my account</a></p> -->
-                            <!-- ^^ This on edit ^^-->
+        <main>
+            <section class="main-section">
+                <div class="body-information">
+                    <div class="user-details">
 
+                        <% if(locals.user) { %>
+                            <h3>Welcome <%= user.name %>
+                            </h3>
+                            <div class="image-text-container">
+                                <form class="edit-image-form" action="/user/profile/?_method=PUT" enctype="multipart/form-data" method="POST">
+                                    <label>
+                                        <input type="text" name="name">
+                                    </label>
+                                    <label for="image" name="image"></label>
+                                    <input id="imageInput" class="image-input" name='image' type="file">
+                                    <div class="input-image-form-container">
+                                        <div class="image-container">
+                                            <img class="user-image" src="../../images/userImages/<%=user.image%>" alt="default-user-image">
+                                        </div>
+
+                                    </div>
+                                    <button class="submitImageEdit noDisplay" type="submit">Save changes</button>
+                                </form>
+
+
+
+                                <!-- <form class="edit-image-form" action="/user/profile" enctype="multipart/form-data" method="POST">
+                                    <label for="image" name="image"> upload an image
+                                        <input id="imageInput" class="image-input" name="image" type="file">
+                                        <button type="submit">submit </button>
+                                </form> -->
+
+
+                                <div class="text-container">
+                                    <h4>Change image</h4>
+                                </div>
+                            </div>
+                            <p class="user-email">
+                                <%= user.email %>
+                            </p>
+                            <% } %>
+                                <div class="check-uploaded-recipes-container">
+                                    <p>Check out or modify my <a href="/user/profile/myRecipes">uploaded recipes</a></p>
+                                    <% if(locals.errors && errors.noRecipes){ %>
+                                        <p class="noRecipesError text-danger">
+                                            <%= errors.noRecipes.msg %>
+                                        </p>
+                                        <% } %>
+                                </div>
+                                <p>Edit my <a href="#">profile information</a></p>
+                                <p><a class="logout" href="/user/logout">Logout</a></p>
+                                <!-- <p><a class=" account-delete" href="#">Delete my account</a></p> -->
+                                <!-- ^^ This on edit ^^-->
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </main>
 
         <%- include("partials/footer.ejs") %>
 </body>

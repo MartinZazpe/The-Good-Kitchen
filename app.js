@@ -32,6 +32,7 @@ app.use(session({
 
 app.use(userLoggedMiddleware)
 
+
 app.use('/', indexRouter)
 app.use('/recipes', productsRouter)
 app.use('/user', userRouter)

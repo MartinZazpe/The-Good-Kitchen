@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/product-list.css" />
+    <script src="/javascripts/user-profile.js"></script>
+    <script src="https://kit.fontawesome.com/ae0153af6c.js" crossorigin="anonymous"></script>
+    <title>Help</title>
+</head>
+
+<body>
+    <%- include("partials/header.ejs") %>
+        <main>
+            <section class="main-section">
+                <div class="body-information">
+                    <section class="introduction">
+                        <h3>All our recipes</h3>
+                    </section>
+                    <section class="recipe-examples">
+                        <div class="container">
+                            <% for (let recipe of recipes) {%>
+                                <div class="productContainer">
+                                    <h4>
+                                        <%=recipe.title %>
+                                    </h4>
+                                    <a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="/images/<%= recipe.image %>"></a>
+                                    <div class="description-hyperlink">
+                                        <p>
+                                            <%=recipe.description %>
+                                        </p>
+                                        <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+                                        <div class="buttons">
+                                            <div>
+                                                <a href="/recipes/edit/<%=recipe.id%>"><button type="submit">Edit</button></a>
+                                            </div>
+                                            <div>
+                                                <form action="/recipes/delete/<%=recipe.id%>?_method=DELETE" method="POST">
+                                                    <button type="submit">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                        </div>
+                    </section>
+
+                </div>
+            </section>
+        </main>
+
+        <%- include("partials/footer.ejs") %>
+</body>
+
+</html>

@@ -12,17 +12,20 @@
 
 <body>
     <%- include("partials/header.ejs") %>
-        <div class="body-information">
-            <div class="about-us">
-                <h1>Thank you for visiting us</h1>
-                <p>We are thrilled that you are here.
-                    Our journey is about sharing recipes with the world as every recipe has a story to tell.</p>
-                <%- include("partials/footer.ejs") %>
+        <main>
+            <div class="body-information">
+                <div class="about-us">
+                    <h1>Thank you for visiting us</h1>
+                    <p>We are thrilled that you are here.
+                        Our journey is about sharing recipes with the world as every recipe has a story to tell.</p>
+
+                </div>
+                <div>
+                    <img class="cook-world" src="../../images/chefcook.jpeg">
+                </div>
             </div>
-            <div>
-                <img class="cook-world" src="../../images/chefcook.jpeg">
-            </div>
-        </div>
+        </main>
+        <%- include("partials/footer.ejs") %>
 </body>
 
 </html>

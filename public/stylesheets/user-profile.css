@@ -12,10 +12,20 @@
     color: blue;
 }
 
-.user-image {
+.maxImageWidth {
     width: 300px;
+}
+
+.user-image {
+    width: 320px !important;
+    height: 260px;
     border-radius: 30px;
 }
+
+/* .image-container img {
+    max-width: 300px !important;
+    max-height: 300px !important;
+} */
 
 .account-delete {
     color: red !important;
@@ -55,6 +65,7 @@
     cursor: pointer;
 }
 
+
 .image-text-container:hover .text-container {
     visibility: visible;
     opacity: 0.7;
@@ -62,4 +73,62 @@
 
 a:hover {
     color: rgb(142, 142, 33);
+}
+
+.edit-image-form input {
+    top: 80px;
+    left: 80px
+}
+
+.image-input {
+    display: none;
+}
+
+.nodisplay {
+    display: none;
+}
+
+.input-image-form-container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center
+}
+
+.submitImageEdit {
+    width: 150px;
+    background: #3492c9;
+    color: white;
+    border-style: outset;
+    border-color: #5498c0;
+    height: 50px;
+    width: 100px;
+    font: bold15px arial, sans-serif;
+    text-shadow: none;
+    border-radius: 5px;
+}
+
+.submitImageEdit:hover {
+    cursor: pointer;
+}
+
+.input-image-form-container>* {
+    padding: 10px;
+}
+
+.text-danger {
+    color: red;
+}
+
+.check-uploaded-recipes-container {
+    display: flex;
+    position: relative;
+}
+
+.noRecipesError {
+    position: absolute;
+    left: 310px;
+}
+
+.check-uploaded-recipes-container>* {
+    padding: 0 5px;
 }

@@ -19,7 +19,6 @@ function writeJSON() {
 module.exports = {
     productList: (req, res) => {
         res.render('product-list', { recipes: data })
-        console.log(module)
     },
     detail: (req, res) => {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
@@ -32,6 +31,7 @@ module.exports = {
         console.log(req.body)
         let newProduct = {
             id: data.length + 1,
+            owner: req.session.userLogged.email,
             title: req.body.title,
             description: req.body.description,
             Ingredients: req.body.Ingredients.split(','),
