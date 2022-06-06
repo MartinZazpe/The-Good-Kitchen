@@ -4,9 +4,10 @@ window.addEventListener("load", function () {
     let userImage = document.querySelector(".user-image")
     let imageInputId = document.querySelector("#imageInput")
     let imageInput = document.querySelector(".image-input")
-    let submitImageEdit = document.querySelector(".submitImageEdit")
+    let submitFormBtn = document.querySelector(".submitFormBtn")
     let noDisplay = document.querySelector(".noDisplay")
-    let maxImageWidth = document.querySelector(".maxImageWidth")
+    let nameInput = document.querySelector(".username-input")
+    let userEmail = document.querySelector(".user-email")
 
     userImage.addEventListener("click", function () {
         imageInput.click()
@@ -18,19 +19,18 @@ window.addEventListener("load", function () {
             userImage.src = URL.createObjectURL(file)
             console.log(file.size + " this is the file size in bytes")
 
-            submitImageEdit.classList.remove("noDisplay")
+            submitFormBtn.classList.remove("noDisplay")
         } else {
-            submitImageEdit.classList.add("noDisplay")
+            submitFormBtn.classList.add("noDisplay")
         }
     }
 
+    nameInput.onkeydown = evt => {
+        submitFormBtn.classList.remove("noDisplay")
+    }
 
-
-    // imageInput.onload = function () {
-    //     var w = imageInput.width
-    //     // var h = img.height
-    //     console.log("NEW IMAGE width", w)
-    // }
-
+    userEmail.onkeydown = evt => {
+        submitFormBtn.classList.remove("noDisplay")
+    }
 
 })

@@ -20,12 +20,12 @@
                     <div class="user-details">
 
                         <% if(locals.user) { %>
-                            <h3>Welcome <%= user.name %>
-                            </h3>
                             <div class="image-text-container">
                                 <form class="edit-image-form" action="/user/profile/?_method=PUT" enctype="multipart/form-data" method="POST">
+                                    <!-- <h3>Welcome <%= user.name %>
+                                    </h3> -->
                                     <label>
-                                        <input type="text" name="name">
+                                        <h3 class="username-input-container">Welcome <input class="username-input" type="text" name="name" value="<%= user.name %>"><i class="noShow fa-solid fa-pen-to-square"></i></h3>
                                     </label>
                                     <label for="image" name="image"></label>
                                     <input id="imageInput" class="image-input" name='image' type="file">
@@ -35,10 +35,9 @@
                                         </div>
 
                                     </div>
-                                    <button class="submitImageEdit noDisplay" type="submit">Save changes</button>
+                                    <p class="user-email-container"><input class="user-email" type="email" name="email" value="<%= user.email %>"><i class="noShow fa-solid fa-pen-to-square"></i></p>
+                                    <button class="submitFormBtn noDisplay" type="submit">Save changes</button>
                                 </form>
-
-
 
                                 <!-- <form class="edit-image-form" action="/user/profile" enctype="multipart/form-data" method="POST">
                                     <label for="image" name="image"> upload an image
@@ -46,14 +45,11 @@
                                         <button type="submit">submit </button>
                                 </form> -->
 
-
                                 <div class="text-container">
                                     <h4>Change image</h4>
                                 </div>
                             </div>
-                            <p class="user-email">
-                                <%= user.email %>
-                            </p>
+
                             <% } %>
                                 <div class="check-uploaded-recipes-container">
                                     <p>Check out or modify my <a href="/user/profile/myRecipes">uploaded recipes</a></p>

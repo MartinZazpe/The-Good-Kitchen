@@ -36,6 +36,7 @@
     width: 300px;
     height: auto;
     border-radius: 5px;
+    border: none;
 }
 
 /* .user-image:hover {
@@ -80,6 +81,16 @@ a:hover {
     left: 80px
 }
 
+.edit-image-form {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+}
+
+.edit-image-form .submitFormBtn {
+    margin: 10px 0px;
+}
+
 .image-input {
     display: none;
 }
@@ -94,20 +105,22 @@ a:hover {
     align-items: center
 }
 
-.submitImageEdit {
+
+.submitFormBtn {
     width: 150px;
+    align-self: center;
     background: #3492c9;
     color: white;
     border-style: outset;
     border-color: #5498c0;
-    height: 50px;
+    height: 30px;
     width: 100px;
     font: bold15px arial, sans-serif;
     text-shadow: none;
     border-radius: 5px;
 }
 
-.submitImageEdit:hover {
+.submitFormBtn:hover {
     cursor: pointer;
 }
 
@@ -131,4 +144,53 @@ a:hover {
 
 .check-uploaded-recipes-container>* {
     padding: 0 5px;
+}
+
+.username-input-container {
+    position: relative
+}
+
+.username-input-container i {
+    position: absolute;
+    right: 80px;
+    color: rgb(164, 159, 152)
+}
+
+.user-email-container {
+    position: relative;
+}
+
+.user-email-container i {
+    position: absolute;
+    right: 20px;
+    color: rgb(164, 159, 152)
+}
+
+
+
+.user-email {
+    text-align: center;
+}
+
+.username-input {
+    text-align: center;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.17rem;
+}
+
+.username-input:hover,
+.user-email:hover {
+    cursor: pointer;
+}
+
+.username-input-container:hover i,
+.user-email-container:hover i {
+    visibility: visible !important;
+    z-index: 0;
+}
+
+.noShow {
+    visibility: hidden;
 }
