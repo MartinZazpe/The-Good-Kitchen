@@ -66,7 +66,7 @@ module.exports = {
         if (userToLogin) {
             let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
             if (passwordOk) {
-                delete userToLogin.password // << deletes the user´s password from session
+                delete userToLogin.password // << deletes the user´s password before assigning to session
                 req.session.userLogged = userToLogin
                 if (req.body.rememberUser) {
                     res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })

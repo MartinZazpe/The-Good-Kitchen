@@ -92,17 +92,5 @@
         "description": "mmmm a dream!",
         "image": "carrot-cake.jpeg",
         "belongsTo": "system"
-    },
-    {
-        "id": 6,
-        "owner": "test2@test.com",
-        "title": "Testing ownership, test recipe",
-        "description": "nice clean test",
-        "Ingredients": [
-            "salmon",
-            " mayo",
-            " lettuce"
-        ],
-        "image": "image-1654520462846.jpeg"
     }
 ]

@@ -3,6 +3,18 @@
 var fs = require('fs')
 var path = require('path')
 
+//for comments
+
+let dataCommentJSON = fs.readFileSync(path.join(__dirname, '../data/commentSection.json'))
+let commentData = JSON.parse(dataCommentJSON)
+
+function WriteCommentJSON() {
+    let dataStringify = JSON.stringify(commentData, null, 4)
+    fs.writeFileSync(path.join(__dirname, '../data/commentSection.json'), dataStringify)
+}
+
+//for products
+
 let dataJson = fs.readFileSync(path.join(__dirname, '../data/recipes.json'))
 let data = JSON.parse(dataJson)
 
@@ -53,21 +65,47 @@ module.exports = {
         recipeFound.description = req.body.description ? req.body.description : recipeFound.description
         recipeFound.Ingredients = req.body.Ingredients ? req.body.Ingredients.split(',') : recipeFound.Ingredients
         recipeFound.image = req.file ? req.file.filename : recipeFound.image ? recipeFound.image : "no-image-default.png"
-
         /* overwrite JSON */
         writeJSON()
         res.redirect("/recipes/list")
     },
-    destroy: async (req, res) => {
+    destroy: (req, res) => {
         let recipeFound = data.findIndex(recipe => recipe.id == req.params.id)
-        let imageFound = data.find(recipe => recipe.id == req.params.id)
 
         //this code deletes image, however it also deletes the default image, leave like this for now.
+        // let imageFound = data.find(recipe => recipe.id == req.params.id)
         // fs.unlinkSync(path.join(__dirname, "../public/images/" + imageFound.image))
+
         data.splice(recipeFound, 1)
         writeJSON()
         res.redirect('/recipes/list')
+    },
+    submitComment: (req, res) => {
+        let recipeFound = data.find(recipe => recipe.id == req.params.id)
+        // req.body.comments
+        let userLoggedEmail = req.session.userLogged.email
+        let newComment = {
+            belongsTo: userLoggedEmail,
+            userComment: req.body.comments
+        }
+        commentData.push(newComment)
+        WriteCommentJSON()
+        let allComentsData = fs.readFileSync(path.join(__dirname, '../data/commentSection.json'))
+        let allComents = JSON.parse(allComentsData)
+
+        res.render('product-detail', { comments: allComents, recipe: recipeFound })
+        //check that user is logged only logged users can comment, OK, with middleware
+        // obtain user email OK
+        //when i get comments OK 
+        //save them to comments json OK
+        //print comments in comment section with user email
+        //allow delete / edit comment
+        // paginate comments to 5 or 10 max,
+        //render view
+
     }
+
+
 }
 
 
