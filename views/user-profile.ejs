@@ -36,7 +36,10 @@
 
                                     </div>
                                     <p class="user-email-container"><input class="user-email" type="email" name="email" value="<%= user.email %>"><i class="noShow fa-solid fa-pen-to-square"></i></p>
-                                    <button class="submitFormBtn noDisplay" type="submit">Save changes</button>
+                                    <div class="btn-form-container">
+                                        <button class="submitFormBtn noDisplay" type="submit">Save changes</button>
+                                        <button class="clearFormBtn noDisplay" type="reset">Clear changes</button>
+                                    </div>
                                 </form>
 
                                 <!-- <form class="edit-image-form" action="/user/profile" enctype="multipart/form-data" method="POST">
@@ -59,9 +62,8 @@
                                         </p>
                                         <% } %>
                                 </div>
-                                <p>Edit my <a href="#">profile information</a></p>
                                 <p><a class="logout" href="/user/logout">Logout</a></p>
-                                <!-- <p><a class=" account-delete" href="#">Delete my account</a></p> -->
+                                <p><a class=" account-delete" href="#">Delete my account</a></p>
                                 <!-- ^^ This on edit ^^-->
                     </div>
                 </div>

@@ -8,6 +8,8 @@ window.addEventListener("load", function () {
     let noDisplay = document.querySelector(".noDisplay")
     let nameInput = document.querySelector(".username-input")
     let userEmail = document.querySelector(".user-email")
+    let clearFormBtn = document.querySelector(".clearFormBtn")
+
 
     userImage.addEventListener("click", function () {
         imageInput.click()
@@ -20,17 +22,21 @@ window.addEventListener("load", function () {
             console.log(file.size + " this is the file size in bytes")
 
             submitFormBtn.classList.remove("noDisplay")
+            clearFormBtn.classList.remove("noDisplay")
         } else {
             submitFormBtn.classList.add("noDisplay")
+            clearFormBtn.classList.add("noDisplay")
         }
     }
 
     nameInput.onkeydown = evt => {
         submitFormBtn.classList.remove("noDisplay")
+        clearFormBtn.classList.remove("noDisplay")
     }
 
     userEmail.onkeydown = evt => {
         submitFormBtn.classList.remove("noDisplay")
+        clearFormBtn.classList.remove("noDisplay")
     }
 
 })

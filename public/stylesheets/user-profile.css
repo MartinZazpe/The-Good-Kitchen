@@ -120,6 +120,30 @@ a:hover {
     border-radius: 5px;
 }
 
+
+.btn-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-form-container>* {
+    margin: 0 5px;
+}
+
+.clearFormBtn {
+    width: 150px;
+    align-self: center;
+    background: #3492c9;
+    color: white;
+    border-style: outset;
+    border-color: #5498c0;
+    height: 30px;
+    width: 100px;
+    font: bold15px arial, sans-serif;
+    text-shadow: none;
+    border-radius: 5px;
+}
+
 .submitFormBtn:hover {
     cursor: pointer;
 }
@@ -152,7 +176,7 @@ a:hover {
 
 .username-input-container i {
     position: absolute;
-    right: 80px;
+    right: 70px;
     color: rgb(164, 159, 152)
 }
 
@@ -185,8 +209,7 @@ a:hover {
     cursor: pointer;
 }
 
-.username-input-container:hover i,
-.user-email-container:hover i {
+.image-text-container:hover i {
     visibility: visible !important;
     z-index: 0;
 }

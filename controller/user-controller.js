@@ -105,16 +105,16 @@ module.exports = {
         userNewInfo.name = req.body.name ? req.body.name : userNewInfo.name
         userNewInfo.email = req.body.email ? req.body.email : userNewInfo.email
         userNewInfo.image = req.file ? req.body.fieldname : userNewInfo.image
-        // console.log(req.body)
-        // console.log(req.file)
-        // console.log(req.filename)
-        // console.log(userNewInfo)
-        writeUsersDb()
-        res.render('user-profile', {
-            user: req.session.userLogged
-        })
 
+        writeUsersDb()
+        res.clearCookie('userEmail')
+        req.session.userLogged.email = userNewInfo.email
+        res.cookie('userEmail', userNewInfo.email, { maxAge: (1000 * 60) * 60 })
+        res.render('user-profile', {
+            user: userNewInfo
+        })
     },
+
     userProducts: (req, res) => {
         let userRecipes = data.filter(data => data.owner === req.session.userLogged.email)
         console.log(userRecipes)
