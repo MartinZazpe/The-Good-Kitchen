@@ -95,9 +95,14 @@ body i {
     justify-content: center;
 }
 
+.title-span {
+    color: rgb(255, 255, 255) !important;
+}
+
 #logo h1 {
+    font-family: Brush Script MT;
     position: relative;
-    font-size: 1rem;
+    font-size: 2rem;
     margin: .5rem;
 }
 
