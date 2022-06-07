@@ -13,9 +13,12 @@ body {
 }
 
 
-
 main {
   flex-grow: 1
+}
+
+.text-danger {
+  color: red;
 }
 
 

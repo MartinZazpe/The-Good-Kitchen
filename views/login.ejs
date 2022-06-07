@@ -22,6 +22,9 @@
                     <div class="text-danger">
                         <%=errors.email.msg %>
                     </div>
+                    <div>
+                        <%=errors.LoggedToComment.msg%>
+                    </div>
                     <% } %>
 
                         <div class="form-container">
@@ -35,6 +38,9 @@
                                 <label>
                                     <input type="checkbox" name="rememberUser"> Recordar mi usuario
                                 </label>
+                                <div>
+                                    <p>Got no user? <a class="register-now" href="/user/register">Register now!</a></p>
+                                </div>
                                 <input type="submit" value="Login">
                             </form>
                         </div>

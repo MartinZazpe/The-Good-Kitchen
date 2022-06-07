@@ -2,6 +2,7 @@
 
 var fs = require('fs')
 var path = require('path')
+const { nextTick } = require('process')
 
 //for comments
 
@@ -28,13 +29,40 @@ function writeJSON() {
 // }
 
 
+// if (req.session.userLogged) {
+//     userLoggedOk = req.session.userLogged
+//     let productsThatBelongToUser = data.filter(products => products.belongTo == userLoggedOk.email)
+//     console.log(productsThatBelongToUser)
+// }
+
+
 module.exports = {
     productList: (req, res) => {
-        res.render('product-list', { recipes: data })
+
+        if (req.session.userLogged) {
+            let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
+            console.log(userHasProducts)
+            let userLoggedEmail = req.session.userLogged.email
+            console.log(userLoggedEmail)
+            res.render('product-list', {
+                recipes: data, userLoggedEmail
+            })
+        } else if (!req.session.userLogged) {
+            res.render('product-list', { recipes: data })
+        }
+        //must paginate!
     },
     detail: (req, res) => {
+
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        res.render('product-detail', { recipe: recipeFound })
+        let productComments = commentData.filter(id => req.params.id == id.refersToId)
+
+        if (req.session.userLogged) {
+            let userLoggedEmail = req.session.userLogged.email
+            res.render('product-detail', { recipe: recipeFound, comments: productComments, userLoggedEmail })
+        } else if (!req.session.userLogged) {
+            res.render('product-detail', { recipe: recipeFound, comments: productComments })
+        }
     },
     create: (req, res) => {
         res.render('product-create')
@@ -43,11 +71,11 @@ module.exports = {
         console.log(req.body)
         let newProduct = {
             id: data.length + 1,
-            owner: req.session.userLogged.email,
             title: req.body.title,
             description: req.body.description,
             Ingredients: req.body.Ingredients.split(','),
-            image: req.file ? req.file.filename : "no-image-default.png"
+            image: req.file ? req.file.filename : "no-image-default.png",
+            belongsTo: req.session.userLogged.email
         }
         data.push(newProduct)
         writeJSON()
@@ -55,8 +83,15 @@ module.exports = {
     },
     edit: (req, res) => {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        console.log("esto es la vista de edit" + recipeFound)
-        res.render('product-edit', { recipe: recipeFound })
+        if (recipeFound.belongsTo == req.session.userLogged.email) {
+            res.render('product-edit', { recipe: recipeFound })
+        } else {
+            res.redirect('/error404')
+        }
+        //ask if userLogged >> middleware OK
+        //ask if userLogged in owns that recipe post OK
+        //if user does own that recipe, OK
+        //if not, render him to a ERROR view something "like hey what are you looking for?" OK
     },
     update: (req, res) => {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
@@ -82,31 +117,37 @@ module.exports = {
     },
     submitComment: (req, res) => {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        // req.body.comments
+
+        if (!req.session.userLogged) {
+            res.render('login', {
+                errors: {
+                    LoggedToComment: {
+                        msg: 'You must be logged in to leave a comment'
+                    }
+                }
+            })
+        }
+
         let userLoggedEmail = req.session.userLogged.email
         let newComment = {
+            refersToId: req.params.id,
             belongsTo: userLoggedEmail,
             userComment: req.body.comments
         }
+
+
+
         commentData.push(newComment)
         WriteCommentJSON()
+
         let allComentsData = fs.readFileSync(path.join(__dirname, '../data/commentSection.json'))
         let allComents = JSON.parse(allComentsData)
 
-        res.render('product-detail', { comments: allComents, recipe: recipeFound })
-        //check that user is logged only logged users can comment, OK, with middleware
-        // obtain user email OK
-        //when i get comments OK 
-        //save them to comments json OK
-        //print comments in comment section with user email
-        //allow delete / edit comment
-        // paginate comments to 5 or 10 max,
-        //render view
+        res.render('product-detail', { comments: allComents, recipe: recipeFound, userLoggedEmail })
 
+        //Must paginate!
     }
 
 
 }
 
-
-//crea la receta pero no la muestra, ver lo de ingredientes

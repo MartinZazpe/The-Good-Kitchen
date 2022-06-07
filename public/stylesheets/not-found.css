@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: rgb(248, 248, 248)
+}
+
+h1 {
+    color: blue;
+
+}
+
+h2 {
+    color: orange;
+}
+
+.error-image {
+    width: 280px;
+    padding: 0;
+}
+
+.image-container {
+    align-self: center;
+}
+
+.container {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+}
+
+
+
+.error-greeting {
+    text-align: center;
+    padding: 30px;
+}
+
+.link-container {
+    align-self: center;
+    padding: 5px;
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: center;
+    width: 200px;
+    align-content: center;
+}
+
+
+.link-container a {
+    text-align: center;
+    color: white;
+    padding: 5px;
+    background-color: rgb(30, 193, 193);
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.link-container a i {
+    padding: 0 5px;
+    color: brown;
+}

@@ -17,8 +17,8 @@ router.get('/create', authMiddleware, productController.create)
 router.post('/create', configMulter.single("image"), productController.store)
 
 /*  edit a product   */
-router.get('/edit/:id', productController.edit)
-router.put('/edit/:id', configMulter.single("image"), productController.update)
+router.get('/edit/:id', authMiddleware, productController.edit)
+router.put('/edit/:id', authMiddleware, configMulter.single("image"), productController.update)
 
 /*  delete a product   */
 router.delete('/delete/:id', productController.destroy)

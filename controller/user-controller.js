@@ -116,7 +116,7 @@ module.exports = {
     },
 
     userProducts: (req, res) => {
-        let userRecipes = data.filter(data => data.owner === req.session.userLogged.email)
+        let userRecipes = data.filter(data => data.belongsTo === req.session.userLogged.email)
         console.log(userRecipes)
         if (userRecipes.length !== 0) {
             res.render('user-recipes', { recipes: userRecipes })

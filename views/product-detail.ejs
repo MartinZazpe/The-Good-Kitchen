@@ -37,18 +37,23 @@
                                         <% } %>
                                 </ul>
                             </div>
-                            <div class="buttons">
-                                <div>
-                                    <a href="/recipes/edit/<%=recipe.id%>"><button type="submit">Edit</button></a>
-                                </div>
-                                <div>
-                                    <form action="/recipes/delete/<%=recipe.id%>?_method=DELETE" method="POST">
-                                        <button type="submit">
-                                            Delete
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
+
+                            <% if(locals.userLoggedEmail){ %>
+                                <% if(userLoggedEmail==recipe.belongsTo) { %>
+                                    <div class="buttons">
+                                        <div>
+                                            <a href="/recipes/edit/<%=recipe.id%>"><button type="submit">Edit</button></a>
+                                        </div>
+                                        <div>
+                                            <form action="/recipes/delete/<%=recipe.id%>?_method=DELETE" method="POST">
+                                                <button type="submit">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <% } %>
                         </div>
                     </div>
                 </section>
