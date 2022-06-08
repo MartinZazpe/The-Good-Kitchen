@@ -3,10 +3,11 @@
 }
 
 #navbar {
-    background-color: rgba(26, 9, 9, 0.85);
+    /* background-color: #121214; cool black option */
+    background-color: rgb(47, 84, 88);
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 2;
 }
 
 .menu li {
@@ -41,10 +42,15 @@
     padding: 1rem;
     text-decoration: none;
     display: block;
+    font-size: 0.8rem;
 }
 
 .navigation-list-dropdown li:hover {
     background-color: #555;
+}
+
+.navigation-list-dropdown li:hover a {
+    color: rgb(207, 181, 181);
 }
 
 
@@ -74,7 +80,7 @@ body i {
 
 .toggle-button {
     position: absolute;
-    top: .50rem;
+    top: 1rem;
     right: 1rem;
     display: flex;
     flex-direction: column;
@@ -106,6 +112,10 @@ body i {
     margin: .5rem;
 }
 
+ul {
+    margin: 0;
+}
+
 .cookie-logo {
     position: absolute;
     width: 20px;
@@ -121,7 +131,7 @@ body i {
 
 .dropdown {
     float: left;
-    overflow: hidden;
+    overflow: initial;
 }
 
 .dropdown-content {
@@ -211,15 +221,18 @@ body i {
     }
 
     .navigation-list-dropdown ul {
-        border-top: 2px solid rgb(206, 109, 109);
+        border-top: 2px solid rgb(144, 208, 221);
     }
 
     .user-links,
     .userLogged-links {
         display: flex !important;
-        /* border-top: 0.1px solid rgb(206, 109, 109); */
-        border-left: 0.1px solid rgb(206, 109, 109);
+        border-top: 0.1px solid rgb(144, 208, 221);
+        ;
+        border-left: 0.1px solid rgb(144, 208, 221);
     }
+
+
 
     .user-links li {
         padding: 0px 20px;

@@ -1,16 +1,26 @@
 [
     {
         "id": 1,
-        "name": "user",
-        "email": "test3@test.com",
+        "name": "Richmond Jr.",
+        "email": "richmond@hotmail.com",
+        "type": "Community member",
         "password": "$2a$10$48/I7asz5s1haUsMTwPSH.fsMTobS.uUC2X2dqshAkT3gSedtW3A6",
-        "image": "user-default.png"
+        "image": "richmondProfilePic.jpeg"
     },
     {
         "id": 2,
-        "name": "test2",
-        "email": "test2@test.com",
+        "name": "Maria",
+        "email": "maria@hotmail.com",
+        "type": "Community member",
         "password": "$2a$10$k9dgWq4sAkqdFJ7ttCn3h.ggndb2/u8hCvZCUKhE0fynbLWh3/2Eq",
-        "image": "user-default.png"
+        "image": "mariaProfilePic.jpeg"
+    },
+    {
+        "id": 3,
+        "name": "Johnny",
+        "email": "johnny@hotmail.com",
+        "type": "Community member",
+        "password": "$2a$10$AlWCQmRnPZrA8cD7YOWWwe8pDQqo3hldITdA4xn0BFJNvHwkWAAZK",
+        "image": "johnnyProfilePic.jpeg"
     }
 ]

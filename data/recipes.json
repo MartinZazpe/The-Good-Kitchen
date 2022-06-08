@@ -21,7 +21,7 @@
         ],
         "description": "Delicious and nutricious",
         "image": "chickenAndVeggies.jpeg",
-        "belongsTo": "system"
+        "belongsTo": "maria@hotmail.com"
     },
     {
         "id": 2,
@@ -38,7 +38,7 @@
         ],
         "description": "What´s better than a choco cake?",
         "image": "chococake.jpeg",
-        "belongsTo": "system"
+        "belongsTo": "maria@hotmail.com"
     },
     {
         "id": 3,
@@ -57,7 +57,7 @@
         ],
         "description": "A delicious quiche",
         "image": "QuicheLorraine.jpeg",
-        "belongsTo": "system"
+        "belongsTo": "richmond@hotmail.com"
     },
     {
         "id": 4,
@@ -73,7 +73,7 @@
         ],
         "description": "Easy to make, delicious to eat",
         "image": "fluffypancakes.jpeg",
-        "belongsTo": "system"
+        "belongsTo": "johnny@hotmail.com"
     },
     {
         "id": 5,
@@ -91,7 +91,7 @@
         ],
         "description": "mmmm a dream!",
         "image": "carrot-cake.jpeg",
-        "belongsTo": "system"
+        "belongsTo": "richmond@hotmail.com"
     },
     {
         "id": 6,
@@ -105,6 +105,6 @@
             " test"
         ],
         "image": "image-1654609682017.jpeg",
-        "belongsTo": "test3@test.com"
+        "belongsTo": "maria@hotmail.com"
     }
 ]

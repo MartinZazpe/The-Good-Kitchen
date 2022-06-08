@@ -45,6 +45,7 @@ module.exports = {
             let newUSer = {
                 name: req.body.name,
                 email: req.body.email,
+                type: "Community member",
                 password: bcryptjs.hashSync(req.body.password, 10),
                 image: req.file ? req.file.filename : 'user-default.png'
             }

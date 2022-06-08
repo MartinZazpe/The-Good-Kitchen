@@ -88,10 +88,7 @@ module.exports = {
         } else {
             res.redirect('/error404')
         }
-        //ask if userLogged >> middleware OK
-        //ask if userLogged in owns that recipe post OK
-        //if user does own that recipe, OK
-        //if not, render him to a ERROR view something "like hey what are you looking for?" OK
+        //current issue now i can modify any recipe if logged in
     },
     update: (req, res) => {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
