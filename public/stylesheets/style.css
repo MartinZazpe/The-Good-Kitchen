@@ -14,7 +14,7 @@ body {
 
 /* the margin may change, must review all views to check how it fits and on resize */
 main {
-  margin-top: 54px;
+  margin-top: 80px;
   flex-grow: 1;
 }
 

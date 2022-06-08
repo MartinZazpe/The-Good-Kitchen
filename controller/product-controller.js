@@ -4,6 +4,15 @@ var fs = require('fs')
 var path = require('path')
 const { nextTick } = require('process')
 
+
+
+
+// get users
+
+let usersJSON = fs.readFileSync(path.join(__dirname, '../data/users.json'))
+let users = JSON.parse(usersJSON)
+
+
 //for comments
 
 let dataCommentJSON = fs.readFileSync(path.join(__dirname, '../data/commentSection.json'))
@@ -38,17 +47,15 @@ function writeJSON() {
 
 module.exports = {
     productList: (req, res) => {
-
+        let allUsers = users
         if (req.session.userLogged) {
             let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
-            console.log(userHasProducts)
             let userLoggedEmail = req.session.userLogged.email
-            console.log(userLoggedEmail)
             res.render('product-list', {
-                recipes: data, userLoggedEmail
+                recipes: data, userLoggedEmail, allUsers
             })
         } else if (!req.session.userLogged) {
-            res.render('product-list', { recipes: data })
+            res.render('product-list', { recipes: data, allUsers })
         }
         //must paginate!
     },

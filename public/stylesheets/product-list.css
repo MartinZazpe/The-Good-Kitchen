@@ -13,3 +13,11 @@
 .noButtons {
     visibility: hidden;
 }
+
+.introduction {
+    margin: 40px 0px;
+}
+
+h3 {
+    font-weight: 100;
+}
