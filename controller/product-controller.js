@@ -153,17 +153,31 @@ module.exports = {
     },
     search: (req, res) => {
 
-        let allRecipes = data
+
         let userSearch = req.body.search
+        let allProducts = data
 
-        let filtered = allRecipes.filter(recipe => recipe.title == userSearch)
+        // allProducts.toUpperCase()
+        // userSearch.toUpperCase()
 
-        console.log(filtered)
+        let filteredProducts = allProducts.filter(x => x.title.toUpperCase().match(userSearch.toUpperCase()))
 
-        // so far it can find but only if the name is exact
+        console.log(filteredProducts)
+
+
+
+        //i think this one works but is sensible to uppercase
+
+
+        //iterate through the data 
+        //for each iteration check if userSearch is == to that iteration
+        //if it is
+
+
     }
 
-
 }
+
+
 
 
