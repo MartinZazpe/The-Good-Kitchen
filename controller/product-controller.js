@@ -157,22 +157,23 @@ module.exports = {
         let userSearch = req.body.search
         let allProducts = data
 
-        // allProducts.toUpperCase()
-        // userSearch.toUpperCase()
-
         let filteredProducts = allProducts.filter(x => x.title.toUpperCase().match(userSearch.toUpperCase()))
 
         console.log(filteredProducts)
 
+        //Eureka works! or so it seems !
 
-
-        //i think this one works but is sensible to uppercase
-
-
-        //iterate through the data 
-        //for each iteration check if userSearch is == to that iteration
-        //if it is
-
+        //this from prouduct-list
+        let allUsers = users
+        if (req.session.userLogged) {
+            let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
+            let userLoggedEmail = req.session.userLogged.email
+            res.render('product-list', {
+                recipes: data, userLoggedEmail, allUsers,
+            })
+        } else if (!req.session.userLogged && filteredProducts.length != 0) {
+            res.render('product-list', { recipes: filteredProducts, allUsers, })
+        }
 
     }
 
