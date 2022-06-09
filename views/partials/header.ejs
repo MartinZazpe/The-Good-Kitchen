@@ -14,15 +14,33 @@
 
 <body>
     <div class="navbar-flexbox" id="navbar">
-        <!-- <div class="hambMenuIcon"><i class="hambMenu fa-solid fa-bars fa-lg"></i></div> -->
-        <a href="#" class="toggle-button">
+
+        <div class="hamburger">
+            <!-- <a href="#" class="toggle-button "> -->
             <span class="bar"> </span>
             <span class="bar"> </span>
             <span class="bar"> </span>
-        </a>
+            <!-- </a> -->
+        </div>
         <div id="logo">
             <h1>The g<span class="title-span">oo</span>d Kitchen</h1>
         </div>
+
+        <div class="search-wrapper">
+            <form class="search-form" action="/recipes/search" method="POST">
+                <div class="search-bar-container">
+                    <label class="search-label" for="search"></label>
+                    <input class="search-input" type="search" name="search" id="search" placeholder="What would you like to cook?">
+                </div>
+                <div class="search-icon-container">
+                    <i class="search-icon fa-lg fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="search-btn-container">
+                    <input class="search-submit" type="submit" value="Search">
+                </div>
+            </form>
+        </div>
+
         <div class="navigation-list-dropdown noDisplay">
             <ul>
                 <li><a href="/recipes/create">Upload a recipe</a></li>

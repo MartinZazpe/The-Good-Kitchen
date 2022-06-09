@@ -49,7 +49,7 @@ module.exports = {
     productList: (req, res) => {
         let allUsers = users
         if (req.session.userLogged) {
-            let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
+            // let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
             let userLoggedEmail = req.session.userLogged.email
             res.render('product-list', {
                 recipes: data, userLoggedEmail, allUsers
@@ -156,20 +156,29 @@ module.exports = {
 
         let userSearch = req.body.search
         let allProducts = data
+        let recentUploads = allProducts.slice(-4)
+        let allUsers = users
 
         let filteredProducts = allProducts.filter(x => x.title.toUpperCase().match(userSearch.toUpperCase()))
 
+        // let filteredProducts = allProducts.map(function (x) {
+        //     return x.title.toUpperCase().match(userSearch.toUpperCase())
+        // })
+
         console.log(filteredProducts)
 
-        //Eureka works! or so it seems !
+        //if the user is logged out it works, i must fix if used is logged in 
 
-        //this from prouduct-list
-        let allUsers = users
-        if (req.session.userLogged) {
-            let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
+
+        if (filteredProducts.length == 0) {
+            res.render("index", {
+                recipes: recentUploads, allUsers
+            })
+        } else if (req.session.userLogged) {
+            // let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
             let userLoggedEmail = req.session.userLogged.email
             res.render('product-list', {
-                recipes: data, userLoggedEmail, allUsers,
+                recipes: filteredProducts, userLoggedEmail, allUsers,
             })
         } else if (!req.session.userLogged && filteredProducts.length != 0) {
             res.render('product-list', { recipes: filteredProducts, allUsers, })

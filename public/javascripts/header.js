@@ -4,13 +4,34 @@ window.addEventListener("load", function () {
 
 
     var navigationListDropdown = document.querySelector('.navigation-list-dropdown')
-    var toggleButton = document.querySelector('.toggle-button')
+    var searchIconContainer = document.querySelector('.search-icon-container')
+    var searchButton = document.querySelector('.search-submit')
 
+    const hamburger = document.querySelector('.hamburger')
 
-
-    toggleButton.addEventListener("click", function () {
-        navigationListDropdown.classList.toggle('noDisplay')
+    hamburger.addEventListener('click', function () {
+        hamburger.classList.toggle('active')
+        if (hamburger.classList.contains('active')) {
+            navigationListDropdown.classList.toggle('active')
+            navigationListDropdown.classList.toggle('noDisplay')
+        } else {
+            navigationListDropdown.classList.toggle('active')
+            navigationListDropdown.classList.toggle('noDisplay')
+        }
     })
+
+
+    searchIconContainer.addEventListener('click', function () {
+        searchButton.click()
+    })
+
+
+
+
+
+
+
+
 
 
 

@@ -5,6 +5,10 @@
     justify-content: space-evenly;
 }
 
+.body-information {
+    margin-top: 100px;
+}
+
 .buttons button {
     padding: 3px;
     margin: 0px 4px;
@@ -22,15 +26,6 @@ h3 {
     font-weight: 100;
 }
 
-.search-wrapper {
-    display: flex;
-    flex-direction: column;
-    /* gap: .25rem */
-}
-
-.search-input {
-    font-size: 1rem;
-}
 
 .hide {
     display: none;
