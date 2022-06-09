@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/product-list.css" />
+    <script defer src="/javascripts/product-list.js"></script>
     <title>Document</title>
 </head>
 
@@ -19,23 +20,32 @@
             <div class="body-information">
                 <section class="introduction">
 
+
+                    <div class="search-wrapper">
+
+                        <form action="/recipes/search" method="POST">
+                            <label for="search"></label>
+                            <input class="search-input" type="search" name="search" id="search">
+                            <input type="submit">
+                        </form>
+
+                    </div>
                     <div>
                         <h3>Check out all of our recipes </h3>
                     </div>
-                    <div>
-
-                    </div>
                 </section>
                 <section class="recipe-examples">
+
+
                     <div class="container">
                         <% for (let recipe of recipes) {%>
-                            <div class="product-container">
+                            <div class="product-container" data-user-cards-container>
 
                                 <div class='imageContainer'>
                                     <a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="/images/<%= recipe.image %>"></a>
                                 </div>
                                 <div class="description-hyperlink">
-                                    <h6>
+                                    <h6 class="recipe-title">
                                         <%=recipe.title %>
                                     </h6>
                                     <a class="detail-link noShow" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
@@ -73,6 +83,7 @@
                             </div>
                             <% } %>
                     </div>
+
                     <!-- </section> -->
             </div>
         </main>

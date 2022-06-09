@@ -150,8 +150,20 @@ module.exports = {
         res.render('product-detail', { comments: allComents, recipe: recipeFound, userLoggedEmail })
 
         //Must paginate!
+    },
+    search: (req, res) => {
+
+        let allRecipes = data
+        let userSearch = req.body.search
+
+        let filtered = allRecipes.filter(recipe => recipe.title == userSearch)
+
+        console.log(filtered)
+
+        // so far it can find but only if the name is exact
     }
 
 
 }
+
 

@@ -20,6 +20,10 @@ router.post('/create', configMulter.single("image"), productController.store)
 router.get('/edit/:id', authMiddleware, productController.edit)
 router.put('/edit/:id', authMiddleware, configMulter.single("image"), productController.update)
 
+/*  Search products */
+router.post('/search', productController.search)
+
+
 /*  delete a product   */
 router.delete('/delete/:id', productController.destroy)
 
