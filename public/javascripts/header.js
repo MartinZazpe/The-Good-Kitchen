@@ -6,6 +6,7 @@ window.addEventListener("load", function () {
     var navigationListDropdown = document.querySelector('.navigation-list-dropdown')
     var searchIconContainer = document.querySelector('.search-icon-container')
     var searchButton = document.querySelector('.search-submit')
+    var extraMargin = document.querySelector('.extraMargin')
 
     const hamburger = document.querySelector('.hamburger')
 
@@ -14,11 +15,16 @@ window.addEventListener("load", function () {
         if (hamburger.classList.contains('active')) {
             navigationListDropdown.classList.toggle('active')
             navigationListDropdown.classList.toggle('noDisplay')
+            if (req.session.userLogged) {
+                console.log('user is logged')
+            }
         } else {
             navigationListDropdown.classList.toggle('active')
             navigationListDropdown.classList.toggle('noDisplay')
         }
     })
+
+
 
 
     searchIconContainer.addEventListener('click', function () {

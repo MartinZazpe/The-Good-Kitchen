@@ -45,11 +45,12 @@
 
             <div class="navbar-links">
                 <ul>
-                    <li><a href="/recipes/create">Upload a recipe</a></li>
-                    <li><a href="/recipes/list">All recipes</a></li>
                     <li><a href="/">Home</a></li>
+                    <li><a href="/recipes/list">All recipes</a></li>
+                    <li><a href="/recipes/create">Upload a recipe</a></li>
             </div>
             <% if(locals.islogged) { %>
+
                 <div class="userLogged-links dropdown">
                     <button class="dropdown-btn">
                         <% if(locals.userLogged) { %>
@@ -57,13 +58,13 @@
                             Hey user
                     </button>
                     <% } %>
-                        <div class="dropdown-content navbar-links">
+                        <div class="dropdown-content">
                             <li><a href="/user/profile">My profile</a></li>
                             <li><a href="/user/logout">Logout</a></li>
                         </div>
                 </div>
                 <% } else { %>
-                    <div class="user-links dropdown navbar-links">
+                    <div class="user-links dropdown">
                         <li><a href="/user/login">Login</a></li>
                         <li><a href="/user/register">Register</a></li>
                     </div>
