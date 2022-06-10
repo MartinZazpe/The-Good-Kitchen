@@ -1,3 +1,6 @@
+/*issues:  nav links when hover wont be displayed to 100% of its container*/
+
+
 * {
     box-sizing: border-box;
 }
@@ -16,27 +19,27 @@
     white-space: nowrap;
 }
 
-/* .navbar h1 {
-    width: auto;
-} */
-
-/* .noOpacity {
-    opacity: 0;
-} */
-
-.navigation-list-dropdown ul {
+/* ul {
     width: 100%;
-}
+} */
 
+/* li {
+    width: 100vw;
+} */
+
+.navbar-links {
+    width: 100% !important;
+}
 
 
 .navigation-list-dropdown ul {
     display: flex;
-    flex-direction: column;
-
+    flex-flow: wrap column;
+    width: 100%;
 }
 
-.navigation-list-dropdown li {
+
+.navigation-list-dropdown ul li {
     list-style: none;
 }
 
@@ -57,11 +60,6 @@
 }
 
 
-
-/* .navbarFixed {
-    position: fixed;
-} */
-
 .noDisplay {
     display: none;
 }
@@ -76,30 +74,9 @@ body i {
 }
 
 
-.navBarScreen {
-    height: 1000px;
-}
+
 
 /* here the hambu menu */
-
-/* .toggle-button {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 20px;
-    width: 21px;
-} */
-
-
-/* .toggle-button .bar {
-    height: 3px;
-    width: 100%;
-    background-color: white;
-    border-radius: 10px;
-} */
 
 .hamburger {
     position: absolute;
@@ -124,7 +101,6 @@ body i {
 .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg)
 }
-
 
 
 
@@ -159,11 +135,7 @@ ul {
     margin: 0;
 }
 
-.cookie-logo {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-}
+
 
 
 #navbar .hambMenu,
@@ -177,6 +149,7 @@ ul {
     overflow: initial;
 }
 
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -186,8 +159,6 @@ ul {
     z-index: 1;
 
 }
-
-
 
 .dropdown-btn {
     font-size: 16px;
@@ -228,9 +199,12 @@ ul {
 }
 
 .user-image-miniature {
-    width: 40px;
-    border-radius: 30px;
+    width: 35px;
+    border-radius: 15px;
 }
+
+/* End of user links navbar */
+
 
 
 .navbar-flexbox {
@@ -238,15 +212,43 @@ ul {
     flex-direction: column;
     align-items: flex-start;
     height: auto;
+
 }
 
 
-.search-wrapper {
-    /* display: flex;
-    flex-flow: wrap row;
-    justify-content: space-around; */
+
+
+
+
+
+/* Search bar*/
+.search-input {
+    font-size: 0.8rem !important;
     width: 100%;
-    /* height: 3rem */
+    height: 35px;
+    border: 1px solid rgb(188, 180, 180);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    text-align: center;
+    position: relative;
+}
+
+.search-icon-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.search-icon {
+    right: 5vw;
+    position: absolute;
+    z-index: 2;
+    color: rgb(139, 147, 146);
+    align-self: center;
+}
+
+.search-wrapper {
+    width: 100%;
 }
 
 .search-form {
@@ -264,47 +266,21 @@ ul {
 
 .search-btn-container {
     display: none;
-    /* width: 25%; */
+
 }
 
-.search-input {
-    font-size: 0.8rem !important;
-    width: 100%;
-    height: 35px;
-    border: 1px solid rgb(188, 180, 180);
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    text-align: center;
-    position: relative;
-}
-
-/* .search-submit {
-    width: 100%;
-    height: 35px;
-    line-height: 0px;
-    text-align: center;
-} */
-
-.search-icon-container {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-}
-
-
-.search-icon {
-    right: 5vw;
-    position: absolute;
-    z-index: 2;
-    color: rgb(139, 147, 146);
-    align-self: center;
-}
+/* End of Search bar*/
 
 
 
-/* lo que debo sacar luego  pensanndo mobile first*/
+
 
 @media (min-width:480px) {
+
+    li {
+        width: 20vw;
+    }
+
     .hamburger {
         display: none;
     }
@@ -325,7 +301,7 @@ ul {
     }
 
     .navigation-list-dropdown ul {
-        border-top: 2px solid rgb(144, 208, 221);
+        border-top: 3px solid rgb(144, 208, 221);
     }
 
     .user-links,
@@ -334,11 +310,13 @@ ul {
         border-left: 0.1px solid rgb(144, 208, 221);
     }
 
-    .user-links li {
-        padding: 0px 20px;
-    }
-
     #logo h1 {
         font-size: 2rem;
     }
 }
+
+/* @media (min-width: 600px) {
+    li {
+        padding: 0px 10px;
+    }
+} */

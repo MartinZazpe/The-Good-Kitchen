@@ -1,20 +1,33 @@
+.body-information {
+    margin-top: 30px;
+}
+
+
+.introduction {
+    /* background-color: rgb(201, 207, 221); */
+    background-image: url("/images/minimal-bg.jpeg");
+    /* I can add a cool background if not just for the title ! */
+}
+
+.introduction h3 {
+    text-align: center;
+    padding: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
 .OneProductContainer {
     border: none;
 }
 
-h2 {
-    text-align: center;
-    padding: 15px;
-}
 
 .OneRecipeImage {
     width: 100%;
     max-height: calc()
 }
 
-.introduction {
-    text-decoration: underline;
-}
+
 
 .description-hyperlink p {
     font-style: italic;

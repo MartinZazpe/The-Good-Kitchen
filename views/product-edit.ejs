@@ -25,6 +25,9 @@
                             <label for="Ingredients">Ingredients:</label>
                             <em class="IngredientsInstructions">please enter every ingredient separated by a comma.</em>
                             <input name="Ingredients" type="text" value="<%= recipe.Ingredients %>" id="Ingredients">
+                            <label for="directions">Directions for the user.</label>
+                            <em class="directionsInstructions">please enter every instruction separated by a comma.</em>
+                            <input name="directions" type="text" value="<%=recipe.directions%>" id="directions">
                             <div class="imageInputContainer">
                                 <label id="image-label" for="image">Edit an image</label>
                                 <input name="image" type="file" id="image">

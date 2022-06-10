@@ -10,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/product-list.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital@1&display=swap" rel="stylesheet">
 
     <title>Document</title>
 </head>
@@ -21,6 +24,9 @@
     <%- include("partials/header.ejs") %>
         <main>
             <div class="body-information">
+                <div class="banner-container">
+                    <img class="banner-img" src="/images/AllProductsImage.jpeg" alt="banner-with-quote">
+                </div>
                 <section class="introduction">
 
                     <!-- <div class="search-wrapper">
@@ -34,10 +40,11 @@
 
 
                     </div> -->
-                    <div>
+                    <div class="title-image-container">
                         <h3>Check out all of our recipes </h3>
-                        <p>Imagine if you had to choose only one recipe ? </p>
+                        <img class="cooking-pot-image" src="/images/casserole-pot.webp" alt="cooking-pot-image">
                     </div>
+
                 </section>
                 <section class="recipe-examples">
 

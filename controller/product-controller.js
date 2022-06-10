@@ -81,6 +81,7 @@ module.exports = {
             title: req.body.title,
             description: req.body.description,
             Ingredients: req.body.Ingredients.split(','),
+            directions: req.body.directions.split(','),
             image: req.file ? req.file.filename : "no-image-default.png",
             belongsTo: req.session.userLogged.email
         }
@@ -103,6 +104,7 @@ module.exports = {
         recipeFound.title = req.body.title ? req.body.title : recipeFound.title
         recipeFound.description = req.body.description ? req.body.description : recipeFound.description
         recipeFound.Ingredients = req.body.Ingredients ? req.body.Ingredients.split(',') : recipeFound.Ingredients
+        recipeFound.directions = req.body.directions ? req.body.Ingredients.directions(',') : recipeFound.directions
         recipeFound.image = req.file ? req.file.filename : recipeFound.image ? recipeFound.image : "no-image-default.png"
         /* overwrite JSON */
         writeJSON()

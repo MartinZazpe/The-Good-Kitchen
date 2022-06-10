@@ -6,7 +6,7 @@
 }
 
 .body-information {
-    margin-top: 100px;
+    margin-top: 3px;
 }
 
 .buttons button {
@@ -20,13 +20,56 @@
 
 .introduction {
     margin: 40px 0px;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
-h3 {
-    font-weight: 100;
+.title-image-container {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+}
+
+div h3 {
+    font-family: 'Alegreya', serif;
+    font-size: 1.5rem;
+    align-self: center;
+    font-weight: 200;
+    font-style: oblique;
+    padding: 15px 15px 5px 15px;
+    border-left: 1px solid rgb(232, 159, 151);
+    /* border-right: 1px solid rgb(232, 159, 151); */
+    border-top: 1px solid rgb(232, 159, 151);
+    width: 80%;
+}
+
+
+.cooking-pot-image {
+    position: absolute;
+    width: 100px;
+    right: -16%;
+    bottom: 3px;
+}
+
+.banner-container {
+    width: 100%;
+}
+
+.banner-img {
+    width: 100%;
 }
 
 
 .hide {
     display: none;
+}
+
+@media(min-width:768px) {
+
+    div h3 {
+        font-size: 1.7rem
+    }
 }

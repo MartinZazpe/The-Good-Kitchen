@@ -20,11 +20,14 @@
                         <form action="/recipes/create" enctype="multipart/form-data" method="POST">
                             <label for="title">Title:</label>
                             <input name="title" type="text" id="title">
-                            <label for="description">Describe your dish:</label>
+                            <label for="description">A brief description of your dish:</label>
                             <input name="description" type="text" id="description">
                             <label for="Ingredients">Ingredients:</label>
                             <em class="IngredientsInstructions">please enter every ingredient separated by a comma.</em>
                             <input name="Ingredients" type="text" id="Ingredients">
+                            <label for="directions">Directions for the user.</label>
+                            <em class="directionsInstructions">please enter every instruction separated by a comma.</em>
+                            <input name="directions" type="text">
                             <div class="imageInputContainer">
                                 <label id="image-label" for="image">Choose an image</label>
                                 <input name="image" type="file" id="image">

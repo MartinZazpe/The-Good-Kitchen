@@ -14,19 +14,21 @@
             <div class="body-information">
                 <section class="introduction">
                     <% if(locals.recipe) { %>
-                        <h2>
+                        <h3>
                             <%=recipe.title %>
-                        </h2>
+                        </h3>
                 </section>
+                <div class="description-hyperlink">
+                    <p>
+                        <%=recipe.description %>
+                    </p>
+                </div>
                 <section class="recipe-examples">
                     <div class="container">
                         <div class="OneProductContainer">
                             <img class="OneRecipeImage" src="/images/<%= recipe.image %>">
-                            <div class="description-hyperlink">
-                                <p>
-                                    <%=recipe.description %>
-                                </p>
-                            </div>
+
+
                             <div class="ingredients">
                                 <ul class="ingredients-list">
                                     <p class="ingredients-title">Ingredients:</p>
@@ -36,6 +38,10 @@
                                         </li>
                                         <% } %>
                                 </ul>
+                            </div>
+
+                            <div class="directions">
+
                             </div>
 
                             <% if(locals.userLoggedEmail){ %>
