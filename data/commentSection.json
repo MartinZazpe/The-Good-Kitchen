@@ -1,37 +1,7 @@
 [
     {
-        "refersToId": "5",
-        "belongsTo": "test3@test.com",
-        "userComment": "                        sdfsdfsd"
-    },
-    {
-        "refersToId": "5",
-        "belongsTo": "test3@test.com",
-        "userComment": "                        sdfsdfsd"
-    },
-    {
-        "refersToId": "5",
-        "belongsTo": "test3@test.com",
-        "userComment": "                        ddsfsdf"
-    },
-    {
-        "refersToId": "2",
-        "belongsTo": "test3@test.com",
-        "userComment": "                       Hola que rica torta "
-    },
-    {
-        "refersToId": "6",
-        "belongsTo": "test3@test.com",
-        "userComment": "                        Hola que rica torta"
-    },
-    {
-        "refersToId": "6",
-        "belongsTo": "test3@test.com",
-        "userComment": "                        sdfsdf"
-    },
-    {
         "refersToId": "1",
-        "belongsTo": "test3@test.com",
-        "userComment": "                        Que demas!"
+        "belongsTo": "richmond@hotmail.com",
+        "userComment": "                        Nice recipe!"
     }
 ]

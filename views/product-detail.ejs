@@ -6,6 +6,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/product-detail.css' />
     <title>Home</title>
+    <script src="/javascripts/product-detail.js"></script>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
                 <section class="recipe-examples">
                     <div class="container">
                         <div class="OneProductContainer">
-                            <img class="OneRecipeImage" src="/images/<%= recipe.image %>">
+                            <div class="image-container"><img class="OneRecipeImage" src="/images/<%= recipe.image %>"></div>
 
 
                             <div class="ingredients">
@@ -63,31 +64,45 @@
                         </div>
                     </div>
                 </section>
-                <section class="product-discussion-container">
+                <% } %>
 
-                    <form action="/recipes/detail/<%=recipe.id%>" method="POST">
-                        <textarea name="comments" style="font-family:sans-serif;font-size:1.2em;" placeholder="What do you think about this recipe ?  ">
-                        </textarea>
-                        <input type="submit" value="submit">
-                    </form>
-                    <% } %>
 
+                    <div class="comment section">
+                        <div class="comments-header">
+                            <h4>Reviews (total amount of reviews calculated)</h4>
+                            <span></span>
+                            <span></span>
+                        </div>
                         <% if(locals.comments) { %>
                             <% for(let comment of comments) {%>
-                                <div class="comment section">
-                                    <div class="user-comment">
-                                        <p>
-                                            <%=comment.belongsTo %>
-                                        </p>
-                                        <p>
-                                            <%=comment.userComment%>
-                                        </p>
-                                    </div>
-                                </div>
-                                <% } %>
-                                    <% } %>
+                                <% for(let user of allUsers){ %>
+                                    <% if(user.email==comment.belongsTo){ %>
+                                        <div class="user-comment-container">
+                                            <img class="user-comment-image" src="/images/userImages/<%= user.image %>" alt="user-image">
+                                            <% } %>
+                                                <% } %>
 
-                </section>
+                                                    <p class="comment-belongsTo">
+                                                        <%=comment.belongsTo %>
+                                                    </p>
+                                                    <p class="comment-userComment">
+                                                        <%=comment.userComment%>
+                                                    </p>
+
+                                        </div>
+                                        <% } %>
+                                            <% } %>
+                    </div>
+            </div>
+            <div class="comment-form">
+                <form action="/recipes/comments/<%=recipe.id%>" method="POST">
+                    <textarea name="comments" style="font-family:sans-serif;font-size:1.2em;" placeholder="What do you think about this recipe ?  ">
+                                                                    </textarea>
+                    <input type="submit" value="submit">
+                </form>
+            </div>
+
+            </section>
             </div>
         </main>
         <%- include("partials/footer.ejs") %>

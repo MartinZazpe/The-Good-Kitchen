@@ -1,4 +1,8 @@
 // now it takes the input for ingredients and saves as a array perfectly, doesnt display yet.
+//after submitting a comment, if the user refreshes page it submits again
+//must validate that form isnt empty and isnt X so long
+//for the comment section, i should show the name instead of the email
+
 
 var fs = require('fs')
 var path = require('path')
@@ -63,12 +67,15 @@ module.exports = {
 
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
         let productComments = commentData.filter(id => req.params.id == id.refersToId)
+        let allUsers = users
 
         if (req.session.userLogged) {
             let userLoggedEmail = req.session.userLogged.email
-            res.render('product-detail', { recipe: recipeFound, comments: productComments, userLoggedEmail })
+            res.render('product-detail', {
+                recipe: recipeFound, comments: productComments, userLoggedEmail, allUsers
+            })
         } else if (!req.session.userLogged) {
-            res.render('product-detail', { recipe: recipeFound, comments: productComments })
+            res.render('product-detail', { recipe: recipeFound, comments: productComments, allUsers })
         }
     },
     create: (req, res) => {
@@ -141,17 +148,20 @@ module.exports = {
             userComment: req.body.comments
         }
 
-
-
         commentData.push(newComment)
         WriteCommentJSON()
 
-        let allComentsData = fs.readFileSync(path.join(__dirname, '../data/commentSection.json'))
-        let allComents = JSON.parse(allComentsData)
+        let allUsers = users
 
-        res.render('product-detail', { comments: allComents, recipe: recipeFound, userLoggedEmail })
+        let productComments = commentData.filter(id => req.params.id == id.refersToId)
+
+
+        res.render('product-detail', {
+            comments: productComments, recipe: recipeFound, userLoggedEmail, allUsers
+        })
 
         //Must paginate!
+
     },
     search: (req, res) => {
 
@@ -163,13 +173,8 @@ module.exports = {
 
         let filteredProducts = allProducts.filter(x => x.title.toUpperCase().match(userSearch.toUpperCase()))
 
-        // let filteredProducts = allProducts.map(function (x) {
-        //     return x.title.toUpperCase().match(userSearch.toUpperCase())
-        // })
 
         console.log(filteredProducts)
-
-        //if the user is logged out it works, i must fix if used is logged in 
 
 
         if (filteredProducts.length == 0) {
