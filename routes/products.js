@@ -12,6 +12,7 @@ router.get('/list', productController.productList)
 router.get('/detail/:id', productController.detail)
 router.post('/comments/:id', authMiddleware, productController.submitComment)
 
+
 /*  create a product   */
 router.get('/create', authMiddleware, productController.create)
 router.post('/create', configMulter.single("image"), productController.store)

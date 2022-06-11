@@ -128,8 +128,11 @@ module.exports = {
         writeJSON()
         res.redirect('/recipes/list')
     },
+
     submitComment: (req, res) => {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
+        let userLoggedEmail = req.session.userLogged.email
+        let allUsers = users
 
         if (!req.session.userLogged) {
             res.render('login', {
@@ -141,25 +144,47 @@ module.exports = {
             })
         }
 
-        let userLoggedEmail = req.session.userLogged.email
-        let newComment = {
-            refersToId: req.params.id,
-            belongsTo: userLoggedEmail,
-            userComment: req.body.comments
+        //i must check the last comment
+        let lastComment = commentData.pop()
+        console.log(lastComment)
+        //if it belongs to user logged, pass an error.
+        //now im trying to create time and check so user cant submit many forms 
+        if (lastComment.belongTo == req.session.userLogged.email && lastComment.timeOfComment) {
+            let productComments = commentData.filter(id => req.params.id == id.refersToId)
+
+            res.render('product-detail', {
+                comments: productComments, recipe: recipeFound, userLoggedEmail, allUsers,
+                errors: {
+                    waitToComment: {
+                        msg: 'you must wait at least 1 minute between comment'
+                    }
+                }
+            })
+
+
+            let newComment = {
+                refersToId: req.params.id,
+                belongsTo: userLoggedEmail,
+                userComment: req.body.comments,
+                timeOfComment: Date.getMinutes()
+            }
+            req.body.comments = ""
+
+            commentData.push(newComment)
+            WriteCommentJSON()
+
+
+
+
+
+
+
+        } else {
+            res.render('product-detail', {
+                comments: productComments, recipe: recipeFound, userLoggedEmail, allUsers
+            })
+
         }
-
-        commentData.push(newComment)
-        WriteCommentJSON()
-
-        let allUsers = users
-
-        let productComments = commentData.filter(id => req.params.id == id.refersToId)
-
-
-        res.render('product-detail', {
-            comments: productComments, recipe: recipeFound, userLoggedEmail, allUsers
-        })
-
         //Must paginate!
 
     },

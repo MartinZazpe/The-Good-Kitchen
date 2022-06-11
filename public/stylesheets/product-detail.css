@@ -32,15 +32,22 @@ li.strikethrough {
     transform: scale(1.1)
 }
 
+.comment-section {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+}
+
 
 .user-comment-container {
     padding: 20px;
-    margin-left: 110px;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start !important;
     align-content: flex-start !important;
     align-items: flex-start !important;
+    border-bottom: 1px solid rgb(173, 166, 166);
 }
 
 .comment-userComment {
@@ -128,7 +135,7 @@ p {
     /* content: ""; */
     margin: 5px;
     height: 3px;
-    width: 80%;
+    width: 100%;
     background-color: rgb(128, 125, 122);
 
 }
@@ -136,8 +143,6 @@ p {
 .user-comment {
     display: flex;
 }
-
-
 
 
 .ingredients-list li {
