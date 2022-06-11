@@ -67,44 +67,49 @@
                 <% } %>
 
 
-                    <div class="comment-section">
-                        <div class="comments-header">
-                            <h4>Reviews (total amount of reviews calculated)</h4>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <% if(locals.comments) { %>
-                            <% for(let comment of comments) {%>
-                                <% for(let user of allUsers){ %>
-                                    <% if(user.email==comment.belongsTo){ %>
-                                        <div class="user-comment-container">
-                                            <img class="user-comment-image" src="/images/userImages/<%= user.image %>" alt="user-image">
+                    <div class="comment-section-container">
+                        <div class="comment-section">
+                            <div class="comments-header">
+                                <h4>Reviews (total amount of reviews calculated)</h4>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <% if(locals.comments) { %>
+                                <% for(let comment of comments) {%>
+                                    <% for(let user of allUsers){ %>
+                                        <% if(user.email==comment.belongsTo){ %>
+                                            <div class="user-comment-container">
+                                                <img class="user-comment-image" src="/images/userImages/<%= user.image %>" alt="user-image">
+                                                <% } %>
+                                                    <% } %>
+                                                        <p class="comment-belongsTo">
+                                                            <%=comment.belongsTo %>
+                                                        </p>
+                                                        <p class="comment-userComment">
+                                                            <%=comment.userComment%>
+                                                        </p>
+                                            </div>
                                             <% } %>
                                                 <% } %>
+                        </div>
 
-                                                    <p class="comment-belongsTo">
-                                                        <%=comment.belongsTo %>
-                                                    </p>
-                                                    <p class="comment-userComment">
-                                                        <%=comment.userComment%>
-                                                    </p>
+                        <div class="comment-form-container">
+                            <% if(locals.errors) { %>
+                                <p class="text-danger">
+                                    <%= errors.mustWaitToComment.msg %>
+                                </p>
+                                <% } %>
+                                    <form class="comment-form" action="/recipes/comments/<%=recipe.id%>" method="POST">
+                                        <textarea name="comments" id="" cols="30" rows="10" placeholder="What do you think about this recipe?"></textarea>
+                                        <!-- <input type="text" name="comments" placeholder="What do you think about this recipe?"> -->
+                                        <button type="submit">Send</button>
+                                    </form>
 
-                                        </div>
-                                        <% } %>
-                                            <% } %>
+                        </div>
                     </div>
-            </div>
-            <div class="comment-form">
-                <form action="/recipes/comments/<%=recipe.id%>" method="POST">
-                    <!-- <textarea name="comments" style="font-family:sans-serif;font-size:1.2em;" placeholder="What do you think about this recipe ?  ">
-                                                                    </textarea> -->
-                    <input type="text" name="comments" placeholder="What do you think about this recipe?">
-                    <input type="submit">
-                </form>
-            </div>
 
-            </section>
-            </div>
+                    <!-- </section>
+            </div> -->
         </main>
         <%- include("partials/footer.ejs") %>
 </body>

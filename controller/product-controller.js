@@ -1,7 +1,5 @@
 // now it takes the input for ingredients and saves as a array perfectly, doesnt display yet.
-//after submitting a comment, if the user refreshes page it submits again
 //must validate that form isnt empty and isnt X so long
-//for the comment section, i should show the name instead of the email
 
 
 var fs = require('fs')
@@ -130,6 +128,7 @@ module.exports = {
     },
 
     submitComment: (req, res) => {
+
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
         let userLoggedEmail = req.session.userLogged.email
         let allUsers = users
@@ -144,47 +143,45 @@ module.exports = {
             })
         }
 
-        //i must check the last comment
-        let lastComment = commentData.pop()
-        console.log(lastComment)
-        //if it belongs to user logged, pass an error.
-        //now im trying to create time and check so user cant submit many forms 
-        if (lastComment.belongTo == req.session.userLogged.email && lastComment.timeOfComment) {
-            let productComments = commentData.filter(id => req.params.id == id.refersToId)
 
-            res.render('product-detail', {
-                comments: productComments, recipe: recipeFound, userLoggedEmail, allUsers,
-                errors: {
-                    waitToComment: {
-                        msg: 'you must wait at least 1 minute between comment'
+        let lastComment = commentData[commentData.length - 1]
+        let lastCommentDate = lastComment.timeOfComment
+
+        let timeNow = Date.parse(new Date())
+
+
+        if (lastComment.belongsTo == userLoggedEmail) {
+            var difference = (((timeNow - lastCommentDate) / 1000) / 60)
+            console.log(difference)
+            if ((difference) < 1) {
+                let productComments = commentData.filter(id => req.params.id == id.refersToId)
+                res.render('product-detail', {
+                    comments: productComments, recipe: recipeFound, userLoggedEmail, allUsers, errors: {
+                        mustWaitToComment: {
+                            msg: 'please wait at least 1 minute before leaving another comment'
+                        }
                     }
-                }
-            })
-
-
-            let newComment = {
-                refersToId: req.params.id,
-                belongsTo: userLoggedEmail,
-                userComment: req.body.comments,
-                timeOfComment: Date.getMinutes()
+                })
             }
-            req.body.comments = ""
-
-            commentData.push(newComment)
-            WriteCommentJSON()
-
-
-
-
-
-
-
-        } else {
-            res.render('product-detail', {
-                comments: productComments, recipe: recipeFound, userLoggedEmail, allUsers
-            })
-
+            if (lastComment.belongsTo != userLoggedEmail || ((((timeNow - lastCommentDate) / 1000) / 60) > 1)) {
+                let newComment = {
+                    refersToId: req.params.id,
+                    belongsTo: userLoggedEmail,
+                    userComment: req.body.comments,
+                    timeOfComment: Date.parse(new Date())
+                }
+                // req.body.comments = ""
+                commentData.push(newComment)
+                WriteCommentJSON()
+                let productComments = commentData.filter(id => req.params.id == id.refersToId)
+                res.render('product-detail', {
+                    comments: productComments, recipe: recipeFound, userLoggedEmail, allUsers
+                })
+            }
         }
+
+
+
         //Must paginate!
 
     },
