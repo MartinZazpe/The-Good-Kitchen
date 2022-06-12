@@ -2,13 +2,15 @@
     {
         "refersToId": "1",
         "belongsTo": "richmond@hotmail.com",
-        "userComment": "nice!",
-        "timeOfComment": 1654941988000
+        "userComment": "Very nice recipe i will try it out today",
+        "rating": 4,
+        "timeOfComment": 1655036469000
     },
     {
         "refersToId": "1",
-        "belongsTo": "richmond@hotmail.com",
-        "userComment": "nice!",
-        "timeOfComment": 1654944570000
+        "belongsTo": "maria@hotmail.com",
+        "userComment": "Easy, fast and delicious!",
+        "rating": 5,
+        "timeOfComment": 1655073246000
     }
 ]

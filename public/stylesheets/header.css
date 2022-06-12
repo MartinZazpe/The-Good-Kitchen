@@ -59,11 +59,17 @@
 }
 
 .navigation-list-dropdown {
-    width: 100%
+    width: 100%;
+    transition: all 3s ease 2s
 }
 
 .navigation-list-dropdown.active {
-    width: 100%
+    width: 100%;
+    transition: all 3s ease 2s
+}
+
+.navigation-list-dropdown {
+    max-height: 3s ease;
 }
 
 .noDisplay {

@@ -66,14 +66,35 @@ module.exports = {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
         let productComments = commentData.filter(id => req.params.id == id.refersToId)
         let allUsers = users
+        let userLogged = req.session.userLogged
+
+        // productComments.reduce(function (a, b) { return a + b.rating }, 0)
+        // console.log(productComments)
+
+        //find the Id of the current product
+        //check for that ID the sum of all ratings
+        //return them in a variable
+
+
+
+        let totalRating = 0
+        for (let i = 0;i < productComments.length;i++) {
+            totalRating += productComments[i].rating
+        }
+        let amountOfReviews = productComments.filter(x => x.rating != null).length
+        let ratingAvg = Math.floor(totalRating / amountOfReviews)
+
+        console.log(amountOfReviews)
 
         if (req.session.userLogged) {
-            let userLoggedEmail = req.session.userLogged.email
+            let userLogged = req.session.userLogged
             res.render('product-detail', {
-                recipe: recipeFound, comments: productComments, userLoggedEmail, allUsers
+                recipe: recipeFound, comments: productComments, userLogged, allUsers, amountOfReviews, ratingAvg, userLogged
             })
         } else if (!req.session.userLogged) {
-            res.render('product-detail', { recipe: recipeFound, comments: productComments, allUsers })
+            res.render('product-detail', {
+                recipe: recipeFound, comments: productComments, allUsers, amountOfReviews, ratingAvg
+            })
         }
     },
     create: (req, res) => {
@@ -130,7 +151,7 @@ module.exports = {
     submitComment: (req, res) => {
 
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        let userLoggedEmail = req.session.userLogged.email
+        let userLogged = req.session.userLogged
         let allUsers = users
 
         if (!req.session.userLogged) {
@@ -143,44 +164,48 @@ module.exports = {
             })
         }
 
-
         let lastComment = commentData[commentData.length - 1]
         let lastCommentDate = lastComment.timeOfComment
 
+
+        console.log(lastComment)
+
         let timeNow = Date.parse(new Date())
 
+        // if (commentData.Object.keys().belongsTo == 0) {
+        //     ('theres  no comments')
+        // }
 
-        if (lastComment.belongsTo == userLoggedEmail) {
+        if (lastComment.belongsTo == userLogged.email) {
             var difference = (((timeNow - lastCommentDate) / 1000) / 60)
             console.log(difference)
             if ((difference) < 1) {
                 let productComments = commentData.filter(id => req.params.id == id.refersToId)
                 res.render('product-detail', {
-                    comments: productComments, recipe: recipeFound, userLoggedEmail, allUsers, errors: {
+                    comments: productComments, recipe: recipeFound, userLogged, allUsers, errors: {
                         mustWaitToComment: {
                             msg: 'please wait at least 1 minute before leaving another comment'
                         }
                     }
                 })
             }
-            if (lastComment.belongsTo != userLoggedEmail || ((((timeNow - lastCommentDate) / 1000) / 60) > 1)) {
-                let newComment = {
-                    refersToId: req.params.id,
-                    belongsTo: userLoggedEmail,
-                    userComment: req.body.comments,
-                    timeOfComment: Date.parse(new Date())
-                }
-                // req.body.comments = ""
-                commentData.push(newComment)
-                WriteCommentJSON()
-                let productComments = commentData.filter(id => req.params.id == id.refersToId)
-                res.render('product-detail', {
-                    comments: productComments, recipe: recipeFound, userLoggedEmail, allUsers
-                })
-            }
         }
-
-
+        if (lastComment.belongsTo != userLogged.email || ((((timeNow - lastCommentDate) / 1000) / 60) > 1)) {
+            let newComment = {
+                refersToId: req.params.id,
+                belongsTo: userLogged.email,
+                userComment: req.body.comments,
+                rating: Number(req.body.rate),
+                timeOfComment: Date.parse(new Date())
+            }
+            // req.body.comments = ""
+            commentData.push(newComment)
+            WriteCommentJSON()
+            let productComments = commentData.filter(id => req.params.id == id.refersToId)
+            res.render('product-detail', {
+                comments: productComments, recipe: recipeFound, userLogged, allUsers
+            })
+        }
 
         //Must paginate!
 
