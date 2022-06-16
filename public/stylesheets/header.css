@@ -275,6 +275,7 @@ ul {
     justify-content: space-evenly;
 }
 
+
 .search-label {
     display: none;
 }
@@ -381,7 +382,7 @@ ul {
         display: initial;
         display: flex;
         flex-flow: row wrap;
-        justify-content: space-evenly;
+        justify-content: space-between;
     }
 
     .navigation-list-dropdown ul {

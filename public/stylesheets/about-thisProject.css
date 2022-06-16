@@ -1,0 +1,43 @@
+.body-information {
+    margin-top: 50px;
+    text-align: center;
+    color: rgb(65, 78, 90)
+}
+
+.main-content {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.about-project-container h1 {
+    padding: 20px 0px;
+}
+
+.about-project-container>* {
+    padding: 10px;
+}
+
+.website-traits {
+    margin-top: 10px;
+    text-align: center;
+    border: 1px dashed rgb(98, 161, 164);
+    border-radius: 3px;
+    width: 60%;
+}
+
+.website-traits ul li {
+    align-self: center;
+    margin: 10px;
+    text-align: center;
+    border: 1px dashed rgb(98, 161, 164);
+    border-radius: 3px;
+    width: 60%
+}
+
+.website-traits ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

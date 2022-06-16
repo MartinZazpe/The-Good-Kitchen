@@ -13,4 +13,7 @@ router.get('/about-us', indexController.aboutUs)
 /* GET help */
 router.get('/help', indexController.help)
 
+
+router.get('/aboutThisProject', indexController.aboutThisProject)
+
 module.exports = router

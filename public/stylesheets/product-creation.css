@@ -1,8 +1,165 @@
-.form-container {
-    display: flex;
-    flex-flow: column wrap;
+.body-information {
+    background: linear-gradient(0.25turn, rgba(138, 218, 227, 0.5), rgba(94, 223, 189, 0.5));
+    /* background: linear-gradient(#e66465, #9198e5); */
 }
 
+
+.form-container {
+    display: flex;
+    flex-flow: wrap column;
+    padding: 10px 5px;
+}
+
+.form-container div {
+    padding: 10px 0px;
+}
+
+
+.form-container input,
+textarea {
+    border-radius: 2px;
+    border: none;
+}
+
+/* .form-container>* {
+    padding: 15px;
+} */
+
+.title-title {
+    width: 100%;
+    display: flex;
+    /* align-content: center; */
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-title>* {
+    padding: 10px 0px;
+}
+
+.recipe-pretitle {
+    transform: rotate(-25deg);
+    font-size: x-large;
+    text-decoration: dotted;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 1px 2px;
+}
+
+.description-label {
+    text-align: center;
+}
+
+
+
+.title-title div input {
+    text-align: center;
+}
+
+
+.directions-ingredients-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.directions-ingredients-container>* {
+    padding-top: 20px;
+}
+
+.description-container {
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: center;
+}
+
+
+.description-container textarea {
+    resize: none;
+}
+
+/* this on resize */
+/* .directions-ingredients-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.directions-ingredients-container>* {
+    flex-basis: 40%;
+}
+
+.ingredients-container {
+    padding-left: 20px;
+} */
+
+
+.product-directions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    border: 1px solid grey;
+}
+
+.label-directions,
+.label-ingredients {
+    text-align: center;
+    font-size: larger;
+    border-bottom: 1px dashed grey;
+    width: 100%;
+    align-self: center;
+}
+
+.controls {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around
+}
+
+.controls-ol-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+}
+
+.controls {
+    width: 100%;
+}
+
+.instruction-list-container,
+.ingredient-list-container {
+    width: 100%;
+}
+
+li {
+    margin: 10px 0px;
+}
+
+input {
+    width: 100%;
+}
+
+
+
+
+
+/* .controls>* {
+    width: 100%;
+} */
+
+/* #add_more_fields {
+    width: 100%;
+} */
+
+
+
+
+/* #remove_fields {
+    float: right;
+} */
 
 
 /* small devices tablets */

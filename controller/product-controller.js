@@ -1,7 +1,7 @@
 // now it takes the input for ingredients and saves as a array perfectly, doesnt display yet.
 //must validate that form isnt empty and isnt X so long
 
-
+const { validationResult } = require('express-validator')
 var fs = require('fs')
 var path = require('path')
 const { nextTick } = require('process')
@@ -106,8 +106,8 @@ module.exports = {
             id: data.length + 1,
             title: req.body.title,
             description: req.body.description,
-            Ingredients: req.body.Ingredients.split(','),
-            directions: req.body.directions.split(','),
+            Ingredients: req.body.Ingredients,
+            directions: req.body.directions,
             image: req.file ? req.file.filename : "no-image-default.png",
             belongsTo: req.session.userLogged.email
         }
@@ -153,9 +153,17 @@ module.exports = {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
         let userLogged = req.session.userLogged
         let allUsers = users
+        let productComments = commentData.filter(id => req.params.id == id.refersToId)
+
+        let totalRating = 0
+        for (let i = 0;i < productComments.length;i++) {
+            totalRating += productComments[i].rating
+        }
+
+
 
         if (!req.session.userLogged) {
-            res.render('login', {
+            return res.render('login', {
                 errors: {
                     LoggedToComment: {
                         msg: 'You must be logged in to leave a comment'
@@ -163,6 +171,7 @@ module.exports = {
                 }
             })
         }
+
 
         let lastComment = commentData[commentData.length - 1]
         let lastCommentDate = lastComment.timeOfComment
@@ -172,17 +181,18 @@ module.exports = {
 
         let timeNow = Date.parse(new Date())
 
-        // if (commentData.Object.keys().belongsTo == 0) {
-        //     ('theres  no comments')
-        // }
+
 
         if (lastComment.belongsTo == userLogged.email) {
             var difference = (((timeNow - lastCommentDate) / 1000) / 60)
             console.log(difference)
             if ((difference) < 1) {
-                let productComments = commentData.filter(id => req.params.id == id.refersToId)
-                res.render('product-detail', {
-                    comments: productComments, recipe: recipeFound, userLogged, allUsers, errors: {
+                // let productComments = commentData.filter(id => req.params.id == id.refersToId)
+                let amountOfReviews = productComments.filter(x => x.rating != null).length
+                let ratingAvg = Math.floor(totalRating / amountOfReviews)
+
+                return res.render('product-detail', {
+                    comments: productComments, recipe: recipeFound, userLogged, allUsers, amountOfReviews, ratingAvg, errors: {
                         mustWaitToComment: {
                             msg: 'please wait at least 1 minute before leaving another comment'
                         }
@@ -202,10 +212,13 @@ module.exports = {
             commentData.push(newComment)
             WriteCommentJSON()
             let productComments = commentData.filter(id => req.params.id == id.refersToId)
-            res.render('product-detail', {
-                comments: productComments, recipe: recipeFound, userLogged, allUsers
+            let amountOfReviews = productComments.filter(x => x.rating != null).length
+            let ratingAvg = Math.floor(totalRating / amountOfReviews)
+            return res.render('product-detail', {
+                comments: productComments, recipe: recipeFound, userLogged, allUsers, amountOfReviews, ratingAvg
             })
         }
+
 
         //Must paginate!
 

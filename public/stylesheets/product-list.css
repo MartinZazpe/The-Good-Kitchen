@@ -33,7 +33,7 @@
     position: relative;
 }
 
-div h3 {
+.title-image-container h3 {
     font-family: 'Alegreya', serif;
     font-size: 1.5rem;
     align-self: center;
@@ -84,7 +84,7 @@ div h3 {
 
 @media(min-width:768px) {
 
-    div h3 {
+    .title-image-container h3 {
         font-size: 1.7rem
     }
 }

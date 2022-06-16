@@ -184,6 +184,7 @@ a:hover {
 
 .username-input-container input {
     width: auto;
+    max-width: 150px;
 }
 
 .username-input-container i {
@@ -208,9 +209,10 @@ a:hover {
     text-align: center;
 }
 
+
 .username-input {
     text-align: center;
-    width: 100px;
+    width: 50px;
     border: none;
     border-radius: 5px;
     font-size: 1.17rem;

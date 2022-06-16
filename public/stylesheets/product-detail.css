@@ -13,9 +13,21 @@ li.strikethrough {
 
 .image-container {
     width: 100%;
-    border-radius: 30px;
+    border-radius: 3px;
     overflow: hidden;
 }
+
+.edit-container {
+    /* position: absolute;
+    bottom: 2%;
+    left: 4%; */
+    width: 130px;
+    z-index: 3;
+    background-color: rgb(200, 190, 190);
+    border-radius: 5px;
+    padding: 3px;
+}
+
 
 .image-avg-container {
     position: relative;
@@ -30,6 +42,7 @@ li.strikethrough {
     position: absolute;
     bottom: 2%;
     right: 4%;
+    z-index: 3;
     border-radius: 5px;
     background-color: white;
 }
@@ -38,7 +51,7 @@ li.strikethrough {
 .OneRecipeImage {
     width: 100%;
     transition: transform .2s;
-    border-radius: 30px;
+    border-radius: 3px;
 }
 
 .OneRecipeImage:hover {
@@ -51,6 +64,7 @@ li.strikethrough {
     width: 100%;
     justify-content: center;
     padding: 30px;
+    position: relative;
 }
 
 .comment-form {
@@ -67,9 +81,16 @@ li.strikethrough {
     width: 100%;
 }
 
-.comment-form button {
+.submit-form {
     width: 60px;
     height: 10%;
+    position: absolute;
+    right: 25%;
+    bottom: 17%;
+    color: white;
+    background-color: rgba(13, 11, 86, 0.8);
+    border: none;
+    border-radius: 3px;
 }
 
 .comment-section-container {
@@ -241,6 +262,7 @@ p {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
 }
 
 .container .star-widget input {
@@ -251,6 +273,11 @@ p {
 .star-widget {
     display: flex;
     flex-flow: row-reverse;
+}
+
+.edit-icon i {
+    color: green;
+    padding-left: 5px;
 }
 
 
@@ -284,10 +311,21 @@ input#rate-5:checked~label i {
     .body-information {
         margin-top: 40px;
     }
+
+    .submit-form {
+        right: 20%;
+    }
 }
 
 @media (min-width: 523px) {
     .body-information {
         margin-top: 35px;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .submit-form {
+        right: 17%;
     }
 }

@@ -28,20 +28,36 @@
                     <div class="container-product">
                         <div class="OneProductContainer">
                             <div class="image-avg-container">
-                                <div class="AVGrating">
 
-                                    <div>
-                                        <% if(locals.ratingAvg> 0) { %>
+                                <% if(locals.ratingAvg> 0) { %>
+                                    <div class="AVGrating">
+
+                                        <div>
                                             <h5>
                                                 <%= ratingAvg %> / 5 <i class="colorGold fa-lg fa-solid fa-star"></i>
                                             </h5>
-                                            <% }%>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="image-container">
-                                    <img class="OneRecipeImage" src="/images/<%= recipe.image %>">
-                                </div>
+                                    <% }%>
+
+                                        <div class="image-container">
+                                            <img class="OneRecipeImage" src="/images/<%= recipe.image %>">
+                                        </div>
                             </div>
+
+
+
+                            <div>
+                                <% if(locals.userLogged){ %>
+                                    <% if(userLogged.email==recipe.belongsTo) { %>
+                                        <div class="edit-container">
+                                            <a class="edit-icon" href="/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>
+                                        </div>
+                                        <% } %>
+                                            <% } %>
+                            </div>
+
+
 
 
                             <div class="ingredients">
@@ -59,15 +75,7 @@
 
                             </div>
 
-                            <% if(locals.userLogged){ %>
-                                <% if(userLogged.email==recipe.belongsTo) { %>
-                                    <% if(locals.userLoggedEmail){ %>
-                                        <% if(userLoggedEmail==recipe.belongsTo) {%>
-                                            <a class="edit-icon" href="/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>
-                                            <% } %>
-                                                <% } %>
-                                                    <% } %>
-                                                        <% } %>
+
                         </div>
                     </div>
                 </section>
@@ -87,11 +95,11 @@
                                         <% if(user.email==comment.belongsTo){ %>
                                             <div class="user-comment-container">
                                                 <img class="user-comment-image" src="/images/userImages/<%= user.image %>" alt="user-image">
+                                                <p class="comment-belongsTo">
+                                                    <%=user.name %>
+                                                </p>
                                                 <% } %>
                                                     <% } %>
-                                                        <p class="comment-belongsTo">
-                                                            <%=comment.belongsTo %>
-                                                        </p>
                                                         <p class="comment-userComment">
                                                             <%=comment.userComment%>
                                                         </p>
@@ -135,14 +143,14 @@
                                 <textarea name="comments" id="" cols="30" rows="10" placeholder="Hey <%if(locals.userLogged){ %> <%=userLogged.name %><% } %>, what do you think about this recipe?"></textarea>
                                 <!-- <input type="text" name="comments" placeholder="What do you think about this recipe?"> -->
                                 <div class="error-container">
+
                                     <% if(locals.errors) { %>
-                                        <p class="text-danger">
+                                        <p class="text-danger waitToComment">
                                             <%= errors.mustWaitToComment.msg %>
                                         </p>
                                         <% } %>
                                 </div>
-                                <button type="submit">Submit</button>
-
+                                <button class="submit-form" type="submit">Send</button>
                             </form>
                         </div>
                     </div>

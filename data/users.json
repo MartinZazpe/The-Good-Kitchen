@@ -22,5 +22,13 @@
         "type": "Community member",
         "password": "$2a$10$AlWCQmRnPZrA8cD7YOWWwe8pDQqo3hldITdA4xn0BFJNvHwkWAAZK",
         "image": "johnnyProfilePic.jpeg"
+    },
+    {
+        "id": 4,
+        "name": "Tasha",
+        "email": "tasha@hotmail.com",
+        "type": "Community member",
+        "password": "$2a$10$0evXdP3kyECuClRX4hmAreSsz63yv26/6yioqMOOKrxVl0sZnLAmm",
+        "image": "1655159362919_img.jpeg"
     }
 ]

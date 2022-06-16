@@ -10,7 +10,7 @@ router.get('/list', productController.productList)
 
 /* shows detail */
 router.get('/detail/:id', productController.detail)
-router.post('/comments/:id', authMiddleware, productController.submitComment)
+router.post('/comments/:id', productController.submitComment)
 
 
 /*  create a product   */

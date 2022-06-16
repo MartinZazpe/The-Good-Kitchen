@@ -28,6 +28,9 @@ module.exports = {
     },
     help: (req, res) => {
         res.render('help')
+    },
+    aboutThisProject: (req, res) => {
+        res.render('about-this-project')
     }
 }
 
