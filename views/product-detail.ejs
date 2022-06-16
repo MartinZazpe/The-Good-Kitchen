@@ -47,15 +47,37 @@
 
 
 
-                            <div>
-                                <% if(locals.userLogged){ %>
-                                    <% if(userLogged.email==recipe.belongsTo) { %>
-                                        <div class="edit-container">
-                                            <a class="edit-icon" href="/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>
-                                        </div>
-                                        <% } %>
+                            <div class="edit-creator-container">
+                                <div>
+                                    <% if(locals.userLogged){ %>
+                                        <% if(userLogged.email==recipe.belongsTo) { %>
+                                            <div class="edit-container">
+                                                <a class="edit-icon" href="/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>
+                                            </div>
                                             <% } %>
+                                                <% } %>
+                                </div>
+                                <div class="creator-container">
+                                    <% for(user of allUsers) {%>
+                                        <% if(user.email==recipe.belongsTo){ %>
+                                            <div class="creator-container-flex">
+                                                <p>By <%=user.name%>
+                                                </p>
+                                                <div class="container-image-chefhat">
+                                                    <img style="width:50px; border-radius:10px" src="/images/userImages/<%= user.image %>" alt="user-recipe-image">
+                                                    <div class="chef-hat-container">
+                                                        <img class="chef-hat" src="/images/chef-hat-png.png" alt="">
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <% } %>
+                                                <% } %>
+                                </div>
                             </div>
+
+
 
 
 

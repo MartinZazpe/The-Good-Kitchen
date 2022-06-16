@@ -25,16 +25,65 @@ li.strikethrough {
     transform: scale(1.05)
 }
 
+
+/* edit & product creator */
+
 .edit-container {
     /* position: absolute;
     bottom: 2%;
     left: 4%; */
     width: 130px;
     z-index: 3;
-    background-color: rgb(200, 190, 190);
-    border-radius: 5px;
+    background-color: rgba(225, 209, 209, 0.3);
+    border-radius: 0px;
     padding: 3px;
 }
+
+.edit-icon {
+    color: rgb(47, 39, 39)
+}
+
+
+.edit-creator-container {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-between;
+}
+
+
+.creator-container {
+    /* border-bottom: 3px dotted rgb(151, 151, 187);
+    border-left: 3px dotted rgb(151, 151, 187); */
+    border-style: dashed double none;
+}
+
+.creator-container-flex {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.chef-hat {
+    width: 30px;
+    transform: rotate(-20deg)
+}
+
+
+.container-image-chefhat {
+    align-self: center;
+    position: relative;
+    padding-top: 15px;
+}
+
+.chef-hat-container {
+    position: absolute;
+    top: 0;
+    right: 25%;
+}
+
+
+/* Ends edit & product creator */
 
 
 .image-avg-container {
@@ -350,20 +399,18 @@ input#rate-5:checked~label i {
     }
 
     .ingredients ul {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: flex-start;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 300px);
+        justify-content: center
     }
 
     .ingredients ul li {
-        padding: 10px 10px;
-        flex-basis: 40%;
+        padding: 15px 3px;
         border-bottom: 1px solid rgb(187, 183, 183);
         margin: 0px 5px
     }
-
-
 }
+
 
 @media (min-width: 523px) {
     .body-information {

@@ -93,7 +93,7 @@ module.exports = {
         if (req.session.userLogged) {
             let userLogged = req.session.userLogged
             res.render('product-detail', {
-                recipe: recipeFound, comments: productComments, userLogged, allUsers, amountOfReviews, ratingAvg, userLogged
+                recipe: recipeFound, comments: productComments, userLogged, allUsers, amountOfReviews, ratingAvg
             })
         } else if (!req.session.userLogged) {
             res.render('product-detail', {
