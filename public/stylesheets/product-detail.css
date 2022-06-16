@@ -13,8 +13,16 @@ li.strikethrough {
 
 .image-container {
     width: 100%;
-    border-radius: 3px;
     overflow: hidden;
+}
+
+.OneRecipeImage {
+    width: 100%;
+    transition: transform .2s;
+}
+
+.OneRecipeImage:hover {
+    transform: scale(1.05)
 }
 
 .edit-container {
@@ -33,30 +41,21 @@ li.strikethrough {
     position: relative;
 }
 
-.colorGold {
-    color: gold;
-}
 
 .AVGrating {
     padding: 3px;
     position: absolute;
     bottom: 2%;
     right: 4%;
-    z-index: 3;
     border-radius: 5px;
     background-color: white;
 }
 
 
-.OneRecipeImage {
-    width: 100%;
-    transition: transform .2s;
-    border-radius: 3px;
+.colorGold {
+    color: gold;
 }
 
-.OneRecipeImage:hover {
-    transform: scale(1.1)
-}
 
 .comment-form-container {
     display: flex;
@@ -155,35 +154,73 @@ li.strikethrough {
     font-style: italic;
 }
 
-.ingredients {
+.ingredients,
+.directions {
     padding-bottom: 20px;
 }
 
-.ingredients ul,
-p {
-    padding: 10px;
+.ingredients-title,
+.directions-title {
+    padding: 30px 30px 20px 10px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
 }
+
+
 
 .ingredients ul {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    flex-flow: wrap
 }
 
 .ingredients ul li {
-    padding: 3px;
-    text-align: start;
-    align-self: start;
-    list-style-type: circle;
-    list-style-position: inside;
-    padding: 5px 0;
-    color: rgb(103, 103, 225);
+    padding: 10px 10px;
+    flex-basis: 100%;
+    border-bottom: 1px solid rgb(187, 183, 183);
 }
 
-.ingredients-list {
-    display: flex;
-    align-content: center;
+
+
+/* Directions ol */
+
+.directions ol li {
+    padding: 10px 10px;
+    flex-basis: 100%;
 }
+
+.directions-list ol {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    counter-reset: foo;
+
+}
+
+
+.directions ol li {
+    padding: 20px 5px;
+    flex-basis: 100%;
+    counter-increment: foo;
+    display: table;
+}
+
+
+.directions ol li::before {
+    content: counter(foo) ".";
+    display: table-cell;
+    text-align: right;
+    color: red;
+    margin: 0px 8px 0px 0px;
+    border-radius: 100%;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ends Directions ol */
+
+
 
 .comments-header {
     display: flex;
@@ -211,10 +248,6 @@ p {
     display: flex;
 }
 
-
-.ingredients-list li {
-    list-style: square inside !important;
-}
 
 .ingredients-list li:hover {
     cursor: pointer;
@@ -315,6 +348,21 @@ input#rate-5:checked~label i {
     .submit-form {
         right: 20%;
     }
+
+    .ingredients ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+    }
+
+    .ingredients ul li {
+        padding: 10px 10px;
+        flex-basis: 40%;
+        border-bottom: 1px solid rgb(187, 183, 183);
+        margin: 0px 5px
+    }
+
+
 }
 
 @media (min-width: 523px) {

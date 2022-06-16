@@ -50,6 +50,8 @@ function writeJSON() {
 module.exports = {
     productList: (req, res) => {
         let allUsers = users
+
+
         if (req.session.userLogged) {
             // let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
             let userLoggedEmail = req.session.userLogged.email
@@ -57,7 +59,9 @@ module.exports = {
                 recipes: data, userLoggedEmail, allUsers
             })
         } else if (!req.session.userLogged) {
-            res.render('product-list', { recipes: data, allUsers })
+            res.render('product-list', {
+                recipes: data, allUsers
+            })
         }
         //must paginate!
     },
@@ -176,9 +180,6 @@ module.exports = {
         let lastComment = commentData[commentData.length - 1]
         let lastCommentDate = lastComment.timeOfComment
 
-
-        console.log(lastComment)
-
         let timeNow = Date.parse(new Date())
 
 
@@ -211,9 +212,29 @@ module.exports = {
             // req.body.comments = ""
             commentData.push(newComment)
             WriteCommentJSON()
+
+
+
             let productComments = commentData.filter(id => req.params.id == id.refersToId)
+            let totalRating = 0
+            for (let i = 0;i < productComments.length;i++) {
+                totalRating += productComments[i].rating
+            }
             let amountOfReviews = productComments.filter(x => x.rating != null).length
             let ratingAvg = Math.floor(totalRating / amountOfReviews)
+
+            console.log(productComments)
+            // console.log(amountOfReviews)
+            console.log(ratingAvg)
+
+
+
+            let recipeFound = data.find(recipe => recipe.id == req.params.id)
+            /* overwrite rating or create it */
+            recipeFound.ratingAvg = (ratingAvg != null) ? ratingAvg : null
+            /* overwrite JSON */
+            writeJSON()
+
             return res.render('product-detail', {
                 comments: productComments, recipe: recipeFound, userLogged, allUsers, amountOfReviews, ratingAvg
             })
@@ -252,7 +273,6 @@ module.exports = {
         }
 
     }
-
 }
 
 

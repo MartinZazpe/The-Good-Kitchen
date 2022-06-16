@@ -73,7 +73,8 @@
         ],
         "description": "Easy to make, delicious to eat",
         "image": "fluffypancakes.jpeg",
-        "belongsTo": "johnny@hotmail.com"
+        "belongsTo": "johnny@hotmail.com",
+        "ratingAvg": 5
     },
     {
         "id": 5,

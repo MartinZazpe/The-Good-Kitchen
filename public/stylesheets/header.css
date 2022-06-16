@@ -143,6 +143,10 @@ body i {
     margin: .5rem;
 }
 
+#logo h1:hover {
+    cursor: pointer;
+}
+
 ul {
     margin: 0;
 }

@@ -59,7 +59,7 @@
             <div class="introduction-flex-container">
               <p class="cake">&#127856</p>
               <section class="introduction">
-                <h5>Upload your recipe and share it with the world!</h5>
+                <h5 class="intro-title">Upload your recipe and share it with the world!</h5>
                 </p>
               </section>
             </div>
@@ -71,8 +71,19 @@
           <% for(let recipe of recipes) {%>
 
             <div class="product-container">
-              <div class="imageContainer">
-                <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="/images/<%= recipe.image %>"></a>
+              <div class="image-avg-container">
+                <div class="imageContainer">
+                  <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="/images/<%= recipe.image %>"></a>
+                  <% if(recipe.ratingAvg> 0) { %>
+                    <div class="AVGrating">
+                      <div>
+                        <h5>
+                          <%= recipe.ratingAvg %> / 5 <i class="colorGold fa-sm fa-solid fa-star"></i>
+                        </h5>
+                      </div>
+                    </div>
+                    <% }%>
+                </div>
               </div>
               <div class="description-hyperlink ">
                 <h6>

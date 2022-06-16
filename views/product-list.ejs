@@ -61,6 +61,17 @@
                                             <a class="edit-icon" href="/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>
                                             <% } %>
                                                 <% } %>
+                                                    <div class="image-avg-container">
+                                                        <% if(recipe.ratingAvg> 0) { %>
+                                                            <div class="AVGrating">
+                                                                <div>
+                                                                    <h5>
+                                                                        <%= recipe.ratingAvg %> / 5 <i class="colorGold fa-lg fa-solid fa-star"></i>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <% }%>
+                                                    </div>
                                 </div>
                                 <div class="description-hyperlink">
                                     <h6 class="recipe-title">

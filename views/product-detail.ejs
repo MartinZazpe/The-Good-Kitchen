@@ -61,8 +61,8 @@
 
 
                             <div class="ingredients">
+                                <p class="ingredients-title">Ingredients</p>
                                 <ul class="ingredients-list">
-                                    <p class="ingredients-title">Ingredients:</p>
                                     <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
                                         <li>
                                             <%= recipe.Ingredients[i] %>
@@ -72,7 +72,14 @@
                             </div>
 
                             <div class="directions">
-
+                                <p class="directions-title">Directions</p>
+                                <ol class="directions-list ">
+                                    <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
+                                        <li>
+                                            <%= recipe.Ingredients[i] %>
+                                        </li>
+                                        <% } %>
+                                </ol>
                             </div>
 
 
@@ -142,16 +149,16 @@
 
                                 <textarea name="comments" id="" cols="30" rows="10" placeholder="Hey <%if(locals.userLogged){ %> <%=userLogged.name %><% } %>, what do you think about this recipe?"></textarea>
                                 <!-- <input type="text" name="comments" placeholder="What do you think about this recipe?"> -->
-                                <div class="error-container">
-
-                                    <% if(locals.errors) { %>
-                                        <p class="text-danger waitToComment">
-                                            <%= errors.mustWaitToComment.msg %>
-                                        </p>
-                                        <% } %>
-                                </div>
                                 <button class="submit-form" type="submit">Send</button>
                             </form>
+                            <div class="error-container">
+
+                                <% if(locals.errors) { %>
+                                    <p class="text-danger waitToComment">
+                                        <%= errors.mustWaitToComment.msg %>
+                                    </p>
+                                    <% } %>
+                            </div>
                         </div>
                     </div>
 

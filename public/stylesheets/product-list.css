@@ -5,9 +5,9 @@
     justify-content: space-evenly;
 }
 
-.body-information {
+/* .body-information {
     margin-top: 3px;
-}
+} */
 
 .buttons button {
     padding: 3px;
@@ -53,7 +53,7 @@
 .edit-icon {
     position: absolute;
     bottom: 5px;
-    right: 5px;
+    left: 5px;
 }
 
 .edit-icon i {
@@ -81,6 +81,12 @@
 .hide {
     display: none;
 }
+
+
+
+
+
+
 
 @media(min-width:768px) {
 
