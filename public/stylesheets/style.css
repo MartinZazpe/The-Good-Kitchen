@@ -202,23 +202,6 @@ label {
   align-self: flex-start;
 }
 
-#image-label {
-  text-align: center;
-  display: block;
-  position: relative;
-  margin: 30px;
-  width: 120px;
-  height: 33px;
-  border-radius: 25px;
-  background: linear-gradient(40deg, #ff906e, #bebddd);
-  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-}
 
 .IngredientsInstructions {
   color: #ff906e;

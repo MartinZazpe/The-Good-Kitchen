@@ -29,9 +29,6 @@ li.strikethrough {
 /* edit & product creator */
 
 .edit-container {
-    /* position: absolute;
-    bottom: 2%;
-    left: 4%; */
     width: 130px;
     z-index: 3;
     background-color: rgba(225, 209, 209, 0.3);
@@ -43,19 +40,23 @@ li.strikethrough {
     color: rgb(47, 39, 39)
 }
 
-
 .edit-creator-container {
     display: flex;
     flex-flow: wrap row;
     justify-content: space-between;
 }
 
-
-.creator-container {
-    /* border-bottom: 3px dotted rgb(151, 151, 187);
-    border-left: 3px dotted rgb(151, 151, 187); */
-    border-style: dashed double none;
+.creator-image {
+    width: 80px;
+    border-radius: 10px
 }
+
+.container-image-chefhat {
+    border-style: double;
+    border-radius: 10%;
+    color: rgb(137, 216, 137);
+}
+
 
 .creator-container-flex {
     display: flex;
@@ -64,24 +65,26 @@ li.strikethrough {
     align-items: flex-end;
 }
 
-.chef-hat {
-    width: 30px;
-    transform: rotate(-20deg)
+.creator-container-flex p {
+    align-self: center;
 }
 
+/* .chef-hat {
+    width: 30px;
+    transform: rotate(-20deg)
+} */
 
-.container-image-chefhat {
+/* .container-image-chefhat {
     align-self: center;
     position: relative;
     padding-top: 15px;
-}
+} */
 
-.chef-hat-container {
+/* .chef-hat-container {
     position: absolute;
     top: 0;
     right: 25%;
-}
-
+} */
 
 /* Ends edit & product creator */
 
@@ -203,6 +206,8 @@ li.strikethrough {
     font-style: italic;
 }
 
+/* ingredients */
+
 .ingredients,
 .directions {
     padding-bottom: 20px;
@@ -216,11 +221,9 @@ li.strikethrough {
     text-align: left;
 }
 
-
-
 .ingredients ul {
     display: flex;
-    flex-flow: wrap
+    flex-flow: wrap;
 }
 
 .ingredients ul li {
@@ -228,6 +231,9 @@ li.strikethrough {
     flex-basis: 100%;
     border-bottom: 1px solid rgb(187, 183, 183);
 }
+
+/* End of ingredients  */
+
 
 
 
@@ -298,7 +304,8 @@ li.strikethrough {
 }
 
 
-.ingredients-list li:hover {
+.ingredients-list li:hover,
+.directions-list li:hover {
     cursor: pointer;
 }
 
@@ -386,6 +393,13 @@ input#rate-5:checked~label i {
     text-shadow: 0 0 20px #952;
 }
 
+.checkMark {
+    content: "\2713";
+    color: green;
+}
+
+
+
 /* end star rating */
 
 
@@ -401,7 +415,7 @@ input#rate-5:checked~label i {
     .ingredients ul {
         display: grid;
         grid-template-columns: repeat(auto-fit, 300px);
-        justify-content: center
+        /* justify-content: cent */
     }
 
     .ingredients ul li {
@@ -422,5 +436,11 @@ input#rate-5:checked~label i {
 @media (min-width: 768px) {
     .submit-form {
         right: 17%;
+
     }
+
+    .creator-image {
+        width: 140px;
+    }
+
 }

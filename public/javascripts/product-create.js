@@ -30,6 +30,26 @@ window.addEventListener("load", function () {
     var remove_fields = document.getElementById("remove_fields")
     var directions_container = document.getElementById('product-directions')
     var instruction_list = document.getElementById('instruction-list')
+    var imageInput = document.querySelector('.imageInput')
+    var imagePreview = document.querySelector('.product-preview')
+
+
+    imageInput.onchange = evt => {
+        const [file] = imageInput.files
+        if (file) {
+            imagePreview.src = URL.createObjectURL(file)
+            console.log(file.size + " this is the file size in bytes")
+        }
+    }
+
+    //         submitFormBtn.classList.remove("noDisplay")
+    //         clearFormBtn.classList.remove("noDisplay")
+    //     } else {
+    //         submitFormBtn.classList.add("noDisplay")
+    //         clearFormBtn.classList.add("noDisplay")
+    //     }
+    // }
+
 
 
 

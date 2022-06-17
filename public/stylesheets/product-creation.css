@@ -1,13 +1,13 @@
-.body-information {
-    background: linear-gradient(0.25turn, rgba(138, 218, 227, 0.5), rgba(94, 223, 189, 0.5));
-    /* background: linear-gradient(#e66465, #9198e5); */
-}
+/* .body-information {
+    /* background: linear-gradient(0.25turn, rgba(138, 218, 227, 0.5), rgba(94, 223, 189, 0.5)); */
+/* background: linear-gradient(#e66465, #9198e5); */
 
 
 .form-container {
     display: flex;
     flex-flow: wrap column;
-    padding: 10px 5px;
+    padding: 10px 10px;
+    background: linear-gradient(0.25turn, rgba(152, 222, 230, 0.5), rgba(114, 235, 203, 0.5));
 }
 
 .form-container div {
@@ -134,12 +134,79 @@ textarea {
     width: 100%;
 }
 
+#ingredient-list li,
+#instruction-list li {
+    list-style-position: inside;
+}
+
 li {
     margin: 10px 0px;
 }
 
 input {
     width: 100%;
+}
+
+
+
+.imageInputContainer input {
+    display: none;
+}
+
+.imageInputContainer {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/* #image-label {
+    text-align: center;
+    display: block;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 25px;
+   
+    border: 1px solid black;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+} */
+
+.image-label {
+    display: none;
+}
+
+.product-preview {
+    width: 100%;
+
+}
+
+.imageInputContainer {
+    border-radius: 25px;
+}
+
+
+.product-preview {
+    text-align: center;
+    display: block;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 25px;
+    border: 1px solid black;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 
@@ -160,6 +227,14 @@ input {
 /* #remove_fields {
     float: right;
 } */
+
+
+@media (min-width: 480px) {
+    .form-container {
+        border-radius: 10px;
+        margin: 20px;
+    }
+}
 
 
 /* small devices tablets */

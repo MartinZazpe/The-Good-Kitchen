@@ -6,7 +6,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/product-detail.css' />
     <title>Home</title>
-    <!-- <script src="/javascripts/product-detail.js"></script> -->
+    <script src="/javascripts/product-detail.js"></script>
 </head>
 
 <body>
@@ -64,11 +64,10 @@
                                                 <p>By <%=user.name%>
                                                 </p>
                                                 <div class="container-image-chefhat">
-                                                    <img style="width:50px; border-radius:10px" src="/images/userImages/<%= user.image %>" alt="user-recipe-image">
-                                                    <div class="chef-hat-container">
+                                                    <img class="creator-image" src="/images/userImages/<%= user.image %>" alt="user-recipe-image">
+                                                    <!-- <div class="chef-hat-container">
                                                         <img class="chef-hat" src="/images/chef-hat-png.png" alt="">
-                                                    </div>
-
+                                                    </div> -->
                                                 </div>
 
                                             </div>
@@ -76,8 +75,6 @@
                                                 <% } %>
                                 </div>
                             </div>
-
-
 
 
 
@@ -95,7 +92,7 @@
 
                             <div class="directions">
                                 <p class="directions-title">Directions</p>
-                                <ol class="directions-list ">
+                                <ol class="directions-list">
                                     <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
                                         <li>
                                             <%= recipe.Ingredients[i] %>

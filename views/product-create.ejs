@@ -34,20 +34,6 @@
 
                             <div class="directions-ingredients-container">
 
-                                <div id="product-directions">
-                                    <div class="label-directions"><label for="directions">Cooking steps.</label></div>
-                                    <div class="controls-ol-container">
-                                        <div class="controls">
-                                            <a href="#" id="add_more_fields"><i class="fa fa-sm">Add step</i></a>
-                                            <a href="#" id="remove_fields"><i class="fa fa-sm">Remove last step</i></a>
-                                        </div>
-                                        <div class="instruction-list-container">
-                                            <ol id="instruction-list">
-                                                <input type="text" name="directions[]" placeholder="Add Instruction">
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="ingredients-container">
                                     <div class="label-ingredients"><label for="Ingredients">Ingredients:</label></div>
@@ -58,17 +44,40 @@
                                         </div>
                                         <div class="ingredient-list-container">
                                             <ol id="ingredient-list">
-                                                <input type="text" name="Ingredients[]" placeholder="Add Ingredient">
+                                                <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient"></li>
                                             </ol>
                                         </div>
                                     </div>
                                 </div>
 
+
+
+                                <div id="product-directions">
+                                    <div class="label-directions"><label for="directions">Cooking steps.</label></div>
+                                    <div class="controls-ol-container">
+                                        <div class="controls">
+                                            <a href="#" id="add_more_fields"><i class="fa fa-sm">Add step</i></a>
+                                            <a href="#" id="remove_fields"><i class="fa fa-sm">Remove last step</i></a>
+                                        </div>
+                                        <div class="instruction-list-container">
+                                            <ol id="instruction-list">
+                                                <li><input type="text" name="directions[]" placeholder="Add Instruction"></li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </div>
 
                             <div class="imageInputContainer">
-                                <label id="image-label" for="image">Choose an image</label>
-                                <input name="image" type="file" id="image">
+
+                                <label id="image-label" for="image">
+                                    Choose an image
+                                    <img class="product-preview">
+                                </label>
+                                <input class="imageInput" name="image" type="file" id="image">
                             </div>
                             <div>
                                 <button type="submit">Upload</button>
