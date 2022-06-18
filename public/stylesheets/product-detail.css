@@ -128,8 +128,8 @@ li.strikethrough {
 
 .comment-form textarea {
     text-align: start;
-    margin: 10px;
-    height: 100px;
+    margin: 10px 0px;
+    height: 120px;
     width: 100%;
 }
 
@@ -137,7 +137,7 @@ li.strikethrough {
     width: 60px;
     height: 10%;
     position: absolute;
-    right: 25%;
+    right: 20%;
     bottom: 17%;
     color: white;
     background-color: rgba(13, 11, 86, 0.8);

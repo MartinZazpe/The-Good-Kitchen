@@ -22,14 +22,24 @@
                             <h3 class="recipe-pretitle">Recipe for</h3>
                             <div>
                                 <label for="title">
-                                    <input name="title" type="text" id="title" placeholder="Name of dish">
+                                    <% if (locals.errors && errors.title) { %>
+                                        <div class="text-danger centerText errorBg">
+                                            <%= errors.title.msg%>
+                                        </div>
+                                        <%} %>
+                                            <input name="title" type="text" id="title" value="<%= locals.oldData && oldData.title ? oldData.title : ""%>" placeholder=" Name of dish">
                                 </label>
                             </div>
                         </div>
 
-                        <div class="description-container">
+                        <div class=" description-container">
                             <label class="description-label" for="description">A brief description of your dish: <br> (max 80 characters)</label>
-                            <textarea name="description" type="text" id="description" cols="30" rows="5"></textarea>
+                            <% if (locals.errors && errors.description) { %>
+                                <div class="text-danger centerText errorBg">
+                                    <%= errors.description.msg%>
+                                </div>
+                                <%} %>
+                                    <textarea name="description" type="text" id="description" cols="30" rows="5" value="<%= locals.oldData && oldData.description ? oldData.description : ""%>"></textarea>
                         </div>
 
                         <div class="directions-ingredients-container">
@@ -43,9 +53,14 @@
                                         <a href="#" id="remove_fields_ingredients"><i class="fa fa-sm">Remove last Ingredient</i></a>
                                     </div>
                                     <div class="ingredient-list-container">
-                                        <ol id="ingredient-list">
-                                            <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient"></li>
-                                        </ol>
+                                        <% if (locals.errors && errors.Ingredients) { %>
+                                            <div class="text-danger centerText errorBg">
+                                                <%= errors.Ingredients.msg%>
+                                            </div>
+                                            <%} %>
+                                                <ol id="ingredient-list">
+                                                    <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient"></li>
+                                                </ol>
                                     </div>
                                 </div>
                             </div>
@@ -60,21 +75,23 @@
                                         <a href="#" id="remove_fields"><i class="fa fa-sm">Remove last step</i></a>
                                     </div>
                                     <div class="instruction-list-container">
-                                        <ol id="instruction-list">
-                                            <li><input type="text" name="directions[]" placeholder="Add Instruction"></li>
-                                        </ol>
+                                        <% if (locals.errors && errors.directions) { %>
+                                            <div class="text-danger centerText errorBg">
+                                                <%= errors.directions.msg%>
+                                            </div>
+                                            <%} %>
+                                                <ol id="instruction-list">
+                                                    <li><input type="text" name="directions[]" placeholder="Add Instruction"></li>
+                                                </ol>
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
 
                         <div class="imageInputContainer">
 
                             <label id="image-label" for="image">
-                                Choose an image
+                                <p class="absolute-image-label">Choose an image</p>
                                 <img class="product-preview">
                             </label>
                             <input class="imageInput" name="image" type="file" id="image">

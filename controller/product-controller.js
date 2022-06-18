@@ -105,19 +105,26 @@ module.exports = {
         res.render('product-create')
     },
     store: (req, res) => {
+        let errors = validationResult(req)
         console.log(req.body)
-        let newProduct = {
-            id: data.length + 1,
-            title: req.body.title,
-            description: req.body.description,
-            Ingredients: req.body.Ingredients,
-            directions: req.body.directions,
-            image: req.file ? req.file.filename : "no-image-default.png",
-            belongsTo: req.session.userLogged.email
+        if (errors.isEmpty()) {
+            let newProduct = {
+                id: data.length + 1,
+                title: req.body.title,
+                description: req.body.description,
+                Ingredients: req.body.Ingredients,
+                directions: req.body.directions,
+                image: req.file ? req.file.filename : "no-image-default.png",
+                belongsTo: req.session.userLogged.email
+            }
+            data.push(newProduct)
+            writeJSON()
+            res.redirect("/recipes/list")
         }
-        data.push(newProduct)
-        writeJSON()
-        res.redirect("/recipes/list")
+
+        return res.render('product-create', { errors: errors.mapped(), oldData: req.body })
+
+
     },
     edit: (req, res) => {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
