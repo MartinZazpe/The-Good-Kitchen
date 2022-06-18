@@ -13,80 +13,79 @@
 
 <body>
     <%- include("partials/header.ejs") %>
-        <main>
-            <div class="body-information">
-                <section class="main-section">
-                    <div class="form-container" id="form-container">
-                        <form action="/recipes/create" enctype="multipart/form-data" method="POST">
-                            <div class="title-title">
-                                <h3 class="recipe-pretitle">Recipe for</h3>
-                                <div>
-                                    <label for="title">
-                                        <input name="title" type="text" id="title" placeholder="Name of dish">
-                                    </label>
-                                </div>
-                            </div>
 
-                            <div class="description-container">
-                                <label class="description-label" for="description">A brief description of your dish: <br> (max 80 characters)</label>
-                                <textarea name="description" type="text" id="description" cols="30" rows="5"></textarea>
-                            </div>
-
-                            <div class="directions-ingredients-container">
-
-
-                                <div class="ingredients-container">
-                                    <div class="label-ingredients"><label for="Ingredients">Ingredients:</label></div>
-                                    <div class="controls-ol-container">
-                                        <div class="controls">
-                                            <a href="#" id="add_more_fields_ingredients"><i class="fa fa-sm">Add Ingredient</i></a>
-                                            <a href="#" id="remove_fields_ingredients"><i class="fa fa-sm">Remove last Ingredient</i></a>
-                                        </div>
-                                        <div class="ingredient-list-container">
-                                            <ol id="ingredient-list">
-                                                <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div id="product-directions">
-                                    <div class="label-directions"><label for="directions">Cooking steps.</label></div>
-                                    <div class="controls-ol-container">
-                                        <div class="controls">
-                                            <a href="#" id="add_more_fields"><i class="fa fa-sm">Add step</i></a>
-                                            <a href="#" id="remove_fields"><i class="fa fa-sm">Remove last step</i></a>
-                                        </div>
-                                        <div class="instruction-list-container">
-                                            <ol id="instruction-list">
-                                                <li><input type="text" name="directions[]" placeholder="Add Instruction"></li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-
-                            <div class="imageInputContainer">
-
-                                <label id="image-label" for="image">
-                                    Choose an image
-                                    <img class="product-preview">
-                                </label>
-                                <input class="imageInput" name="image" type="file" id="image">
-                            </div>
+        <div class="body-information">
+            <section class="main-section">
+                <div class="form-container" id="form-container">
+                    <form class="productCreate-form" action="/recipes/create" enctype="multipart/form-data" method="POST">
+                        <div class="title-title">
+                            <h3 class="recipe-pretitle">Recipe for</h3>
                             <div>
-                                <button type="submit">Upload</button>
+                                <label for="title">
+                                    <input name="title" type="text" id="title" placeholder="Name of dish">
+                                </label>
                             </div>
-                        </form>
-                    </div>
-                </section>
-            </div>
-        </main>
+                        </div>
+
+                        <div class="description-container">
+                            <label class="description-label" for="description">A brief description of your dish: <br> (max 80 characters)</label>
+                            <textarea name="description" type="text" id="description" cols="30" rows="5"></textarea>
+                        </div>
+
+                        <div class="directions-ingredients-container">
+
+
+                            <div class="ingredients-container">
+                                <div class="label-ingredients"><label for="Ingredients">Ingredients:</label></div>
+                                <div class="controls-ol-container">
+                                    <div class="controls">
+                                        <a href="#" id="add_more_fields_ingredients"><i class="fa fa-sm">Add Ingredient</i></a>
+                                        <a href="#" id="remove_fields_ingredients"><i class="fa fa-sm">Remove last Ingredient</i></a>
+                                    </div>
+                                    <div class="ingredient-list-container">
+                                        <ol id="ingredient-list">
+                                            <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient"></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div id="product-directions">
+                                <div class="label-directions"><label for="directions">Cooking steps.</label></div>
+                                <div class="controls-ol-container">
+                                    <div class="controls">
+                                        <a href="#" id="add_more_fields"><i class="fa fa-sm">Add step</i></a>
+                                        <a href="#" id="remove_fields"><i class="fa fa-sm">Remove last step</i></a>
+                                    </div>
+                                    <div class="instruction-list-container">
+                                        <ol id="instruction-list">
+                                            <li><input type="text" name="directions[]" placeholder="Add Instruction"></li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="imageInputContainer">
+
+                            <label id="image-label" for="image">
+                                Choose an image
+                                <img class="product-preview">
+                            </label>
+                            <input class="imageInput" name="image" type="file" id="image">
+                        </div>
+                        <div class="button-submit-container">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
         <%- include("partials/footer.ejs") %>
 </body>
 

@@ -7,6 +7,14 @@
     border-radius: 5px;
 }
 
+* {
+    line-height: normal;
+}
+
+/* .body-information {
+    margin-top: px;
+} */
+
 .introduction .intro-title {
     color: rgb(70, 70, 79);
     font-size: 1rem;
@@ -16,7 +24,6 @@
 
 
 .introduction-carousel-container {
-    /* margin-bottom: 50px; */
     display: flex;
     flex-wrap: wrap;
     position: relative;

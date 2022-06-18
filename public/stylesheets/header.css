@@ -183,7 +183,7 @@ ul {
     color: white;
     padding: 14px 16px;
     background-color: inherit;
-    font-family: inherit;
+    /* font-family: inherit; */
     /* Important for vertical align on mobile phones */
     margin: 0;
     /* Important for vertical align on mobile phones */
@@ -252,8 +252,9 @@ ul {
     border: 1px solid rgb(188, 180, 180);
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    text-align: center;
+    /* text-align: center; */
     position: relative;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .search-icon-container {
@@ -357,12 +358,11 @@ ul {
 
 
 
-
 @media (min-width:480px) {
 
-    /* li {
-        width: 20vw;
-    } */
+    .search-input {
+        text-align: center;
+    }
 
     .hamburger {
         display: none;

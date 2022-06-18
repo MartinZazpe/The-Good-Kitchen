@@ -47,7 +47,8 @@ li.strikethrough {
 }
 
 .creator-image {
-    width: 80px;
+    max-width: 80px;
+    max-height: 80px;
     border-radius: 10px
 }
 

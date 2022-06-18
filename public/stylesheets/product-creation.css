@@ -2,13 +2,27 @@
     /* background: linear-gradient(0.25turn, rgba(138, 218, 227, 0.5), rgba(94, 223, 189, 0.5)); */
 /* background: linear-gradient(#e66465, #9198e5); */
 
+.body-information {
+    background-image: url('../images/icon-images/cookies-bg.png');
+    margin-top: 120px;
+}
+
 
 .form-container {
     display: flex;
     flex-flow: wrap column;
     padding: 10px 10px;
-    background: linear-gradient(0.25turn, rgba(152, 222, 230, 0.5), rgba(114, 235, 203, 0.5));
+    background: linear-gradient(0.25turn, rgba(139, 193, 199, 0.5), rgba(77, 159, 177, 0.5));
 }
+
+.productCreate-form {
+    max-width: 1000px;
+}
+
+.productCreate-form>* {
+    padding: 10px !important;
+}
+
 
 .form-container div {
     padding: 10px 0px;
@@ -21,9 +35,6 @@ textarea {
     border: none;
 }
 
-/* .form-container>* {
-    padding: 15px;
-} */
 
 .title-title {
     width: 100%;
@@ -137,9 +148,6 @@ textarea {
 #ingredient-list li,
 #instruction-list li {
     list-style-position: inside;
-}
-
-li {
     margin: 10px 0px;
 }
 
@@ -156,27 +164,13 @@ input {
 .imageInputContainer {
     display: flex;
     justify-content: center;
+    border-radius: 25px;
 }
 
-
-
-/* #image-label {
+.imageInputContainer label {
     text-align: center;
-    display: block;
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 25px;
-   
-    border: 1px solid black;
-    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-} */
+}
+
 
 .image-label {
     display: none;
@@ -187,17 +181,14 @@ input {
 
 }
 
-.imageInputContainer {
-    border-radius: 25px;
-}
 
 
 .product-preview {
     text-align: center;
     display: block;
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     border-radius: 25px;
     border: 1px solid black;
     box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
@@ -209,30 +200,30 @@ input {
     cursor: pointer;
 }
 
+.button-submit-container {
+    display: flex;
+    justify-content: center;
+}
 
+.button-submit-container button {
+    padding: 7px;
+    border-radius: 2px;
+    border: none;
+    color: white;
+    background: linear-gradient(0.50turn, rgba(64, 169, 167, 0.5), rgba(70, 88, 160, 0.5));
+}
 
-
-
-/* .controls>* {
-    width: 100%;
-} */
-
-/* #add_more_fields {
-    width: 100%;
-} */
-
-
-
-
-/* #remove_fields {
-    float: right;
-} */
 
 
 @media (min-width: 480px) {
     .form-container {
         border-radius: 10px;
         margin: 20px;
+    }
+
+    .product-preview {
+        width: 300px;
+        height: 300px;
     }
 }
 

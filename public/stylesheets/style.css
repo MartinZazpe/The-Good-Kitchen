@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-
+  font-family: inherit;
 }
 
 
@@ -13,6 +13,15 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+
+/* trying to fix the bootstrap override */
+/*  end of bootstrap general fixes    */
+
+
+
+
+
+
 /* the margin may change, must review all views to check how it fits and on resize */
 main {
   margin-top: 80px;
@@ -21,12 +30,6 @@ main {
 
 .text-danger {
   color: red;
-}
-
-
-.body-information {
-  /* padding: 35px 20px; */
-  margin-bottom: 30px;
 }
 
 
