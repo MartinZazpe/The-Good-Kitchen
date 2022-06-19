@@ -117,10 +117,11 @@ module.exports = {
     },
 
     userProducts: (req, res) => {
-        let userRecipes = data.filter(data => data.belongsTo === req.session.userLogged.email)
+        let userRecipes = data.filter(data => data.belongsTo == req.session.userLogged.id)
+        let totalRecipes = userRecipes.length
         console.log(userRecipes)
         if (userRecipes.length !== 0) {
-            res.render('user-recipes', { recipes: userRecipes })
+            res.render('user-recipes', { recipes: userRecipes, totalRecipes })
         } else {
             res.render('user-profile', {
                 errors: {

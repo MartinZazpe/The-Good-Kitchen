@@ -1,6 +1,7 @@
 .introduction {
-    /* background-color: rgb(201, 207, 221); */
+    height: 30px;
     background-image: url("/images/minimal-bg.jpeg");
+    margin-bottom: 30px;
 }
 
 .strikethrough {
@@ -52,40 +53,23 @@ li.strikethrough {
     border-radius: 10px
 }
 
-.container-image-chefhat {
-    border-style: double;
-    border-radius: 10%;
-    color: rgb(137, 216, 137);
-}
-
 
 .creator-container-flex {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row-reverse wrap;
     justify-content: flex-end;
-    align-items: flex-end;
+    padding: 10px 10px 10px 0px;
+    /* align-items: flex-end; */
 }
 
 .creator-container-flex p {
-    align-self: center;
+    align-self: flex-start;
 }
 
-/* .chef-hat {
-    width: 30px;
-    transform: rotate(-20deg)
-} */
+.container-image {
+    padding-right: 10px;
+}
 
-/* .container-image-chefhat {
-    align-self: center;
-    position: relative;
-    padding-top: 15px;
-} */
-
-/* .chef-hat-container {
-    position: absolute;
-    top: 0;
-    right: 25%;
-} */
 
 /* Ends edit & product creator */
 
@@ -202,9 +186,40 @@ li.strikethrough {
 }
 
 
+/*  Product Navbar */
+.productNavbar {
+    padding: 10px 0px;
+    margin: 10px 0px;
+    background-color: rgba(250, 245, 240, 0.8);
+    border-radius: 5px;
+    height: 30px;
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-evenly;
+}
+
+.productNavbar a {
+    color: blue;
+    text-decoration: none;
+    transition: 0.2s linear;
+}
+
+.productNavbar a:hover {
+    color: rgb(172, 172, 212);
+    text-decoration: none;
+}
+
+
+/* Ends product navbar */
+
+.description-hyperlink {
+    height: 100px;
+}
+
 
 .description-hyperlink p {
     font-style: italic;
+    color: black;
 }
 
 /* ingredients */
@@ -283,6 +298,32 @@ li.strikethrough {
     flex-flow: column wrap;
     justify-content: center;
     align-content: center;
+}
+
+.creator-name-details {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.creator-name-details>* {
+    padding: 5px 0px;
+}
+
+.creator-name-details p:nth-of-type(1) {
+    color: blue;
+}
+
+#Overview,
+#Steps,
+#Comments {
+
+    scroll-margin-top: 100px;
+
+}
+
+
+.recipe-title {
+    padding: 20px 20px 40px 20px;
 }
 
 
@@ -405,6 +446,19 @@ input#rate-5:checked~label i {
 
 
 @media (min-width: 480px) {
+    .OneRecipeImage {
+        border-radius: 15px;
+    }
+
+    .recipe-examples {
+        margin: 0% 10%;
+    }
+
+    .image-container {
+        border-radius: 15px;
+    }
+
+
     .body-information {
         margin-top: 40px;
     }
@@ -444,4 +498,18 @@ input#rate-5:checked~label i {
         width: 140px;
     }
 
+}
+
+@media (min-width: 768px) {
+
+    .recipe-examples {
+        margin: 0% 15%;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .recipe-examples {
+        margin: 0% 20%;
+    }
 }

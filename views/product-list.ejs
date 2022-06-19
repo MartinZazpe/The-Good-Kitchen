@@ -56,8 +56,8 @@
 
                                 <div class='imageContainer'>
                                     <a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="/images/<%= recipe.image %>"></a>
-                                    <% if(locals.userLoggedEmail){ %>
-                                        <% if(userLoggedEmail==recipe.belongsTo) {%>
+                                    <% if(locals.userLogged){ %>
+                                        <% if(userLogged.id==recipe.belongsTo) {%>
                                             <a class="edit-icon" href="/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>
                                             <% } %>
                                                 <% } %>
@@ -80,7 +80,7 @@
                                     <a class="detail-link noShow" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
 
                                     <% for(let user of allUsers) { %>
-                                        <% if(user.email==recipe.belongsTo) {%>
+                                        <% if(user.id==recipe.belongsTo) {%>
                                             <div class="user-product-container">
                                                 <img class="user-product-thumbnail" src="/images/userImages/<%=user.image %>" alt="user-image">
                                                 <div class="user-product-container-userDetails">

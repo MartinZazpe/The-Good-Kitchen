@@ -1,9 +1,16 @@
 [
     {
-        "refersToId": "4",
-        "belongsTo": "richmond@hotmail.com",
+        "refersToProductId": "4",
+        "belongsToUserId": "1",
         "userComment": "Awesome John i loved this recipe thank you!!!!",
         "rating": 5,
         "timeOfComment": 1655383315000
+    },
+    {
+        "refersToProductId": "4",
+        "belongsToUserId": "1",
+        "userComment": "Made em' again, so good",
+        "rating": 5,
+        "timeOfComment": 1655573206000
     }
 ]

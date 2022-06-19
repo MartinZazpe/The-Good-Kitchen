@@ -51,12 +51,11 @@ module.exports = {
     productList: (req, res) => {
         let allUsers = users
 
-
         if (req.session.userLogged) {
             // let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
-            let userLoggedEmail = req.session.userLogged.email
+            let userLogged = req.session.userLogged
             res.render('product-list', {
-                recipes: data, userLoggedEmail, allUsers
+                recipes: data, userLogged, allUsers
             })
         } else if (!req.session.userLogged) {
             res.render('product-list', {
@@ -68,7 +67,7 @@ module.exports = {
     detail: (req, res) => {
 
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        let productComments = commentData.filter(id => req.params.id == id.refersToId)
+        let productComments = commentData.filter(id => req.params.id == id.refersToProductId)
         let allUsers = users
         let userLogged = req.session.userLogged
 
@@ -88,7 +87,7 @@ module.exports = {
         let amountOfReviews = productComments.filter(x => x.rating != null).length
         let ratingAvg = Math.floor(totalRating / amountOfReviews)
 
-        console.log(amountOfReviews)
+        console.log(amountOfReviews + " Reviews")
 
         if (req.session.userLogged) {
             let userLogged = req.session.userLogged
@@ -115,7 +114,7 @@ module.exports = {
                 Ingredients: req.body.Ingredients,
                 directions: req.body.directions,
                 image: req.file ? req.file.filename : "no-image-default.png",
-                belongsTo: req.session.userLogged.email
+                belongsTo: req.session.userLogged.id
             }
             data.push(newProduct)
             writeJSON()
@@ -124,11 +123,10 @@ module.exports = {
 
         return res.render('product-create', { errors: errors.mapped(), oldData: req.body })
 
-
     },
     edit: (req, res) => {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        if (recipeFound.belongsTo == req.session.userLogged.email) {
+        if (recipeFound.belongsTo == req.session.userLogged.id) {
             res.render('product-edit', { recipe: recipeFound })
         } else {
             res.redirect('/error404')
@@ -164,13 +162,12 @@ module.exports = {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
         let userLogged = req.session.userLogged
         let allUsers = users
-        let productComments = commentData.filter(id => req.params.id == id.refersToId)
+        let productComments = commentData.filter(id => req.params.id == id.refersToProductId)
 
         let totalRating = 0
         for (let i = 0;i < productComments.length;i++) {
             totalRating += productComments[i].rating
         }
-
 
 
         if (!req.session.userLogged) {
@@ -191,11 +188,11 @@ module.exports = {
 
 
 
-        if (lastComment.belongsTo == userLogged.email) {
+        if (lastComment.belongsToUserId == userLogged.id) {
             var difference = (((timeNow - lastCommentDate) / 1000) / 60)
             console.log(difference)
             if ((difference) < 1) {
-                // let productComments = commentData.filter(id => req.params.id == id.refersToId)
+                // let productComments = commentData.filter(id => req.params.id == id.refersToProductId)
                 let amountOfReviews = productComments.filter(x => x.rating != null).length
                 let ratingAvg = Math.floor(totalRating / amountOfReviews)
 
@@ -208,10 +205,10 @@ module.exports = {
                 })
             }
         }
-        if (lastComment.belongsTo != userLogged.email || ((((timeNow - lastCommentDate) / 1000) / 60) > 1)) {
+        if (lastComment.belongsToUserId != userLogged.id || ((((timeNow - lastCommentDate) / 1000) / 60) > 1)) {
             let newComment = {
-                refersToId: req.params.id,
-                belongsTo: userLogged.email,
+                refersToProductId: req.params.id,
+                belongsToUserId: userLogged.id,
                 userComment: req.body.comments,
                 rating: Number(req.body.rate),
                 timeOfComment: Date.parse(new Date())
@@ -221,8 +218,7 @@ module.exports = {
             WriteCommentJSON()
 
 
-
-            let productComments = commentData.filter(id => req.params.id == id.refersToId)
+            let productComments = commentData.filter(id => req.params.id == id.refersToProductId)
             let totalRating = 0
             for (let i = 0;i < productComments.length;i++) {
                 totalRating += productComments[i].rating

@@ -14,174 +14,198 @@
         <main>
             <div class="body-information">
                 <section class="introduction">
-                    <% if(locals.recipe) { %>
-                        <h3>
-                            <%=recipe.title %>
-                        </h3>
                 </section>
-                <div class="description-hyperlink">
-                    <p>
-                        <%=recipe.description %>
-                    </p>
-                </div>
-                <section class="recipe-examples">
-                    <div class="container-product">
-                        <div class="OneProductContainer">
-                            <div class="image-avg-container">
+                <% if(locals.recipe) { %>
 
-                                <% if(locals.ratingAvg> 0) { %>
-                                    <div class="AVGrating">
+                    <section class="recipe-examples">
+                        <div class="container-product">
+                            <div class="OneProductContainer">
+                                <div class="image-avg-container">
 
-                                        <div>
-                                            <h5>
-                                                <%= ratingAvg %> / 5 <i class="colorGold fa-lg fa-solid fa-star"></i>
-                                            </h5>
-                                        </div>
-                                    </div>
-                                    <% }%>
+                                    <% if(locals.ratingAvg> 0) { %>
+                                        <div class="AVGrating">
 
-                                        <div class="image-container">
-                                            <img class="OneRecipeImage" src="/images/<%= recipe.image %>">
-                                        </div>
-                            </div>
-
-
-
-                            <div class="edit-creator-container">
-                                <div>
-                                    <% if(locals.userLogged){ %>
-                                        <% if(userLogged.email==recipe.belongsTo) { %>
-                                            <div class="edit-container">
-                                                <a class="edit-icon" href="/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>
+                                            <div>
+                                                <h5>
+                                                    <%= ratingAvg %> / 5 <i class="colorGold fa-lg fa-solid fa-star"></i>
+                                                </h5>
                                             </div>
-                                            <% } %>
-                                                <% } %>
+                                        </div>
+                                        <% }%>
+
+                                            <div class="image-container">
+                                                <img class="OneRecipeImage" src="/images/<%= recipe.image %>">
+                                            </div>
                                 </div>
-                                <div class="creator-container">
-                                    <% for(user of allUsers) {%>
-                                        <% if(user.email==recipe.belongsTo){ %>
-                                            <div class="creator-container-flex">
-                                                <p>By <%=user.name%>
-                                                </p>
-                                                <div class="container-image-chefhat">
-                                                    <img class="creator-image" src="/images/userImages/<%= user.image %>" alt="user-recipe-image">
-                                                    <!-- <div class="chef-hat-container">
-                                                        <img class="chef-hat" src="/images/chef-hat-png.png" alt="">
-                                                    </div> -->
+
+                                <div class="productNavbar">
+                                    <a href="#Overview">Overview</a>
+                                    <a href="#Steps">Steps</a>
+                                    <a href="#Comments">Comments (<%=amountOfReviews %>)</a>
+                                </div>
+                                <div class="recipe-title">
+                                    <h3>
+                                        <%=recipe.title %>
+                                    </h3>
+                                </div>
+
+                                <div class="edit-creator-container">
+
+                                    <div>
+                                        <% if(locals.userLogged){ %>
+                                            <% if(userLogged.id==recipe.belongsTo) { %>
+                                                <div class="edit-container">
+                                                    <a class="edit-icon" href="/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>
                                                 </div>
-
-                                            </div>
-                                            <% } %>
-                                                <% } %>
-                                </div>
-                            </div>
-
-
-
-
-                            <div class="ingredients">
-                                <p class="ingredients-title">Ingredients</p>
-                                <ul class="ingredients-list">
-                                    <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
-                                        <li>
-                                            <%= recipe.Ingredients[i] %>
-                                        </li>
-                                        <% } %>
-                                </ul>
-                            </div>
-
-                            <div class="directions">
-                                <p class="directions-title">Directions</p>
-                                <ol class="directions-list">
-                                    <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
-                                        <li>
-                                            <%= recipe.Ingredients[i] %>
-                                        </li>
-                                        <% } %>
-                                </ol>
-                            </div>
-
-
-                        </div>
-                    </div>
-                </section>
-                <% } %>
-
-
-                    <div class="comment-section-container">
-                        <div class="comment-section">
-                            <div class="comments-header">
-                                <h4>Reviews ( <%=amountOfReviews %> )</h4>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <% if(locals.comments) { %>
-                                <% for(let comment of comments) {%>
-                                    <% for(let user of allUsers){ %>
-                                        <% if(user.email==comment.belongsTo){ %>
-                                            <div class="user-comment-container">
-                                                <img class="user-comment-image" src="/images/userImages/<%= user.image %>" alt="user-image">
-                                                <p class="comment-belongsTo">
-                                                    <%=user.name %>
-                                                </p>
                                                 <% } %>
                                                     <% } %>
-                                                        <p class="comment-userComment">
-                                                            <%=comment.userComment%>
-                                                        </p>
-                                            </div>
-                                            <% } %>
-                                                <% } %>
-                        </div>
+                                                        <div>
+                                                            <% for(user of allUsers) {%>
+                                                                <% if(user.id==recipe.belongsTo){ %>
+                                                                    <div class="creator-container-flex">
+                                                                        <div class='creator-name-details'>
+                                                                            <p>
+                                                                                <%=user.name%>
+                                                                            </p>
+                                                                            <p>Community member</p>
+                                                                        </div>
+                                                                        <div class="container-image">
+                                                                            <img class="creator-image" src="/images/userImages/<%= user.image %>" alt="user-recipe-image">
+                                                                        </div>
 
-                        <div class="comment-form-container">
+                                                                    </div>
+                                                                    <% } %>
+                                                                        <% } %>
 
-
-                            <form class="comment-form" action="/recipes/comments/<%=recipe.id%>" method="POST">
-
-                                <div class="container">
-                                    <p>Rate this recipe:</p>
-
-                                    <div class="star-widget">
-                                        <input type="radio" name="rate" value="5" id="rate-5">
-                                        <label for="rate-5"><i class="fa-solid fa-star"></i>
-                                        </label>
-
-                                        <input type="radio" name="rate" value="4" id="rate-4">
-                                        <label for="rate-4"><i class="fa-solid fa-star"></i>
-                                        </label>
-
-                                        <input type="radio" name="rate" value="3" id="rate-3">
-                                        <label for="rate-3"><i class="fa-solid fa-star"></i>
-                                        </label>
-
-                                        <input type="radio" name="rate" value="2" id="rate-2">
-                                        <label for="rate-2"><i class="fa-solid fa-star"></i>
-                                        </label>
-
-                                        <input type="radio" name="rate" value="1" id="rate-1">
-                                        <label for="rate-1"><i class="fa-solid fa-star"></i>
-                                        </label>
+                                                        </div>
 
                                     </div>
+
+
                                 </div>
 
-                                <textarea name="comments" id="" cols="30" rows="10" placeholder="Hey <%if(locals.userLogged){ %> <%=userLogged.name %><% } %>, what do you think about this recipe?"></textarea>
-                                <!-- <input type="text" name="comments" placeholder="What do you think about this recipe?"> -->
-                                <button class="submit-form" type="submit">Send</button>
-                            </form>
-                            <div class="error-container">
 
-                                <% if(locals.errors) { %>
-                                    <p class="text-danger waitToComment">
-                                        <%= errors.mustWaitToComment.msg %>
-                                    </p>
-                                    <% } %>
                             </div>
+
                         </div>
+
+
+
+                        <div id="Overview" class="description-hyperlink">
+                            <% if(recipe.description=="" ){ %>
+                                <p>The user has not described this recipe. You can contact him by leaving a comment</p>
+                                <% } %>
+                                    <% if(recipe.description !="" ){ %>
+                                        <p>
+                                            <%=recipe.description %>
+                                        </p>
+                                        <% } %>
+                        </div>
+
+
+
+
+                        <div class="ingredients">
+                            <p class="ingredients-title">Ingredients</p>
+                            <ul class="ingredients-list">
+                                <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
+                                    <li>
+                                        <%= recipe.Ingredients[i] %>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                        </div>
+
+                        <div id="Steps" class="directions">
+                            <p class="directions-title">Directions</p>
+                            <ol class="directions-list">
+                                <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
+                                    <li>
+                                        <%= recipe.Ingredients[i] %>
+                                    </li>
+                                    <% } %>
+                            </ol>
+                        </div>
+
+
+            </div>
+            </div>
+            <% } %>
+
+
+                <div class="comment-section-container">
+                    <div class="comment-section">
+                        <div class="comments-header">
+                            <h4>Reviews ( <%=amountOfReviews %> )</h4>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <% if(locals.comments) { %>
+                            <% for(let comment of comments) {%>
+                                <% for(let user of allUsers){ %>
+                                    <% if(user.id==comment.belongsToUserId){ %>
+                                        <div id="Comments" class="user-comment-container">
+                                            <img class="user-comment-image" src="/images/userImages/<%= user.image %>" alt="user-image">
+                                            <p class="comment-belongsTo">
+                                                <%=user.name %>
+                                            </p>
+                                            <% } %>
+                                                <% } %>
+                                                    <p class="comment-userComment">
+                                                        <%=comment.userComment%>
+                                                    </p>
+                                        </div>
+                                        <% } %>
+                                            <% } %>
                     </div>
 
-                    <!-- </section>
+                    <div class="comment-form-container">
+
+
+                        <form class="comment-form" action="/recipes/comments/<%=recipe.id%>" method="POST">
+
+                            <div class="container">
+                                <p>Rate this recipe:</p>
+
+                                <div class="star-widget">
+                                    <input type="radio" name="rate" value="5" id="rate-5">
+                                    <label for="rate-5"><i class="fa-solid fa-star"></i>
+                                    </label>
+
+                                    <input type="radio" name="rate" value="4" id="rate-4">
+                                    <label for="rate-4"><i class="fa-solid fa-star"></i>
+                                    </label>
+
+                                    <input type="radio" name="rate" value="3" id="rate-3">
+                                    <label for="rate-3"><i class="fa-solid fa-star"></i>
+                                    </label>
+
+                                    <input type="radio" name="rate" value="2" id="rate-2">
+                                    <label for="rate-2"><i class="fa-solid fa-star"></i>
+                                    </label>
+
+                                    <input type="radio" name="rate" value="1" id="rate-1">
+                                    <label for="rate-1"><i class="fa-solid fa-star"></i>
+                                    </label>
+
+                                </div>
+                                <div class="error-container">
+                                    <% if(locals.errors) { %>
+                                        <p class="text-danger waitToComment">
+                                            <%= errors.mustWaitToComment.msg %>
+                                        </p>
+                                        <% } %>
+                                </div>
+                            </div>
+
+                            <textarea name="comments" id="" cols="30" rows="10" placeholder="Hey <%if(locals.userLogged){ %> <%=userLogged.name %><% } %>, what do you think about this recipe?"></textarea>
+                            <!-- <input type="text" name="comments" placeholder="What do you think about this recipe?"> -->
+                            <button class="submit-form" type="submit">Send</button>
+                        </form>
+                    </div>
+                </div>
+                </section>
+                <!-- </section>
             </div> -->
         </main>
         <%- include("partials/footer.ejs") %>
