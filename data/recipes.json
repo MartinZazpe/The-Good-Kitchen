@@ -137,18 +137,5 @@
         ],
         "image": "image-1655284106171.jpeg",
         "belongsTo": "1"
-    },
-    {
-        "id": 7,
-        "title": "dfgdf",
-        "description": "dfgdf",
-        "Ingredients": [
-            "dfgdf"
-        ],
-        "directions": [
-            "dgfd"
-        ],
-        "image": "no-image-default.png",
-        "belongsTo": "1"
     }
 ]
