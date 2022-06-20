@@ -50,7 +50,7 @@ module.exports = {
                 image: req.file ? req.file.filename : 'user-default.png'
             }
             userModels.create(newUSer)
-            res.redirect("/user/login")
+            return res.render('login', { errors: { successful: { msg: 'Thank you for your registration. Log in and start enjoying!' } } })
         }
         return res.render('register', {
             errors: errors.mapped(),

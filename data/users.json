@@ -30,5 +30,45 @@
         "type": "Community member",
         "password": "$2a$10$0evXdP3kyECuClRX4hmAreSsz63yv26/6yioqMOOKrxVl0sZnLAmm",
         "image": "1655159362919_img.jpeg"
+    },
+    {
+        "id": 5,
+        "name": "Alejandra",
+        "email": "alejandra@hotmail.com",
+        "type": "Community member",
+        "password": "$2a$10$LotMLZRFj4qAm8cMzRDRq.QWTSmJBfkrAFo9URAA7UBWW8gN0KqbC",
+        "image": "1655744100509_img.jpeg"
+    },
+    {
+        "id": 6,
+        "name": "Angel",
+        "email": "angel@hotmail.com",
+        "type": "Community member",
+        "password": "$2a$10$EUpAW1J103l8recrrNAFROzIHuS5y5vv1WpilNhcwCAgx6.6ZEQTS",
+        "image": "1655744435545_img.jpeg"
+    },
+    {
+        "id": 7,
+        "name": "Roberto",
+        "email": "roberto@hotmail.com",
+        "type": "Community member",
+        "password": "$2a$10$rOp92M2iDfoSVSNrZSazDeZ4/y74smsWdLGAbzMvfTvd0yR0/JU4m",
+        "image": "1655744551512_img.jpeg"
+    },
+    {
+        "id": 8,
+        "name": "Phillipe",
+        "email": "phillipe@hotmail.com",
+        "type": "Community member",
+        "password": "$2a$10$OqAYvmGuKhE80GmJJfu5wOnXm6c6pcrmHamjKwKo/MUe035PkGrte",
+        "image": "1655744700748_img.webp"
+    },
+    {
+        "id": 9,
+        "name": "Patty",
+        "email": "patty@hotmail.com",
+        "type": "Community member",
+        "password": "$2a$10$ZNs2wUHRveCMhXwoDX2.t.xudNNGhh9ZYmgjPHV5vCRt/kjqi62pK",
+        "image": "1655744807657_img.webp"
     }
 ]

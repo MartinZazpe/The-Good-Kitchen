@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> -->
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/register.css' />
     <script src="https://kit.fontawesome.com/ae0153af6c.js" crossorigin="anonymous"></script>
+    <script defer src="../javascripts/user-create.js"></script>
     <title>Help</title>
 </head>
 
@@ -24,33 +25,40 @@
 
 
                     <div class="form-container">
-                        <form class="login-form" action="/user/register" enctype="multipart/form-data" method="POST">
-                            <label for="name">Name</label>
-                            <% if (locals.errors && errors.name) { %>
-                                <div class="error-msg">
-                                    <%=errors.name.msg%>
-                                        <%=errors.errorLogin%>
-                                </div>
-                                <% } %>
-                                    <input type="text" name="name" class="form-control <%= locals.errors && errors.name ? ' is-invalid ' : '' %>" value="<%=locals.oldData && oldData.name ? oldData.name : '' %>">
-                                    <label for="email">Email</label>
-                                    <% if (locals.errors && errors.email) { %>
-                                        <div class="error-msg">
-                                            <%=errors.email.msg%>
-                                        </div>
-                                        <% } %>
-                                            <input type="email" name="email" class="form-control <%= locals.errors && errors.email ? 'is-invalid ' : '' %>" id="validationCustom01" value="<%= locals.oldData && oldData.email ? oldData.email : "" %>">
+                        <form class="register-form" action="/user/register" enctype="multipart/form-data" method="POST">
+                            <div class="name-email-pass-container">
+                                <label for="name">Name</label>
+                                <% if (locals.errors && errors.name) { %>
+                                    <div class="error-msg">
+                                        <%=errors.name.msg%>
+                                            <%=errors.errorLogin%>
+                                    </div>
+                                    <% } %>
+                                        <input type="text" name="name" class="form-control <%= locals.errors && errors.name ? ' is-invalid ' : '' %>" value="<%=locals.oldData && oldData.name ? oldData.name : '' %>">
+                                        <label for="email">Email</label>
+                                        <% if (locals.errors && errors.email) { %>
+                                            <div class="error-msg">
+                                                <%=errors.email.msg%>
+                                            </div>
+                                            <% } %>
+                                                <input type="email" name="email" class="form-control <%= locals.errors && errors.email ? 'is-invalid ' : '' %>" id="validationCustom01" value="<%= locals.oldData && oldData.email ? oldData.email : "" %>">
+                                                <label for="password">Password</label>
+                                                <% if (locals.errors && errors.password) { %>
+                                                    <div class="error-msg">
+                                                        <%=errors.password.msg%>
+                                                    </div>
+                                                    <% } %>
+                                                        <input type="password" name="password" class="form-control <%= locals.errors && errors.password ? 'is-invalid ' : '' %>">
+                            </div>
 
-                                            <label for="password">Password</label>
-                                            <% if (locals.errors && errors.password) { %>
-                                                <div class="error-msg">
-                                                    <%=errors.password.msg%>
-                                                </div>
-                                                <% } %>
-                                                    <input type="password" name="password" class="form-control <%= locals.errors && errors.password ? 'is-invalid ' : '' %>">
-                                                    <label for=" image">Image (optional)</label>
-                                                    <input type="file" name="image">
-                                                    <button type=" submit">Register</button>
+                            <div class="image-container-flex">
+                                <div class="image-upload-container">
+                                    <label class="user-image-label" for="image">Image (optional)</label>
+                                    <img class="product-preview"></img>
+                                    <input class="user-image-input" src="" type="file" name="image">
+                                </div>
+                            </div>
+                            <div class="register-button-container"><button type=" submit">Register</button></div>
                         </form>
                     </div>
 
