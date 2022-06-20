@@ -105,10 +105,12 @@ module.exports = {
     },
     store: (req, res) => {
         let errors = validationResult(req)
-        console.log(req.body)
+        var lasProduct = data[data.length - 1]
+        var biggestProductId = data.length > 0 ? lasProduct.id : 1
+
         if (errors.isEmpty()) {
             let newProduct = {
-                id: data.length + 1,
+                id: biggestProductId + 1,
                 title: req.body.title,
                 description: req.body.description,
                 Ingredients: req.body.Ingredients,

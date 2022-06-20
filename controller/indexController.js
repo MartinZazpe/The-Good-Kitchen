@@ -13,7 +13,7 @@ let users = JSON.parse(dataJsonUser)
 
 module.exports = {
     indexAndRecents: (req, res) => {
-        let recentUploads = productList.slice(-4)
+        let recentUploads = productList.slice(-3)
         let allUsers = users
         //obtain all users
         //pass the users as a variable

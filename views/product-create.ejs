@@ -39,7 +39,7 @@
                                     <%= errors.description.msg%>
                                 </div>
                                 <%} %>
-                                    <textarea name="description" type="text" id="description" cols="30" rows="5" value="<%= locals.oldData && oldData.description ? oldData.description : ""%>"></textarea>
+                                    <textarea name="description" type="text" id="description" cols="30" rows="5"><%= locals.oldData && oldData.description ? oldData.description : "" %></textarea>
                         </div>
 
                         <div class="directions-ingredients-container">
@@ -97,7 +97,7 @@
                             <input class="imageInput" name="image" type="file" id="image">
                         </div>
                         <div class="button-submit-container">
-                            <button type="submit">Submit</button>
+                            <button id="button-for-submit" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>

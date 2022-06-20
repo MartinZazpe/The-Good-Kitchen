@@ -73,6 +73,10 @@
     color: red;
 }
 
+div h6 {
+    text-align: center;
+}
+
 
 .cake,
 h4 {
@@ -112,4 +116,16 @@ h4 {
 
 .colorGold {
     color: gold;
+}
+
+@media (min-width: 480px) {
+    .body-information {
+        margin-top: 40px;
+    }
+}
+
+@media (min-width: 522px) {
+    .body-information {
+        margin-top: 35px;
+    }
 }

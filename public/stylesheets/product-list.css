@@ -93,4 +93,28 @@
     .title-image-container h3 {
         font-size: 1.7rem
     }
+
+    .body-information {
+        padding: 0px 40px;
+    }
+
+
+}
+
+
+@media(min-width:992px) {
+
+    .body-information {
+        padding: 0px 60px;
+    }
+
+}
+
+
+@media(min-width:1200px) {
+
+    .body-information {
+        padding: 0px 100px;
+    }
+
 }

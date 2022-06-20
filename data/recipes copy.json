@@ -21,7 +21,7 @@
         ],
         "description": "Delicious and nutricious",
         "image": "chickenAndVeggies.jpeg",
-        "belongsTo": "maria@hotmail.com"
+        "belongsTo": "2"
     },
     {
         "id": 2,
@@ -38,7 +38,7 @@
         ],
         "description": "What´s better than a choco cake?",
         "image": "chococake.jpeg",
-        "belongsTo": "maria@hotmail.com"
+        "belongsTo": "2"
     },
     {
         "id": 3,
@@ -57,7 +57,7 @@
         ],
         "description": "A delicious quiche",
         "image": "QuicheLorraine.jpeg",
-        "belongsTo": "richmond@hotmail.com"
+        "belongsTo": "1"
     },
     {
         "id": 4,
@@ -73,7 +73,7 @@
         ],
         "description": "Easy to make, delicious to eat",
         "image": "fluffypancakes.jpeg",
-        "belongsTo": "johnny@hotmail.com",
+        "belongsTo": "3",
         "ratingAvg": 5
     },
     {
@@ -92,10 +92,10 @@
         ],
         "description": "mmmm a dream!",
         "image": "carrot-cake.jpeg",
-        "belongsTo": "richmond@hotmail.com"
+        "belongsTo": "1"
     },
     {
-        "id": 8,
+        "id": 6,
         "title": "Chicken Alfredo Penne",
         "description": "",
         "Ingredients": [
@@ -136,6 +136,61 @@
             "Enjoy!"
         ],
         "image": "image-1655284106171.jpeg",
-        "belongsTo": "richmond@hotmail.com"
+        "belongsTo": "1"
+    },
+    {
+        "id": 7,
+        "title": "Fresh lemonade",
+        "description": "When life gives you lemons, make the Best Lemonade Ever!  Sweet, tart, easy to throw together, and oh-so refreshing. Sweeten your day with this lemonade recipe.",
+        "Ingredients": [
+            "1 ¾ cups white sugar",
+            "1 cup water",
+            "9 medium lemons, or more as needed",
+            "7 cups ice-cold water",
+            "ice as needed"
+        ],
+        "directions": [
+            "Combine sugar and 1 cup water in a small saucepan. Stir to dissolve sugar while mixture comes to a boil. Set aside to cool slightly.",
+            "Meanwhile, roll lemons around on your counter to soften. Cut in half lengthwise, and squeeze into a liquid measuring cup. Add pulp to the juice, but discard any seeds. Continue juicing until you have 1 1/2 cups fresh juice and pulp. ",
+            "Pour 7 cups ice-cold water into a pitcher. Stir in lemon juice and pulp, then add simple syrup to taste. Add ice."
+        ],
+        "image": "image-1655759624945.jpeg",
+        "belongsTo": 10
+    },
+    {
+        "id": 8,
+        "title": "Two-Ingredient Pizza Dough",
+        "description": "If you want to make a good pizza that's fast and easy, this is it. Cooking at a higher temperature (500 degrees F (260 degrees C)) is the key to making this the perfect pizza. It doesn't get any easier than this folks. Brush dough with olive oil and add your favorite toppings. Enjoy!",
+        "Ingredients": [
+            "1 ½ cups self-rising flour, plus more for kneading",
+            "1 cup plain Greek yogurt",
+            "cooking spray"
+        ],
+        "directions": [
+            "Preheat the oven to 500 degrees F (260 degrees C).",
+            "Mix flour and Greek yogurt together in a bowl; transfer to a work surface floured with self-rising flour. Knead dough, adding more flour as needed to keep dough from being too sticky, for 8 to 10 minutes.",
+            "Spray a 12-inch pizza pan with cooking spray and spread dough to edges of pan.",
+            "Parbake the pizza crust for 5 to 7 minutes before adding your favorite toppings.",
+            "Return to the oven and bake until crust is lightly browned, 5 to 7 minutes."
+        ],
+        "image": "image-1655761990851.jpg",
+        "belongsTo": 10
+    },
+    {
+        "id": 9,
+        "title": "Basic Mashed Potatoes",
+        "description": "If you love good, old fashioned mashed potatoes this is the perfect recipe. Simple and delicious.",
+        "Ingredients": [
+            "2 pounds baking potatoes, peeled and quartered",
+            "2 tablespoons butter",
+            "1 cup milk",
+            "salt and pepper to taste"
+        ],
+        "directions": [
+            "Bring a pot of salted water to a boil. Add potatoes and cook until tender but still firm, about 15 minutes; drain.",
+            "In a small saucepan heat butter and milk over low heat until butter is melted. Using a potato masher or electric beater, slowly blend milk mixture into potatoes until smooth and creamy. Season with salt and pepper to taste."
+        ],
+        "image": "image-1655763187096.jpg",
+        "belongsTo": 10
     }
 ]

@@ -27,6 +27,11 @@ li.strikethrough {
 }
 
 
+.description-hyperlink p {
+    white-space: normal;
+}
+
+
 /* edit & product creator */
 
 .edit-container {
@@ -198,15 +203,16 @@ li.strikethrough {
     justify-content: space-evenly;
 }
 
-.productNavbar a {
+.productNavbar p {
     color: blue;
     text-decoration: none;
     transition: 0.2s linear;
 }
 
-.productNavbar a:hover {
+.productNavbar p:hover {
     color: rgb(172, 172, 212);
     text-decoration: none;
+    cursor: pointer;
 }
 
 

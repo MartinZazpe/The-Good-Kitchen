@@ -70,5 +70,13 @@
         "type": "Community member",
         "password": "$2a$10$ZNs2wUHRveCMhXwoDX2.t.xudNNGhh9ZYmgjPHV5vCRt/kjqi62pK",
         "image": "1655744807657_img.webp"
+    },
+    {
+        "id": 10,
+        "name": "Mia",
+        "email": "mia@hotmail.com",
+        "type": "Community member",
+        "password": "$2a$10$RxWfR4LIbO4TsCwiKn1mEePGmdrjPyIWZnsEggURPGlWYIj/7Oh6q",
+        "image": "1655759728552_img.jpeg"
     }
 ]

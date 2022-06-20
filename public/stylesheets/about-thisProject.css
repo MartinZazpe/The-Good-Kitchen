@@ -1,5 +1,5 @@
 .body-information {
-    margin-top: 50px;
+    margin: 50px 0px;
     text-align: center;
     color: rgb(65, 78, 90)
 }
@@ -111,4 +111,10 @@
     width: 50px;
     display: block;
     background-position: center;
+}
+
+.technical-details-container a,
+.technical-details-container span {
+    cursor: default;
+    pointer-events: none;
 }

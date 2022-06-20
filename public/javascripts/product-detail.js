@@ -6,7 +6,26 @@ window.addEventListener("load", function () {
     let submit = document.querySelector('.submit-form')
     let checkMark = document.querySelector('.checkMark')
     let liItemDirection = document.querySelectorAll('.directions-list li')
-    // let strikethrough = document.queryCommandValue('.strikethrough')
+    let Overview = document.getElementById('Overview')
+    let Steps = document.getElementById('Steps')
+    let Comments = document.getElementById('Comments')
+    let productNavbar = document.querySelector('.productNavbar')
+
+
+    // console.log(productNavbar.children[0])
+
+    productNavbar.children[0].addEventListener('click', function () {
+        Overview.scrollIntoView({ behavior: "smooth", block: 'center' })
+    })
+
+    productNavbar.children[1].addEventListener('click', function () {
+        Steps.scrollIntoView({ behavior: "smooth", block: 'center' })
+    })
+
+    productNavbar.children[2].addEventListener('click', function () {
+        Comments.scrollIntoView({ behavior: "smooth", block: 'center' })
+    })
+
 
     liItem.forEach((li) => {
         li.onclick = (li) => {
@@ -19,6 +38,8 @@ window.addEventListener("load", function () {
             (li.target).classList.toggle('strikethrough')
         }
     })
+
+
 
 
     // submit.addEventListener('click', () => {
