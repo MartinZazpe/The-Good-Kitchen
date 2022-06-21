@@ -13,14 +13,19 @@ let users = JSON.parse(dataJsonUser)
 
 module.exports = {
     indexAndRecents: (req, res) => {
-        let recentUploads = productList.slice(-3)
+        let recentUploads = productList.slice(-4)
         let allUsers = users
-        //obtain all users
-        //pass the users as a variable
-        //on view, if the user owns that recipe, show his username and maybe his profile image
+
+        //check recipes and obtain the two best ranked 
+        //return them as a variable
+
+        let bestRanked = productList.filter(element => element.ratingAvg == "5")
+        let TwoBestRanked = bestRanked.slice(-2)
+        console.log(TwoBestRanked)
+
 
         res.render("index", {
-            recipes: recentUploads, allUsers
+            recipes: recentUploads, allUsers, TwoBestRanked
         })
     },
     aboutUs: (req, res) => {

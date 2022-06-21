@@ -64,52 +64,106 @@
               </section>
             </div>
           </div>
-
         </div>
 
-        <div>
-          <h6>Check out our latest recipes</h6>
-        </div>
+        <section id="highest-ranked-section">
 
-        <div class="container">
-          <% for(let recipe of recipes) {%>
-            <div class="product-container">
-              <div class="image-avg-container">
-                <div class="imageContainer">
-                  <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="/images/<%= recipe.image %>"></a>
-                  <% if(recipe.ratingAvg> 0) { %>
-                    <div class="AVGrating">
-                      <div>
-                        <h5>
-                          <%= recipe.ratingAvg %> / 5 <i class="colorGold fa-sm fa-solid fa-star"></i>
-                        </h5>
-                      </div>
+          <div class="most-popular-container">
+            <h6 class="most-popular-title">Most popular</h6>
+          </div>
+
+          <div class="container">
+            <% if(locals.TwoBestRanked) { %>
+              <% for(let recipe of TwoBestRanked) {%>
+                <div class="product-container">
+                  <div class="image-avg-container">
+                    <div class="imageContainer">
+                      <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="/images/<%= recipe.image %>"></a>
+                      <% if(recipe.ratingAvg> 0) { %>
+                        <div class="AVGrating">
+                          <div>
+                            <h5>
+                              <%= recipe.ratingAvg %> / 5 <i class="colorGold fa-sm fa-solid fa-star"></i>
+                            </h5>
+                          </div>
+                        </div>
+                        <% }%>
                     </div>
-                    <% }%>
+                  </div>
+                  <div class="description-hyperlink ">
+                    <h6>
+                      <%=recipe.title %>
+                    </h6>
+                    <a class="detail-link noShow" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+                    <% for(let user of allUsers) { %>
+                      <% if(user.id==recipe.belongsTo) {%>
+                        <div class="user-product-container">
+                          <img class="user-product-thumbnail" src="/images/userImages/<%=user.image %>" alt="user-image">
+                          <div class="user-product-container-userDetails">
+                            <p class="user-product-username">
+                              <%=user.name %>
+                            </p>
+                            <p>Community member</p>
+                          </div>
+                        </div>
+                        <% } %>
+                          <% } %>
+                  </div>
+                </div>
+                <% } %>
+                  <% } %>
+          </div>
+
+
+
+        </section>
+
+
+
+        <section id="latest-recipes-section">
+          <div class="title-container">
+            <h6 class="latest-recipes-title">Recent uploads</h6>
+          </div>
+          <div class="container">
+            <% for(let recipe of recipes) {%>
+              <div class="product-container">
+                <div class="image-avg-container">
+                  <div class="imageContainer">
+                    <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="/images/<%= recipe.image %>"></a>
+                    <% if(recipe.ratingAvg> 0) { %>
+                      <div class="AVGrating">
+                        <div>
+                          <h5>
+                            <%= recipe.ratingAvg %> / 5 <i class="colorGold fa-sm fa-solid fa-star"></i>
+                          </h5>
+                        </div>
+                      </div>
+                      <% }%>
+                  </div>
+                </div>
+                <div class="description-hyperlink ">
+                  <h6>
+                    <%=recipe.title %>
+                  </h6>
+                  <a class="detail-link noShow" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+                  <% for(let user of allUsers) { %>
+                    <% if(user.id==recipe.belongsTo) {%>
+                      <div class="user-product-container">
+                        <img class="user-product-thumbnail" src="/images/userImages/<%=user.image %>" alt="user-image">
+                        <div class="user-product-container-userDetails">
+                          <p class="user-product-username">
+                            <%=user.name %>
+                          </p>
+                          <p>Community member</p>
+                        </div>
+                      </div>
+                      <% } %>
+                        <% } %>
                 </div>
               </div>
-              <div class="description-hyperlink ">
-                <h6>
-                  <%=recipe.title %>
-                </h6>
-                <a class="detail-link noShow" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
-                <% for(let user of allUsers) { %>
-                  <% if(user.id==recipe.belongsTo) {%>
-                    <div class="user-product-container">
-                      <img class="user-product-thumbnail" src="/images/userImages/<%=user.image %>" alt="user-image">
-                      <div class="user-product-container-userDetails">
-                        <p class="user-product-username">
-                          <%=user.name %>
-                        </p>
-                        <p>Community member</p>
-                      </div>
-                    </div>
-                    <% } %>
-                      <% } %>
-              </div>
-            </div>
-            <% } %>
-        </div>
+              <% } %>
+          </div>
+        </section>
       </div>
     </main>
     <%- include("partials/footer.ejs") %>

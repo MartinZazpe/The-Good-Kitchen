@@ -5,11 +5,57 @@
     border: 2px solid rgb(224, 203, 173);
     width: 60vw;
     border-radius: 5px;
+
 }
 
 * {
     line-height: normal;
 }
+
+#highest-ranked-section,
+#latest-recipes-section {
+    padding-bottom: 30px;
+}
+
+
+.most-popular-container,
+.title-container {
+    display: flex;
+    justify-content: center;
+}
+
+#highest-ranked-section .most-popular-title {
+    /* background-color: transparent; */
+    display: inline;
+    text-align: center;
+    background-image: url('../../images/icon-images/green-brush-bg.png');
+    background-size: 100%;
+}
+
+
+
+#latest-recipes-section .latest-recipes-title {
+    /* background-color: transparent; */
+    display: inline;
+    text-align: center;
+    background-image: url('../../images/icon-images/pink-brush-bg.png');
+    background-size: 100%;
+}
+
+
+
+.description-hyperlink h6 {
+    white-space: normal;
+}
+
+.container {
+    justify-content: center !important;
+}
+
+/* .product-container {
+    flex-basis: 50% !important;
+} */
+
 
 /* .body-information {
     margin-top: px;
@@ -95,6 +141,13 @@ h4 {
 .image-avg-container {
     position: relative;
 }
+
+/* .imageContainer {
+    width: 200px;
+} */
+
+
+
 
 
 .AVGrating {

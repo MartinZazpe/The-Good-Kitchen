@@ -192,5 +192,29 @@
         ],
         "image": "image-1655763187096.jpg",
         "belongsTo": 10
+    },
+    {
+        "id": 10,
+        "title": "Air Fryer Potato Wedges",
+        "description": "Deliciously crispy air-fried potato wedges are perfectly seasoned and ready to serve in just over 30 minutes. It doesn't get any easier than this! Serve with ketchup for a tasty appetizer, or toss with some grated Parmesan for a cheesy potato side dish.",
+        "Ingredients": [
+            "2 medium russet potatoes",
+            "1 ½ tablespoons olive oil",
+            "½ teaspoon ground paprika",
+            "½ teaspoon parsley flakes",
+            "½ teaspoon chili powder",
+            "½ teaspoon sea salt",
+            "⅛ teaspoon ground black pepper"
+        ],
+        "directions": [
+            "Preheat an air fryer to 400 degrees F (200 degrees C).",
+            "Cut each potato in half lengthwise. Cut each half in half lengthwise, and then cut each quarter in half lengthwise. You will have 16 wedges.",
+            "Place potato wedges in a large bowl. Add olive oil, paprika, parsley, chili, salt, and pepper; mix until well combined.",
+            "Place 1/2 of the potato wedges in the basket of the air fryer and cook for 10 minutes.",
+            "Flip wedges with tongs and cook for an additional 5 minutes. Remove to a plate.",
+            "Repeat to cook the remaining wedges."
+        ],
+        "image": "image-1655801593491.jpg",
+        "belongsTo": 9
     }
 ]

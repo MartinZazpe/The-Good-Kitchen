@@ -34,7 +34,7 @@ window.addEventListener("load", function () {
         newField.setAttribute('placeholder', 'Add Instruction')
         node.appendChild(newField)
         instruction_list.appendChild(node)
-        this.scrollIntoView()
+        console.log('new field')
     }
 
 
