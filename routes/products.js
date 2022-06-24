@@ -20,7 +20,7 @@ router.post('/create', configMulter.single("image"), productCreate, productContr
 
 /*  edit a product   */
 router.get('/edit/:id', authMiddleware, productController.edit)
-router.put('/edit/:id', authMiddleware, configMulter.single("image"), productController.update)
+router.put('/edit/:id', authMiddleware, configMulter.single("image"), productCreate, productController.update)
 
 /*  Search products */
 router.post('/search', productController.search)

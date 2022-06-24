@@ -105,7 +105,9 @@ module.exports = {
         let userNewInfo = users.find(user => user.id == req.session.userLogged.id)
         userNewInfo.name = req.body.name ? req.body.name : userNewInfo.name
         userNewInfo.email = req.body.email ? req.body.email : userNewInfo.email
-        userNewInfo.image = req.file ? req.body.fieldname : userNewInfo.image
+        userNewInfo.image = req.file ? req.file.filename : userNewInfo.image ? userNewInfo.image : 'user-default.png'
+
+        console.log(req)
 
         writeUsersDb()
         res.clearCookie('userEmail')

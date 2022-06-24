@@ -120,14 +120,17 @@
                         </div>
 
                         <div id="Steps" class="directions">
-                            <p class="directions-title">Directions</p>
-                            <ol class="directions-list">
-                                <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
-                                    <li>
-                                        <%= recipe.Ingredients[i] %>
-                                    </li>
-                                    <% } %>
-                            </ol>
+                            <% if(recipe.directions) { %>
+                                <p class="directions-title">Directions</p>
+                                <ol class="directions-list">
+
+                                    <% for(let i=0; i < recipe.directions.length; i++ ){ %>
+                                        <li>
+                                            <%= recipe.directions[i] %>
+                                        </li>
+                                        <% } %>
+                                </ol>
+                                <% } %>
                         </div>
 
 

@@ -57,7 +57,30 @@
         ],
         "description": "A delicious quiche",
         "image": "QuicheLorraine.jpeg",
-        "belongsTo": "1"
+        "belongsTo": "1",
+        "directions": [
+            "If you are making your own pie crust, roll out the pie dough into a 12-inch round. Place it in a 10-inch wide, 1 1/2-inch high tart pan, pressing the dough into the corners. (If you don't have a tart pan, you can use a similarly sized pie pan.)  ",
+            "Use a rolling pin to roll over the surface of the tart pan to cleanly cut off the excess dough from the edges.  ",
+            "Freeze for at least 30 minutes before blind-baking.  ",
+            "Pre-baking is also called \"blind\" baking. If you're using a store-bought frozen crust, follow the directions on the package for pre-baking.  ",
+            "If you are pre-baking a homemade crust, preheat oven to 350°F. Line the frozen crust with heavy duty aluminum foil. Allow for a couple inches to extend beyond the sides of the tart or pie pan.  ",
+            "Fill tart pan with pie weights such as dry beans, sugar, or rice.  ",
+            "If you are using a pan with a removable bottom, place the pan on a rimmed baking sheet in the oven to catch any spillage.  ",
+            "Bake for 40 minutes. Then remove from oven, remove the pie weights (the easiest way to do this is to lift up the foil by the edges) and the foil, and set aside. (See further tips on how to blind bake a crust.)  ",
+            "Set a large frying pan over medium heat. Arrange strips of bacon in a single layer on the bottom of the pan (you may need to work in batches or do two pans at once).  ",
+            " Slowly cook the bacon, turning the strips over occasionally until they are nicely browned and much of the fat has rendered out.  ",
+            "Lay the cooked strips of bacon on a paper towel to absorb the excess fat. Pour fat out of the pan into a jar (not down the drain, unless you want to clog the pipes) for future use, or wait until it solidifies and discard in the trash.  ",
+            "Chop the cooked bacon crosswise into 1/4-inch to 1/2-inch pieces.  ",
+            "After the bacon is cooked preheat the oven to 350°F.  ",
+            "Whisk the eggs in a large bowl. Add the nutmeg, salt, black pepper and chives and whisk a little more. Add the milk and cream and whisk vigorously to incorporate and introduce a little air into the mix – this keeps the texture of the quiche light and fluffy.  ",
+            "Arrange the bacon and cheese in the bottom of the pie crust.  ",
+            "Whisk the egg-milk mixture hard again for a few seconds, then pour it gently into the pie crust.  ",
+            "You want the bacon and cheese to be suspended in the mix, so you might need to gently stir it around just a little. You also want the chives, which will float, to be evenly arranged on top, so move them around with a spoon until you like where they are.  ",
+            "Put the quiche into the preheated oven and bake for 30-40 minutes. (If using pan with removable bottom, be sure to place a rimmed baking sheet underneath.)  ",
+            "Check for doneness after 30 minutes by gently jiggling the quiche. It should still have just a little wiggle. (It will finish setting while it cools.) Cool on a wire rack.  ",
+            "Eat at room temperature, cold (a quiche will keep for several days in the fridge), or reheated gently in a 200°F oven.  "
+        ],
+        "ratingAvg": null
     },
     {
         "id": 4,
@@ -178,6 +201,32 @@
     },
     {
         "id": 9,
+        "title": "Fried prawn & pineapple rice",
+        "description": "This quick, low calorie supper is perfect for a busy weeknight. Cook your rice in advance to get ahead - run it under cold water to chill quickly, then freeze in a food bag for up to one month",
+        "Ingredients": [
+            "2 tsp sunflower oil",
+            "bunch spring onions , greens and whites separated, both sliced",
+            "1 green pepper , deseeded and chopped into small chunks",
+            "140g pineapple , chopped into bite-sized chunks",
+            "3 tbsp Thai green curry paste",
+            "4 tsp light soy sauce , plus extra to serve",
+            "300g cooked basmati rice (brown, white or a mix - about 140g uncooked rice)",
+            "2 large eggs , beaten",
+            "140g frozen peas",
+            "225g can bamboo shoots , drained",
+            "250g frozen prawns , cooked or raw",
+            "2-3 limes , 1 juiced, the rest cut into wedges to serve",
+            "handful coriander leaves (optional)"
+        ],
+        "directions": [
+            "Heat the oil in a wok or non-stick frying pan and fry the spring onion whites for 2 mins until softened. Stir in the pepper for 1 min, followed by the pineapple for 1 min more, then stir in the green curry paste and soy sauce.",
+            "Add the rice, stir-frying until piping hot, then push the rice to one side of the pan and scramble the eggs on the other side. Stir the peas, bamboo shoots and prawns into the rice and eggs, then heat through for 2 mins until the prawns are hot and the peas tender. Finally, stir in the spring onion greens, lime juice and coriander, if using. Spoon into bowls and serve with extra lime wedges and soy sauce."
+        ],
+        "image": "image-1655813675641.webp",
+        "belongsTo": 9
+    },
+    {
+        "id": 10,
         "title": "Basic Mashed Potatoes",
         "description": "If you love good, old fashioned mashed potatoes this is the perfect recipe. Simple and delicious.",
         "Ingredients": [
@@ -194,7 +243,7 @@
         "belongsTo": 10
     },
     {
-        "id": 10,
+        "id": 11,
         "title": "Air Fryer Potato Wedges",
         "description": "Deliciously crispy air-fried potato wedges are perfectly seasoned and ready to serve in just over 30 minutes. It doesn't get any easier than this! Serve with ketchup for a tasty appetizer, or toss with some grated Parmesan for a cheesy potato side dish.",
         "Ingredients": [
@@ -216,5 +265,148 @@
         ],
         "image": "image-1655801593491.jpg",
         "belongsTo": 9
+    },
+    {
+        "id": 12,
+        "title": "Vegetarian lasagne",
+        "description": "Easy vegetarian lasagne using just a handful of ingredients. You can use ready-made tomato sauce and white sauce, or batch cook the sauces and freeze them",
+        "Ingredients": [
+            "3 red peppers, cut into large chunks",
+            "2 aubergines, cut into ½ cm thick slices",
+            "8 tbsp olive oil, plus extra for the dish",
+            "300g lasagne sheets",
+            "125g mozzarella",
+            "handful cherry tomatoes, halved",
+            "1 tbsp olive oil",
+            "2 onions, finely chopped",
+            "2 garlic cloves, sliced",
+            "1 carrot, roughly chopped",
+            "2 tbsp tomato purée",
+            "200ml white wine",
+            "3 x 400g cans chopped tomatoes",
+            "1 bunch of basil, leaves picked",
+            "85g butter",
+            " 85g plain flour",
+            "750ml milk"
+        ],
+        "directions": [
+            "To make the tomato sauce, heat the olive oil in a saucepan. Add the onions, garlic and carrot. Cook for 5-7 mins over a medium heat until softened. Turn up the heat a little and stir in the tomato purée. Cook for 1 min, pour in the white wine, then cook for 5 mins until this has reduced by two-thirds. Pour over the chopped tomatoes and add the basil leaves. Bring to the boil then simmer for 20 mins. Leave to cool then whizz in a food processor. Will keep, cooled, in the fridge for up to three days or frozen for three months.",
+            "To make the white sauce, melt the butter in a saucepan, stir in the plain flour, then cook for 2 mins. Slowly whisk in the milk, then bring to the boil, stirring. Turn down the heat, then cook until the sauce starts to thicken and coats the back of a wooden spoon. Will keep, cooled, in the fridge for up to three days or frozen for three months.",
+            "Heat the oven to 200C/180C fan/gas 6. Lightly oil two large baking trays and add the peppers and aubergines. Toss with the olive oil, season well, then roast for 25 mins until lightly browned.",
+            "Reduce the oven to 180C/160C fan/gas 4. Lightly oil a 30 x 20cm ovenproof dish. Arrange a layer of the vegetables on the bottom, then pour over a third of the tomato sauce. Top with a layer of lasagne sheets, then drizzle over a quarter of the white sauce. Repeat until you have three layers of pasta.",
+            "Spoon the remaining white sauce over the pasta, making sure the whole surface is covered, then scatter over the mozzarella and cherry tomatoes. Bake for 45 mins until bubbling and golden."
+        ],
+        "image": "image-1655814124479.jpg",
+        "belongsTo": 8
+    },
+    {
+        "id": 13,
+        "title": "Easy chicken fajitas",
+        "description": "Need a simple, vibrant midweek meal the family will love? Put together these easy chicken fajitas and people can create their own masterpieces at the table",
+        "Ingredients": [
+            "2 large chicken breasts, finely sliced",
+            "1 red onion, finely sliced",
+            "1 red pepper, sliced",
+            "1 red chilli, finely sliced (optional)",
+            "1 heaped tbsp smoked paprika",
+            "1 tbsp ground coriander",
+            "pinch of ground cumin",
+            "2 medium garlic cloves, crushed",
+            "4 tbsp olive oil",
+            "1 lime, juiced",
+            "4-5 drops Tabasco",
+            "6 medium tortillas",
+            "bag mixed salad",
+            "230g tub fresh salsa"
+        ],
+        "directions": [
+            "Heat oven to 200C/180C fan/gas 6 and wrap 6 medium tortillas in foil.",
+            "Mix 1 heaped tbsp smoked paprika, 1 tbsp ground coriander, a pinch of ground cumin, 2 crushed garlic cloves, 4 tbsp olive oil, the juice of 1 lime and 4-5 drops Tabasco together in a bowl with a big pinch each of salt and pepper.",
+            "Stir 2 finely sliced chicken breasts, 1 finely sliced red onion, 1 sliced red pepper and 1 finely sliced red chilli, if using, into the marinade.",
+            "Heat a griddle pan until smoking hot and add the chicken and marinade to the pan.",
+            "Keep everything moving over a high heat for about 5 mins using tongs until you get a nice charred effect. If your griddle pan is small you may need to do this in two batches.",
+            "To check the chicken is cooked, find the thickest part and tear in half – if any part is still raw cook until done.",
+            "Put the tortillas in the oven to heat up and serve with the cooked chicken, a bag of mixed salad and one 230g tub of fresh salsa."
+        ],
+        "image": "image-1655814374075.jpg",
+        "belongsTo": 6
+    },
+    {
+        "id": 14,
+        "title": "Classic lasagne",
+        "description": "Easiest ever pasta bake with streaky bacon, beef mince, a crème fraîche sauce and gooey mozzarella",
+        "Ingredients": [
+            "1 tbsp olive oil",
+            "2 rashers smoked streaky bacon",
+            "1 onion , finely chopped",
+            "1 celery stick, finely chopped",
+            "1 medium carrot , grated",
+            "2 garlic cloves , finely chopped",
+            "500g beef mince",
+            "1 tbsp tomato purée",
+            "2 x 400g cans chopped tomatoes",
+            "1 tbsp clear honey",
+            "500g pack fresh egg lasagne sheets",
+            "400ml crème fraîche",
+            "125g ball mozzarella , roughly torn",
+            "50g freshly grated parmesan",
+            "large handful basil leaves , torn (optional)"
+        ],
+        "directions": [
+            "Heat the oil in a large saucepan. Use kitchen scissors to snip the bacon into small pieces, or use a sharp knife to chop it on a chopping board. Add the bacon to the pan and cook for just a few mins until starting to turn golden. Add the onion, celery and carrot, and cook over a medium heat for 5 mins, stirring occasionally, until softened.",
+            "Add the garlic and cook for 1 min, then tip in the mince and cook, stirring and breaking it up with a wooden spoon, for about 6 mins until browned all over.",
+            "Stir in the tomato purée and cook for 1 min, mixing in well with the beef and vegetables. Tip in the chopped tomatoes. Fill each can half full with water to rinse out any tomatoes left in the can, and add to the pan. Add the honey and season to taste. Simmer for 20 mins.",
+            "Heat oven to 200C/180C fan/gas 6. To assemble the lasagne, ladle a little of the ragu sauce into the bottom of the roasting tin or casserole dish, spreading the sauce all over the base. Place 2 sheets of lasagne on top of the sauce overlapping to make it fit, then repeat with more sauce and another layer of pasta. Repeat with a further 2 layers of sauce and pasta, finishing with a layer of pasta.",
+            "Put the crème fraîche in a bowl and mix with 2 tbsp water to loosen it and make a smooth pourable sauce. Pour this over the top of the pasta, then top with the mozzarella. Sprinkle Parmesan over the top and bake for 25–30 mins until golden and bubbling. Serve scattered with basil, if you like."
+        ],
+        "image": "image-1655814706151.jpg",
+        "belongsTo": 6,
+        "ratingAvg": null
+    },
+    {
+        "id": 15,
+        "title": "black bean tortillas",
+        "description": "With only 5 ingredients these black bean tortillas are the easiest and fastest meal to throw together. You can always add on additional toppings like corn salsa, avocado ranch, or endless crunchy veggies like radishes or pickled red onions. An easy meal you'll have on repeat!",
+        "Ingredients": [
+            "2 (15-oz.) cans black beans, rinsed and drained",
+            "8 tortillas",
+            "2 c. shredded pepper jack ",
+            "Avocado, sliced",
+            "Hot sauce"
+        ],
+        "directions": [
+            "Preheat oven to 350°. In a small saucepan over medium heat, add beans and 1 cup of water. Bring to a simmer and let simmer until beans are warmed through, about 10 minutes. Smash with a wooden spoon until most of the beans are smashed with some whole remaining. Add more water as needed to help create a smoother consistency. ",
+            "Meanwhile, place tostadas on a large baking sheet and sprinkle cheese evenly over each. Bake until cheese is melty, about 5 minutes. ",
+            "Top tostadas with beans, avocado slices, and hot sauce."
+        ],
+        "image": "black-bean-and-avocado-wraps-4.jpeg",
+        "belongsTo": 5
+    },
+    {
+        "id": 16,
+        "title": "Ramen",
+        "description": "Delicious Ramen. Try using frozen peas or  halved snow peas in place of the bell pepper and carrot. Skip the egg and top with seared chicken or tofu and try the whole thing topped with a smattering of Togarashi or a drizzle of chili crunch.",
+        "Ingredients": [
+            "2 (3 oz.) packages instant ramen (spice packet discarded)  ",
+            "2 tbsp. unsalted butter ",
+            "1/2 medium red bell pepper, stemmed, seeded, and chopped ",
+            "1 small carrot, peeled, trimmed, and thinly sliced into rounds ",
+            "2 cloves garlic, minced ",
+            "large pinch red pepper flakes ",
+            "3 tbsp. low-sodium soy sauce ",
+            "3 tbsp. light brown sugar ",
+            "3 large eggs, lightly beaten ",
+            "1 tbsp. everything bagel seasoning ",
+            "Chopped scallions, for serving "
+        ],
+        "directions": [
+            "In a medium pot of boiling water, cook the ramen noodles according to package instructions. Drain and set aside.",
+            "Meanwhile, melt the butter in a large nonstick skillet over medium-high. Add the bell pepper and carrot, and cook until, stirring often, until softened, about 4 minutes. Add the garlic and chile flakes, and cook, stirring, until fragrant and golden, about 1 minute. Add the soy sauce and brown sugar and cook, stirring, until sugar is dissolved and sauce is boiling, about 15 seconds. ",
+            "Add the cooked noodles and toss to coat. Push the noodles to one half of the skillet and add the egg to the other half. Season eggs with salt and pepper. Let sit until the very edges look like they are about to set, about 20 seconds. Stir occasionally, using a wooden spoon or spatula until soft curds form, about 3 minutes. ",
+            "Combine noodles and eggs and spoon into bowls. ",
+            "Sprinkle with everything bagel seasoning and green onion."
+        ],
+        "image": "image-1655980673562.jpeg",
+        "belongsTo": 4
     }
 ]

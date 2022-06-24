@@ -113,8 +113,8 @@ module.exports = {
                 id: biggestProductId + 1,
                 title: req.body.title,
                 description: req.body.description,
-                Ingredients: req.body.Ingredients,
-                directions: req.body.directions,
+                Ingredients: req.body.Ingredients.filter(ingredient => ingredient != ""),
+                directions: req.body.directions.filter(direction => direction != ""),
                 image: req.file ? req.file.filename : "no-image-default.png",
                 belongsTo: req.session.userLogged.id
             }
@@ -137,15 +137,35 @@ module.exports = {
     },
     update: (req, res) => {
         let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        /* overwrite values if they are submit, else keep old value */
-        recipeFound.title = req.body.title ? req.body.title : recipeFound.title
-        recipeFound.description = req.body.description ? req.body.description : recipeFound.description
-        recipeFound.Ingredients = req.body.Ingredients ? req.body.Ingredients.split(',') : recipeFound.Ingredients
-        recipeFound.directions = req.body.directions ? req.body.Ingredients.directions(',') : recipeFound.directions
-        recipeFound.image = req.file ? req.file.filename : recipeFound.image ? recipeFound.image : "no-image-default.png"
-        /* overwrite JSON */
-        writeJSON()
-        res.redirect("/recipes/list")
+        let allUsers = users
+        let userLogged = req.session.userLogged
+        let errors = validationResult(req)
+
+
+        if (errors.isEmpty()) {
+            /* overwrite values if they are submit, else keep old value */
+            recipeFound.title = req.body.title ? req.body.title : recipeFound.title
+            recipeFound.description = req.body.description ? req.body.description : recipeFound.description
+            recipeFound.Ingredients = req.body.Ingredients ? req.body.Ingredients.filter(ingredient => ingredient != "") : recipeFound.Ingredients
+            recipeFound.directions = req.body.directions ? req.body.directions.filter(direction => direction != "") : recipeFound.directions
+            recipeFound.image = req.file ? req.file.filename : recipeFound.image ? recipeFound.image : "no-image-default.png"
+            /* overwrite JSON */
+            writeJSON()
+        }
+        res.render('product-list', {
+            recipes: data, userLogged, allUsers
+        })
+        if (errors.length > 1) {
+            return res.render('product-edit', { recipe: recipeFound, errors: errors.mapped() })
+        }
+
+        // if (req.session.userLogged) {
+        //     // let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
+        //     let userLogged = req.session.userLogged
+        //     res.render('product-list', {
+        //         recipes: data, userLogged, allUsers
+        //     })
+        // }
     },
     destroy: (req, res) => {
         let recipeFound = data.findIndex(recipe => recipe.id == req.params.id)
@@ -153,7 +173,6 @@ module.exports = {
         //this code deletes image, however it also deletes the default image, leave like this for now.
         // let imageFound = data.find(recipe => recipe.id == req.params.id)
         // fs.unlinkSync(path.join(__dirname, "../public/images/" + imageFound.image))
-
         data.splice(recipeFound, 1)
         writeJSON()
         res.redirect('/recipes/list')
@@ -259,13 +278,14 @@ module.exports = {
 
         let filteredProducts = allProducts.filter(x => x.title.toUpperCase().match(userSearch.toUpperCase()))
 
+        let bestRanked = allProducts.filter(element => element.ratingAvg == "5")
+        let TwoBestRanked = bestRanked.slice(-2)
 
-        console.log(filteredProducts)
 
 
         if (filteredProducts.length == 0) {
             res.render("index", {
-                recipes: recentUploads, allUsers
+                recipes: recentUploads, allUsers, TwoBestRanked
             })
         } else if (req.session.userLogged) {
             // let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)

@@ -12,5 +12,12 @@
         "userComment": "Made em' again, so good",
         "rating": 5,
         "timeOfComment": 1655573206000
+    },
+    {
+        "refersToProductId": "14",
+        "belongsToUserId": 6,
+        "userComment": "Hey please comment my recipe and let me know what you think guys!",
+        "rating": null,
+        "timeOfComment": 1655814939000
     }
 ]

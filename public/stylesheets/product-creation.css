@@ -230,12 +230,31 @@ input {
 }
 
 
-.button-submit-container button:hover {
+
+
+.button-submit-container #button-for-submit:hover {
+    background: #517732;
+    box-shadow: inset 0px 0px 5px #6ab57c88;
+    /* outline: none; */
+    cursor: pointer;
+}
+
+
+.button-submit-container .button-for-clear:hover {
+    background: rgba(136, 150, 73, 0.7);
+    box-shadow: inset 0px 0px 5px #6ab57c88;
+    /* outline: none; */
+    cursor: pointer;
+}
+
+
+.button-submit-container .delete-userRecipe:hover {
     background: #a28f8f;
     box-shadow: inset 0px 0px 5px #c1c1c1;
     /* outline: none; */
     cursor: pointer;
 }
+
 
 
 .button-submit-container button {

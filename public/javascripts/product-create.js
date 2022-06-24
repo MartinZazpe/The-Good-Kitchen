@@ -16,6 +16,7 @@ window.addEventListener("load", function () {
 
 
 
+
     imageInput.onchange = evt => {
         const [file] = imageInput.files
         if (file) {
@@ -26,7 +27,10 @@ window.addEventListener("load", function () {
 
 
 
-    add_more_fields.onclick = function () {
+
+
+    add_more_fields.onclick = function (e) {
+        e.preventDefault()
         var node = document.createElement("li")
         var newField = document.createElement('input')
         newField.setAttribute('type', 'text')
@@ -34,13 +38,20 @@ window.addEventListener("load", function () {
         newField.setAttribute('placeholder', 'Add Instruction')
         node.appendChild(newField)
         instruction_list.appendChild(node)
-        console.log('new field')
+
     }
 
 
+    /* to scroll to last added LI, not using currently */
+    // var items = document.querySelector('#instruction-list')
+    // var last = items[items.length - 1]
+    // last.scrollIntoView({ behavior: "smooth", block: "center" })
 
 
-    remove_fields.onclick = function () {
+
+
+    remove_fields.onclick = function (e) {
+        e.preventDefault()
         var input_tags = instruction_list.getElementsByTagName('li')
         if (input_tags.length > 1) {
             instruction_list.removeChild(input_tags[(input_tags.length) - 1])
@@ -49,7 +60,8 @@ window.addEventListener("load", function () {
 
 
 
-    add_more_fields_ingredients.onclick = function () {
+    add_more_fields_ingredients.onclick = function (e) {
+        e.preventDefault()
         var node = document.createElement("li")
         var newField = document.createElement('input')
         newField.setAttribute('type', 'text')
@@ -59,13 +71,16 @@ window.addEventListener("load", function () {
         ingredient_list.appendChild(node)
     }
 
-    remove_fields_ingredients.onclick = function () {
+
+
+
+    remove_fields_ingredients.onclick = function (e) {
+        e.preventDefault()
         var input_tags = ingredient_list.getElementsByTagName('li')
         if (input_tags.length > 1) {
             ingredient_list.removeChild(input_tags[(input_tags.length) - 1])
         }
     }
-
 
 
 })

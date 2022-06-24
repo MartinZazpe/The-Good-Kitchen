@@ -19,11 +19,11 @@ window.addEventListener("load", function () {
     })
 
     productNavbar.children[1].addEventListener('click', function () {
-        Steps.scrollIntoView({ behavior: "smooth", block: 'center' })
+        Steps.scrollIntoView({ behavior: "smooth", block: 'start' })
     })
 
     productNavbar.children[2].addEventListener('click', function () {
-        Comments.scrollIntoView({ behavior: "smooth", block: 'center' })
+        Comments.scrollIntoView({ behavior: "smooth", block: 'start' })
     })
 
 

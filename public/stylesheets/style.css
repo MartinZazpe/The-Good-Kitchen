@@ -97,6 +97,15 @@ h3 {
   justify-content: space-evenly;
 }
 
+/* test to fix last item of produt containers */
+
+/* .product-container:last-child {
+  margin-right: auto;
+} */
+
+
+/* End test to fix last item of produt containers */
+
 .product-container {
   flex-basis: 25%;
   padding: 5px;

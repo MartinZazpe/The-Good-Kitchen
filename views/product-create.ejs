@@ -33,13 +33,13 @@
                         </div>
 
                         <div class=" description-container">
-                            <label class="description-label" for="description">A brief description of your dish: <br> (max 80 characters)</label>
+                            <label class="description-label" for="description">A brief description of your dish: <br> (max 350 characters)</label>
                             <% if (locals.errors && errors.description) { %>
                                 <div class="text-danger centerText errorBg">
                                     <%= errors.description.msg%>
                                 </div>
                                 <%} %>
-                                    <textarea name="description" type="text" id="description" cols="30" rows="5"><%= locals.oldData && oldData.description ? oldData.description : "" %></textarea>
+                                    <textarea name="description" type="text" id="description" maxlength="350" cols="30" rows="5"><%= locals.oldData && oldData.description ? oldData.description : "" %></textarea>
                         </div>
 
                         <div class="directions-ingredients-container">
@@ -59,7 +59,19 @@
                                             </div>
                                             <%} %>
                                                 <ol id="ingredient-list">
-                                                    <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient"></li>
+                                                    <% if (locals.oldData && oldData.Ingredients){ %>
+                                                        <% oldData.Ingredients.forEach(function(element){ %>
+                                                            <% if(element) {%>
+                                                                <li><input type="text" name="Ingredients[]" value="<%=element ? element : "" %>"></li>
+                                                                <% } else { %>
+                                                                    <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient" %>"></li>
+                                                                    <% } %>
+                                                                        <% }) %>
+
+                                                                            <% } else if(!locals.oldData || !oldData.Ingredients){ %>
+                                                                                <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient"></li>
+                                                                                <% } %>
+
                                                 </ol>
                                     </div>
                                 </div>
@@ -81,7 +93,17 @@
                                             </div>
                                             <%} %>
                                                 <ol id="instruction-list">
-                                                    <li><input type="text" name="directions[]" placeholder="Add Instruction"></li>
+                                                    <% if (locals.oldData && oldData.directions){ %>
+                                                        <% oldData.directions.forEach(function(element){ %>
+                                                            <% if(element) { %>
+                                                                <li><input type="text" name="directions[]" placeholder="Add Instruction" value="<%=element ? element :"" %> "></li>
+                                                                <% } else { %>
+                                                                    <li><input type="text" name="directions[]" placeholder="Add Instruction" %> "></li>
+                                                                    <% } %>
+                                                                        <% }) %>
+                                                                            <% } else if(!locals.oldData || !oldData.directions){ %>
+                                                                                <li><input type="text" name="directions[]" placeholder="Add Instruction"></li>
+                                                                                <% } %>
                                                 </ol>
                                     </div>
                                 </div>

@@ -337,8 +337,9 @@ ul {
 
 .userLogged-links {
     width: 100%;
-    background-color: rgba(74, 164, 171, 0.6);
+    background-image: radial-gradient(circle at center, rgba(2, 39, 42, 0.6), rgba(53, 131, 136, 0.6));
 }
+
 
 .userLogged-links:hover {
     background-color: #555;
