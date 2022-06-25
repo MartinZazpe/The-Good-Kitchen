@@ -93,24 +93,29 @@ h3 {
 
 .container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
 
-/* test to fix last item of produt containers */
 
-/* .product-container:last-child {
-  margin-right: auto;
-} */
-
-
-/* End test to fix last item of produt containers */
 
 .product-container {
   flex-basis: 25%;
   padding: 5px;
   margin: 8px 0px;
 }
+
+
+/* test to fix last item of produt containers */
+
+.product-container:last-child {
+  align-self: flex-start;
+  /* margin-right: auto; */
+}
+
+
+
+/* End test to fix last item of produt containers */
 
 
 .wrapper {
@@ -276,6 +281,10 @@ label {
   main {
     margin-top: 100px;
   }
+
+  /* .container {
+    justify-content: space-around !important;
+  } */
 }
 
 
@@ -284,6 +293,15 @@ label {
 @media (min-width:523px) {
   main {
     margin-top: 104px;
+  }
+
+
+}
+
+
+@media (min-width: 630px) {
+  .container-fix {
+    justify-content: space-between !important;
   }
 }
 

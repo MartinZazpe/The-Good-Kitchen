@@ -24,7 +24,12 @@
                                 <form class="edit-image-form" action="/user/profile/?_method=PUT" enctype="multipart/form-data" method="POST">
 
                                     <label>
-                                        <h3 class="username-input-container">Welcome <input class="username-input" type="text" name="name" value="<%= user.name %>"><i class="noShow fa-solid fa-pen-to-square"></i></h3>
+                                        <% if (locals.errors && errors.name) { %>
+                                            <div class="error-msg">
+                                                <%=errors.name.msg%>
+                                            </div>
+                                            <% } %>
+                                                <h3 class="username-input-container">Welcome <input class="username-input" type="text" name="name" value="<%= user.name %>"><i class="noShow fa-solid fa-pen-to-square"></i></h3>
                                     </label>
                                     <label for="image" name="image"></label>
                                     <input id="imageInput" class="image-input" name='image' type="file">
@@ -34,11 +39,16 @@
                                         </div>
 
                                     </div>
-                                    <p class="user-email-container"><input class="user-email" type="email" name="email" value="<%= user.email %>"><i class="noShow fa-solid fa-pen-to-square"></i></p>
-                                    <div class="btn-form-container">
-                                        <button class="submitFormBtn noDisplay" type="submit">Save changes</button>
-                                        <button class="clearFormBtn noDisplay" type="reset">Clear changes</button>
-                                    </div>
+                                    <% if (locals.errors && errors.email) { %>
+                                        <div class="error-msg">
+                                            <%=errors.email.msg%>
+                                        </div>
+                                        <% } %>
+                                            <p class="user-email-container"><input class="user-email" type="email" name="email" value="<%= user.email %>"><i class="noShow fa-solid fa-pen-to-square"></i></p>
+                                            <div class="btn-form-container">
+                                                <button class="submitFormBtn noDisplay" type="submit">Save changes</button>
+                                                <button class="clearFormBtn noDisplay" type="reset">Clear changes</button>
+                                            </div>
                                 </form>
 
                                 <!-- <form class="edit-image-form" action="/user/profile" enctype="multipart/form-data" method="POST">
@@ -62,7 +72,13 @@
                                         <% } %>
                                 </div>
                                 <p><a class="logout" href="/user/logout">Logout</a></p>
-                                <p><a class=" account-delete" href="#">Delete my account</a></p>
+                                <!-- <p><a class=" account-delete" href="/delete" onclick="return confirm('This action can´t be undone, are you sure you want to delete this item?')">Delete my account</a></p> -->
+                                <form action="/user/delete/?_method=DELETE" method="POST">
+                                    <button class="delete-user" type="submit" onclick="return confirm('This action can´t be undone, are you sure you want to delete your profile?')">
+                                        Delete account
+                                    </button>
+                                </form>
+
                                 <!-- ^^ This on edit ^^-->
 
 

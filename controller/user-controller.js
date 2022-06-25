@@ -102,20 +102,26 @@ module.exports = {
         return res.redirect('/')
     },
     editProfile: (req, res) => {
-        let userNewInfo = users.find(user => user.id == req.session.userLogged.id)
-        userNewInfo.name = req.body.name ? req.body.name : userNewInfo.name
-        userNewInfo.email = req.body.email ? req.body.email : userNewInfo.email
-        userNewInfo.image = req.file ? req.file.filename : userNewInfo.image ? userNewInfo.image : 'user-default.png'
+        let errors = validationResult(req)
+        console.log(errors)
+        if (errors.isEmpty()) {
+            let userNewInfo = users.find(user => user.id == req.session.userLogged.id)
+            userNewInfo.name = req.body.name ? req.body.name : userNewInfo.name
+            userNewInfo.email = req.body.email ? req.body.email : userNewInfo.email
+            userNewInfo.image = req.file ? req.file.filename : userNewInfo.image ? userNewInfo.image : 'user-default.png'
+            writeUsersDb()
+            res.clearCookie('userEmail')
+            req.session.userLogged.email = userNewInfo.email
+            res.cookie('userEmail', userNewInfo.email, { maxAge: (1000 * 60) * 60 })
+            res.render('user-profile', {
+                user: userNewInfo
+            })
+        }
 
-        console.log(req)
-
-        writeUsersDb()
-        res.clearCookie('userEmail')
-        req.session.userLogged.email = userNewInfo.email
-        res.cookie('userEmail', userNewInfo.email, { maxAge: (1000 * 60) * 60 })
-        res.render('user-profile', {
-            user: userNewInfo
+        return res.render('user-profile', {
+            errors: errors.mapped(), user: req.session.userLogged
         })
+
     },
 
     userProducts: (req, res) => {
@@ -134,10 +140,22 @@ module.exports = {
                 user: req.session.userLogged
             })
         }
-
-
-
         // res.render('user-recipes', { recipes: userRecipes })
+    },
+    deleteUser: (req, res) => {
+        let success = validationResult(req)
+        let userLoggedId = req.session.userLogged.id
+        console.log(userLoggedId)
+        res.clearCookie('userEmail')
+        req.session.destroy()
+        userModels.delete(userLoggedId)
+        return res.render('login', {
+            success: {
+                delete: {
+                    msg: "User deleted correctly."
+                }
+            }
+        })
     }
 }
 

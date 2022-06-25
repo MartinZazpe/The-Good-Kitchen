@@ -23,33 +23,38 @@
                         <%=errors.email.msg %>
                     </div>
                     <% } %>
-
-                        <% if (locals.errors && errors.LoggedToComment) { %>
-                            <div class="text-danger">
-                                <%=errors.LoggedToComment.msg%>
+                        <% if (locals.success && success.delete) { %>
+                            <div class="text-success">
+                                <%=success.delete.msg %>
                             </div>
                             <% } %>
-                                <% if (locals.errors && errors.successful) { %>
-                                    <div class="text-success">
-                                        <%=errors.successful.msg%>
+
+                                <% if (locals.errors && errors.LoggedToComment) { %>
+                                    <div class="text-danger">
+                                        <%=errors.LoggedToComment.msg%>
                                     </div>
                                     <% } %>
+                                        <% if (locals.errors && errors.successful) { %>
+                                            <div class="text-success">
+                                                <%=errors.successful.msg%>
+                                            </div>
+                                            <% } %>
 
-                                        <div class="form-container">
-                                            <form class="login-form" action="/user/login" method="POST">
-                                                <label for="">Email</label>
-                                                <input type="email" name="email">
-                                                <div class="errors-container">
+                                                <div class="form-container">
+                                                    <form class="login-form" action="/user/login" method="POST">
+                                                        <label for="">Email</label>
+                                                        <input type="email" name="email">
+                                                        <div class="errors-container">
+                                                        </div>
+                                                        <label for="">Password</label>
+                                                        <input type="password" name="password">
+                                                        <label>
+                                                            <input type="checkbox" name="rememberUser"> Recordar mi usuario
+                                                        </label>
+                                                        <p>Got no user? <a class="register-now" href="/user/register">Register now!</a></p>
+                                                        <button type="submit" value="Login">Login</button>
+                                                    </form>
                                                 </div>
-                                                <label for="">Password</label>
-                                                <input type="password" name="password">
-                                                <label>
-                                                    <input type="checkbox" name="rememberUser"> Recordar mi usuario
-                                                </label>
-                                                <p>Got no user? <a class="register-now" href="/user/register">Register now!</a></p>
-                                                <button type="submit" value="Login">Login</button>
-                                            </form>
-                                        </div>
 
             </section>
         </main>

@@ -21,7 +21,15 @@
         ],
         "description": "Delicious and nutricious",
         "image": "chickenAndVeggies.jpeg",
-        "belongsTo": "2"
+        "belongsTo": "2",
+        "directions": [
+            "In a large pan on medium-high heat, add 1 tablespoon of oil. Once the oil is hot, add chicken, season with salt and pepper, and sauté until cooked through and browned. Remove cooked chicken from pan and set aside. ",
+            "In the same pan, heat 1 tablespoon of oil and add mushrooms. When the mushrooms start to soften, add broccoli florets and stir-fry until the broccoli is tender. Remove cooked mushrooms and broccoli from the pan and set aside.",
+            "Add 1 tablespoon of oil to the pan and sauté garlic and ginger until fragrant. Add the remaining sauce ingredients and stir until smooth.",
+            "Return the chicken and vegetables to the saucy pan, stir until heated through.",
+            "Serve with hot rice or noodles.",
+            "Enjoy!"
+        ]
     },
     {
         "id": 2,
@@ -38,7 +46,14 @@
         ],
         "description": "What´s better than a choco cake?",
         "image": "chococake.jpeg",
-        "belongsTo": "2"
+        "belongsTo": "2",
+        "directions": [
+            "Heat the oven to 180C/160C fan/gas 4. Oil and line the base of two 18cm sandwich tins. Sieve the flour, cocoa powder and bicarbonate of soda into a bowl. Add the caster sugar and mix well.",
+            "Make a well in the centre and add the golden syrup, eggs, sunflower oil and milk. Beat well with an electric whisk until smooth.",
+            "Pour the mixture into the two tins and bake for 25-30 mins until risen and firm to the touch. Remove from oven, leave to cool for 10 mins before turning out onto a cooling rack.",
+            "To make the icing, beat the unsalted butter in a bowl until soft. Gradually sieve and beat in the icing sugar and cocoa powder, then add enough of the milk to make the icing fluffy and spreadable.",
+            "Sandwich the two cakes together with the butter icing and cover the sides and the top of the cake with more icing."
+        ]
     },
     {
         "id": 3,
@@ -79,7 +94,8 @@
             "Put the quiche into the preheated oven and bake for 30-40 minutes. (If using pan with removable bottom, be sure to place a rimmed baking sheet underneath.)  ",
             "Check for doneness after 30 minutes by gently jiggling the quiche. It should still have just a little wiggle. (It will finish setting while it cools.) Cool on a wire rack.  ",
             "Eat at room temperature, cold (a quiche will keep for several days in the fridge), or reheated gently in a 200°F oven.  "
-        ]
+        ],
+        "ratingAvg": null
     },
     {
         "id": 4,
@@ -96,7 +112,11 @@
         "description": "Easy to make, delicious to eat",
         "image": "fluffypancakes.jpeg",
         "belongsTo": "3",
-        "ratingAvg": 5
+        "ratingAvg": 5,
+        "directions": [
+            "In a large bowl, mix flour, sugar, baking powder and salt. Make a well in the center, and pour in milk, egg and oil. Mix until smooth.",
+            "Heat a lightly oiled griddle or frying pan over medium high heat. Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake. Brown on both sides and serve hot."
+        ]
     },
     {
         "id": 5,
@@ -114,7 +134,13 @@
         ],
         "description": "mmmm a dream!",
         "image": "carrot-cake.jpeg",
-        "belongsTo": "1"
+        "belongsTo": "1",
+        "directions": [
+            "Heat the oven to 180C/160C fan/gas 4. Oil and line the base and sides of two 20cm cake tins with baking parchment. Whisk the oil, yogurt, eggs, vanilla and zest in a jug. Mix the flour, sugar, cinnamon and nutmeg with a good pinch of salt in a bowl. Squeeze any lumps of sugar through your fingers, shaking the bowl a few times to bring the lumps to the surface.",
+            "Add the wet ingredients to the dry, along with the carrots, raisins and half the nuts, if using. Mix well to combine, then divide between the tins.",
+            "Bake for 25-30 mins or until a skewer inserted into the centre of the cake comes out clean. If any wet mixture clings to the skewer, return to the oven for 5 mins, then check again. Leave to cool in the tins.",
+            "To make the icing, beat the butter and sugar together until smooth. Add half the soft cheese and beat again, then add the rest (adding it bit by bit prevents the icing from splitting). Remove the cakes from the tins and sandwich together with half the icing. Top with the remaining icing and scatter with the remaining walnuts. Will keep in the fridge for up to five days. Best eaten at room temperature."
+        ]
     },
     {
         "id": 6,
@@ -407,5 +433,203 @@
         ],
         "image": "image-1655980673562.jpeg",
         "belongsTo": 4
+    },
+    {
+        "id": 17,
+        "title": "Easy huevos rancheros",
+        "description": "An easy Mexican breakfast that'll keep you going all morning, it's got everything you need to pep up your plate",
+        "Ingredients": [
+            "1 tbsp vegetable oil or sunflower oil",
+            "1 corn tortilla wrap",
+            "1 egg",
+            "200g can black beans, drained",
+            "juice ½ lime",
+            "½ ripe avocado, peeled and sliced",
+            "50g feta, crumbled",
+            "hot chilli sauce (we like sriracha)"
+        ],
+        "directions": [
+            "Heat the oil in a frying pan over a high heat. Add the tortilla and fry for 1-2 mins on each side until crisping at the edges. Transfer to a plate. ",
+            "Crack the egg into the pan and cook to your liking. Meanwhile, tip the beans into a bowl, season and add a squeeze of lime, then lightly mash with a fork. ",
+            "Spread the beans over the tortilla, top with the egg, avocado, feta and chilli sauce. Squeeze over a little more lime juice just before eating. "
+        ],
+        "image": "image-1656152729177.jpeg",
+        "belongsTo": 6
+    },
+    {
+        "id": 18,
+        "title": "Vegetarian Chilli",
+        "description": "The easiest chilli you'll ever make, with ready-to-eat grains, kidney beans in chilli sauce and summer veggies.\r\n\r\n",
+        "Ingredients": [
+            "400g pack oven-roasted vegetables",
+            "1 can kidney beans in chilli sauce",
+            "1 can chopped tomatoes",
+            "1 ready-to-eat mixed grain pouch"
+        ],
+        "directions": [
+            "Heat oven to 200C/180C fan/ gas 6. Cook the vegetables in a casserole dish for 15 mins. Tip in the beans and tomatoes, season, and cook for another 10-15 mins until piping hot. Heat the pouch in the microwave on High for 1 min and serve with the chilli."
+        ],
+        "image": "image-1656161601633.jpeg",
+        "belongsTo": 11
+    },
+    {
+        "id": 19,
+        "title": "Easy bread rolls",
+        "description": "Bake these simple white bread rolls for sandwiches, burger buns or to dunk in soup. Using only a handful of ingredients, bread-making has never been so easy",
+        "Ingredients": [
+            "500g strong white bread flour , plus extra for dusting",
+            "7g sachet fast action yeast",
+            "1 tsp white caster sugar",
+            "2 tsp fine salt",
+            "1 tsp sunflower oil , plus extra for the work surface and bowl"
+        ],
+        "directions": [
+            "Tip the flour, yeast, sugar, salt and oil into a bowl. Pour over 325ml warm water, then mix (with a spatula or your hand), until it comes together as a shaggy dough. Make sure all the flour has been incorporated. Cover and leave for 10 mins.",
+            "Lightly oil your work surface and tip the dough onto it. Knead the dough for at least 10 mins until it becomes tighter and springy – if you have a stand mixer you can do this with a dough hook for 5 mins. Pull the dough into a ball and put in a clean, oiled bowl. Leave for 1 hr, or until doubled in size.",
+            "Tip the dough onto a lightly floured surface and roll into a long sausage shape. Halve the dough, then divide each half into four pieces, so you have eight equal-sized portions. Roll each into a tight ball and put on a dusted baking tray, leaving some room between each ball for rising. Cover with a damp tea towel and leave in a warm place to prove for 40 mins-1 hr or until almost doubled in size.",
+            "Heat the oven to 230C/210C fan/gas 8. When the dough is ready, dust each ball with a bit more flour. (If you like, you can glaze the rolls with milk or beaten egg, and top with seeds.) Bake for 25-30mins, until light brown and hollow sounding when tapped on the base. Leave to cool on a wire rack."
+        ],
+        "image": "image-1656161732885.jpeg",
+        "belongsTo": 7
+    },
+    {
+        "id": 20,
+        "title": "Chocolate molten cakes",
+        "description": "Bake an impressive dinner party dessert with minimum fuss – these chocolate puddings, also known as chocolate fondant or lava cake, have a lovely gooey centre",
+        "Ingredients": [
+            "100g butter, plus extra to grease",
+            "100g dark chocolate, chopped",
+            "150g light brown soft sugar",
+            "3 large eggs",
+            "½ tsp vanilla extract",
+            "50g plain flour",
+            "single cream, to serve"
+        ],
+        "directions": [
+            "Heat oven to 200C/180C fan/gas 6. Butter 6 dariole moulds or basins well and place on a baking tray.",
+            "Put 100g butter and 100g chopped dark chocolate in a heatproof bowl and set over a pan of hot water (or alternatively put in the microwave and melt in 30 second bursts on a low setting) and stir until smooth. Set aside to cool slightly for 15 mins.",
+            "Using an electric hand whisk, mix in 150g light brown soft sugar, then 3 large eggs, one at a time, followed by ½ tsp vanilla extract and finally 50g plain flour. Divide the mixture among the darioles or basins.",
+            "You can now either put the mixture in the fridge, or freezer until you're ready to bake them. Can be cooked straight from frozen for 16 mins, or bake now for 10-12 mins until the tops are firm to the touch but the middles still feel squidgy.",
+            "Carefully run a knife around the edge of each pudding, then turn out onto serving plates and serve with single cream."
+        ],
+        "image": "image-1656161875704.jpeg",
+        "belongsTo": 5
+    },
+    {
+        "id": 21,
+        "title": "Italian bean salad",
+        "description": "A quick and easy summery salad - ideal for serving with a barbecue spread",
+        "Ingredients": [
+            "1 bunch spring onions",
+            "2 garlic cloves , crushed",
+            "1 red chilli , seeded and finely chopped",
+            "2 x 400g cans cannellini beans , drained and rinsed",
+            "1 can of butter beans",
+            "6 tbsp olive oil",
+            "2 tbsp white wine vinegar",
+            "plenty of chopped parsley"
+        ],
+        "directions": [
+            "Finely chop the spring onions and put into a bowl with the garlic and the chilli. Mix in the cannellini beans and the butter beans. Whisk the olive oil with the white wine vinegar and add plenty of seasoning. Stir through the salad with plenty of chopped parsley."
+        ],
+        "image": "image-1656162004136.jpeg",
+        "belongsTo": 7
+    },
+    {
+        "id": 22,
+        "title": "Chicken tagine",
+        "description": "Simple one-pots are perfect for the busy cook. This chicken tagine is great eaten with cous cous for something a bit more filling.",
+        "Ingredients": [
+            "2 tbsp olive oil",
+            "8 skinless boneless chicken thighs, halved if large",
+            "1 onion, chopped",
+            "2 tsp grated fresh root ginger",
+            "pinch saffron or tumeric",
+            "1 tbsp honey",
+            "400g carrot, cut into sticks",
+            "small bunch parsley, roughly chopped",
+            "lemon wedges, to serve"
+        ],
+        "directions": [
+            "Heat the oil in a large, wide pan with a lid, add the chicken, then fry quickly until lightly coloured. Add the onion and ginger, then fry for a further 2 mins.",
+            "Add 150ml water, the saffron, honey and carrots, season, then stir well. Bring to the boil, cover tightly, then simmer for 30 mins until the chicken is tender. Uncover and increase the heat for about 5 mins to reduce the sauce a little. Sprinkle with parsley and serve with lemon wedges for squeezing over."
+        ],
+        "image": "image-1656162172693.jpeg",
+        "belongsTo": 11
+    },
+    {
+        "id": 23,
+        "title": "Chocolate cupcakes",
+        "description": "These light cakes are perfect for freezing – they just need a quick blast in the microwave to bring them back to life",
+        "Ingredients": [
+            "300g dark chocolate , broken into chunks - don't use one with a high cocoa content",
+            "200g self-raising flour",
+            "200g light muscovado sugar , plus 3 tbsp extra",
+            "6 tbsp cocoa",
+            "150ml sunflower oil , plus a little extra for greasing",
+            "284ml pot soured cream",
+            "2 eggs",
+            "1 tsp vanilla extract"
+        ],
+        "directions": [
+            "Heat oven to 180C/fan 160C/gas 4 and line a 10-hole muffin tin with paper cases. Whizz the chocolate into small pieces in a food processor. In the largest mixing bowl you have, tip in the flour, sugar, cocoa, oil, 100ml soured cream, eggs, vanilla and 100ml water. Whisk everything together with electric beaters until smooth, then quickly stir in 100g of the whizzed-up chocolate bits. Divide between the 10 cases, then bake for 20 mins until a skewer inserted comes out clean (make sure you don’t poke it into a chocolate chip bit). Cool on a wire rack.",
+            "To make the icing, put the remaining chocolate bits, soured cream and 3 tbsp sugar in a small saucepan. Heat gently, stirring, until the chocolate is melted and you have a smooth icing. Chill in the fridge until firm enough to swirl on top of the muffins, then tuck in."
+        ],
+        "image": "image-1656162363155.jpeg",
+        "belongsTo": 12
+    },
+    {
+        "id": 24,
+        "title": "Salmon & dill fish cakes",
+        "description": "Everybody loves fish cakes, and even the complete beginner can master these mouthwatering morsels",
+        "Ingredients": [
+            "800g skinless salmon fillet",
+            "2 bay leaves",
+            "small bunch dill , stalks and fronds separated",
+            "500ml milk",
+            "600g Maris Piper potato , peeled and chopped into even sized chunks",
+            "zest 1 lemon",
+            "4 tbsp mayonnaise",
+            "1 tsp Dijon mustard",
+            "4 tbsp caper , rinsed and dried",
+            "flour , for dusting your hands",
+            "1 egg , beaten",
+            "100g breadcrumb",
+            "4 tbsp vegetable or sunflower oil",
+            "lemon wedges and watercress, to serve"
+        ],
+        "directions": [
+            "Poaching the salmon: Put the salmon in a frying pan with the bay leaves and dill stalks. Pour over enough milk to cover the fish (you may not need all the milk), bring to the boil, then lower heat to a gentle simmer and leave to poach for 4 mins. Turn off the heat, then leave the fish to continue cooking in the poaching liquid for 5 mins. Lift the salmon out with a fish slice onto a plate. Flake into large pieces with a fork, then leave to cool.",
+            "Making and drying out the mash: Meanwhile, cook the potatoes in boiling salted water for about 10 mins, or until tender. Drain well, then leave to cool in a colander for 2 mins. Tip back into the pan and return to the hob on a low setting. Mash the potatoes, watching that the mash doesn’t catch at the bottom of the pan, for 2-3 mins – it should be dry and fluffy. Stir in lemon zest, mayonnaise, mustard, capers and some seasoning.",
+            "Mixing and shaping fish cakes Pat away any liquid from the fish, then carefully lift the pieces into the pan with the mash. With your hands, gently mix together until roughly combined; it should take just a few movements or the fish will break up. Dust hands and work surface with flour. Shape a handful of the mix into a patty-shaped cake, about 2.5cm thick. Repeat to make 8 cakes.",
+            "Breadcrumbing and frying Dip the cakes into the egg, then press into the breadcrumbs all over. Heat half the oil in a frying pan until very hot. Fry 4 fish cakes for 5 mins each side until golden. Remove; keep warm. Repeat with the rest, or freeze. Serve with lemon wedges and watercress."
+        ],
+        "image": "image-1656162535742.jpeg",
+        "belongsTo": 12
+    },
+    {
+        "id": 25,
+        "title": "Paella",
+        "description": "Whip up this easy version of the traditional Spanish seafood dish straight from the storecupboard. Add extras such as chorizo and peas if you like",
+        "Ingredients": [
+            "1 tbsp olive oil",
+            "1 onion, chopped",
+            "1 tsp each hot smoked paprika and dried thyme",
+            " 300g paella or risotto rice",
+            "3 tbsp dry sherry or white wine (optional)",
+            "400g can chopped tomatoes with garlic",
+            "900ml chicken stock",
+            "400g frozen seafood mix , defrosted",
+            "1 lemon, ½ juiced, ½ cut into wedges",
+            "handful of flat-leaf parsley, roughly chopped"
+        ],
+        "directions": [
+            "Heat the olive oil in a large frying pan or wok. Add the onion and soften for 5 mins. ",
+            "Add the smoked paprika, thyme and paella rice, stir for 1 min, then splash in the sherry, if using. Once evaporated, stir in the chopped tomatoes and chicken stock. ",
+            "Season and cook, uncovered, for about 15 mins, stirring now and again until the rice is almost tender and still surrounded with some liquid.",
+            "Stir in the seafood mix and cover with a lid. Simmer for 5 mins, or until the seafood is cooked through and the rice is tender. Squeeze over the lemon juice, scatter over the parsley and serve with the lemon wedges."
+        ],
+        "image": "image-1656162709109.jpeg",
+        "belongsTo": 8
     }
 ]

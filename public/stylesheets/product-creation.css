@@ -227,6 +227,7 @@ input {
 .button-submit-container {
     display: flex;
     justify-content: center;
+    justify-content: space-evenly;
 }
 
 

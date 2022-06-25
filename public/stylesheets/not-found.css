@@ -4,7 +4,15 @@
 
 
 body {
-    background-color: rgb(248, 248, 248)
+    background-color: rgb(248, 248, 248);
+    justify-content: center;
+}
+
+.container-error-page {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+    position: relative;
 }
 
 h1 {
@@ -16,26 +24,37 @@ h2 {
     color: orange;
 }
 
+.error-image-text {
+    display: flex;
+}
+
+.image-container {
+    position: relative
+}
+
+.error-greeting {
+    position: absolute;
+    right: 0px;
+    top: -10px;
+    width: 100px;
+}
+
+
 .error-image {
-    width: 280px;
+    max-width: 250px;
     padding: 0;
+    transform: scaleX(-1);
 }
 
 .image-container {
     align-self: center;
 }
 
-.container {
-    display: flex;
-    flex-flow: column wrap;
-    align-content: center;
-}
-
-
 
 .error-greeting {
     text-align: center;
     padding: 30px;
+    font-size: small;
 }
 
 .link-container {
@@ -53,7 +72,7 @@ h2 {
     text-align: center;
     color: white;
     padding: 5px;
-    background-color: rgb(30, 193, 193);
+    background-color: rgb(101, 231, 196);
     border-radius: 5px;
     text-decoration: none;
 }
@@ -61,4 +80,27 @@ h2 {
 .link-container a i {
     padding: 0 5px;
     color: brown;
+}
+
+.chef-cartoon-girl-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.chef-cartoon-girl {
+    width: 50%;
+
+}
+
+@media(min-width:768px) {
+    .error-image {
+        max-width: 350px;
+    }
+
+    .error-greeting {
+        right: -30px;
+        top: 40px;
+        width: 200px;
+    }
 }

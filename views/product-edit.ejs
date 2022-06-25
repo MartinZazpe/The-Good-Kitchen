@@ -26,24 +26,15 @@
                             <h3 class="recipe-pretitle">Recipe for</h3>
                             <div>
                                 <label for="title">
-                                    <% if (locals.errors && errors.title) { %>
-                                        <div class="text-danger centerText errorBg">
-                                            <%= errors.title.msg%>
-                                        </div>
-                                        <%} %>
-                                            <input name="title" type="text" id="title" value="<%= locals.oldData && oldData.title ? oldData.title : recipe.title %>" placeholder=" Name of dish">
+                                    <input name="title" type="text" id="title" value="<%= locals.oldData && oldData.title ? oldData.title : recipe.title %>" placeholder=" Name of dish">
                                 </label>
                             </div>
                         </div>
 
                         <div class=" description-container">
                             <label class="description-label" for="description">A brief description of your dish: <br> (max 350 characters)</label>
-                            <% if (locals.errors && errors.description) { %>
-                                <div class="text-danger centerText errorBg">
-                                    <%= errors.description.msg%>
-                                </div>
-                                <%} %>
-                                    <textarea name="description" type="text" id="description" maxlength="350" cols="30" rows="5"><%= locals.oldData && oldData.description ? oldData.description : recipe.description %></textarea>
+
+                            <textarea name="description" type="text" id="description" maxlength="350" cols="30" rows="5"><%= locals.oldData && oldData.description ? oldData.description : recipe.description %></textarea>
                         </div>
 
                         <div class="directions-ingredients-container">

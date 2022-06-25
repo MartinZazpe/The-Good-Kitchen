@@ -142,12 +142,18 @@ module.exports = {
         let errors = validationResult(req)
 
 
-        if (errors.isEmpty()) {
+
+        if (errors.length > 1) {
+            console.log(errors)
+            return res.render('product-edit', {
+                recipe: recipeFound, errors: errors.mapped()
+            })
+        } else if (errors.isEmpty()) {
             /* overwrite values if they are submit, else keep old value */
             recipeFound.title = req.body.title ? req.body.title : recipeFound.title
             recipeFound.description = req.body.description ? req.body.description : recipeFound.description
             recipeFound.Ingredients = req.body.Ingredients ? req.body.Ingredients.filter(ingredient => ingredient != "") : recipeFound.Ingredients
-            recipeFound.directions = req.body.directions ? req.body.directions.filter(direction => direction != "") : recipeFound.directions
+            recipeFound.directions = req.body.directions ? req.body.directions.filter(direction => direction != "") : recipeFound.direction
             recipeFound.image = req.file ? req.file.filename : recipeFound.image ? recipeFound.image : "no-image-default.png"
             /* overwrite JSON */
             writeJSON()
@@ -155,9 +161,7 @@ module.exports = {
         res.render('product-list', {
             recipes: data, userLogged, allUsers
         })
-        if (errors.length > 1) {
-            return res.render('product-edit', { recipe: recipeFound, errors: errors.mapped() })
-        }
+
 
         // if (req.session.userLogged) {
         //     // let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)

@@ -9,8 +9,10 @@
 
 .error-msg {
     color: red;
-    padding: 10px;
+    /* padding: 10px 0px; */
+    width: auto;
 }
+
 
 .title {
     text-align: center;
@@ -114,7 +116,7 @@
 /* ends image container */
 
 
-@media (min-width: 480px) {
+@media (min-width: 600px) {
 
     .register-form {
         display: flex;

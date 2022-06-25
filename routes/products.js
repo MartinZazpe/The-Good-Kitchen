@@ -5,6 +5,7 @@ var productController = require('../controller/product-controller.js')
 const configMulter = require("../middlewares/productImage")
 const authMiddleware = require("../middlewares/authMiddleware.js")
 const productCreate = require("../middlewares/productCreate.js")
+const productEdit = require("../middlewares/productEdit.js")
 
 /* show product list */
 router.get('/list', productController.productList)
@@ -20,7 +21,7 @@ router.post('/create', configMulter.single("image"), productCreate, productContr
 
 /*  edit a product   */
 router.get('/edit/:id', authMiddleware, productController.edit)
-router.put('/edit/:id', authMiddleware, configMulter.single("image"), productCreate, productController.update)
+router.put('/edit/:id', authMiddleware, configMulter.single("image"), productEdit, productController.update)
 
 /*  Search products */
 router.post('/search', productController.search)
