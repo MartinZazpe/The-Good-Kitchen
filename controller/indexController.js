@@ -21,7 +21,7 @@ module.exports = {
 
         let bestRanked = productList.filter(element => element.ratingAvg == "5")
         let TwoBestRanked = bestRanked.slice(-2)
-        console.log(TwoBestRanked)
+        // console.log(TwoBestRanked)
 
 
         res.render("index", {

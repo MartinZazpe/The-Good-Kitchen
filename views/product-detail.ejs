@@ -22,12 +22,12 @@
                             <div class="OneProductContainer">
                                 <div class="image-avg-container">
 
-                                    <% if(locals.ratingAvg> 0) { %>
+                                    <% if(recipe.ratingAVG> 0) { %>
                                         <div class="AVGrating">
 
                                             <div>
                                                 <h5>
-                                                    <%= ratingAvg %> / 5 <i class="colorGold fa-lg fa-solid fa-star"></i>
+                                                    <%= recipe.ratingAVG %> / 5 <i class="colorGold fa-lg fa-solid fa-star"></i>
                                                 </h5>
                                             </div>
                                         </div>
@@ -41,10 +41,10 @@
                                 <div class="productNavbar">
                                     <p>Overview</p>
                                     <p>Steps</p>
-                                    <p>Comments (<%=amountOfReviews %>)</p>
-                                    <!-- <a href="#">Overview</a>
-                                    <a href="#">Steps</a>
-                                    <a href="#">Comments (<%=amountOfReviews %>)</a> -->
+                                    <p>Comments
+                                        (<%= recipe.comments.length %>)
+                                    </p>
+
                                 </div>
                                 <div class="recipe-title">
                                     <h3>
@@ -63,22 +63,24 @@
                                                 <% } %>
                                                     <% } %>
                                                         <div>
-                                                            <% for(user of allUsers) {%>
-                                                                <% if(user.id==recipe.belongsTo){ %>
-                                                                    <div class="creator-container-flex">
-                                                                        <div class='creator-name-details'>
-                                                                            <p>
-                                                                                <%=user.name%>
-                                                                            </p>
-                                                                            <p>Community member</p>
-                                                                        </div>
-                                                                        <div class="container-image">
-                                                                            <img class="creator-image" src="/images/userImages/<%= user.image %>" alt="user-recipe-image">
-                                                                        </div>
+                                                            <% if(locals.allUsers) { %>
+                                                                <% for(user of allUsers) {%>
+                                                                    <% if(user.id==recipe.user_id){ %>
+                                                                        <div class="creator-container-flex">
+                                                                            <div class='creator-name-details'>
+                                                                                <p>
+                                                                                    <%=user.name%>
+                                                                                </p>
+                                                                                <p>Community member</p>
+                                                                            </div>
+                                                                            <div class="container-image">
+                                                                                <img class="creator-image" src="/images/userImages/<%= user.image %>" alt="user-recipe-image">
+                                                                            </div>
 
-                                                                    </div>
-                                                                    <% } %>
+                                                                        </div>
                                                                         <% } %>
+                                                                            <% } %>
+                                                                                <% } %>
 
                                                         </div>
 
@@ -91,8 +93,6 @@
                             </div>
 
                         </div>
-
-
 
                         <div id="Overview" class="description-hyperlink">
                             <% if(recipe.description=="" ){ %>
@@ -111,26 +111,23 @@
                         <div class="ingredients">
                             <p class="ingredients-title">Ingredients</p>
                             <ul class="ingredients-list">
-                                <% for(let i=0; i < recipe.Ingredients.length; i++ ){ %>
+                                <% for(let i=0; i < recipe.ingredients.length; i++ ){ %>
                                     <li>
-                                        <%= recipe.Ingredients[i] %>
+                                        <%= recipe.ingredients[i].ingredient %>
                                     </li>
                                     <% } %>
                             </ul>
                         </div>
 
                         <div id="Steps" class="directions">
-                            <% if(recipe.directions) { %>
-                                <p class="directions-title">Directions</p>
-                                <ol class="directions-list">
-
-                                    <% for(let i=0; i < recipe.directions.length; i++ ){ %>
-                                        <li>
-                                            <%= recipe.directions[i] %>
-                                        </li>
-                                        <% } %>
-                                </ol>
-                                <% } %>
+                            <p class="directions-title">Directions</p>
+                            <ol class="directions-list">
+                                <% for(let i=0; i < recipe.directions.length; i++ ){ %>
+                                    <li>
+                                        <%= recipe.directions[i].direction %>
+                                    </li>
+                                    <% } %>
+                            </ol>
                         </div>
 
 
@@ -142,14 +139,20 @@
                 <div class="comment-section-container">
                     <div class="comment-section">
                         <div class="comments-header">
-                            <h4>Reviews ( <%=amountOfReviews %> )</h4>
-                            <span></span>
+
+                            <span>
+
+                            </span>
+                            <p>Amount of reviews(<%= recipe.comments.length %>)</p>
+
                             <span></span>
                         </div>
-                        <% if(locals.comments) { %>
-                            <% for(let comment of comments) {%>
+
+                        <!-- aca tengo que solucionar lo de user para poder avanzar con mostrar los comentarios-->
+                        <% if(recipe.comments.length>= 1) { %>
+                            <% for(let comment of recipe.comments) {%>
                                 <% for(let user of allUsers){ %>
-                                    <% if(user.id==comment.belongsToUserId){ %>
+                                    <% if(user.id==comment.users_id){ %>
                                         <div id="Comments" class="user-comment-container">
                                             <img class="user-comment-image" src="/images/userImages/<%= user.image %>" alt="user-image">
                                             <p class="comment-belongsTo">
@@ -158,7 +161,7 @@
                                             <% } %>
                                                 <% } %>
                                                     <p class="comment-userComment">
-                                                        <%=comment.userComment%>
+                                                        <%=comment.user_comment%>
                                                     </p>
                                         </div>
                                         <% } %>

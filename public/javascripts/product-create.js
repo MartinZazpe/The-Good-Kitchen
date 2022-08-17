@@ -1,6 +1,5 @@
 window.addEventListener("load", function () {
 
-    console.log('product create JS working')
 
 
 
@@ -21,7 +20,7 @@ window.addEventListener("load", function () {
         const [file] = imageInput.files
         if (file) {
             imagePreview.src = URL.createObjectURL(file)
-            console.log(file.size + " this is the file size in bytes")
+            // console.log(file.size + " this is the file size in bytes")
         }
     }
 

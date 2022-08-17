@@ -4,7 +4,7 @@
 const { validationResult } = require('express-validator')
 var fs = require('fs')
 var path = require('path')
-const { nextTick } = require('process')
+// const { nextTick } = require('process')
 
 
 
@@ -13,6 +13,8 @@ const { nextTick } = require('process')
 
 let usersJSON = fs.readFileSync(path.join(__dirname, '../data/users.json'))
 let users = JSON.parse(usersJSON)
+
+
 
 
 //for comments
@@ -35,127 +37,148 @@ function writeJSON() {
     fs.writeFileSync(path.join(__dirname, '../data/recipes.json'), dataStringify)
 }
 
+//for MYSQL db
+const db = require('../database/models')
+const Op = db.Sequelize.Op
+
+
 // function deleteImage() { // NOT WORKING
 //     fs.unlinkSync(path.join(__dirname, "../../public/images/" + foundImage.image))
 // }
 
 
-// if (req.session.userLogged) {
-//     userLoggedOk = req.session.userLogged
-//     let productsThatBelongToUser = data.filter(products => products.belongTo == userLoggedOk.email)
-//     console.log(productsThatBelongToUser)
-// }
 
 
 module.exports = {
-    productList: (req, res) => {
-        let allUsers = users
+    productList: async (req, res) => {
 
+
+        let allUsers = await db.User.findAll({
+        })
+        let allRecipes = await db.Recipe.findAll({
+            include: [{ association: "users" }]
+        })
         if (req.session.userLogged) {
             // let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
             let userLogged = req.session.userLogged
             res.render('product-list', {
-                recipes: data, userLogged, allUsers
+                recipes: allRecipes, userLogged, allUsers
             })
         } else if (!req.session.userLogged) {
             res.render('product-list', {
-                recipes: data, allUsers
+                recipes: allRecipes, allUsers
             })
         }
-        //must paginate!
+
     },
-    detail: (req, res) => {
+    detail: async (req, res) => {
 
-        let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        let productComments = commentData.filter(id => req.params.id == id.refersToProductId)
-        let allUsers = users
+
+        let recipeFound = await db.Recipe.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [{ association: "comments" }, { association: "ingredients" }, { association: "directions" }, { association: "users" }]
+        }).catch(error => {
+            // console.log(error)
+        })
+
+        let allUsers = await db.User.findAll()
+
+
+        res.render('product-detail', {
+            recipe: recipeFound, allUsers
+        })
+
+        // HICE HASTA ACÁ !!  CON BASES DE DATOS. NECESITO SOLUCIONAR USUARIOS CON TODO EL TEMA DE LOGIN PARA PODER SEGUIR
+
+
         let userLogged = req.session.userLogged
-
-        // productComments.reduce(function (a, b) { return a + b.rating }, 0)
-        // console.log(productComments)
-
-        //find the Id of the current product
-        //check for that ID the sum of all ratings
-        //return them in a variable
-
-
-
-        let totalRating = 0
-        for (let i = 0;i < productComments.length;i++) {
-            totalRating += productComments[i].rating
-        }
-        let amountOfReviews = productComments.filter(x => x.rating != null).length
-        let ratingAvg = Math.floor(totalRating / amountOfReviews)
-
-        console.log(amountOfReviews + " Reviews")
-
-        if (req.session.userLogged) {
-            let userLogged = req.session.userLogged
-            res.render('product-detail', {
-                recipe: recipeFound, comments: productComments, userLogged, allUsers, amountOfReviews, ratingAvg
-            })
-        } else if (!req.session.userLogged) {
-            res.render('product-detail', {
-                recipe: recipeFound, comments: productComments, allUsers, amountOfReviews, ratingAvg
-            })
-        }
+        // let ratingAvg = Math.floor(totalRating / amountOfReviews)
     },
     create: (req, res) => {
         res.render('product-create')
     },
-    store: (req, res) => {
-        let errors = validationResult(req)
-        var lasProduct = data[data.length - 1]
-        var biggestProductId = data.length > 0 ? lasProduct.id : 1
+    store: async (req, res) => {
+        let errors = await validationResult(req)
 
+        let userlogged = req.session.userLogged
         if (errors.isEmpty()) {
-            let newProduct = {
-                id: biggestProductId + 1,
+            const newRecipe = await db.Recipe.create({
                 title: req.body.title,
                 description: req.body.description,
-                Ingredients: req.body.Ingredients.filter(ingredient => ingredient != ""),
-                directions: req.body.directions.filter(direction => direction != ""),
                 image: req.file ? req.file.filename : "no-image-default.png",
-                belongsTo: req.session.userLogged.id
-            }
-            data.push(newProduct)
-            writeJSON()
-            res.redirect("/recipes/list")
+                user_id: req.session.userLogged.id
+            }).then(async (newRecipe) => {
+                if (newRecipe) {
+                    let directions = req.body.directions
+                    // await directions.map((str, index) => ({ ingredient: str, recipes_id: newRecipe.id }))
+                    await directions.forEach(element => {
+                        console.log(element)
+                        db.Directions.create({
+                            direction: element,
+                            recipes_id: newRecipe.id
+                        })
+                    })
+                    return newRecipe
+                }
+            }).then(async (newRecipe) => {
+                if (newRecipe) {
+                    let ingredients = req.body.Ingredients
+                    await ingredients.forEach(element => {
+                        db.RecipeIngredients.create({
+                            ingredient: element,
+                            recipes_id: newRecipe.id
+                        })
+                    })
+                }
+            }).catch((error) => {
+                console.log(error)
+            })
         }
-
-        return res.render('product-create', { errors: errors.mapped(), oldData: req.body })
-
+        res.redirect("/recipes/list")
     },
-    edit: (req, res) => {
-        let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        if (recipeFound.belongsTo == req.session.userLogged.id) {
+
+
+
+
+    edit: async (req, res) => {
+        let recipeFound = await db.Recipe.findByPk(req.params.id, { include: ["ingredients", "directions"] })
+
+        // HICE HASTA ACÁ !! carga parcialmente por eso incluimos ingredientes y directions para poder iterarlas directametne en la vista.
+
+
+        // console.log(JSON.stringify(recipeFound.users.name))
+        console.log(JSON.stringify(recipeFound))
+        console.log(req.session.userLogged.id)
+
+        if (recipeFound.user_id == req.session.userLogged.id) {
             res.render('product-edit', { recipe: recipeFound })
         } else {
             res.redirect('/error404')
         }
         //current issue now i can modify any recipe if logged in
     },
-    update: (req, res) => {
-        let recipeFound = data.find(recipe => recipe.id == req.params.id)
-        let allUsers = users
+    update: async (req, res) => {
+        let recipeFound = await db.Recipe.findOne({ where: { id: req.params.id } })
+        let allUsers = await db.User.findAll()
         let userLogged = req.session.userLogged
-        let errors = validationResult(req)
-
-
+        let errors = await validationResult(req)
 
         if (errors.length > 1) {
-            console.log(errors)
+            // console.log(errors)
             return res.render('product-edit', {
                 recipe: recipeFound, errors: errors.mapped()
             })
         } else if (errors.isEmpty()) {
-            /* overwrite values if they are submit, else keep old value */
+
             recipeFound.title = req.body.title ? req.body.title : recipeFound.title
             recipeFound.description = req.body.description ? req.body.description : recipeFound.description
             recipeFound.Ingredients = req.body.Ingredients ? req.body.Ingredients.filter(ingredient => ingredient != "") : recipeFound.Ingredients
             recipeFound.directions = req.body.directions ? req.body.directions.filter(direction => direction != "") : recipeFound.direction
             recipeFound.image = req.file ? req.file.filename : recipeFound.image ? recipeFound.image : "no-image-default.png"
-            /* overwrite JSON */
+
+
             writeJSON()
         }
         res.render('product-list', {
@@ -215,7 +238,7 @@ module.exports = {
 
         if (lastComment.belongsToUserId == userLogged.id) {
             var difference = (((timeNow - lastCommentDate) / 1000) / 60)
-            console.log(difference)
+            // console.log(difference)
             if ((difference) < 1) {
                 // let productComments = commentData.filter(id => req.params.id == id.refersToProductId)
                 let amountOfReviews = productComments.filter(x => x.rating != null).length
@@ -251,9 +274,6 @@ module.exports = {
             let amountOfReviews = productComments.filter(x => x.rating != null).length
             let ratingAvg = Math.floor(totalRating / amountOfReviews)
 
-            console.log(productComments)
-            // console.log(amountOfReviews)
-            console.log(ratingAvg)
 
 
 

@@ -1,5 +1,4 @@
 window.addEventListener("load", function () {
-    console.log('product-detail JS working')
 
     let liItem = document.querySelectorAll('.ingredients-list li')
     let waitToComment = document.querySelector('.waitToComment')
@@ -12,7 +11,6 @@ window.addEventListener("load", function () {
     let productNavbar = document.querySelector('.productNavbar')
 
 
-    // console.log(productNavbar.children[0])
 
     productNavbar.children[0].addEventListener('click', function () {
         Overview.scrollIntoView({ behavior: "smooth", block: 'center' })

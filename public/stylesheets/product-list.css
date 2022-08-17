@@ -5,6 +5,78 @@
     justify-content: space-evenly;
 }
 
+
+
+/*  Fix image and containers for product-list*/
+/* Inside imageContainer there is an a*/
+
+.image-avg-container {
+    position: relative;
+}
+
+.product-container {
+    /* flex-basis: 25%; */
+    /* padding: 5px; */
+    margin: 8px 0px;
+    height: auto !important;
+}
+
+.imageContainer {
+    /* overflow: hidden; */
+    border-radius: 13px;
+    /* width: 300px !important; */
+}
+
+.imageContainer a {
+    /* overflow: hidden; */
+    border-radius: 13px;
+
+    /* max-width: 400px !important;
+    max-height: 100px !important; */
+    scale: 0.1;
+}
+
+
+.imageContainer a img {
+    /* overflow: hidden; */
+    border-radius: 13px;
+    width: auto;
+    height: auto !important;
+    max-width: 250px !important;
+    max-height: 220px !important;
+}
+
+
+
+
+/* .product-container:last-child {
+  align-self: flex-start;
+  margin-right: auto;
+} */
+
+
+
+
+
+/*  End of fix image and containers for product-list*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* .body-information {
     margin-top: 3px;
 } */
@@ -18,19 +90,40 @@
     visibility: hidden;
 }
 
+
+.banner-container {
+    width: 100%;
+    display: inline-block
+}
+
+.banner-img {
+    width: 100%;
+}
+
 .introduction {
-    margin: 40px 0px;
     display: flex;
     flex-flow: column wrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    text-align: center;
+    height: 300px;
 }
 
 .title-image-container {
+    background-color: white;
+    width: 80%;
+    height: auto;
     display: flex;
     flex-flow: row wrap;
+    align-items: flex-end;
     position: relative;
+}
+
+
+.cooking-pot-image {
+    position: absolute;
+    width: 50px;
+    right: -16%;
+    bottom: 3px;
 }
 
 .title-image-container h3 {
@@ -40,9 +133,9 @@
     font-weight: 200;
     font-style: oblique;
     padding: 15px 15px 5px 15px;
-    border-left: 1px solid rgb(232, 159, 151);
+    /* border-left: 1px solid rgb(232, 159, 151); */
     /* border-right: 1px solid rgb(232, 159, 151); */
-    border-top: 1px solid rgb(232, 159, 151);
+    /* border-top: 1px solid rgb(232, 159, 151); */
     width: 80%;
 }
 
@@ -62,20 +155,7 @@
 }
 
 
-.cooking-pot-image {
-    position: absolute;
-    width: 100px;
-    right: -16%;
-    bottom: 3px;
-}
 
-.banner-container {
-    width: 100%;
-}
-
-.banner-img {
-    width: 100%;
-}
 
 
 .hide {
@@ -93,7 +173,39 @@
 
 
 
+@media(min-width:430px) {
+    .introduction {
+        display: flex;
+        flex-flow: row wrap;
+        width: 100%;
+        text-align: center;
+        height: auto;
+        max-height: 300px;
+    }
 
+    .banner-container {
+        width: 60%;
+        display: inline-block
+    }
+
+    .banner-img {
+        width: 100%;
+    }
+
+    .title-image-container {
+        background-color: white;
+        width: 40%;
+        height: auto;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-end;
+        position: relative;
+    }
+
+    .cooking-pot-image {
+        display: none;
+    }
+}
 
 
 

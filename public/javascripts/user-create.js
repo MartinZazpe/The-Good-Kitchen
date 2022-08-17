@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
         const [file] = userImageInput.files
         if (file) {
             productPreview.src = URL.createObjectURL(file)
-            console.log(file.size + " this is the file size in bytes")
+            // console.log(file.size + " this is the file size in bytes")
         }
     }
 

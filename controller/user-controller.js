@@ -23,14 +23,27 @@ function writeUsersDb() {
 }
 
 
+//for MYSQL db
+const db = require('../database/models')
+const Op = db.Sequelize.Op
+
+
+
 module.exports = {
     create: (req, res) => {
-        res.cookie('testing', 'Hola mundo', { maxAge: 1000 * 30 })
+        // res.cookie('testing', 'Hola mundo', { maxAge: 1000 * 30 })
         return res.render('register')
     },
-    store: (req, res) => {
-        let errors = validationResult(req)
-        let userInDB = userModels.findByField('email', req.body.email)
+    store: async (req, res) => {
+
+
+        let errors = await validationResult(req)
+
+        let userInDB = await db.User.findOne({
+            where: {
+                email: req.body.email
+            }
+        })
         if (userInDB) {
             return res.render('register', {
                 errors: {
@@ -41,29 +54,37 @@ module.exports = {
                 oldData: req.body,
             })
         }
-        if (errors.isEmpty()) {
-            let newUSer = {
-                name: req.body.name,
-                email: req.body.email,
-                type: "Community member",
-                password: bcryptjs.hashSync(req.body.password, 10),
-                image: req.file ? req.file.filename : 'user-default.png'
-            }
-            userModels.create(newUSer)
-            return res.render('login', { errors: { successful: { msg: 'Thank you for your registration. Log in and start enjoying!' } } })
-        }
-        return res.render('register', {
-            errors: errors.mapped(),
-            oldData: req.body,
+
+        let newUser = ({
+            name: req.body.name,
+            email: req.body.email,
+            password: bcryptjs.hashSync(req.body.password, 10),
+            image: req.file ? req.file.filename : 'user-default.png',
+            user_type_id: 1
         })
+
+
+
+        if (errors.isEmpty()) {
+            await db.User.create(newUser)
+            return res.render('login', { errors: { successful: { msg: 'Thank you for your registration. Log in and start enjoying!' } } })
+
+        } else {
+            return res.render('register', {
+                errors: errors.mapped(),
+                oldData: req.body,
+            })
+        }
+
     },
     login: (req, res) => {
-
         return res.render('login')
-    },
-    processLogin: (req, res) => {
 
-        let userToLogin = userModels.findByField('email', req.body.email)
+    },
+    processLogin: async (req, res) => {
+
+        let userToLogin = await db.User.findOne({ where: { email: req.body.email } })
+
         if (userToLogin) {
             let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
             if (passwordOk) {
@@ -82,6 +103,7 @@ module.exports = {
                 }
             }
         })
+
     },
     checkLogin: (req, res) => {
         if (req.session.userLogged == undefined) {
@@ -92,7 +114,7 @@ module.exports = {
     },
     userProfile: (req, res) => {
         res.render('user-profile', {
-            user: req.session.userLogged
+            user: res.locals.userLogged
         })
     },
     logout: (req, res) => {
@@ -101,15 +123,19 @@ module.exports = {
         // console.log(req.session)
         return res.redirect('/')
     },
-    editProfile: (req, res) => {
+    editProfile: async (req, res) => {
         let errors = validationResult(req)
         console.log(errors)
         if (errors.isEmpty()) {
-            let userNewInfo = users.find(user => user.id == req.session.userLogged.id)
-            userNewInfo.name = req.body.name ? req.body.name : userNewInfo.name
-            userNewInfo.email = req.body.email ? req.body.email : userNewInfo.email
-            userNewInfo.image = req.file ? req.file.filename : userNewInfo.image ? userNewInfo.image : 'user-default.png'
-            writeUsersDb()
+
+            let userNewInfo = await db.User.findOne({ where: { id: req.session.userLogged.id } })
+            console.log(userNewInfo)
+            // let userNewInfo = users.find(user => user.id == req.session.userLogged.id)
+            await userNewInfo.update({
+                name: req.body.name ? req.body.name : userNewInfo.name,
+                email: req.body.email ? req.body.email : userNewInfo.email,
+                image: req.file ? req.file.filename : userNewInfo.image ? userNewInfo.image : 'user-default.png'
+            })
             res.clearCookie('userEmail')
             req.session.userLogged.email = userNewInfo.email
             res.cookie('userEmail', userNewInfo.email, { maxAge: (1000 * 60) * 60 })
@@ -117,29 +143,34 @@ module.exports = {
                 user: userNewInfo
             })
         }
-
         return res.render('user-profile', {
             errors: errors.mapped(), user: req.session.userLogged
         })
-
     },
+    //All good up to here but locals not retaining after closing nav. Sometimes user may get logged out
 
-    userProducts: (req, res) => {
-        let userRecipes = data.filter(data => data.belongsTo == req.session.userLogged.id)
-        let totalRecipes = userRecipes.length
-        console.log(userRecipes)
-        if (userRecipes.length !== 0) {
-            res.render('user-recipes', { recipes: userRecipes, totalRecipes })
-        } else {
-            res.render('user-profile', {
-                errors: {
-                    noRecipes: {
-                        msg: "You have no recipes uploaded"
-                    }
-                },
-                user: req.session.userLogged
-            })
-        }
+    userProducts: async (req, res) => {
+        await db.Recipe.findAll({
+            where: {
+                user_id: req.session.userLogged.id
+            }
+        }).then((userRecipes) => {
+            let totalRecipes = userRecipes.length
+            console.log(userRecipes)
+            if (userRecipes.length !== 0) {
+                res.render('user-recipes', { recipes: userRecipes, totalRecipes })
+            }
+        })
+        // let userRecipes = data.filter(data => data.belongsTo == req.session.userLogged.id)
+        res.render('user-profile', {
+            errors: {
+                noRecipes: {
+                    msg: "You have no recipes uploaded"
+                }
+            },
+            user: req.session.userLogged
+        })
+
         // res.render('user-recipes', { recipes: userRecipes })
     },
     deleteUser: (req, res) => {

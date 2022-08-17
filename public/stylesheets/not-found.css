@@ -65,14 +65,15 @@ h2 {
     justify-content: center;
     width: 200px;
     align-content: center;
+    margin-bottom: 30px;
 }
 
 
 .link-container a {
     text-align: center;
     color: white;
-    padding: 5px;
-    background-color: rgb(101, 231, 196);
+    padding: 5px 40px;
+    background-color: rgba(140, 144, 174, 0.8);
     border-radius: 5px;
     text-decoration: none;
 }

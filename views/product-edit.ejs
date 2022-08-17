@@ -54,8 +54,8 @@
                                             </div>
                                             <%} %>
                                                 <ol id="ingredient-list">
-                                                    <% if (recipe.Ingredients){ %>
-                                                        <% recipe.Ingredients.forEach(function(element){ %>
+                                                    <% if (recipe.ingredient){ %>
+                                                        <% recipe.ingredient.forEach(function(element){ %>
                                                             <% if(element) {%>
                                                                 <li><input type="text" name="Ingredients[]" value="<%=element ? element : "" %>"></li>
                                                                 <% } else { %>

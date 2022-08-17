@@ -1,5 +1,4 @@
 window.addEventListener("load", function () {
-    console.log('user-profile JS working')
 
     let userImage = document.querySelector(".user-image")
     let imageInputId = document.querySelector("#imageInput")
@@ -19,7 +18,7 @@ window.addEventListener("load", function () {
         const [file] = imageInput.files
         if (file) {
             userImage.src = URL.createObjectURL(file)
-            console.log(file.size + " this is the file size in bytes")
+            // console.log(file.size + " this is the file size in bytes")
 
             submitFormBtn.classList.remove("noDisplay")
             clearFormBtn.classList.remove("noDisplay")

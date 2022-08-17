@@ -16,7 +16,7 @@ window.addEventListener("load", function () {
             navigationListDropdown.classList.toggle('active')
             navigationListDropdown.classList.toggle('noDisplay')
             if (req.session.userLogged) {
-                console.log('user is logged')
+                // console.log('user is logged')
             }
         } else {
             navigationListDropdown.classList.toggle('active')

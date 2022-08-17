@@ -12,6 +12,92 @@
     line-height: normal;
 }
 
+
+
+
+/*  Fix image and containers for index*/
+/* Inside imageContainer there is an a*/
+
+.image-avg-container {
+    position: relative;
+}
+
+.product-container {
+    /* flex-basis: 25%; */
+    /* padding: 5px; */
+    margin: 8px 0px;
+    height: auto !important;
+}
+
+.imageContainer {
+    /* overflow: hidden; */
+    border-radius: 13px;
+    /* width: 300px !important; */
+}
+
+.imageContainer a {
+    /* overflow: hidden; */
+    border-radius: 13px;
+    height: auto;
+    max-width: 400px !important;
+    max-height: 100px !important;
+    scale: 0.1;
+}
+
+
+.imageContainer a img {
+    /* overflow: hidden; */
+    border-radius: 13px;
+    width: auto;
+    height: auto !important;
+    max-width: 500px !important;
+    max-height: 200px !important;
+}
+
+
+
+/* .product-container:last-child {
+  align-self: flex-start;
+  margin-right: auto;
+} */
+
+
+
+
+
+/*  End of fix image and containers for index*/
+
+
+
+
+
+.carousel-item {
+    background: url('https://mdbootstrap.com/img/Photos/Slides/1.webp');
+    background-size: cover;
+    width: 100%;
+    height: 250px;
+}
+
+.carousel-item:nth-child(2) {
+    background: url('/images/test2.webp');
+    background-size: cover;
+    width: 100%;
+    height: 250px;
+}
+
+.carousel-item:nth-child(3) {
+    background: url('/images/test3.webp');
+    background-size: cover;
+    width: 100%;
+    height: 250px;
+}
+
+
+
+#logo a {
+    text-decoration: none;
+}
+
 #highest-ranked-section,
 #latest-recipes-section {
     padding-bottom: 30px;
@@ -138,14 +224,6 @@ h4 {
     z-index: -100 !important;
 }
 
-.image-avg-container {
-    position: relative;
-}
-
-/* .imageContainer {
-    width: 200px;
-} */
-
 
 
 
@@ -182,3 +260,5 @@ h4 {
         margin-top: 35px;
     }
 }
+
+@media(min-width: 900px) {}
