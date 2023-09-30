@@ -39,11 +39,11 @@ module.exports = {
 
         let errors = await validationResult(req)
 
-        let userInDB = await db.User.findOne({
-            where: {
-                email: req.body.email
-            }
-        })
+        //        let userInDB = await db.User.findOne({
+        //   where: {
+        //        email: req.body.email
+        //     }
+        //  })
         if (userInDB) {
             return res.render('register', {
                 errors: {
@@ -128,7 +128,7 @@ module.exports = {
         console.log(errors)
         if (errors.isEmpty()) {
 
-            let userNewInfo = await db.User.findOne({ where: { id: req.session.userLogged.id } })
+            //let userNewInfo = await db.User.findOne({ where: { id: req.session.userLogged.id } })
             console.log(userNewInfo)
             // let userNewInfo = users.find(user => user.id == req.session.userLogged.id)
             await userNewInfo.update({

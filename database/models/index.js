@@ -8,6 +8,7 @@ const env = process.env.NODE_ENV || 'development'
 const config = require(__dirname + '/../config/config.js')[env]
 const db = {}
 
+
 let sequelize
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config)
@@ -15,12 +16,31 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config)
 }
 
+
 try {
   sequelize.authenticate()
   console.log('Connection has been established successfully.')
+
+  //this little sequelize authenticate creates the db if there is none; 
+  //WARNING: it will drop all tables and recreate them, loosing all existing data.
+  // sequelize.authenticate()
+  //   .then(() => {
+  //     console.log('Connection has been established successfully.')
+
+  //     // Sync all defined models to the database, creating tables if they don't exist
+  //     return sequelize.sync()
+  //   })
+  //   .then(() => {
+  //     console.log('Database and tables have been created if not exist.')
+  //   })
+  //   .catch(err => {
+  //     console.error('Unable to connect to the database:', err)
+  //   })
+
 } catch (error) {
   console.error('Unable to connect to the database:', error)
 }
+
 
 
 fs
