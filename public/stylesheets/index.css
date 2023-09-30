@@ -249,16 +249,6 @@ h4 {
     color: gold;
 }
 
-@media (min-width: 480px) {
-    .body-information {
-        margin-top: 40px;
-    }
-}
 
-@media (min-width: 522px) {
-    .body-information {
-        margin-top: 35px;
-    }
-}
 
 @media(min-width: 900px) {}

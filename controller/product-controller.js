@@ -74,7 +74,7 @@ module.exports = {
     detail: async (req, res) => {
 
 
-        let recipeFound = await db.Recipe.findOne({
+        let recipeRs = await db.Recipe.findOne({
             where: {
                 id: req.params.id
             },
@@ -85,9 +85,15 @@ module.exports = {
 
         let allUsers = await db.User.findAll()
 
+        //PENDING TO SHOW INGREDIENTS AND STEPS AFTER WE UPLOAD A PRODUCT TO CHECK THAT WORKS!
+        // let recipeFound = JSON.parse(recipeRs.ingredients)
+
+
+        console.log(recipeRs.ingredients.ingredient)
+        // console.log(recipeFound.ingredients)
 
         res.render('product-detail', {
-            recipe: recipeFound, allUsers
+            recipe: recipeRs, allUsers
         })
 
         // HICE HASTA ACÁ !!  CON BASES DE DATOS. NECESITO SOLUCIONAR USUARIOS CON TODO EL TEMA DE LOGIN PARA PODER SEGUIR

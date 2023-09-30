@@ -1,6 +1,5 @@
 .body-information {
     background-image: url('../images/icon-images/cookies-bg.png');
-    margin-top: 30px;
     padding: 40px 0px 80px 0px;
 }
 
@@ -282,9 +281,7 @@ input {
         height: 300px;
     }
 
-    .body-information {
-        margin-top: 100px;
-    }
+
 }
 
 

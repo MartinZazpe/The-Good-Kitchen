@@ -21,30 +21,37 @@ module.exports = {
 
         try {
 
+
             let recentUploads = await db.Recipe.findAll({
                 limit: 4,
-                order: [['createdAt', 'DESC']]
+                order: [['createdAt', 'DESC']],
+                include: [{ association: "users" }]
             })
 
             // Fetch all users from the database
             const allUsers = await db.User.findAll()
 
+            console.log(allUsers)
+
+            console.log(recentUploads)
 
             // Fetch the two best-ranked recipes from the database
             const twoBestRanked = await db.Recipe.findAll({
-                limit: 2,
+                limit: 5,
                 where: {
                     ratingAvg: 5,
                 },
                 order: [['createdAt', 'DESC']], // Adjust the order as needed
             })
 
+
             res.render("index", {
-                recipes: recentUploads, allUsers, TwoBestRanked
+                recipes: recentUploads, allUsers, twoBestRanked
             })
+
         } catch (err) {
             console.error("error fetching data for index")
-            res.status(500).send('Internal server error')
+            res.status(500).send('Internal server error ' + err)
         }
     },
     aboutUs: (req, res) => {

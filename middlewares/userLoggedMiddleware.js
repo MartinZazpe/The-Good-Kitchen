@@ -9,13 +9,13 @@ function userLoggedMiddleware(req, res, next) {
 
     let userFromCookie
 
-    let checkForUserCookie = async () => {
-        userFromCookie = await db.User.findOne({ where: { 'email': emailInCookie } })
-        // console.log(userFromCookie)
-        return userFromCookie
-    }
+    // let checkForUserCookie = async () => {
+    //     userFromCookie = await db.User.findOne({ where: { 'email': emailInCookie } })
+    //     // console.log(userFromCookie)
+    //     return userFromCookie
+    // }
 
-    checkForUserCookie()
+    // checkForUserCookie()
 
     if (userFromCookie) {
         req.session.userLogged = userFromCookie

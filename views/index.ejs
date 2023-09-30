@@ -95,8 +95,8 @@
                       <%=recipe.title %>
                     </h6>
                     <a class="detail-link noShow" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
-                    <% for(let user of allUsers) { %>
-                      <% if(user.id==recipe.belongsTo) {%>
+                    <% for( let user of allUsers) { %>
+                      <% if(user.id==recipe.user_id) {%>
                         <div class="user-product-container">
                           <img class="user-product-thumbnail" src="/images/userImages/<%=user.image %>" alt="user-image">
                           <div class="user-product-container-userDetails">

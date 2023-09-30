@@ -26,7 +26,6 @@ body {
 
 /* the margin may change, must review all views to check how it fits and on resize */
 main {
-  margin-top: 80px;
   flex-grow: 1;
 }
 
@@ -285,27 +284,8 @@ label {
 
 
 
-/* small devices tablets */
-@media (min-width:480px) {
-  main {
-    margin-top: 100px;
-  }
-
-  /* .container {
-    justify-content: space-around !important;
-  } */
-}
 
 
-
-/* just an adjust due to text adjust in navbar */
-@media (min-width:523px) {
-  main {
-    margin-top: 104px;
-  }
-
-
-}
 
 
 @media (min-width: 630px) {

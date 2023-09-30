@@ -39,11 +39,11 @@ module.exports = {
 
         let errors = await validationResult(req)
 
-        //        let userInDB = await db.User.findOne({
-        //   where: {
-        //        email: req.body.email
-        //     }
-        //  })
+        let userInDB = await db.User.findOne({
+            where: {
+                email: req.body.email
+            }
+        })
         if (userInDB) {
             return res.render('register', {
                 errors: {
@@ -67,7 +67,7 @@ module.exports = {
 
         if (errors.isEmpty()) {
             await db.User.create(newUser)
-            return res.render('login', { errors: { successful: { msg: 'Thank you for your registration. Log in and start enjoying!' } } })
+            return res.render('login', { errors: { successful: { msg: 'Thanks for registering! Log in and enjoy!' } } })
 
         } else {
             return res.render('register', {
@@ -79,14 +79,18 @@ module.exports = {
     },
     login: (req, res) => {
         return res.render('login')
-
     },
     processLogin: async (req, res) => {
 
         let userToLogin = await db.User.findOne({ where: { email: req.body.email } })
 
+
         if (userToLogin) {
             let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
+
+            //DELETE PASSWORD OK ALWAYS TRUE, DISABLES COMPARE & PASSWORD CHECK;
+            //  passwordOk = true
+
             if (passwordOk) {
                 delete userToLogin.password // << deletes the user´s password before assigning to session
                 req.session.userLogged = userToLogin
