@@ -286,10 +286,11 @@ module.exports = {
     deleteUser: (req, res) => {
         let success = validationResult(req)
         let userLoggedId = req.session.userLogged.id
-        console.log(userLoggedId)
+
         res.clearCookie('userEmail')
         req.session.destroy()
-        userModels.delete(userLoggedId)
+
+        db.User.destroy({ where: { 'id': userLoggedId } })
         return res.render('login', {
             success: {
                 delete: {
@@ -303,6 +304,7 @@ module.exports = {
 // function get te
 async function getImgurAccesToken(clientId, clientSecret, refreshToken) {
     try {
+
         const data = {
             client_id: encodeURIComponent(clientId),
             client_secret: encodeURIComponent(clientSecret),
