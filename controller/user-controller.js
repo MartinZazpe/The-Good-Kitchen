@@ -9,6 +9,8 @@ let bcryptjs = require('bcryptjs')
 let userModels = require('../models/User.js')
 const session = require('express-session')
 
+const axios = require('axios')
+
 //to obtain all recipes 
 let dataJson = fs.readFileSync(path.join(__dirname, '../data/recipes.json'))
 let data = JSON.parse(dataJson)
@@ -36,9 +38,9 @@ module.exports = {
     },
     store: async (req, res) => {
 
-
         let errors = await validationResult(req)
 
+        //check if user exists
         let userInDB = await db.User.findOne({
             where: {
                 email: req.body.email
@@ -55,18 +57,63 @@ module.exports = {
             })
         }
 
+        //create the new user
         let newUser = ({
             name: req.body.name,
             email: req.body.email,
             password: bcryptjs.hashSync(req.body.password, 10),
-            image: req.file ? req.file.filename : 'user-default.png',
+            // image: req.file ? req.file.filename : 'user-default.png',
             user_type_id: 1
         })
 
 
-
+        //redirection && setting image
         if (errors.isEmpty()) {
+
+            //load the image with the new token created.
+            try {
+                const imgurResponse = await axios.post('https://api.imgur.com/3/image',
+                    {
+                        'image': req.file.buffer,
+                        'album': "V2209x6"
+                    },
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            Authorization: `Bearer ${process.env.myAcessTokenEnv}`,
+                        }
+                    })
+                newUser.image = imgurResponse.data.data.link
+
+            } catch (error) {
+                console.error('Error uploading image to Imgur:', error)
+
+                //check if error is due to unauthorized, get new token and retry.
+                if (error.request && error.request.socket && error.request.socket._rejectUnauthorized == true) {
+                    try {
+                        const tokens = await getImgurAccesToken(process.env.clientId, process.env.clientSecret, process.env.refreshToken)
+
+                        const imgurResponseFallback = await axios.post('https://api.imgur.com/3/image',
+                            {
+                                'image': req.file.buffer,
+                                'album': "V2209x6"
+                            },
+                            {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data',
+                                    Authorization: `Bearer ${tokens.newAccessToken}`,
+                                },
+                            })
+                        // console.log('this is this: ' + imgurResponseFallback.data.data.link)
+                        newUser.image = imgurResponseFallback.data.data.link
+
+                    } catch (fallbackError) {
+                        console.log("Error, could not insert image or get a new token " + fallbackError)
+                    }
+                }
+            }
             await db.User.create(newUser)
+
             return res.render('login', { errors: { successful: { msg: 'Thanks for registering! Log in and enjoy!' } } })
 
         } else {
@@ -75,7 +122,6 @@ module.exports = {
                 oldData: req.body,
             })
         }
-
     },
     login: (req, res) => {
         return res.render('login')
@@ -191,8 +237,35 @@ module.exports = {
                 }
             }
         })
+    },
+}
+
+// function get te
+async function getImgurAccesToken(clientId, clientSecret, refreshToken) {
+    try {
+        const data = {
+            client_id: encodeURIComponent(clientId),
+            client_secret: encodeURIComponent(clientSecret),
+            refresh_token: encodeURIComponent(refreshToken),
+            grant_type: 'refresh_token',
+        }
+
+        const response = await axios.post('https://api.imgur.com/oauth2/token', data, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        })
+
+        const newAccessToken = response.data.access_token
+        const newRefreshToken = response.data.refresh_token
+
+        // You can return the tokens or perform other actions as needed.
+        return { newAccessToken, newRefreshToken }
+    } catch (error) {
+        console.error('Error obtaining access token:', error.message)
+        throw error // Re-throw the error for the caller to handle if needed.
     }
 }
 
-//should also pass middleware so userProducts not accesible unless logged in
+
 

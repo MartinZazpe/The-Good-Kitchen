@@ -81,7 +81,8 @@
                                     <% for( let user of allUsers) { %>
                                         <% if(user.id==recipe.user_id) {%>
                                             <div class="user-product-container">
-                                                <img class="user-product-thumbnail" src="/images/userImages/<%=user.image %>" alt="user-image">
+                                                <img class="user-product-thumbnail" src="<%= user.image != null ? user.image : '../../images/user-default.png' %>" alt="user-image">
+
                                                 <div class="user-product-container-userDetails">
                                                     <p class="user-product-username">
                                                         <%=user.name %>

@@ -77,6 +77,15 @@
     width: 200px;
 }
 
+.mysqlLogo {
+    background-image: url('../../images/icon-images/mysqlLogo.jpg');
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+    display: block;
+    background-position: center;
+}
+
 .iconImage-js {
     background-image: url('../../images/icon-images/javascript-icon.png');
     background-repeat: no-repeat;

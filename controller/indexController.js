@@ -31,9 +31,6 @@ module.exports = {
             // Fetch all users from the database
             const allUsers = await db.User.findAll()
 
-            console.log(allUsers)
-
-            console.log(recentUploads)
 
             // Fetch the two best-ranked recipes from the database
             const twoBestRanked = await db.Recipe.findAll({
