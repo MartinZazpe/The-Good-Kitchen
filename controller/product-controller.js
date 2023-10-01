@@ -41,14 +41,6 @@ function writeJSON() {
 const db = require('../database/models')
 const Op = db.Sequelize.Op
 
-
-// function deleteImage() { // NOT WORKING
-//     fs.unlinkSync(path.join(__dirname, "../../public/images/" + foundImage.image))
-// }
-
-
-
-
 module.exports = {
     productList: async (req, res) => {
 
@@ -144,9 +136,6 @@ module.exports = {
         }
         res.redirect("/recipes/list")
     },
-
-
-
 
     edit: async (req, res) => {
         let recipeFound = await db.Recipe.findByPk(req.params.id, { include: ["ingredients", "directions"] })

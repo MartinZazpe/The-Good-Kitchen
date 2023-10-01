@@ -134,8 +134,6 @@ module.exports = {
         if (userToLogin) {
             let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
 
-            //DELETE PASSWORD OK ALWAYS TRUE, DISABLES COMPARE & PASSWORD CHECK;
-            //  passwordOk = true
 
             if (passwordOk) {
                 delete userToLogin.password // << deletes the user´s password before assigning to session
@@ -178,26 +176,88 @@ module.exports = {
         console.log(errors)
         if (errors.isEmpty()) {
 
-            //let userNewInfo = await db.User.findOne({ where: { id: req.session.userLogged.id } })
+            //     let userNewInfo = await users.find(user => user.id == req.session.userLogged.id)
+            let userNewInfo = await db.User.findOne({ where: { id: req.session.userLogged.id } })
             console.log(userNewInfo)
-            // let userNewInfo = users.find(user => user.id == req.session.userLogged.id)
+
+            let imageUpdated = ""
+
+            // console.log("usernewInfo image which should exist: " + userNewInfo.image)
+            // console.log("the image as processed by multer: " + req.file.buffer)
+
+
+            //if there is an image and it is diffrent from the one stored
+            if (req.file.buffer != null) {
+                //setting image, before updating user.
+                if (errors.isEmpty()) {
+                    //load the image with the new token created.
+                    try {
+                        const imgurResponse = await axios.post('https://api.imgur.com/3/image',
+                            {
+                                'image': req.file.buffer,
+                                'album': "V2209x6"
+                            },
+                            {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data',
+                                    Authorization: `Bearer ${process.env.myAcessTokenEnv}`,
+                                }
+                            })
+                        imageUpdated = imgurResponse.data.data.link
+
+                    } catch (error) {
+                        console.error('Error uploading image to Imgur:', error)
+
+                        //check if error is due to unauthorized, get new token and retry.
+                        if (error.request && error.request.socket && error.request.socket._rejectUnauthorized == true) {
+                            try {
+                                const tokens = await getImgurAccesToken(process.env.clientId, process.env.clientSecret, process.env.refreshToken)
+
+                                const imgurResponseFallback = await axios.post('https://api.imgur.com/3/image',
+                                    {
+                                        'image': req.file.buffer,
+                                        'album': "V2209x6"
+                                    },
+                                    {
+                                        headers: {
+                                            'Content-Type': 'multipart/form-data',
+                                            Authorization: `Bearer ${tokens.newAccessToken}`,
+                                        },
+                                    })
+                                // console.log('this is this: ' + imgurResponseFallback.data.data.link)
+                                imageUpdated = imgurResponseFallback.data.data.link
+
+                            } catch (fallbackError) {
+                                console.log("Error, could not insert image or get a new token " + fallbackError)
+                            }
+                        }
+                    }
+                } else {
+                    //if there is no image, keep the one the user has.
+                    imageUpdated = userNewInfo.image
+                }
+            }
+
             await userNewInfo.update({
                 name: req.body.name ? req.body.name : userNewInfo.name,
                 email: req.body.email ? req.body.email : userNewInfo.email,
-                image: req.file ? req.file.filename : userNewInfo.image ? userNewInfo.image : 'user-default.png'
+                image: imageUpdated
+                //image: req.file ? req.file.filename : userNewInfo.image ? userNewInfo.image : 'user-default.png'
             })
+
             res.clearCookie('userEmail')
             req.session.userLogged.email = userNewInfo.email
             res.cookie('userEmail', userNewInfo.email, { maxAge: (1000 * 60) * 60 })
             res.render('user-profile', {
                 user: userNewInfo
             })
+        } else {
+            return res.render('user-profile', {
+                errors: errors.mapped(), user: req.session.userLogged
+            })
         }
-        return res.render('user-profile', {
-            errors: errors.mapped(), user: req.session.userLogged
-        })
     },
-    //All good up to here but locals not retaining after closing nav. Sometimes user may get logged out
+
 
     userProducts: async (req, res) => {
         await db.Recipe.findAll({

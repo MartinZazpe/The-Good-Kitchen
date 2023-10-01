@@ -31,12 +31,11 @@
                                             <% } %>
                                                 <h3 class="username-input-container">Welcome <input class="username-input" type="text" name="name" value="<%= user.name %>"><i class="noShow fa-solid fa-pen-to-square"></i></h3>
                                     </label>
-                                    <label for="image" name="image"></label>
+                                    <label id="imageInput" for="image" name="image"></label>
                                     <input id="imageInput" class="image-input" name='image' type="file">
                                     <div class="input-image-form-container">
                                         <div class="image-container">
-                                            <img class="user-image" src="<%= user.image != null ? user.image : '../../images/user-default.png' %>" alt="default-user-image">
-
+                                            <img class="user-image" src="<%= user.image != "" ? user.image : '../../images/user-default.png' %>" alt="default-user-image">
                                         </div>
 
                                     </div>

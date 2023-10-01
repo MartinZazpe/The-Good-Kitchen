@@ -105,9 +105,9 @@ a:hover {
     margin: 10px 0px;
 }
 
-.image-input {
+/* .image-input {
     display: none;
-}
+} */
 
 .nodisplay {
     display: none;
@@ -160,6 +160,10 @@ a:hover {
 
 .submitFormBtn:hover {
     cursor: pointer;
+}
+
+#imageInput {
+    display: none;
 }
 
 #image {
