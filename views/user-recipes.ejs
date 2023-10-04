@@ -30,7 +30,7 @@
                                     <h4>
                                         <%=recipe.title %>
                                     </h4>
-                                    <div class="imageContainer"><a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="/images/<%= recipe.image %>"></a></div>
+                                    <div class="imageContainer"><a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="<%= recipe.image != "" ? recipe.image : '../../images/no-image-default.png' %>"></a></div>
                                     <div class="description-hyperlink">
                                         <p>
                                             <%=recipe.description %>

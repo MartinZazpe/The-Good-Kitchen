@@ -170,6 +170,7 @@ li.strikethrough {
 
 .OneProductContainer {
     border: none;
+    padding: 10px;
 }
 
 .image-avg-container {
@@ -177,10 +178,8 @@ li.strikethrough {
 }
 
 .AVGrating {
+    text-align: center;
     padding: 3px;
-    position: absolute;
-    bottom: 2%;
-    right: 4%;
     border-radius: 5px;
     background-color: white;
 }
@@ -197,12 +196,12 @@ li.strikethrough {
 .OneRecipeImage {
     width: auto;
     height: auto;
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 300px;
+    max-height: 300px;
 }
 
 .image-container:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
     cursor: pointer;
 }
 
@@ -518,6 +517,11 @@ input#rate-5:checked~label i {
 
     .creator-image {
         width: 140px;
+    }
+
+    .OneRecipeImage {
+        max-width: 600px;
+        max-height: 600px;
     }
 
 }

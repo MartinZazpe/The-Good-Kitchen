@@ -11,18 +11,6 @@ const session = require('express-session')
 
 const axios = require('axios')
 
-//to obtain all recipes 
-let dataJson = fs.readFileSync(path.join(__dirname, '../data/recipes.json'))
-let data = JSON.parse(dataJson)
-
-//to obtain all users
-let dataJsonUser = fs.readFileSync(path.join(__dirname, '../data/users.json'))
-let users = JSON.parse(dataJsonUser)
-
-function writeUsersDb() {
-    let dataStringify = JSON.stringify(users, null, 4)
-    fs.writeFileSync(path.join(__dirname, '../data/users.json'), dataStringify)
-}
 
 
 //for MYSQL db
@@ -62,7 +50,6 @@ module.exports = {
             name: req.body.name,
             email: req.body.email,
             password: bcryptjs.hashSync(req.body.password, 10),
-            // image: req.file ? req.file.filename : 'user-default.png',
             user_type_id: 1
         })
 
@@ -134,6 +121,8 @@ module.exports = {
         if (userToLogin) {
             let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
 
+            //DELETE THIS NOW NO PASSWORD WILL BE REQUIRED
+            passwordOk = true
 
             if (passwordOk) {
                 delete userToLogin.password // << deletes the user´s password before assigning to session
@@ -160,9 +149,11 @@ module.exports = {
             res.send("El usuario logueado es " + req.session.userLogged.email)
         }
     },
-    userProfile: (req, res) => {
+    userProfile: async (req, res) => {
+
+        let userLogged = await db.User.findOne({ where: { email: req.session.userLogged.email } })
         res.render('user-profile', {
-            user: res.locals.userLogged
+            user: userLogged
         })
     },
     logout: (req, res) => {
@@ -187,7 +178,7 @@ module.exports = {
 
 
             //if there is an image and it is diffrent from the one stored
-            if (req.file.buffer != null) {
+            if (req.file != null && req.file.buffer != null) {
                 //setting image, before updating user.
                 if (errors.isEmpty()) {
                     //load the image with the new token created.
@@ -232,10 +223,11 @@ module.exports = {
                             }
                         }
                     }
-                } else {
-                    //if there is no image, keep the one the user has.
-                    imageUpdated = userNewInfo.image
                 }
+            }
+            else {
+                //if there is no image, keep the one the user has.
+                imageUpdated = userNewInfo.image
             }
 
             await userNewInfo.update({
@@ -301,7 +293,7 @@ module.exports = {
     },
 }
 
-// function get te
+// function get token if outdated
 async function getImgurAccesToken(clientId, clientSecret, refreshToken) {
     try {
 

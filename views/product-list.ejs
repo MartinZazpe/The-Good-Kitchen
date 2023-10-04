@@ -44,6 +44,12 @@
                         <img class="cooking-pot-image" src="/images/cookingpan.png" alt="cooking-pan-image">
                     </div>
 
+
+                    <div class="errors-container">
+                        <%= locals.deleteError ? deleteError : '' %>
+                    </div>
+
+
                 </section>
                 <section class="recipe-examples">
 
@@ -54,7 +60,7 @@
                             <div class="product-container" data-user-cards-container>
 
                                 <div class='imageContainer'>
-                                    <a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="/images/<%= recipe.image %>"></a>
+                                    <a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="<%= recipe.image != "" ? recipe.image : '../../images/no-image-default.png' %>"></a>
                                     <% if(locals.userLogged){ %>
                                         <% if(userLogged.id==recipe.belongsTo) {%>
                                             <a class="edit-icon" href="/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>

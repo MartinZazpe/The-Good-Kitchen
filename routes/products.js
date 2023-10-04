@@ -12,8 +12,9 @@ router.get('/list', productController.productList)
 
 /* shows detail */
 router.get('/detail/:id', productController.detail)
-router.post('/comments/:id', productController.submitComment)
 
+/* Comment */
+router.post('/comments/:id', productController.submitComment)
 
 /*  create a product   */
 router.get('/create', authMiddleware, productController.create)
@@ -25,7 +26,6 @@ router.put('/edit/:id', authMiddleware, configMulter.single("image"), productEdi
 
 /*  Search products */
 router.post('/search', productController.search)
-
 
 /*  delete a product   */
 router.delete('/delete/:id', productController.destroy)

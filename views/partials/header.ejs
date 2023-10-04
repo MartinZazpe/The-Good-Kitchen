@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="https://kit.fontawesome.com/ae0153af6c.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/d4fe87d88c.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/stylesheets/style.css" />
 <link rel="stylesheet" href="/stylesheets/header.css" />
 <script src="/javascripts/header.js"></script>
@@ -32,11 +32,14 @@
             <form class="search-form" action="/recipes/search" method="POST">
                 <div class="search-bar-container">
                     <label class="search-label" for="search"></label>
-                    <input class="search-input" type="search" name="search" id="search" placeholder="What would you like to cook?">
+                    <div id="search-input-icon-container">
+                        <input class="search-input" type="search" name="search" id="search" placeholder="What would you like to cook?">
+                        <div class="search-icon-container">
+                            <i class="search-icon fa-lg fa-solid fa-magnifying-glass"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="search-icon-container">
-                    <i class="search-icon fa-lg fa-solid fa-magnifying-glass"></i>
-                </div>
+
                 <div class="search-btn-container">
                     <input class="search-submit" type="submit" value="Search">
                 </div>

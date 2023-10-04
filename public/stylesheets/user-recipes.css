@@ -55,9 +55,9 @@
     padding: 0px 20px;
 }
 
-.introduction h3 {
+/* .introduction h3 {
     border: double;
-}
+} */
 
 .introduction h3 span:nth-of-type(1) {
     color: red

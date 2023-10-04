@@ -21,21 +21,7 @@ try {
   sequelize.authenticate()
   console.log('Connection has been established successfully.')
 
-  //this little sequelize authenticate creates the db if there is none; 
-  //WARNING: it will drop all tables and recreate them, loosing all existing data.
-  // sequelize.authenticate()
-  //   .then(() => {
-  //     console.log('Connection has been established successfully.')
 
-  //     // Sync all defined models to the database, creating tables if they don't exist
-  //     return sequelize.sync()
-  //   })
-  //   .then(() => {
-  //     console.log('Database and tables have been created if not exist.')
-  //   })
-  //   .catch(err => {
-  //     console.error('Unable to connect to the database:', err)
-  //   })
 
 } catch (error) {
   console.error('Unable to connect to the database:', error)

@@ -1,14 +1,6 @@
 var fs = require('fs')
 var path = require('path')
 
-//obtain all products
-let dataJson = fs.readFileSync(path.join(__dirname, "../data/recipes.json"))
-let productList = JSON.parse(dataJson)
-
-//to obtain all users
-let dataJsonUser = fs.readFileSync(path.join(__dirname, '../data/users.json'))
-let users = JSON.parse(dataJsonUser)
-
 
 //for MYSQL db
 const db = require('../database/models')
@@ -20,8 +12,6 @@ module.exports = {
     indexAndRecents: async (req, res) => {
 
         try {
-
-
             let recentUploads = await db.Recipe.findAll({
                 limit: 4,
                 order: [['createdAt', 'DESC']],
@@ -40,8 +30,6 @@ module.exports = {
                 },
                 order: [['createdAt', 'DESC']], // Adjust the order as needed
             })
-
-
             res.render("index", {
                 recipes: recentUploads, allUsers, twoBestRanked
             })

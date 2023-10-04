@@ -104,8 +104,8 @@
     display: flex;
     flex-flow: column wrap;
     width: 100%;
+    justify-content: center;
     text-align: center;
-    height: 300px;
 }
 
 .title-image-container {

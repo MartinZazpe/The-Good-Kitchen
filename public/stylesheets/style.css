@@ -242,15 +242,15 @@ label {
   padding-top: 70px;
 }
 
-
+.errors-container>* {
+  color: red;
+}
 
 /*  image rating  */
 
 .AVGrating {
+  text-align: center;
   padding: 3px;
-  position: absolute;
-  bottom: 2%;
-  right: 4%;
   z-index: 1;
   border-radius: 5px;
   background-color: white;
