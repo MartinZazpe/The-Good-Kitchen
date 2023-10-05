@@ -15,7 +15,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
         },
         time_of_comment: {
-            type: dataTypes.INTEGER,
+            type: dataTypes.DATE,
         }
     }
     let config = {

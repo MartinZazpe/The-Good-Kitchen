@@ -292,6 +292,8 @@ module.exports = {
     submitComment: async (req, res) => {
 
         let totalComments = 0
+        let diffrenceMinutes
+        let scrollToComments = 'comment-section'
 
 
         try {
@@ -306,7 +308,7 @@ module.exports = {
 
             //if user is not logged in...
             if (!req.session.userLogged) {
-                return res.render('login', {
+                return res.render('login', scrollToComments, {
                     errors: {
                         LoggedToComment: {
                             msg: 'You must be logged in to leave a comment'
@@ -315,89 +317,108 @@ module.exports = {
                 })
             }
 
+            //if user IS logged in, get the newest comment if theres any.
+            if (userLogged.id != null) {
 
-            //We will check the time against the users last comment.
-            let timeNow = Date.parse(new Date())
+                let lastUserComment = await db.Comment.findOne({
+                    where: {
+                        recipes_id: recipeToComment.id,
+                        users_id: userLogged.id
+                    },
+                    order: [['time_of_comment', 'DESC']]
+                })
 
-            //IF, check the latest comment.
-            // if (lastComment.belongsToUserId != userLogged.id || ((((timeNow - lastCommentDate) / 1000) / 60) > 1)) {
+                try {
+                    let timeNow = new Date()
+                    let lastCommentDate = lastUserComment ? lastUserComment.time_of_comment : null
+                    if (lastCommentDate) {
+                        diffrenceMinutes = Math.floor((timeNow - lastCommentDate) / (1000 * 60))
+                        console.log("diffrence in minutes= " + diffrenceMinutes)
+                    } else {
+                        diffrenceMinutes = null
+                    }
+
+                    if (diffrenceMinutes != null && diffrenceMinutes < 3) {
+
+                        try {
+                            let recipeRs = await db.Recipe.findOne({
+                                where: {
+                                    id: req.params.id
+                                },
+                                include: [{ association: "comments" }, { association: "ingredients" }, { association: "directions" }, { association: "users" }]
+                            })
 
 
-            //try and insert a comment
-            try {
 
-                let newComment = {
-                    user_comment: req.body.comments,
-                    rating: Number(req.body.rate),
-                    time_of_comment: Date.parse(new Date()),
-                    recipes_id: recipeToComment.id,
-                    users_id: userLogged.id,
+                            return res.render(`product-detail`, {
+                                comments: allComments, recipe: recipeRs, userLogged, allUsers, scrollToComments,
+                                errors: {
+                                    mustWaitToComment: {
+                                        msg: 'Please wait at least 3 minutes before leaving another comment.',
+                                    },
+                                },
+                                //  amountOfReviews, 
+                                //  ratingAvg
+                            })
+
+                        } catch (error) {
+                            console.log('error on rendering after comment added to db: ' + error)
+                        }
+
+
+
+
+
+                    }
+                } catch (error) {
+                    console.log('there was an error when calculating diff in minuted or inserting data ' + e)
                 }
 
-                db.Comment.create(newComment)
+                try {
+                    let newComment = {
+                        user_comment: req.body.comments,
+                        rating: Number(req.body.rate),
+                        recipes_id: recipeToComment.id,
+                        users_id: userLogged.id,
+                    }
 
-            } catch (error) {
+                    let createComment = await db.Comment.create(newComment)
+
+                    if (createComment) {
+                        try {
+                            let recipeRs = await db.Recipe.findOne({
+                                where: {
+                                    id: req.params.id
+                                },
+                                include: [{ association: "comments" }, { association: "ingredients" }, { association: "directions" }, { association: "users" }]
+                            })
+
+                            return res.render(`product-detail`, {
+                                comments: allComments, recipe: recipeRs, userLogged, allUsers, scrollToComments
+
+                            })
+
+                        } catch (error) {
+                            console.log('error on rendering after comment added to db: ' + error)
+                        }
+                    }
+                    else {
+                        console.log('issue when creating comment or rendering')
+                        return res.render('product-detail', {
+                            comments: allComments, recipe: recipeToComment, userLogged, allUsers, scrollToComments
+                        })
+                    }
+
+                } catch (error) {
+                    console.log("error at the moment of inserting comment on db= " + error)
+                }
 
             }
-
-
-            let productComments = commentData.filter(id => req.params.id == id.refersToProductId)
-            let totalRating = 0
-            for (let i = 0;i < productComments.length;i++) {
-                totalRating += productComments[i].rating
-            }
-            let amountOfReviews = productComments.filter(x => x.rating != null).length
-            let ratingAvg = Math.floor(totalRating / amountOfReviews)
-
-
-
-
-            let recipeFound = data.find(recipe => recipe.id == req.params.id)
-            /* overwrite rating or create it */
-            recipeFound.ratingAvg = (ratingAvg != null) ? ratingAvg : null
-            /* overwrite JSON */
-            writeJSON()
-
-            return res.render('product-detail', {
-                comments: productComments, recipe: recipeFound, userLogged, allUsers, amountOfReviews, ratingAvg
-            })
-
-
-
-
-
-
-
 
         } catch (error) {
-
+            console.log('General error during comment insertion= ' + error)
+            return res.render('not-found')
         }
-
-        // for (let i = 0;i < productComments.length;i++) {
-        //     totalComments += productComments[i].rating
-        // }
-
-        //THIS WOULD NEED TO BE THE LAST COMMENT FROM THE USER TYPING A NEW COMMENT, NOT ANY USER. WE'LL DO IT 3 MINUTES.
-        // let lastComment = commentData[commentData.length - 1]
-        // let lastCommentDate = lastComment.timeOfComment
-
-        // if (lastComment.belongsToUserId == userLogged.id) {
-        //     var difference = (((timeNow - lastCommentDate) / 1000) / 60)
-        //     // console.log(difference)
-        //     if ((difference) < 1) {
-        //         // let productComments = commentData.filter(id => req.params.id == id.refersToProductId)
-        //         let amountOfReviews = productComments.filter(x => x.rating != null).length
-        //         let ratingAvg = Math.floor(totalRating / amountOfReviews)
-
-        //         return res.render('product-detail', {
-        //             comments: productComments, recipe: recipeFound, userLogged, allUsers, amountOfReviews, ratingAvg, errors: {
-        //                 mustWaitToComment: {
-        //                     msg: 'please wait at least 1 minute before leaving another comment'
-        //                 }
-        //             }
-        //         })
-        //     }
-        // }
 
 
         //Must paginate!
