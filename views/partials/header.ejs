@@ -23,7 +23,7 @@
             <!-- </a> -->
         </div>
         <div id="logo">
-            <a href="/">
+            <a href="<%=baseUrl%>">
                 <h1>The g<span class="title-span">oo</span>d Kitchen</h1>
             </a>
         </div>
@@ -50,9 +50,9 @@
 
             <div class="navbar-links">
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/recipes/list">All recipes</a></li>
-                    <li><a href="/recipes/create">Upload a recipe</a></li>
+                    <li><a href="<%=baseUrl%>">Home</a></li>
+                    <li><a href="<%=baseUrl%>/recipes/list">All recipes</a></li>
+                    <li><a href="<%=baseUrl%>/recipes/create">Upload a recipe</a></li>
             </div>
             <% if(locals.islogged) { %>
 
@@ -64,14 +64,14 @@
                     </button>
                     <% } %>
                         <div class="dropdown-content">
-                            <li><a href="/user/profile">My profile</a></li>
-                            <li><a href="/user/logout">Logout</a></li>
+                            <li><a href="<%=baseUrl%>/user/profile">My profile</a></li>
+                            <li><a href="<%=baseUrl%>/user/logout">Logout</a></li>
                         </div>
                 </div>
                 <% } else { %>
                     <div class="user-links dropdown">
-                        <li><a href="/user/login">Login</a></li>
-                        <li><a href="/user/register">Register</a></li>
+                        <li><a href="<%=baseUrl%>/user/login">Login</a></li>
+                        <li><a href="<%=baseUrl%>/user/register">Register</a></li>
                     </div>
                     <% } %>
                         </ul>

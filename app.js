@@ -8,11 +8,14 @@ const session = require('express-session')
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 
 
+var app = express()
+
+
 var indexRouter = require('./routes/index')
 var productsRouter = require('./routes/products')
 var userRouter = require('./routes/users')
 
-var app = express()
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -37,9 +40,10 @@ app.use(session({
 app.use(userLoggedMiddleware)
 
 
-app.use('/', indexRouter)
-app.use('/recipes', productsRouter)
-app.use('/user', userRouter)
+
+app.use('/the-good-kitchen', indexRouter)
+app.use('/the-good-kitchen/user', userRouter)
+app.use('/the-good-kitchen/recipes', productsRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

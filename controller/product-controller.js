@@ -16,6 +16,7 @@ const Op = db.Sequelize.Op
 module.exports = {
     productList: async (req, res) => {
 
+
         let allUsers = await db.User.findAll({
         })
         let allRecipes = await db.Recipe.findAll({

@@ -10,6 +10,8 @@ const Op = db.Sequelize.Op
 
 module.exports = {
     indexAndRecents: async (req, res) => {
+
+
         try {
             let recentUploads = await db.Recipe.findAll({
                 limit: 4,

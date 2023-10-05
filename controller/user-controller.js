@@ -121,8 +121,6 @@ module.exports = {
         if (userToLogin) {
             let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
 
-            //DELETE THIS NOW NO PASSWORD WILL BE REQUIRED
-            passwordOk = true
 
             if (passwordOk) {
                 delete userToLogin.password // << deletes the user´s password before assigning to session
