@@ -29,10 +29,10 @@
                                         <%=recipe.title %>
                                     </h3>
                                     <div class="image-avg-container">
-                                        <% if(recipe.ratingAVG> 0) { %>
+                                        <% if(locals.ratingAVG>= 3) { %>
                                             <div class="AVGrating">
                                                 <h5>
-                                                    <%= recipe.ratingAVG %> / 5 <i class="colorGold fa-lg fa-solid fa-star"></i>
+                                                    <%=ratingAVG %> / 5 <i class="colorGold fa-lg fa-solid fa-star"></i>
                                                 </h5>
                                             </div>
                                             <% }%>

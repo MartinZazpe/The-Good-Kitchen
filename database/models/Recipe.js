@@ -18,9 +18,6 @@ module.exports = (sequelize, dataTypes) => {
         image: {
             type: dataTypes.STRING,
             allowNull: false
-        },
-        ratingAVG: {
-            type: dataTypes.INTEGER
         }
     }
     let config = {
@@ -33,22 +30,35 @@ module.exports = (sequelize, dataTypes) => {
     const Recipe = sequelize.define(alias, cols, config)
 
 
+
+
+
     Recipe.associate = function (models) {
         Recipe.belongsTo(models.User, {
             as: "users",
-            foreignKey: "user_id"
+            foreignKey: "user_id",
+            onDelete: 'NO ACTION',
+            onUpdate: 'CASCADE',
         })
         Recipe.hasMany(models.Comment, {
             as: "comments",
-            foreignKey: "recipes_id"
+            foreignKey: "recipes_id",
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
+
         })
         Recipe.hasMany(models.RecipeIngredients, {
             as: "ingredients",
-            foreignKey: "recipes_id"
+            foreignKey: "recipes_id",
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
+
         }),
             Recipe.hasMany(models.Directions, {
                 as: "directions",
-                foreignKey: "recipes_id"
+                foreignKey: "recipes_id",
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE',
             })
 
 

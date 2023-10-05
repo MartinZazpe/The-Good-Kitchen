@@ -22,7 +22,9 @@ module.exports = (sequelize, dataTypes) => {
     Directions.associate = function (models) {
         Directions.belongsTo(models.Recipe, {
             as: "recipe",
-            foreignKey: "recipes_id"
+            foreignKey: "recipes_id",
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
         })
     }
 

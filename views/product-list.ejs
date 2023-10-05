@@ -67,12 +67,22 @@
                                             <% } %>
                                                 <% } %>
                                                     <div class="image-avg-container">
-                                                        <% if(recipe.ratingAVG> 0) { %>
+                                                        <% if(locals.recipeRatings) { %>
                                                             <div class="AVGrating">
                                                                 <div>
-                                                                    <h5>
-                                                                        <%= recipe.ratingAVG %> / 5 <i class="colorGold fa-lg fa-solid fa-star"></i>
-                                                                    </h5>
+
+                                                                    <% const avgRatingObj=recipeRatings.find(element=> recipe.id === element.recipe_id); %>
+
+                                                                        <%if(avgRatingObj){ %>
+                                                                            <p>
+                                                                            <p>
+                                                                                <%= avgRatingObj.ratingAvg %>/5
+                                                                            </p>
+                                                                            </p>
+                                                                            <i class="colorGold fa-lg fa-solid fa-star"></i>
+                                                                            <%}%>
+
+
                                                                 </div>
                                                             </div>
                                                             <% }%>
@@ -97,7 +107,6 @@
                                             </div>
                                             <% } %>
                                                 <% } %>
-
                                 </div>
                             </div>
                             <% } %>

@@ -9,17 +9,6 @@ var path = require('path')
 const axios = require('axios')
 
 
-
-//for comments
-let dataCommentJSON = fs.readFileSync(path.join(__dirname, '../data/commentSection.json'))
-let commentData = JSON.parse(dataCommentJSON)
-
-function WriteCommentJSON() {
-    let dataStringify = JSON.stringify(commentData, null, 4)
-    fs.writeFileSync(path.join(__dirname, '../data/commentSection.json'), dataStringify)
-}
-
-
 //for MYSQL db
 const db = require('../database/models')
 const Op = db.Sequelize.Op
@@ -27,27 +16,48 @@ const Op = db.Sequelize.Op
 module.exports = {
     productList: async (req, res) => {
 
-
         let allUsers = await db.User.findAll({
         })
         let allRecipes = await db.Recipe.findAll({
             include: [{ association: "users" }]
         })
+
+
+        //get the avg rating for each recipe
+        let recipeRatings = await Promise.all(allRecipes.map(async (element) => {
+            let getRecipeRating = await obtainRecipeAvg(element.id)
+
+            if (getRecipeRating != null && getRecipeRating != 0) {
+                return {
+                    recipe_id: element.id,
+                    ratingAvg: getRecipeRating
+                }
+            }
+            else {
+                return null
+            }
+        }))
+
+        recipeRatings = recipeRatings.filter(rating => rating !== null && rating.ratingAvg !== 0)
+        console.log('this should be an array with objects of ratings ' + recipeRatings.ratingAVG)
+
+
         if (req.session.userLogged) {
             // let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
             let userLogged = req.session.userLogged
             res.render('product-list', {
-                recipes: allRecipes, userLogged, allUsers
+                recipes: allRecipes, userLogged, allUsers, recipeRatings
             })
         } else if (!req.session.userLogged) {
             res.render('product-list', {
-                recipes: allRecipes, allUsers
+                recipes: allRecipes, allUsers, recipeRatings
             })
         }
 
     },
     detail: async (req, res) => {
 
+        let ratingAVG = 0
 
         let recipeRs = await db.Recipe.findOne({
             where: {
@@ -58,24 +68,18 @@ module.exports = {
             // console.log(error)
         })
 
+        //get the avg rating
+        if (recipeRs != null) {
+            ratingAVG = await obtainRecipeAvg(recipeRs.id)
+        }
+
         let allUsers = await db.User.findAll()
 
-        //PENDING TO SHOW INGREDIENTS AND STEPS AFTER WE UPLOAD A PRODUCT TO CHECK THAT WORKS!
-        // let recipeFound = JSON.parse(recipeRs.ingredients)
-
-
-        console.log(recipeRs.ingredients.ingredient)
-        // console.log(recipeFound.ingredients)
-
         res.render('product-detail', {
-            recipe: recipeRs, allUsers
+            recipe: recipeRs, allUsers, ratingAVG
         })
 
-        // HICE HASTA ACÁ !!  CON BASES DE DATOS. NECESITO SOLUCIONAR USUARIOS CON TODO EL TEMA DE LOGIN PARA PODER SEGUIR
-
-
         let userLogged = req.session.userLogged
-        // let ratingAvg = Math.floor(totalRating / amountOfReviews)
     },
     create: (req, res) => {
         res.render('product-create')
@@ -147,11 +151,12 @@ module.exports = {
                     let directions = req.body.directions
                     // await directions.map((str, index) => ({ ingredient: str, recipes_id: newRecipe.id }))
                     await directions.forEach(element => {
-                        console.log(element)
-                        db.Directions.create({
-                            direction: element,
-                            recipes_id: newRecipe.id
-                        })
+                        if (element != null && element != "") {
+                            db.Directions.create({
+                                direction: element,
+                                recipes_id: newRecipe.id
+                            })
+                        }
                     })
                     return newRecipe
                 }
@@ -159,10 +164,12 @@ module.exports = {
                 if (newRecipe) {
                     let ingredients = req.body.Ingredients
                     await ingredients.forEach(element => {
-                        db.RecipeIngredients.create({
-                            ingredient: element,
-                            recipes_id: newRecipe.id
-                        })
+                        if (element != null && element != "") {
+                            db.RecipeIngredients.create({
+                                ingredient: element,
+                                recipes_id: newRecipe.id
+                            })
+                        }
                     })
                 }
             }).catch((error) => {
@@ -366,9 +373,6 @@ module.exports = {
                         }
 
 
-
-
-
                     }
                 } catch (error) {
                     console.log('there was an error when calculating diff in minuted or inserting data ' + e)
@@ -424,37 +428,99 @@ module.exports = {
         //Must paginate!
 
     },
-    search: (req, res) => {
+    search: async (req, res) => {
+
+        let filteredProducts = ""
+
+        try {
+            // let userLogged = req.session.userLogged.email
+            // let allProducts = await db.Recipe.findAll()
+            let userSearch = req.body.search
+            let allUsers = await db.User.findAll()
 
 
-        let userSearch = req.body.search
-        let allProducts = data
-        let recentUploads = allProducts.slice(-4)
-        let allUsers = users
-
-        let filteredProducts = allProducts.filter(x => x.title.toUpperCase().match(userSearch.toUpperCase()))
-
-        let bestRanked = allProducts.filter(element => element.ratingAvg == "5")
-        let TwoBestRanked = bestRanked.slice(-2)
-
-
-
-        if (filteredProducts.length == 0) {
-            res.render("index", {
-                recipes: recentUploads, allUsers, TwoBestRanked
+            filteredProducts = await db.Recipe.findAll({
+                where: {
+                    title: {
+                        [Op.like]: `%${userSearch}%`
+                    }
+                },
+                include: [{ association: 'users' }]
             })
-        } else if (req.session.userLogged) {
-            // let userHasProducts = data.filter(recipes => recipes.belongsTo == req.session.userLogged.email)
-            let userLoggedEmail = req.session.userLogged.email
+
+            if (filteredProducts != null && filteredProducts.length > 0) {
+                res.render('product-list', {
+                    recipes: filteredProducts, allUsers,
+                })
+            } else {
+                res.render('product-list', {
+                    recipes: filteredProducts, allUsers,
+                    error: { productNotFound: 'Sorry, nothing to show' }
+                })
+            }
+
+        } catch (error) {
+            console.log('there was an error during the search ' + error)
             res.render('product-list', {
-                recipes: filteredProducts, userLoggedEmail, allUsers,
+                recipes: filteredProducts, allUsers,
+                error: { ErrorDuringSearch: 'Sorry, nothing to show' }
             })
-        } else if (!req.session.userLogged && filteredProducts.length != 0) {
-            res.render('product-list', { recipes: filteredProducts, allUsers, })
         }
-
     }
 }
+
+
+
+async function obtainRecipeAvg(recipeId) {
+    let allComentsTotalRatingAvg = 0
+    try {
+
+        if (recipeId) {
+            let allComments = await db.Comment.findAll({ where: { recipes_id: recipeId } })
+
+            let allCommentsWithRating = await db.Comment.count({
+                where: {
+                    recipes_id: recipeId,
+                    rating: {
+                        [db.Sequelize.Op.gt]: 0
+                    }
+                }
+            })
+
+            if (allComments && allComments.length > 0) {
+
+                let allComentsTotalRating = 0
+
+                allComments.forEach(element => {
+                    if (element.rating > 0) {
+                        allComentsTotalRating += element.rating
+                    }
+                })
+
+                if (allComentsTotalRating > 0) {
+                    allComentsTotalRatingAvg = allComentsTotalRating / allCommentsWithRating
+                    console.log("the avg:" + allComentsTotalRatingAvg)
+                } else {
+                    console.log("No ratings for this recipe")
+                }
+            } else {
+                //   console.log('No commments for this recipe')
+            }
+        }
+
+
+        if (allComentsTotalRatingAvg > 0) {
+            return allComentsTotalRatingAvg
+        }
+        else {
+            // console.log('There was an error calculating the average')
+        }
+    } catch (error) {
+        console.log('there was an error when trying to obtain rating for recipe ' + recipeId + " error: " + error)
+    }
+}
+
+
 
 
 

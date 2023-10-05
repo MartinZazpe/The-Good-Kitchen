@@ -124,7 +124,8 @@
     /* background-color: transparent; */
     display: inline;
     text-align: center;
-    background-image: url('../../images/icon-images/pink-brush-bg.png');
+    /* background-image: url('../../images/icon-images/pink-brush-bg.png'); */
+    background-image: url('../../images/icon-images/green-brush-bg.png');
     background-size: 100%;
 }
 

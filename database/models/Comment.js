@@ -28,7 +28,9 @@ module.exports = (sequelize, dataTypes) => {
     Comment.associate = function (models) {
         Comment.belongsTo(models.Recipe, {
             as: "recipes",
-            foreignKey: "recipes_id"
+            foreignKey: "recipes_id",
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
         })
         Comment.belongsTo(models.User, {
             as: "users",

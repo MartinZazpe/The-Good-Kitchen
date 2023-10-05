@@ -1,22 +1,24 @@
+require('dotenv').config()
+
 module.exports = {
   "development": {
-    "username": "root",
-    "password": null,
+    "username": process.env.mysqluser,
+    "password": process.env.mysqlpass,
     "database": "recipes_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "logging": false
   },
   "test": {
-    "username": "root",
-    "password": null,
+    "username": process.env.mysqluser,
+    "password": process.env.mysqlpass,
     "database": "recipes_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
+    "username": process.env.mysqluser,
+    "password": process.env.mysqlpass,
     "database": "recipes_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
