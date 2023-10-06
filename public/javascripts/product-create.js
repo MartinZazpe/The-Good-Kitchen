@@ -60,7 +60,9 @@ window.addEventListener("load", function () {
 
 
     add_more_fields_ingredients.onclick = function (e) {
+        console.log("Entering add_more_fields")
         e.preventDefault()
+
         var node = document.createElement("li")
         var newField = document.createElement('input')
         newField.setAttribute('type', 'text')
@@ -68,6 +70,8 @@ window.addEventListener("load", function () {
         newField.setAttribute('placeholder', 'Add Ingredient')
         node.appendChild(newField)
         ingredient_list.appendChild(node)
+        console.log("Exiting add_more_fields")
+
     }
 
 

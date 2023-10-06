@@ -91,109 +91,82 @@ module.exports = {
         res.render('product-create')
     },
     store: async (req, res) => {
-        let errors = await validationResult(req)
-        let userlogged = req.session.userLogged
+        try {
+            let errors = await validationResult(req)
 
-        let recipeImage = ""
+            if (!errors.isEmpty()) {
+                // Handle validation errors
+                return res.render('your-error-view', { errors: errors.array() })
+            }
 
-        if (errors.isEmpty()) {
+            let recipeImage = ""
 
-            //load the image with the new token created.
             if (req.file != null) {
                 try {
-                    const imgurResponse = await axios.post('https://api.imgur.com/3/image',
-                        {
-                            'image': req.file.buffer,
-                            'album': "8tIaaR9"
-                        },
-                        {
-                            headers: {
-                                'Content-Type': 'multipart/form-data',
-                                Authorization: `Bearer ${process.env.myAcessTokenEnv}`,
-                            }
-                        })
-                    recipeImage = imgurResponse.data.data.link
-                }
-                catch (error) {
-                    console.error('Error uploading image to Imgur:', error)
-
-                    //check if error is due to unauthorized, get new token and retry.
-                    if (error.request && error.request.socket && error.request.socket._rejectUnauthorized == true) {
-                        try {
-                            const tokens = await getImgurAccesToken(process.env.clientId, process.env.clientSecret, process.env.refreshToken)
-
-                            const imgurResponseFallback = await axios.post('https://api.imgur.com/3/image',
-                                {
-                                    'image': req.file.buffer,
-                                    'album': "8tIaaR9"
-                                },
-                                {
-                                    headers: {
-                                        'Content-Type': 'multipart/form-data',
-                                        Authorization: `Bearer ${tokens.newAccessToken}`,
-                                    },
-                                })
-                            // console.log('this is this: ' + imgurResponseFallback.data.data.link)
-                            recipeImage = imgurResponseFallback.data.data.link
-
-                        } catch (fallbackError) {
-                            console.log("Error, could not insert image or get a new token " + fallbackError)
+                    const imgurResponse = await axios.post('https://api.imgur.com/3/image', {
+                        'image': req.file.buffer,
+                        'album': "8tIaaR9"
+                    }, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            Authorization: `Bearer ${process.env.myAcessTokenEnv}`,
                         }
-                    }
+                    })
+                    recipeImage = imgurResponse.data.data.link
+                } catch (error) {
+                    // Handle image upload error
+                    console.error('Error uploading image to Imgur:', error)
                 }
             }
 
-            //then after handling image logic we can proceede
             const newRecipe = await db.Recipe.create({
                 title: req.body.title,
                 description: req.body.description,
                 image: req.file && recipeImage != "" ? recipeImage : "",
                 user_id: req.session.userLogged.id
-            }).then(async (newRecipe) => {
-                if (newRecipe) {
-                    let directions = req.body.directions
-                    // await directions.map((str, index) => ({ ingredient: str, recipes_id: newRecipe.id }))
-                    await directions.forEach(element => {
-                        if (element != null && element != "") {
-                            db.Directions.create({
-                                direction: element,
-                                recipes_id: newRecipe.id
-                            })
-                        }
-                    })
-                    return newRecipe
-                }
-            }).then(async (newRecipe) => {
-                if (newRecipe) {
-                    let ingredients = req.body.Ingredients
-                    await ingredients.forEach(element => {
-                        if (element != null && element != "") {
-                            db.RecipeIngredients.create({
-                                ingredient: element,
-                                recipes_id: newRecipe.id
-                            })
-                        }
-                    })
-                }
-            }).catch((error) => {
-                console.log(error)
             })
-        }
+            console.log('After creating newRecipe:', newRecipe)
 
-        try {
 
-            let getAllimages = await db.Recipe.findAll()
-            let getAllUsers = await db.User.findAll()
+            if (newRecipe) {
+                const directions = req.body.directions.filter(element => element !== null && element !== "")
+                const ingredients = req.body.Ingredients.filter(element => element !== null && element !== "")
 
-            res.render('product-list', { getAllimages, getAllUsers })
+                await Promise.all([
+                    Promise.all(directions.map(element => db.Directions.create({
+                        direction: element,
+                        recipes_id: newRecipe.id
+                    }))),
+                    Promise.all(ingredients.map(element => db.RecipeIngredients.create({
+                        ingredient: element,
+                        recipes_id: newRecipe.id
+                    })))
+                ])
+
+                console.log('Before redirecting to product-list')
+
+                // Redirect to product list after successful creation
+                res.redirect('/the-good-kitchen/recipes/list')
+            }
+
+            console.log('Exiting store method')
 
         } catch (error) {
-            console.log('there was an error, probably redirecting after submitting image.')
+
+            if (error.name === 'SequelizeUniqueConstraintError') {
+                console.error("Duplicate entry error:", error)
+
+                res.render('product-create',
+                    {
+                        duplicateEntryError: 'Duplicate entry error. Please ensure there are no duplicate directions or ingredients.'
+                    })
+            }
+
+            console.error('Error in store method:', error)
+            // Handle other errors
             res.render('not-found')
         }
-
     },
-
     edit: async (req, res) => {
 
         let recipeFound = await db.Recipe.findByPk(req.params.id, { include: ["directions", "ingredients"] })
@@ -257,15 +230,13 @@ module.exports = {
             await recipeFound.save()
 
             // Fetch updated data to render
-            let data = await db.Recipe.findAll()
-            let allUsers = await db.User.findAll()
-            let userLogged = req.session.userLogged
+            // let data = await db.Recipe.findAll()
+            // let allUsers = await db.User.findAll()
+            // let userLogged = req.session.userLogged
 
-            res.render('product-list', {
-                recipes: data,
-                userLogged,
-                allUsers
-            })
+            // Redirect to product list after successful creation
+            res.redirect('/the-good-kitchen/recipes/list')
+
         } catch (error) {
 
             //get the recipe we are editting
@@ -298,10 +269,19 @@ module.exports = {
             let allUsers = await db.User.findAll()
             let userLogged = req.session.userLogged
 
-            res.render('product-list', {
-                recipes: data,
-                userLogged,
-                allUsers
+            await db.Recipe.findAll({
+                where: {
+                    user_id: req.session.userLogged.id
+                }
+            }).then(async (userRecipes) => {
+                let totalRecipes = userRecipes.length
+                console.log(userRecipes)
+                if (userRecipes.length !== 0) {
+                    res.render('user-recipes', { recipes: userRecipes, totalRecipes })
+                } else {
+                    let user = await db.User.findOne({ where: { id: req.session.userLogged.id } })
+                    return res.render('user-profile', { user })
+                }
             })
         } catch (error) {
             res.render('product-list',
@@ -454,6 +434,10 @@ module.exports = {
             // let allProducts = await db.Recipe.findAll()
             let userSearch = req.body.search
             let allUsers = await db.User.findAll()
+
+            if (userSearch == null || userSearch == "") {
+                res.redirect('/the-good-kitchen/recipes/list')
+            }
 
 
             filteredProducts = await db.Recipe.findAll({

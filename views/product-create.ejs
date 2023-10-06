@@ -15,116 +15,123 @@
     <%- include("partials/header.ejs") %>
 
         <div class="body-information">
-            <section class="main-section">
-                <div class="form-container" id="form-container">
-                    <form class="productCreate-form" action="<%=baseUrl%>/recipes/create" enctype="multipart/form-data" method="POST">
-                        <div class="title-title">
-                            <h3 class="recipe-pretitle">Recipe for</h3>
-                            <div>
-                                <label for="title">
-                                    <% if (locals.errors && errors.title) { %>
+
+            <%if(locals.duplicateEntryError){ %>
+                <p class="error-msg">
+                    <%=duplicateEntryError%>
+                </p>
+                <%}%>
+
+                    <section class="main-section">
+                        <div class="form-container" id="form-container">
+                            <form class="productCreate-form" action="<%=baseUrl%>/recipes/create" enctype="multipart/form-data" method="POST">
+                                <div class="title-title">
+                                    <h3 class="recipe-pretitle">Recipe for</h3>
+                                    <div>
+                                        <label for="title">
+                                            <% if (locals.errors && errors.title) { %>
+                                                <div class="text-danger centerText errorBg">
+                                                    <%= errors.title.msg%>
+                                                </div>
+                                                <%} %>
+                                                    <input name="title" type="text" id="title" value="<%= locals.oldData && oldData.title ? oldData.title : ""%>" placeholder=" Name of dish">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class=" description-container">
+                                    <label class="description-label" for="description">A brief description of your dish: <br> (max 350 characters)</label>
+                                    <% if (locals.errors && errors.description) { %>
                                         <div class="text-danger centerText errorBg">
-                                            <%= errors.title.msg%>
+                                            <%= errors.description.msg%>
                                         </div>
                                         <%} %>
-                                            <input name="title" type="text" id="title" value="<%= locals.oldData && oldData.title ? oldData.title : ""%>" placeholder=" Name of dish">
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class=" description-container">
-                            <label class="description-label" for="description">A brief description of your dish: <br> (max 350 characters)</label>
-                            <% if (locals.errors && errors.description) { %>
-                                <div class="text-danger centerText errorBg">
-                                    <%= errors.description.msg%>
+                                            <textarea name="description" type="text" id="description" maxlength="350" cols="30" rows="5"><%= locals.oldData && oldData.description ? oldData.description : "" %></textarea>
                                 </div>
-                                <%} %>
-                                    <textarea name="description" type="text" id="description" maxlength="350" cols="30" rows="5"><%= locals.oldData && oldData.description ? oldData.description : "" %></textarea>
-                        </div>
 
-                        <div class="directions-ingredients-container">
+                                <div class="directions-ingredients-container">
 
 
-                            <div class="ingredients-container">
-                                <div class="label-ingredients"><label for="Ingredients">Ingredients:</label></div>
-                                <div class="controls-ol-container">
-                                    <div class="controls">
-                                        <a href="#" id="add_more_fields_ingredients"><i class="fa fa-sm">Add Ingredient</i></a>
-                                        <a href="#" id="remove_fields_ingredients"><i class="fa fa-sm">Remove last Ingredient</i></a>
-                                    </div>
-                                    <div class="ingredient-list-container">
-                                        <% if (locals.errors && errors.Ingredients) { %>
-                                            <div class="text-danger centerText errorBg">
-                                                <%= errors.Ingredients.msg%>
+                                    <div class="ingredients-container">
+                                        <div class="label-ingredients"><label for="Ingredients">Ingredients:</label></div>
+                                        <div class="controls-ol-container">
+                                            <div class="controls">
+                                                <a href="#" id="add_more_fields_ingredients"><i class="fa fa-sm">Add Ingredient</i></a>
+                                                <a href="#" id="remove_fields_ingredients"><i class="fa fa-sm">Remove last Ingredient</i></a>
                                             </div>
-                                            <%} %>
-                                                <ol id="ingredient-list">
-                                                    <% if (locals.oldData && oldData.Ingredients){ %>
-                                                        <% oldData.Ingredients.forEach(function(element){ %>
-                                                            <% if(element) {%>
-                                                                <li><input type="text" name="Ingredients[]" value="<%=element ? element : "" %>"></li>
-                                                                <% } else { %>
-                                                                    <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient" %>"></li>
-                                                                    <% } %>
-                                                                        <% }) %>
+                                            <div class="ingredient-list-container">
+                                                <% if (locals.errors && errors.Ingredients) { %>
+                                                    <div class="text-danger centerText errorBg">
+                                                        <%= errors.Ingredients.msg%>
+                                                    </div>
+                                                    <%} %>
+                                                        <ol id="ingredient-list">
+                                                            <% if (locals.oldData && oldData.Ingredients){ %>
+                                                                <% oldData.Ingredients.forEach(function(element){ %>
+                                                                    <% if(element) {%>
+                                                                        <li><input type="text" name="Ingredients[]" value="<%=element ? element : "" %>"></li>
+                                                                        <% } else { %>
+                                                                            <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient" %>"></li>
+                                                                            <% } %>
+                                                                                <% }) %>
 
-                                                                            <% } else if(!locals.oldData || !oldData.Ingredients){ %>
-                                                                                <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient"></li>
-                                                                                <% } %>
+                                                                                    <% } else if(!locals.oldData || !oldData.Ingredients){ %>
+                                                                                        <li><input type="text" name="Ingredients[]" placeholder="Add Ingredient"></li>
+                                                                                        <% } %>
 
-                                                </ol>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div id="product-directions">
-                                <div class="label-directions"><label for="directions">Cooking steps.</label></div>
-                                <div class="controls-ol-container">
-                                    <div class="controls">
-                                        <a href="#" id="add_more_fields"><i class="fa fa-sm">Add step</i></a>
-                                        <a href="#" id="remove_fields"><i class="fa fa-sm">Remove last step</i></a>
-                                    </div>
-                                    <div class="instruction-list-container">
-                                        <% if (locals.errors && errors.directions) { %>
-                                            <div class="text-danger centerText errorBg">
-                                                <%= errors.directions.msg%>
+                                                        </ol>
                                             </div>
-                                            <%} %>
-                                                <ol id="instruction-list">
-                                                    <% if (locals.oldData && oldData.directions){ %>
-                                                        <% oldData.directions.forEach(function(element){ %>
-                                                            <% if(element) { %>
-                                                                <li><input type="text" name="directions[]" placeholder="Add Instruction" value="<%=element ? element :"" %> "></li>
-                                                                <% } else { %>
-                                                                    <li><input type="text" name="directions[]" placeholder="Add Instruction" %> "></li>
-                                                                    <% } %>
-                                                                        <% }) %>
-                                                                            <% } else if(!locals.oldData || !oldData.directions){ %>
-                                                                                <li><input type="text" name="directions[]" placeholder="Add Instruction"></li>
-                                                                                <% } %>
-                                                </ol>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div id="product-directions">
+                                        <div class="label-directions"><label for="directions">Cooking steps.</label></div>
+                                        <div class="controls-ol-container">
+                                            <div class="controls">
+                                                <a href="#" id="add_more_fields"><i class="fa fa-sm">Add step</i></a>
+                                                <a href="#" id="remove_fields"><i class="fa fa-sm">Remove last step</i></a>
+                                            </div>
+                                            <div class="instruction-list-container">
+                                                <% if (locals.errors && errors.directions) { %>
+                                                    <div class="text-danger centerText errorBg">
+                                                        <%= errors.directions.msg%>
+                                                    </div>
+                                                    <%} %>
+                                                        <ol id="instruction-list">
+                                                            <% if (locals.oldData && oldData.directions){ %>
+                                                                <% oldData.directions.forEach(function(element){ %>
+                                                                    <% if(element) { %>
+                                                                        <li><input type="text" name="directions[]" placeholder="Add Instruction" value="<%=element ? element :"" %> "></li>
+                                                                        <% } else { %>
+                                                                            <li><input type="text" name="directions[]" placeholder="Add Instruction" %> "></li>
+                                                                            <% } %>
+                                                                                <% }) %>
+                                                                                    <% } else if(!locals.oldData || !oldData.directions){ %>
+                                                                                        <li><input type="text" name="directions[]" placeholder="Add Instruction"></li>
+                                                                                        <% } %>
+                                                        </ol>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="imageInputContainer">
+                                <div class="imageInputContainer">
 
-                            <label id="image-label" for="image">
-                                <p class="absolute-image-label">Choose an image</p>
-                                <img class="product-preview">
-                            </label>
-                            <input class="imageInput" name="image" type="file" id="image">
+                                    <label id="image-label" for="image">
+                                        <p class="absolute-image-label">Choose an image</p>
+                                        <img class="product-preview">
+                                    </label>
+                                    <input class="imageInput" name="image" type="file" id="image">
+                                </div>
+                                <div class="button-submit-container">
+                                    <button id="button-for-submit" type="submit">Submit</button>
+                                    <button class="button-for-clear" type="reset">Clear all fields</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="button-submit-container">
-                            <button id="button-for-submit" type="submit">Submit</button>
-                            <button class="button-for-clear" type="reset">Clear all fields</button>
-                        </div>
-                    </form>
-                </div>
-            </section>
+                    </section>
         </div>
         <%- include("partials/footer.ejs") %>
 </body>

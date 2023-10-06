@@ -58,6 +58,7 @@ main {
 .user-profile-title {
     font-size: 1.2rem;
     padding: 20px;
+    background: white;
 }
 
 .image-text-container {
@@ -65,8 +66,8 @@ main {
     align-items: center;
     justify-content: center;
     position: relative;
-    background: white;
     padding: 30px;
+    /* background: white; */
     /* background-image: url('../images/icon-images/blueMountain-bg.png'); */
 }
 
@@ -129,7 +130,7 @@ a:hover {
 .edit-image-form input {
     top: 80px;
     left: 80px;
-    background-image: url('../images/icon-images/blueMountain-bg.png');
+    /* background-image: url('../images/icon-images/blueMountain-bg.png'); */
 }
 
 .edit-image-form {
