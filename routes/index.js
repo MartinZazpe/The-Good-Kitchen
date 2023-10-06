@@ -5,6 +5,7 @@ var indexController = require('../controller/indexController.js')
 
 // middleware.js
 const setBaseUrl = (req, res, next) => {
+
     const baseUrl = req.baseUrl === '/' ? '' : req.baseUrl
     res.locals.baseUrl = baseUrl
     next()

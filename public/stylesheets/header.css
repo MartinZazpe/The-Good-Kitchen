@@ -240,14 +240,12 @@ ul {
 
 
 
-
-
 /* Search bar*/
 
 
 #search-input-icon-container {
     position: relative;
-    width: 400px;
+    width: 100%;
 }
 
 .search-input {
@@ -353,7 +351,7 @@ ul {
     }
 
     .navigation-list-dropdown {
-        border-top: 3px solid rgb(144, 208, 221);
+        border-top: 3px solid rgb(255 255 255);
     }
 
     .navigation-list-dropdown {
@@ -391,7 +389,7 @@ ul {
     .user-links,
     .userLogged-links {
         display: flex !important;
-        border-left: 0.1px solid rgb(144, 208, 221);
+        border-left: 0.1px solid rgb(255 255 255)
     }
 
     .userLogged-links ul li {
@@ -418,9 +416,11 @@ ul {
 
 @media(min-width:768px) {
 
+    .navbar-flexbox {
+        min-height: 150px;
+    }
 
-
-    .search-input {
+    #search-input-icon-container {
         width: 400px;
     }
 }

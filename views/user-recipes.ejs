@@ -22,7 +22,7 @@
                     </section>
                     <section class="recipe-examples">
                         <div class="total-recipes">
-                            <p>I have shared <%=totalRecipes%> recipes. I can edit my existing ones here or <a class="uploadNewLink" href="/recipes/create"> upload a new recipe</a></p>
+                            <p>I have shared <%=totalRecipes%> recipes. I can edit my existing ones here or <a class="uploadNewLink" href="<%=baseUrl%>/recipes/create"> upload a new recipe</a></p>
                         </div>
                         <div class="container">
                             <% for (let recipe of recipes) {%>
@@ -30,15 +30,15 @@
                                     <h4>
                                         <%=recipe.title %>
                                     </h4>
-                                    <div class="imageContainer"><a href="/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="<%= recipe.image != "" ? recipe.image : '../../images/no-image-default.png' %>"></a></div>
+                                    <div class="imageContainer"><a href="<%=baseUrl%>/recipes/detail/<%=recipe.id%>"> <img class="recipe-image" src="<%= recipe.image != "" ? recipe.image : '../../images/no-image-default.png' %>"></a></div>
                                     <div class="description-hyperlink">
                                         <p>
                                             <%=recipe.description %>
                                         </p>
-                                        <a class="detail-link" href="/recipes/detail/<%=recipe.id%>">Go to full recipe</a>
+                                        <a class="detail-link" href="<%=baseUrl%>/recipes/detail/<%=recipe.id%>">Go to full recipe</a>
                                         <div class="buttons-user-recipes">
                                             <div>
-                                                <a href="/recipes/edit/<%=recipe.id%>"><button class="edit-userRecipe" type="submit">Edit</button></a>
+                                                <a href="<%=baseUrl%>/recipes/edit/<%=recipe.id%>"><button class="edit-userRecipe" type="submit">Edit</button></a>
                                             </div>
                                             <div class="form-container-user-recipes">
                                                 <form action="/recipes/delete/<%=recipe.id%>?_method=DELETE" method="POST">

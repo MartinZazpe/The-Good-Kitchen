@@ -1,6 +1,7 @@
 const { validationResult } = require('express-validator')
 
 function authMiddleware(req, res, next) {
+    console.log('authMiddleware executed')
     if (!req.session.userLogged) {
         res.render('login', {
             errors: {

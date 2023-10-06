@@ -118,7 +118,7 @@
                             </div>
                             <div class="button-submit-container">
                                 <button id="button-for-submit" type="submit">Submit</button>
-                                <a href="/recipes/edit/<%= recipe.id %>"><button class="button-for-clear" type="button">Clear changes</button></a>
+                                <a href="<%=baseUrl%>/recipes/edit/<%= recipe.id %>"><button class="button-for-clear" type="button">Clear changes</button></a>
                     </form>
                     <form action="/recipes/delete/<%=recipe.id%>?_method=DELETE" method="POST">
                         <button class="delete-userRecipe" type="submit" onclick="return confirm('This action can´t be undone, are you sure you want to delete this item?')">

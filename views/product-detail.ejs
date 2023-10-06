@@ -59,7 +59,7 @@
                                         <% if(locals.userLogged){ %>
                                             <% if(userLogged.id==recipe.belongsTo) { %>
                                                 <div class="edit-container">
-                                                    <a class="edit-icon" href="/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>
+                                                    <a class="edit-icon" href="<%=baseUrl%>/recipes/edit/<%=recipe.id%>">Edit my recipe<i class="fa-solid fa-pen"></i></a>
                                                 </div>
                                                 <% } %>
                                                     <% } %>
@@ -132,7 +132,6 @@
                             </ol>
                         </div>
 
-
             </div>
             </div>
             <% } %>
@@ -149,6 +148,7 @@
 
                             <span></span>
                         </div>
+
 
                         <!-- aca tengo que solucionar lo de user para poder avanzar con mostrar los comentarios-->
                         <% if(recipe.comments.length>= 1) { %>
@@ -183,7 +183,7 @@
                             </script>
                             <% } %>
 
-                                <form class="comment-form" action="/recipes/comments/<%=recipe.id%>" method="POST">
+                                <form class="comment-form" action="<%=baseUrl%>/recipes/comments/<%=recipe.id%>" method="POST">
 
                                     <div class="container">
                                         <p>Rate this recipe:</p>

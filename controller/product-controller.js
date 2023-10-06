@@ -50,13 +50,15 @@ module.exports = {
                 recipes: allRecipes, userLogged, allUsers, recipeRatings
             })
         } else if (!req.session.userLogged) {
+            let userLogged = req.session.userLogged
             res.render('product-list', {
-                recipes: allRecipes, allUsers, recipeRatings
+                recipes: allRecipes, allUsers, recipeRatings, userLogged
             })
         }
 
     },
     detail: async (req, res) => {
+
 
         let ratingAVG = 0
 
@@ -76,11 +78,14 @@ module.exports = {
 
         let allUsers = await db.User.findAll()
 
-        res.render('product-detail', {
-            recipe: recipeRs, allUsers, ratingAVG
-        })
 
         let userLogged = req.session.userLogged
+
+
+        res.render('product-detail', {
+            recipe: recipeRs, allUsers, ratingAVG, userLogged
+        })
+
     },
     create: (req, res) => {
         res.render('product-create')
@@ -90,9 +95,6 @@ module.exports = {
         let userlogged = req.session.userLogged
 
         let recipeImage = ""
-
-
-        //await db.User.create(newUser)
 
         if (errors.isEmpty()) {
 
@@ -177,10 +179,23 @@ module.exports = {
                 console.log(error)
             })
         }
-        res.redirect("/recipes/list")
+
+        try {
+
+            let getAllimages = await db.Recipe.findAll()
+            let getAllUsers = await db.User.findAll()
+
+            res.render('product-list', { getAllimages, getAllUsers })
+
+        } catch (error) {
+            console.log('there was an error, probably redirecting after submitting image.')
+            res.render('not-found')
+        }
+
     },
 
     edit: async (req, res) => {
+
         let recipeFound = await db.Recipe.findByPk(req.params.id, { include: ["directions", "ingredients"] })
 
         if (recipeFound.user_id == req.session.userLogged.id) {
@@ -307,11 +322,12 @@ module.exports = {
         try {
             //find recipe to comment
             let recipeToComment = await db.Recipe.findOne({ where: { id: req.params.id } })
-            let userLogged = req.session.userLogged
             let data = await db.Recipe.findAll()
             let allUsers = await db.User.findAll()
+            let userLogged = req.session.userLogged
             //find all comments on the recipe
             let allComments = await db.Comment.findAll({ where: { recipes_id: recipeToComment.id } })
+
 
 
             //if user is not logged in...
@@ -384,7 +400,7 @@ module.exports = {
                         user_comment: req.body.comments,
                         rating: Number(req.body.rate),
                         recipes_id: recipeToComment.id,
-                        users_id: userLogged.id,
+                        users_id: userLogged.id
                     }
 
                     let createComment = await db.Comment.create(newComment)
@@ -489,9 +505,7 @@ async function obtainRecipeAvg(recipeId) {
             })
 
             if (allComments && allComments.length > 0) {
-
                 let allComentsTotalRating = 0
-
                 allComments.forEach(element => {
                     if (element.rating > 0) {
                         allComentsTotalRating += element.rating
@@ -499,7 +513,7 @@ async function obtainRecipeAvg(recipeId) {
                 })
 
                 if (allComentsTotalRating > 0) {
-                    allComentsTotalRatingAvg = allComentsTotalRating / allCommentsWithRating
+                    allComentsTotalRatingAvg = Math.floor(allComentsTotalRating / allCommentsWithRating)
                     console.log("the avg:" + allComentsTotalRatingAvg)
                 } else {
                     console.log("No ratings for this recipe")
@@ -508,7 +522,6 @@ async function obtainRecipeAvg(recipeId) {
                 //   console.log('No commments for this recipe')
             }
         }
-
 
         if (allComentsTotalRatingAvg > 0) {
             return allComentsTotalRatingAvg

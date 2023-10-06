@@ -11,6 +11,8 @@ const authMiddleware = require("../middlewares/authMiddleware.js")
 const userRegister = require("../middlewares/userRegister.js")
 const userEdit = require("../middlewares/userEdit.js")
 
+const userLoggedMiddleware = require('../middlewares/userLoggedMiddleware.js')
+
 
 //Create a user
 router.get('/register', guestMiddleware, userController.create)
@@ -18,7 +20,7 @@ router.post('/register', configMulter.single('image'), userRegister, userControl
 
 
 //login and navigate as a user
-router.get('/login', guestMiddleware, userController.login)
+router.get('/login', authMiddleware, userController.login)
 router.post('/login', userController.processLogin)
 router.get('/check', userController.checkLogin) //just to check if user is logged in, delete after
 
@@ -29,7 +31,7 @@ router.put('/profile', configMulter.single('image'), userEdit, userController.ed
 router.get('/profile/myRecipes', userController.userProducts)
 
 //logout and delete
-router.get('/logout', userController.logout)
+router.get('/logout', authMiddleware, userController.logout)
 router.delete('/delete', userController.deleteUser)
 
 //list of all users or at least the amount of users we have, or something cool.

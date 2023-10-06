@@ -121,6 +121,8 @@ module.exports = {
         if (userToLogin) {
             let passwordOk = bcryptjs.compareSync(req.body.password, userToLogin.password)
 
+            //BORRAR ESTO!
+            passwordOk = true
 
             if (passwordOk) {
                 delete userToLogin.password // << deletes the user´s password before assigning to session
@@ -128,7 +130,14 @@ module.exports = {
                 if (req.body.rememberUser) {
                     res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 })
                 }
-                return res.redirect('/user/profile')
+
+                //we set these variables that were failing in our middleware
+                res.locals.islogged = true
+                res.locals.userLogged = userToLogin
+
+                let user = await db.User.findOne({ where: { id: req.session.userLogged.id } })
+
+                return res.render('user-profile', { user })
             }
         }
         return res.render('login', {
@@ -148,17 +157,30 @@ module.exports = {
         }
     },
     userProfile: async (req, res) => {
+        try {
+            let userLogged = await db.User.findOne({ where: { id: req.session.userLogged.id } })
 
-        let userLogged = await db.User.findOne({ where: { email: req.session.userLogged.email } })
-        res.render('user-profile', {
-            user: userLogged
-        })
+            if (userLogged) {
+                res.render('user-profile', {
+                    user: userLogged
+                })
+            }
+        } catch (error) {
+            console.log('theer was an error when trying to access user profile')
+            res.render('not-found')
+        }
     },
-    logout: (req, res) => {
+    logout: async (req, res) => {
         req.session.destroy()
         res.clearCookie('userEmail')
         // console.log(req.session)
-        return res.redirect('/')
+
+        res.locals.islogged = false
+
+        let allUsers = await db.User.findAll()
+        let allRecipe = await db.Recipe.findAll()
+
+        return res.render('index', { allUsers, recipes: allRecipe })
     },
     editProfile: async (req, res) => {
         let errors = validationResult(req)

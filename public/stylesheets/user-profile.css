@@ -1,8 +1,11 @@
-.main-section {
+/* .main-section {
     background-image: url('../images/icon-images/blueMountain-bg.png');
+} */
+
+main {
+    background-image: url('../images/icon-images/cookies-bg.png');
+    background-color: rgba(0, 0, 0, 0.1)
 }
-
-
 
 .user-details {
     display: flex;
@@ -52,11 +55,19 @@
     cursor: pointer;
 } */
 
+.user-profile-title {
+    font-size: 1.2rem;
+    padding: 20px;
+}
+
 .image-text-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative
+    position: relative;
+    background: white;
+    padding: 30px;
+    /* background-image: url('../images/icon-images/blueMountain-bg.png'); */
 }
 
 
@@ -68,17 +79,42 @@
     transition: visibility 0s, opacity 0.5s linear;
 }
 
-
-.image-text-container:hover {
-    filter: brightness(90%);
+.image-container:hover {
     cursor: pointer;
 }
 
 
-.image-text-container:hover .text-container {
+.image-text-container .text-container {
+    color: rgb(161, 161, 161);
     visibility: visible;
     opacity: 0.7;
+    animation-iteration-count: infinite
 }
+
+.text-container {
+    opacity: 1;
+    animation: fade 5s linear;
+}
+
+@keyframes fade {
+
+    0%,
+    100% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
 
 a:hover {
     color: rgb(142, 142, 33);
@@ -92,7 +128,8 @@ a:hover {
 
 .edit-image-form input {
     top: 80px;
-    left: 80px
+    left: 80px;
+    background-image: url('../images/icon-images/blueMountain-bg.png');
 }
 
 .edit-image-form {

@@ -81,7 +81,7 @@
               <div class="product-container">
                 <div class="image-avg-container">
                   <div class="imageContainer">
-                    <a href="/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="<%= recipe.image != "" ? recipe.image : '../../images/no-image-default.png' %>"></a>
+                    <a href="<%=baseUrl%>/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="<%= recipe.image != "" ? recipe.image : '../../images/no-image-default.png' %>"></a>
                     <% if(locals.recipeRatings) { %>
                       <div class="AVGrating">
                         <div>
@@ -107,7 +107,7 @@
                   <h6>
                     <%=recipe.title %>
                   </h6>
-                  <a class="detail-link noShow" href="/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
+                  <a class="detail-link noShow" href="<%=baseUrl%>/recipes/detail/<%=recipe.id%>">Check out the full recipe...</a>
                   <% if(locals.allUsers){%>
                     <% for(let user of allUsers) { %>
                       <% if(user.id==recipe.belongsTo) {%>

@@ -1,5 +1,6 @@
 .body-information {
     background-image: url('../images/icon-images/cookies-bg.png');
+    background-color: rgba(0, 0, 0, 0.1);
     padding: 40px 0px 80px 0px;
 }
 
@@ -8,9 +9,10 @@
     display: flex;
     flex-flow: wrap column;
     padding: 10px 10px;
-    border-radius: 10px;
     /* background: linear-gradient(0.25turn, rgba(139, 193, 199, 0.5), rgba(77, 159, 177, 0.5)); */
-    background: antiquewhite;
+    /* background: antiquewhite; */
+    /* background: rgba(171, 184, 171, 1); */
+    background: white;
 }
 
 .productCreate-form {
@@ -19,6 +21,12 @@
 
 .productCreate-form>* {
     padding: 10px !important;
+}
+
+.productCreate-form div input,
+.productCreate-form div textarea {
+    border: 1px solid black;
+    border-radius: 3px;
 }
 
 
@@ -31,6 +39,10 @@
 textarea {
     border-radius: 2px;
     border: none;
+}
+
+.form-container input {
+    background: white;
 }
 
 
@@ -190,14 +202,44 @@ input {
     transition: 1.5s linear;
 }
 
-#image-label:hover p {
+#image-label p {
     color: rgb(39, 28, 28);
+    visibility: visible;
+    opacity: 0.7;
+    opacity: 1;
+    animation: fade 2s linear infinite;
 }
 
 
-/* #image-label p {
-    display: none;
+/* .image-text-container:hover {
+    filter: brightness(90%);
+    cursor: pointer;
 } */
+
+
+
+@keyframes fade {
+
+    0%,
+    100% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 .product-preview {

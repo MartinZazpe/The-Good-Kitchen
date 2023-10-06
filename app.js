@@ -7,8 +7,9 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 
-
 var app = express()
+
+
 
 
 var indexRouter = require('./routes/index')
@@ -37,8 +38,9 @@ app.use(session({
   saveUninitialized: false,
 }))
 
-app.use(userLoggedMiddleware)
 
+
+app.use(userLoggedMiddleware)
 
 
 app.use('/the-good-kitchen', indexRouter)

@@ -46,7 +46,7 @@
                                                     <% } %>
 
                                                         <div class="form-container">
-                                                            <form class="login-form" action="/user/login" method="POST">
+                                                            <form class="login-form" action="<%=baseUrl%>/user/login" method="POST">
                                                                 <label for="">Email</label>
                                                                 <input type="email" name="email">
                                                                 <div class="errors-container">
@@ -56,7 +56,7 @@
                                                                 <label>
                                                                     <input type="checkbox" name="rememberUser"> Remember me
                                                                 </label>
-                                                                <p>Got no user? <a class="register-now" href="/user/register">Register now!</a></p>
+                                                                <p>Got no user? <a class="register-now" href="<%=baseUrl%>/user/register">Register now!</a></p>
                                                                 <button type="submit" value="Login">Login</button>
                                                             </form>
                                                         </div>

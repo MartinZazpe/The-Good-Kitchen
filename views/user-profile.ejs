@@ -17,6 +17,9 @@
         <main>
             <section class="main-section">
                 <div class="body-information">
+
+                    <h3 class="user-profile-title">My profile</h3>
+
                     <div class="user-details">
 
                         <% if(locals.user) { %>
@@ -64,14 +67,14 @@
 
                             <% } %>
                                 <div class="check-uploaded-recipes-container">
-                                    <p>Check out or modify my <a href="/user/profile/myRecipes">uploaded recipes</a></p>
+                                    <p>Check out or modify my <a href="<%=baseUrl%>/user/profile/myRecipes">uploaded recipes</a></p>
                                     <% if(locals.errors && errors.noRecipes){ %>
                                         <p class="noRecipesError text-danger">
                                             <%= errors.noRecipes.msg %>
                                         </p>
                                         <% } %>
                                 </div>
-                                <p><a class="logout" href="/user/logout">Logout</a></p>
+                                <p><a class="logout" href="<%=baseUrl%>/user/logout">Logout</a></p>
                                 <!-- <p><a class=" account-delete" href="/delete" onclick="return confirm('This action can´t be undone, are you sure you want to delete this item?')">Delete my account</a></p> -->
                                 <form action="/user/delete/?_method=DELETE" method="POST">
                                     <button class="delete-user" type="submit" onclick="return confirm('This action can´t be undone, are you sure you want to delete your profile?')">
