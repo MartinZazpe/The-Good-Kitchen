@@ -154,12 +154,8 @@ module.exports = {
         } catch (error) {
 
             if (error.name === 'SequelizeUniqueConstraintError') {
-                console.error("Duplicate entry error:", error)
-
-                res.render('product-create',
-                    {
-                        duplicateEntryError: 'Duplicate entry error. Please ensure there are no duplicate directions or ingredients.'
-                    })
+                console.log('product created anyway, duplicates ignored. ' + error)
+                res.redirect('/the-good-kitchen/recipes/list')
             }
 
             console.error('Error in store method:', error)
@@ -284,11 +280,8 @@ module.exports = {
                 }
             })
         } catch (error) {
-            res.render('product-list',
-                {
-                    recipe: recipeFound,
-                    deleteError: 'Error when trying to delete recipe.'
-                })
+            console.log('there was an error deleting the recipe ' + error)
+            res.redirect('/the-good-kitchen/recipes/list')
         }
     },
 

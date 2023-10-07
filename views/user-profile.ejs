@@ -24,7 +24,7 @@
 
                         <% if(locals.user) { %>
                             <div class="image-text-container">
-                                <form class="edit-image-form" action="/user/profile/?_method=PUT" enctype="multipart/form-data" method="POST">
+                                <form class="edit-image-form" action="<%=baseUrl%>/user/profile/?_method=PUT" enctype="multipart/form-data" method="POST">
 
                                     <label>
                                         <% if (locals.errors && errors.name) { %>

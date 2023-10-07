@@ -223,10 +223,11 @@ a:hover {
 .check-uploaded-recipes-container {
     display: flex;
     position: relative;
+    flex-direction: column;
 }
 
 .noRecipesError {
-    position: absolute;
+    /* position: absolute; */
     left: 310px;
 }
 

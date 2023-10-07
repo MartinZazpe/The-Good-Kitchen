@@ -4,7 +4,7 @@ module.exports = {
   "development": {
     "username": process.env.mysqluser,
     "password": process.env.mysqlpass,
-    "database": "recipes_db",
+    "database": process.env.db_recipes,
     "host": "127.0.0.1",
     "dialect": "mysql",
     "logging": false
@@ -12,15 +12,15 @@ module.exports = {
   "test": {
     "username": process.env.mysqluser,
     "password": process.env.mysqlpass,
-    "database": "recipes_db",
+    "database": process.env.db_recipes,
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": process.env.mysqluser,
     "password": process.env.mysqlpass,
-    "database": "recipes_db",
-    "host": "127.0.0.1",
+    "database": process.env.db_recipes,
+    "host": process.env.db_host,
     "dialect": "mysql"
   }
 }

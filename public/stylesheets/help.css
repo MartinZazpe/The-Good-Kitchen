@@ -1,9 +1,11 @@
 .main-section {
     padding: 50px;
+    text-align: center;
 }
 
 .body-information h1 {
     color: black;
+    padding: 20px;
 }
 
 .contact-links {
