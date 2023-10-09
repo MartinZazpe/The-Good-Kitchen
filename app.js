@@ -41,15 +41,6 @@ app.use(session({
 
 
 
-// app.use(cors({
-//   origin: '*',
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true,  // Enable credentials (cookies, authorization headers)
-// }))
-
-app.use(cors({
-  origin: '*'
-}))
 
 
 app.use(userLoggedMiddleware)
