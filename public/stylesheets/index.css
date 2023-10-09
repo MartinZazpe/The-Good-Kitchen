@@ -8,6 +8,11 @@
 
 }
 
+
+h1 {
+    line-height: normal !important;
+}
+
 /* * {
     line-height: normal;
 } */
