@@ -81,7 +81,7 @@
               <div class="product-container">
                 <div class="image-avg-container">
                   <div class="imageContainer">
-                    <a href="<%=baseUrl%>/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="<%= recipe.image != "" ? recipe.image : '../../images/no-image-default.png' %>"></a>
+                    <a href="<%=baseUrl%>/recipes/detail/<%=recipe.id%>"><img class="recipe-image" src="<%= recipe.image != "" ? recipe.image : " https://i.imgur.com/KnUNTQc.png" %>"></a>
                     <% if(locals.recipeRatings) { %>
                       <div class="AVGrating">
                         <div>

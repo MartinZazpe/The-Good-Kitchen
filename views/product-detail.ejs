@@ -41,7 +41,7 @@
 
 
                                 <div class="image-container">
-                                    <img class="OneRecipeImage" src="<%= recipe.image != "" ? recipe.image : '../../images/no-image-default.png' %>">
+                                    <img class="OneRecipeImage" src="<%= recipe.image != "" ? recipe.image : " https://i.imgur.com/KnUNTQc.png" %>">
                                 </div>
 
                                 <div class="productNavbar">
@@ -75,7 +75,7 @@
                                                                                 <p>Community member</p>
                                                                             </div>
                                                                             <div class="container-image">
-                                                                                <img class="creator-image" src="<%= user.image != "" ? user.image : '../../images/user-default.png' %>" alt="user-recipe-image">
+                                                                                <img class="creator-image" src="<%= user.image != "" ? user.image : " https://i.imgur.com/KnUNTQc.png" %>" alt="user-recipe-image">
 
                                                                             </div>
 
@@ -156,7 +156,7 @@
                                 <% for(let user of allUsers){ %>
                                     <% if(user.id==comment.users_id){ %>
                                         <div id="Comments" class="user-comment-container">
-                                            <img class="user-comment-image" src="<%= user.image != "" ? user.image : '../../images/user-default.png' %>" alt="user-image">
+                                            <img class="user-comment-image" src="<%= user.image != "" ? user.image : " https://i.imgur.com/blQ7wCm.png" %>" alt="user-image">
                                             <p class="comment-belongsTo">
                                                 <%=user.name %>
                                             </p>

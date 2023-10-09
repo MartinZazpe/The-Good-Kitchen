@@ -58,7 +58,7 @@
                 <div class="userLogged-links dropdown">
                     <button class="dropdown-btn">
                         <% if(locals.userLogged) { %>
-                            <img class="user-image-miniature" src="../../images/userImages/<%=userLogged.image %>">
+                            <img class="user-image-miniature" src="<%=userLogged.image != null && userLogged.image != "" ? userLogged.image : " https://i.imgur.com/blQ7wCm.png" %>">
                             Hey user
                     </button>
                     <div class="dropdown-content">

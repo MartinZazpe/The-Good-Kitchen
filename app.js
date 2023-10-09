@@ -1,6 +1,7 @@
 var createError = require('http-errors')
 var express = require('express')
 var path = require('path')
+const cors = require('cors')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 const methodOverride = require('method-override')
@@ -31,6 +32,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
+
 app.use(methodOverride("_method"))
 app.use(session({
   secret: "Security password =)",
@@ -40,10 +42,21 @@ app.use(session({
 
 
 
+// app.use(cors({
+//   origin: '*',
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,  // Enable credentials (cookies, authorization headers)
+// }))
+
+app.use(cors({
+  origin: '*'
+}))
+
+
 app.use(userLoggedMiddleware)
 
 
-app.use('/the-good-kitchen', indexRouter)
+app.use('/the-good-kitchen/', indexRouter)
 app.use('/the-good-kitchen/user', userRouter)
 app.use('/the-good-kitchen/recipes', productsRouter)
 

@@ -38,7 +38,7 @@
                                     <input id="imageInput" class="image-input" name='image' type="file">
                                     <div class="input-image-form-container">
                                         <div class="image-container">
-                                            <img class="user-image" src="<%= user.image != "" ? user.image : '../../images/user-default.png' %>" alt="default-user-image">
+                                            <img class="user-image" src="<%= user.image != null && user.image!= "" ? user.image : " https://i.imgur.com/blQ7wCm.png" %>" alt="default-user-image">
                                         </div>
 
                                     </div>

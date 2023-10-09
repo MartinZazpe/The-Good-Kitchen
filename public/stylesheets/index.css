@@ -81,14 +81,14 @@
 }
 
 .carousel-item:nth-child(2) {
-    background: url('/images/test2.webp');
+    background: url('https://i.imgur.com/4BdQiQg.png');
     background-size: cover;
     width: 100%;
     height: 250px;
 }
 
 .carousel-item:nth-child(3) {
-    background: url('/images/test3.webp');
+    background: url('https://i.imgur.com/As501QD.png');
     background-size: cover;
     width: 100%;
     height: 250px;
