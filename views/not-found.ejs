@@ -3,8 +3,8 @@
 
 <head>
     <title>Error</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-    <link rel="stylesheet" href="/stylesheets/not-found.css">
+    <link rel='stylesheet' href='<%= process.env.NODE_ENV === "production" ? "/the-good-kitchen/" : "/" %>stylesheets/style.css' />
+    <link rel='stylesheet' href='<%= process.env.NODE_ENV === "production" ? "/the-good-kitchen/" : "/" %>stylesheets/not-found.css' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://kit.fontawesome.com/ae0153af6c.js" crossorigin="anonymous"></script>
