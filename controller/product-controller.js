@@ -92,15 +92,17 @@ module.exports = {
     },
     store: async (req, res) => {
         try {
+            console.log('Before asking if validations are ok')
             let errors = await validationResult(req)
 
             if (!errors.isEmpty()) {
-                // Handle validation errors
-                return res.render('your-error-view', { errors: errors.array() })
+                console.log('errors is not emtpy! ' + errors)
+                return res.render('not-found', { errors: errors.array() })
             }
 
             let recipeImage = ""
 
+            console.log('Before asking if theres a file')
             if (req.file != null) {
                 try {
                     const imgurResponse = await axios.post('https://api.imgur.com/3/image', {
@@ -118,6 +120,9 @@ module.exports = {
                     console.error('Error uploading image to Imgur:', error)
                 }
             }
+
+            console.log('Before creating new recipe')
+
 
             const newRecipe = await db.Recipe.create({
                 title: req.body.title,

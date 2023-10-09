@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='<%= process.env.NODE_ENV === "production" ? "/the-good-kitchen/" : "/" %>stylesheets/style.css' />
     <link rel='stylesheet' href='<%= process.env.NODE_ENV === "production" ? "/the-good-kitchen/" : "/" %>stylesheets/product-creation.css' />
-    <script defer src="../../javascripts/product-create.js"></script>
+    <!-- <script defer src="../../javascripts/product-create.js"></script> -->
+    <script src='<%=process.env.NODE_ENV === "production" ? "/the-good-kitchen/" : "/" %>javascripts/product-create.js'></script>
+
     <title>Upload a recipe</title>
 </head>
 

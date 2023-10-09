@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='<%= process.env.NODE_ENV === "production" ? "/the-good-kitchen/" : "/" %>stylesheets/style.css' />
     <link rel='stylesheet' href='<%= process.env.NODE_ENV === "production" ? "/the-good-kitchen/" : "/" %>stylesheets/user-profile.css' />
-    <script src="/javascripts/user-profile.js"></script>
+    <script src='<%=process.env.NODE_ENV === "production" ? "/the-good-kitchen/" : "/" %>javascripts/user-profile.js'></script>
     <script src="https://kit.fontawesome.com/ae0153af6c.js" crossorigin="anonymous"></script>
     <title>Help</title>
 </head>

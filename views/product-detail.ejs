@@ -7,8 +7,10 @@
     <link rel='stylesheet' href='<%= process.env.NODE_ENV === "production" ? "/the-good-kitchen/" : "/" %>stylesheets/product-detail.css' />
     <script src="https://kit.fontawesome.com/d4fe87d88c.js" crossorigin="anonymous"></script>
 
+    <!-- <script src="/javascripts/product-detail.js"></script> -->
+    <script src='<%=process.env.NODE_ENV === "production" ? "/the-good-kitchen/" : "/" %>javascripts/product-detail.js'></script>
+
     <title>Home</title>
-    <script src="/javascripts/product-detail.js"></script>
 </head>
 
 <body>
