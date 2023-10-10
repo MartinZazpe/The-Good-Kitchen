@@ -8,10 +8,16 @@
 
 }
 
-/* * {
-    line-height: normal;
-} */
+h1 {
+    line-height: normal !important;
+    font-weight: 600 !important;
+}
 
+/* .search-input {
+    margin: 0 !important;
+    padding: 0 !important;
+    outline-offset: 0 !important;
+} */
 
 
 
